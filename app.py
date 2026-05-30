@@ -1,8 +1,16 @@
 import os
 import io
+import json
+import hashlib
 from flask import Flask, render_template, jsonify, request, send_file
 from models import get_db, init_db
-from game_logic import get_current_state, validate_selection, record_selection, reset_game, is_game_over, get_snake_order
+from game_logic import (
+    get_current_state, validate_selection, record_selection, reset_game,
+    is_game_over, get_snake_order,
+    init_pin_for_participant, verify_pin_for_participant,
+    get_queue_for_participant, save_queue_for_participant,
+    toggle_auto_draft_for_participant, get_auto_draft_state_for_participant
+)
 from seed_data import seed_database
 import openpyxl
 
@@ -69,7 +77,7 @@ def api_players():
 
 @app.route('/api/select', methods=['POST'])
 def api_select():
-    data = request.get_json()
+    data = request.get_json(force=True)
     participant_name = data.get('participant_name')
     player_id = data.get('player_id')
 
@@ -80,8 +88,8 @@ def api_select():
     if not validation['valid']:
         return jsonify({'success': False, 'error': validation['error']}), 400
 
-    record_selection(participant_name, player_id)
-    return jsonify({'success': True, 'state': get_current_state()})
+    auto_picks = record_selection(participant_name, player_id)
+    return jsonify({'success': True, 'auto_picks': auto_picks, 'state': get_current_state()})
 
 
 @app.route('/api/selections')
@@ -154,6 +162,89 @@ def api_export():
 def api_reset():
     seed_database()
     return jsonify({'success': True})
+
+
+@app.route('/api/preselect/init-pin', methods=['POST'])
+def api_init_pin():
+    data = request.get_json(force=True, silent=True)
+    if not data:
+        return jsonify({'success': False, 'error': '无法解析JSON: ' + str(request.data)[:200]}), 400
+    name = data.get('participant_name')
+    pin = data.get('pin')
+    if not name or not pin:
+        return jsonify({'success': False, 'error': '缺少参数: name=' + repr(name) + ' pin=' + repr(pin)}), 400
+    if init_pin_for_participant(name, pin):
+        return jsonify({'success': True})
+    return jsonify({'success': False, 'error': 'PIN已存在'}), 400
+
+
+@app.route('/api/preselect/verify-pin', methods=['POST'])
+def api_verify_pin():
+    data = request.get_json()
+    name = data.get('participant_name')
+    pin = data.get('pin')
+    if not name or not pin:
+        return jsonify({'success': False, 'error': '缺少参数'}), 400
+    return jsonify({'success': verify_pin_for_participant(name, pin)})
+
+
+@app.route('/api/preselect/<name>')
+def api_get_preselect(name):
+    pin = request.args.get('pin', '')
+    db = get_db()
+    row = db.execute(
+        'SELECT pin_hash, queue_data FROM preselect_queues WHERE participant_name = ?',
+        (name,)
+    ).fetchone()
+
+    if not row:
+        db.close()
+        return jsonify({'queue': [], 'has_pin': False})
+
+    if not pin:
+        db.close()
+        return jsonify({'queue': [], 'has_pin': True})
+
+    # Verify PIN
+    if hashlib.sha256(pin.encode()).hexdigest() != row['pin_hash']:
+        db.close()
+        return jsonify({'queue': [], 'has_pin': True, 'pin_ok': False}), 403
+
+    # Return queue filtered by already-selected
+    selected_ids = set(
+        r['player_id'] for r in db.execute('SELECT player_id FROM selections').fetchall()
+    )
+    db.close()
+    queue = json.loads(row['queue_data'])
+    filtered = [pid for pid in queue if pid not in selected_ids]
+    return jsonify({'queue': filtered, 'has_pin': True, 'pin_ok': True})
+
+
+@app.route('/api/preselect/<name>', methods=['POST'])
+def api_save_preselect(name):
+    data = request.get_json(force=True)
+    pin = data.get('pin', '')
+    queue = data.get('queue', [])
+    if save_queue_for_participant(name, pin, queue):
+        return jsonify({'success': True})
+    return jsonify({'success': False, 'error': 'PIN错误'}), 403
+
+
+@app.route('/api/auto-draft/toggle', methods=['POST'])
+def api_toggle_auto_draft():
+    data = request.get_json(force=True)
+    name = data.get('participant_name')
+    enabled = data.get('enabled', False)
+    if not name:
+        return jsonify({'success': False, 'error': '缺少参数'}), 400
+    toggle_auto_draft_for_participant(name, enabled)
+    # Also save as on-server toggle state
+    return jsonify({'success': True})
+
+
+@app.route('/api/auto-draft/state/<name>')
+def api_auto_draft_state(name):
+    return jsonify({'enabled': get_auto_draft_state_for_participant(name)})
 
 
 # ========== Init ==========
