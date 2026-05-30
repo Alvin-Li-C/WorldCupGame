@@ -1038,6 +1038,10 @@
     function hidePinSetupModal() {
         document.getElementById('pinSetupModal').classList.add('hidden');
         pendingPinIdentity = null;
+        // Revoke identity - PIN is required
+        currentUser = null;
+        localStorage.removeItem('worldcup_identity');
+        showIdentityModal();
     }
 
     async function confirmPinSetup() {
@@ -1065,6 +1069,10 @@
     function hidePinEntryModal() {
         document.getElementById('pinEntryModal').classList.add('hidden');
         pendingPinIdentity = null;
+        // Revoke identity - PIN verification required
+        currentUser = null;
+        localStorage.removeItem('worldcup_identity');
+        showIdentityModal();
     }
 
     async function confirmPinEntry() {
