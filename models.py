@@ -1,5 +1,6 @@
 import sqlite3
 import os
+import hashlib
 
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'draft.db')
 
@@ -18,6 +19,7 @@ def init_db():
     cur = conn.cursor()
     cur.executescript('''
         DROP TABLE IF EXISTS selections;
+        DROP TABLE IF EXISTS preselect_queues;
         DROP TABLE IF EXISTS game_state;
         DROP TABLE IF EXISTS players;
         DROP TABLE IF EXISTS teams;
@@ -51,6 +53,14 @@ def init_db():
             participant_id INTEGER NOT NULL REFERENCES participants(id),
             player_id INTEGER NOT NULL UNIQUE REFERENCES players(id),
             created_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
+        CREATE TABLE preselect_queues (
+            participant_name TEXT PRIMARY KEY,
+            pin_hash TEXT NOT NULL,
+            queue_data TEXT NOT NULL DEFAULT '[]',
+            auto_draft INTEGER NOT NULL DEFAULT 0,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
 
         CREATE TABLE game_state (
