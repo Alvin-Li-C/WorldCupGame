@@ -1,4 +1,6 @@
 from models import get_db
+import json
+import hashlib
 
 TOTAL_ROUNDS = 15
 PICKS_PER_ROUND = 5
@@ -172,8 +174,12 @@ def record_selection(participant_name, player_id):
         (str(participant['id']),)
     )
 
+    # ===== SERVER-SIDE AUTO-DRAFT CASCADE =====
+    auto_picks = _execute_auto_draft(db)
+
     db.commit()
     db.close()
+    return auto_picks
 
 
 def reset_game():
@@ -188,3 +194,207 @@ def is_game_over():
     ).fetchone()['state_value']
     db.close()
     return status == 'completed'
+
+
+# ========== Preselect Queue & Auto-Draft Helpers ==========
+
+def init_pin_for_participant(participant_name, pin):
+    """Set initial PIN for a participant. Returns True on success."""
+    db = get_db()
+    existing = db.execute(
+        'SELECT participant_name FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    if existing:
+        db.close()
+        return False
+    pin_hash = hashlib.sha256(pin.encode()).hexdigest()
+    db.execute(
+        'INSERT INTO preselect_queues (participant_name, pin_hash) VALUES (?, ?)',
+        (participant_name, pin_hash)
+    )
+    db.commit()
+    db.close()
+    return True
+
+
+def verify_pin_for_participant(participant_name, pin):
+    db = get_db()
+    row = db.execute(
+        'SELECT pin_hash FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    db.close()
+    if not row:
+        return False
+    return hashlib.sha256(pin.encode()).hexdigest() == row['pin_hash']
+
+
+def has_pin_set(participant_name):
+    db = get_db()
+    row = db.execute(
+        'SELECT participant_name FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    db.close()
+    return row is not None
+
+
+def get_queue_for_participant(participant_name, pin):
+    """Returns (queue_list, has_pin_set). Raises ValueError on wrong PIN."""
+    db = get_db()
+    row = db.execute(
+        'SELECT pin_hash, queue_data FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    db.close()
+    if not row:
+        return [], False
+
+    if hashlib.sha256(pin.encode()).hexdigest() != row['pin_hash']:
+        raise ValueError('PIN错误')
+
+    return json.loads(row['queue_data']), True
+
+
+def save_queue_for_participant(participant_name, pin, queue):
+    db = get_db()
+    row = db.execute(
+        'SELECT pin_hash FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    if not row:
+        db.close()
+        return False
+    if hashlib.sha256(pin.encode()).hexdigest() != row['pin_hash']:
+        db.close()
+        return False
+    db.execute(
+        'UPDATE preselect_queues SET queue_data = ?, updated_at = datetime(\'now\') WHERE participant_name = ?',
+        (json.dumps(queue), participant_name)
+    )
+    db.commit()
+    db.close()
+    return True
+
+
+def toggle_auto_draft_for_participant(participant_name, enabled):
+    db = get_db()
+    db.execute(
+        '''INSERT INTO preselect_queues (participant_name, pin_hash, queue_data, auto_draft, updated_at)
+           VALUES (?, '', '[]', ?, datetime('now'))
+           ON CONFLICT(participant_name) DO UPDATE SET auto_draft = ?, updated_at = datetime('now')''',
+        (participant_name, 1 if enabled else 0, 1 if enabled else 0)
+    )
+    db.commit()
+    db.close()
+
+
+def get_auto_draft_state_for_participant(participant_name):
+    db = get_db()
+    row = db.execute(
+        'SELECT auto_draft FROM preselect_queues WHERE participant_name = ?',
+        (participant_name,)
+    ).fetchone()
+    db.close()
+    return row['auto_draft'] == 1 if row else False
+
+
+def _execute_auto_draft(db):
+    """
+    Server-side auto-draft cascade.
+    After a pick is made, check if the next participant(s) have auto-draft enabled.
+    If so, auto-pick from their queue.
+    Must be called with an open db connection (before commit).
+    """
+    picks = []
+
+    for _ in range(5):  # Safety limit
+        # Check game not over
+        status_row = db.execute(
+            'SELECT state_value FROM game_state WHERE state_key = "status"'
+        ).fetchone()
+        if status_row['state_value'] == 'completed':
+            break
+
+        # Get current round/pick
+        round_row = db.execute(
+            'SELECT state_value FROM game_state WHERE state_key = "current_round"'
+        ).fetchone()
+        pick_row = db.execute(
+            'SELECT state_value FROM game_state WHERE state_key = "current_pick"'
+        ).fetchone()
+        cur_round = int(round_row['state_value'])
+        cur_pick = int(pick_row['state_value'])
+
+        # Get current participant
+        order_list = get_snake_order(cur_round)
+        current_order = order_list[cur_pick - 1]
+        participant = db.execute(
+            'SELECT id, name FROM participants WHERE draft_order = ?',
+            (current_order,)
+        ).fetchone()
+
+        if not participant:
+            break
+
+        # Check if participant has auto-draft ON and has set a PIN
+        pq = db.execute(
+            'SELECT auto_draft, queue_data, pin_hash FROM preselect_queues WHERE participant_name = ?',
+            (participant['name'],)
+        ).fetchone()
+
+        if not pq or pq['auto_draft'] != 1 or pq['pin_hash'] == '':
+            break  # No auto-draft or no PIN set (no preselect without PIN)
+
+        # Get queue, filter already-selected
+        queue = json.loads(pq['queue_data'])
+        selected_ids = set(
+            r[0] for r in db.execute('SELECT player_id FROM selections').fetchall()
+        )
+
+        auto_player_id = None
+        for pid in queue:
+            if pid not in selected_ids:
+                auto_player_id = pid
+                break
+
+        if auto_player_id is None:
+            break  # Queue empty
+
+        # Record auto-pick
+        db.execute(
+            '''INSERT INTO selections (round_number, pick_number, participant_id, player_id)
+               VALUES (?, ?, ?, ?)''',
+            (cur_round, cur_pick, participant['id'], auto_player_id)
+        )
+        picks.append({
+            'participant': participant['name'],
+            'player_id': auto_player_id,
+            'round': cur_round,
+            'pick': cur_pick,
+        })
+
+        # Advance pick
+        next_pick = cur_pick + 1
+        next_round = cur_round
+        if next_pick > PICKS_PER_ROUND:
+            next_pick = 1
+            next_round += 1
+
+        if next_round > TOTAL_ROUNDS:
+            db.execute(
+                'UPDATE game_state SET state_value = "completed" WHERE state_key = "status"'
+            )
+            break
+        else:
+            db.execute(
+                'UPDATE game_state SET state_value = ? WHERE state_key = "current_round"',
+                (str(next_round),)
+            )
+            db.execute(
+                'UPDATE game_state SET state_value = ? WHERE state_key = "current_pick"',
+                (str(next_pick),)
+            )
+
+    return picks
