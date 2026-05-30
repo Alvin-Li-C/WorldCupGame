@@ -177,7 +177,9 @@
             position: relative; text-align: center; line-height: 1.3;
         }
         .player-btn:hover:not(:disabled) { border-color: var(--gold); background: #2a2a4a; transform: translateY(-1px); }
-        .player-btn:disabled, .player-btn.selected { opacity: 0.4; cursor: default; border-color: #4a4; }
+        .player-btn:disabled, .player-btn.selected { opacity: 0.35; cursor: default; border-color: #4a4; }
+        .player-btn.selected .pname { text-decoration: line-through; color: #6a6; }
+        .player-btn.selected .jersey { color: #6a6; }
         .player-btn .jersey { display: block; font-size: 0.6rem; color: #888; }
         .player-btn .pname { display: block; font-weight: 600; font-size: 0.7rem; }
         .player-btn .position-badge {
@@ -263,6 +265,8 @@
         .btn-export:hover { background: #228b22; }
         .btn-reset { background: #6a1a1a; color: #f88; }
         .btn-reset:hover { background: #8a2a2a; }
+        .btn-view-picks { background: #2a4a6a; color: #fff; }
+        .btn-view-picks:hover { background: #3a5a8a; }
 
         .btn-next-turn {
             display: block; margin: 0.5rem auto 0; padding: 0.5rem 1.5rem;
@@ -296,6 +300,17 @@
     </style>
 </head>
 <body>
+
+<!-- ========== VIEW SELECTIONS MODAL ========== -->
+<div class="confirm-overlay hidden" id="selectionsModal">
+    <div class="confirm-dialog" style="max-width:500px;max-height:80vh;overflow-y:auto;">
+        <div style="font-size:0.9rem;color:var(--gold);font-weight:700;margin-bottom:0.8rem;">📋 选秀结果 — 各队已选球员</div>
+        <div id="selectionsModalBody"></div>
+        <div class="confirm-actions" style="margin-top:1rem;">
+            <button class="btn-confirm-no" onclick="hideSelectionsModal()">关闭</button>
+        </div>
+    </div>
+</div>
 
 <!-- ========== IDENTITY MODAL ========== -->
 <div class="identity-overlay" id="identityModal">
@@ -418,6 +433,7 @@
 
 <!-- ========== ACTION BAR ========== -->
 <div class="action-bar">
+    <button class="btn btn-view-picks" onclick="showSelectionsModal()">📋 查看已选</button>
     <button class="btn btn-export" onclick="exportExcel()">📥 导出Excel</button>
 </div>
 
@@ -1092,6 +1108,43 @@
         el.textContent = msg;
         container.appendChild(el);
         setTimeout(function() { el.remove(); }, 3000);
+    }
+
+    // ========== Selections Modal ==========
+    function showSelectionsModal() {
+        var body = document.getElementById('selectionsModalBody');
+        if (!gameState || !gameState.selections || gameState.selections.length === 0) {
+            body.innerHTML = '<div style="color:#888;text-align:center;padding:1rem;">暂无选秀记录</div>';
+        } else {
+            // Group by participant name
+            var groups = {};
+            gameState.selections.forEach(function(s) {
+                if (!groups[s.participant_name]) groups[s.participant_name] = [];
+                groups[s.participant_name].push(s);
+            });
+            var html = '';
+            var participantOrder = {};
+            gameState.participants.forEach(function(p) { participantOrder[p.name] = p.draft_order; });
+            var sortedNames = Object.keys(groups).sort(function(a, b) { return (participantOrder[a] || 0) - (participantOrder[b] || 0); });
+            sortedNames.forEach(function(name) {
+                html += '<div style="margin-bottom:0.8rem;border:1px solid #2a2a4a;border-radius:10px;padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);">' +
+                        '<div style="font-weight:700;color:var(--gold);font-size:0.85rem;margin-bottom:0.3rem;">👤 ' + name + ' <span style="color:#888;font-size:0.7rem;">(#' + participantOrder[name] + ')</span></div>';
+                var picks = groups[name];
+                picks.sort(function(a, b) { return a.round_number - b.round_number || a.pick_number - b.pick_number; });
+                picks.forEach(function(p) {
+                    html += '<div style="display:inline-block;background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.2);border-radius:6px;padding:0.2rem 0.5rem;margin:0.15rem;font-size:0.7rem;">' +
+                            p.flag_emoji + ' ' + p.player_name + ' #' + p.jersey_number +
+                            ' <span style="color:#888;">R' + p.round_number + 'P' + p.pick_number + '</span></div>';
+                });
+                html += '</div>';
+            });
+            body.innerHTML = html;
+        }
+        document.getElementById('selectionsModal').classList.remove('hidden');
+    }
+
+    function hideSelectionsModal() {
+        document.getElementById('selectionsModal').classList.add('hidden');
     }
 
     function exportExcel() { window.location.href = '/api/export'; }
