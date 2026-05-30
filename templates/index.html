@@ -320,12 +320,40 @@
     </div>
 </div>
 
+<!-- ========== PIN SETUP MODAL ========== -->
+<div class="confirm-overlay hidden" id="pinSetupModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">设置 PIN 密码</div>
+        <p style="color:#888;font-size:0.8rem;margin:0.5rem 0;">设置一个4位数字PIN，换设备时需要用此PIN同步预选队列</p>
+        <input type="password" id="pinSetupInput" maxlength="4" pattern="\d*" inputmode="numeric"
+               style="width:120px;padding:0.5rem;text-align:center;font-size:1.2rem;border-radius:10px;border:1px solid var(--gold);background:#1a1a2e;color:#fff;outline:none;">
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="hidePinSetupModal()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmPinSetup()">确认</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PIN ENTRY MODAL ========== -->
+<div class="confirm-overlay hidden" id="pinEntryModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">输入 PIN 密码</div>
+        <p style="color:#888;font-size:0.8rem;margin:0.5rem 0;">请输入该身份的PIN密码以同步预选队列</p>
+        <input type="password" id="pinEntryInput" maxlength="4" pattern="\d*" inputmode="numeric"
+               style="width:120px;padding:0.5rem;text-align:center;font-size:1.2rem;border-radius:10px;border:1px solid var(--gold);background:#1a1a2e;color:#fff;outline:none;">
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="hidePinEntryModal()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmPinEntry()">确认</button>
+        </div>
+    </div>
+</div>
+
 <!-- ========== HEADER ========== -->
 <header class="game-header">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12 col-md-4 mb-2 mb-md-0">
-                <h1>🏆 2026 选射手</h1>
+                <h1 style="text-align:center;">🏆 2026 世界杯选射手</h1>
             </div>
             <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="turn-banner" id="turnBanner">👉 轮到 <strong>--</strong> 选择</div>
@@ -405,15 +433,111 @@
     var PARTICIPANT_NAMES = [];
     var selectedPlayerBtn = null;
     var turnCompleted = false;
-    var autoDraftTimer = null;
+    var preselectQueue = [];       // In-memory preselect cache [{id, display}]
+    var autoDraftStates = {};      // name -> boolean
+    var pendingPinIdentity = null;  // Identity waiting for PIN
 
-    // Preselect helpers
-    function getPreselectKey() { return 'worldcup_preselect_' + (currentUser || 'guest'); }
-    function loadPreselect() { return JSON.parse(localStorage.getItem(getPreselectKey()) || '[]'); }
-    function savePreselect(q) { localStorage.setItem(getPreselectKey(), JSON.stringify(q)); }
+    // PIN helpers
+    function getStoredPin(name) { return localStorage.getItem('worldcup_pin_' + name) || ''; }
+    function storePin(name, pin) { localStorage.setItem('worldcup_pin_' + name, pin); }
 
-    function getAutoDraftKey() { return 'worldcup_autodraft_' + (currentUser || 'guest'); }
-    function isAutoDraft(name) { return localStorage.getItem('worldcup_autodraft_' + name) === 'true'; }
+    // Preselect - sync accessors (read from in-memory cache)
+    function loadPreselect() { return preselectQueue; }
+    function savePreselect(q) { preselectQueue = q; savePreselectToServer(); }
+
+    // Preselect - async server sync
+    async function loadPreselectFromServer() {
+        if (!currentUser) { preselectQueue = []; return; }
+        var pin = getStoredPin(currentUser);
+        if (!pin) { preselectQueue = []; return; }
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(currentUser) + '?pin=' + encodeURIComponent(pin));
+        if (resp.status === 403) {
+            showToast('\u26a0\ufe0f PIN\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165', 'warning');
+            showPinEntryModal(currentUser);
+            return;
+        }
+        var data = await resp.json();
+        if (!data.pin_ok) { preselectQueue = []; return; }
+        preselectQueue = data.queue.map(function(pid) {
+            for (var i = 0; i < allTeams.length; i++) {
+                for (var j = 0; j < allTeams[i].players.length; j++) {
+                    if (allTeams[i].players[j].id === pid) {
+                        return {id: pid, display: allTeams[i].players[j].name};
+                    }
+                }
+            }
+            return {id: pid, display: '#' + pid};
+        });
+        // Update player button badges
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            btn.classList.remove('preselected');
+            var badge = btn.querySelector('.preselect-badge');
+            if (badge) badge.textContent = '';
+        });
+        preselectQueue.forEach(function(item, idx) {
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (parseInt(btn.dataset.playerId) === item.id) {
+                    btn.classList.add('preselected');
+                    updatePreselectBadge(btn, idx + 1);
+                }
+            });
+        });
+        renderPreselectPanel();
+    }
+
+    async function savePreselectToServer() {
+        if (!currentUser) return false;
+        var pin = getStoredPin(currentUser);
+        if (!pin) return false;
+        var ids = preselectQueue.map(function(item) { return item.id; });
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(currentUser), {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({pin: pin, queue: ids})
+        });
+        return resp.ok;
+    }
+
+    // Auto-draft API
+    async function fetchAutoDraftState(name) {
+        var resp = await fetch('/api/auto-draft/state/' + encodeURIComponent(name));
+        if (resp.ok) {
+            var data = await resp.json();
+            autoDraftStates[name] = data.enabled;
+            return data.enabled;
+        }
+        return false;
+    }
+
+    async function toggleAutoDraftOnServer(name, enabled) {
+        var resp = await fetch('/api/auto-draft/toggle', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, enabled: enabled})
+        });
+        if (resp.ok) autoDraftStates[name] = enabled;
+    }
+
+    // PIN API
+    async function checkPinStatus(name) {
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(name) + '?pin=');
+        return await resp.json();
+    }
+
+    async function initPinOnServer(name, pin) {
+        var resp = await fetch('/api/preselect/init-pin', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, pin: pin})
+        });
+        return resp.ok;
+    }
+
+    async function verifyPinOnServer(name, pin) {
+        var resp = await fetch('/api/preselect/verify-pin', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, pin: pin})
+        });
+        if (resp.ok) return (await resp.json()).success;
+        return false;
+    }
 
     // ========== API Calls ==========
     async function fetchState() {
@@ -491,13 +615,13 @@
         var queue = loadPreselect();
         queue.forEach(function(item) {
             document.querySelectorAll('.player-btn').forEach(function(btn) {
-                if (btn.dataset.playerId == item.id) {
+                if (parseInt(btn.dataset.playerId) === item.id) {
                     btn.classList.add('preselected');
                 }
             });
         });
         document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
-            var id = btn.dataset.playerId;
+            var id = parseInt(btn.dataset.playerId);
             for (var i = 0; i < queue.length; i++) {
                 if (queue[i].id == id) {
                     updatePreselectBadge(btn, i + 1);
@@ -551,7 +675,7 @@
         } else if (currentUser === cp.name) {
             tipEl.innerHTML = '<div class="your-turn-tip">✅ 轮到你了！选择一名球员</div>';
         } else {
-            if (isAutoDraft(cp.name)) {
+            if (autoDraftStates[cp.name]) {
                 tipEl.innerHTML = '<div class="not-your-turn-tip">🛌 ' + cp.name + ' 已开启托管，将自动选择...</div>';
             } else {
                 tipEl.innerHTML = '<div class="not-your-turn-tip">⏳ 当前是 ' + cp.name + ' 的回合，请等待</div>';
@@ -576,7 +700,7 @@
         adArea.style.display = currentUser ? 'block' : 'none';
         var toggleEl = document.getElementById('autoDraftToggle');
         var badgeEl = document.getElementById('autoDraftBadge');
-        if (isAutoDraft(currentUser)) {
+        if (autoDraftStates[currentUser]) {
             toggleEl.classList.add('on');
             badgeEl.textContent = '已开启';
             badgeEl.className = 'auto-draft-badge on';
@@ -622,7 +746,10 @@
             await fetchState();
             await fetchTeams();
             renderPlayers();
-            showToast('✅ ' + currentUser + ' 已选择: ' + name, 'success');
+            // Refresh auto-draft states (server may have auto-picked)
+            currentUser && await fetchAutoDraftState(currentUser);
+            checkAutoDraft();
+            showToast('\u2705 ' + currentUser + ' \u5df2\u9009\u62e9: ' + name, 'success');
             // Auto-advance after 1.5s
             setTimeout(async function() {
                 await fetchState();
@@ -632,7 +759,7 @@
                 checkAutoDraft();
             }, 1500);
         } else {
-            showToast('⚠️ ' + result.error, 'warning');
+            showToast('\u26a0\ufe0f ' + result.error, 'warning');
         }
     }
 
@@ -642,14 +769,14 @@
         var display = btn.querySelector('.pname').textContent;
         var queue = loadPreselect();
         for (var i = 0; i < queue.length; i++) {
-            if (queue[i].id === id) { showToast('⚠️ 该球员已在预选队列', 'warning'); return; }
+            if (queue[i].id === id) { showToast('\u26a0\ufe0f \u8be5\u7403\u5458\u5df2\u5728\u9884\u9009\u961f\u5217', 'warning'); return; }
         }
         queue.push({id: id, display: display});
         savePreselect(queue);
         btn.classList.add('preselected');
         updatePreselectBadge(btn, queue.length);
         renderPreselectPanel();
-        showToast('📝 已加入预选队列 #' + queue.length + ': ' + display, 'info');
+        showToast('\ud83d\udcdd \u5df2\u52a0\u5165\u9884\u9009\u961f\u5217 #' + queue.length + ': ' + display, 'info');
     }
 
     function removeFromPreselect(index) {
@@ -665,7 +792,7 @@
                 }
             });
             renderPreselectPanel();
-            showToast('🗑️ 已移除: ' + removed.display, 'info');
+            showToast('\ud83d\uddd1\ufe0f \u5df2\u79fb\u9664: ' + removed.display, 'info');
         }
     }
 
@@ -690,7 +817,7 @@
         });
         savePreselect([]);
         renderPreselectPanel();
-        showToast('🗑️ 已清空预选队列', 'info');
+        showToast('\ud83d\uddd1\ufe0f \u5df2\u6e05\u7a7a\u9884\u9009\u961f\u5217', 'info');
     }
 
     function updatePreselectBadge(btn, order) {
@@ -707,7 +834,7 @@
         var list = document.getElementById('preselectList');
         var queue = loadPreselect();
         if (queue.length === 0) {
-            list.innerHTML = '<span class="preselect-empty">点击球员加入预选队列</span>';
+            list.innerHTML = '<span class="preselect-empty">\u70b9\u51fb\u7403\u5458\u52a0\u5165\u9884\u9009\u961f\u5217</span>';
             return;
         }
         var html = '';
@@ -718,12 +845,12 @@
                 if (parseInt(btn.dataset.playerId) === item.id) isTaken = true;
             });
             var takenClass = isTaken ? 'taken' : '';
-            var upBtn = i > 0 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', -1)">▲</button>' : '<button class="move-btn" disabled>▲</button>';
-            var downBtn = i < queue.length - 1 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', 1)">▼</button>' : '<button class="move-btn" disabled>▼</button>';
+            var upBtn = i > 0 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', -1)">\u25b2</button>' : '<button class="move-btn" disabled>\u25b2</button>';
+            var downBtn = i < queue.length - 1 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', 1)">\u25bc</button>' : '<button class="move-btn" disabled>\u25bc</button>';
             html += '<div class="preselect-item ' + takenClass + '">' + upBtn + downBtn +
                     '<span class="order-num">' + (i + 1) + '</span>' +
                     '<span>' + item.display + '</span>' +
-                    '<span class="remove-btn" onclick="removeFromPreselect(' + i + ')">✕</span></div>';
+                    '<span class="remove-btn" onclick="removeFromPreselect(' + i + ')">\u2715</span></div>';
         }
         list.innerHTML = html;
     }
@@ -732,102 +859,31 @@
     function toggleAutoDraft() {
         var el = document.getElementById('autoDraftToggle');
         var isOn = el.classList.contains('on');
-        if (isOn) {
-            el.classList.remove('on');
-            document.getElementById('autoDraftBadge').textContent = '未开启';
-            document.getElementById('autoDraftBadge').className = 'auto-draft-badge off';
-            localStorage.setItem(getAutoDraftKey(), 'false');
-        } else {
+        var newState = !isOn;
+        if (newState) {
             el.classList.add('on');
-            document.getElementById('autoDraftBadge').textContent = '已开启';
+            document.getElementById('autoDraftBadge').textContent = '\u5df2\u5f00\u542f';
             document.getElementById('autoDraftBadge').className = 'auto-draft-badge on';
-            localStorage.setItem(getAutoDraftKey(), 'true');
-            checkAutoDraft();
+        } else {
+            el.classList.remove('on');
+            document.getElementById('autoDraftBadge').textContent = '\u672a\u5f00\u542f';
+            document.getElementById('autoDraftBadge').className = 'auto-draft-badge off';
         }
+        // Sync to server (fire-and-forget)
+        toggleAutoDraftOnServer(currentUser, newState);
+        updateUI();
     }
 
-    function getParticipantQueueStatus(name) {
-        var key = 'worldcup_preselect_' + name;
-        var q = JSON.parse(localStorage.getItem(key) || '[]');
-        // Filter out already selected players
-        return q.filter(function(item) {
-            var taken = false;
-            document.querySelectorAll('.player-btn.selected').forEach(function(btn) {
-                if (parseInt(btn.dataset.playerId) === item.id) taken = true;
-            });
-            return !taken;
-        });
-    }
-
+    // checkAutoDraft: called after state updates
+    // With server-side auto-draft, the frontend just shows status messages
     function checkAutoDraft() {
         if (!gameState || !gameState.current_participant) return;
         var turnName = gameState.current_participant.name;
 
-        if (turnName !== currentUser || !isAutoDraft(turnName)) {
-            // Someone else's turn - show status if they have auto-draft
-            if (isAutoDraft(turnName)) {
-                document.getElementById('autoDraftStatus').innerHTML = '🛌 ' + turnName + ' 已开启托管，将自动选择...';
-            }
-            return;
-        }
-
-        var queue = getParticipantQueueStatus(turnName);
-        if (queue.length === 0) {
-            var tipEl = document.getElementById('turnTip');
-            tipEl.innerHTML = '<div class="not-your-turn-tip" style="color:#f88;font-size:1rem;">⚠️ ' + turnName + ' 已开启托管，但预选队列为空，无预选球员可选</div>';
-            document.getElementById('autoDraftStatus').innerHTML = '⚠️ 已开启托管，但预选队列为空，无预选球员可选';
-            return;
-        }
-
-        // Auto-pick after 1.5s
-        document.getElementById('autoDraftStatus').innerHTML = '⏳ 即将自动选择 ' + queue[0].display + '...';
-        if (autoDraftTimer) clearTimeout(autoDraftTimer);
-        autoDraftTimer = setTimeout(function() { doAutoPick(turnName, queue); }, 1500);
-    }
-
-    async function doAutoPick(turnName, queue) {
-        var target = queue[0];
-        if (!target) return;
-        // Find the player button
-        var btn = null;
-        document.querySelectorAll('.player-btn').forEach(function(b) {
-            if (parseInt(b.dataset.playerId) === target.id && !b.classList.contains('selected')) btn = b;
-        });
-        if (!btn) {
-            queue.shift();
-            savePreselect(loadPreselect());
-            showToast('⚠️ 预选球员 ' + target.display + ' 已被选走', 'warning');
-            checkAutoDraft();
-            return;
-        }
-
-        var result = await selectPlayer(target.id);
-        if (result.success) {
-            btn.classList.add('selected');
-            btn.disabled = true;
-            // Remove from queue
-            var q = loadPreselect();
-            q = q.filter(function(item) { return item.id !== target.id; });
-            savePreselect(q);
-            renderPreselectPanel();
-
-            document.getElementById('autoDraftStatus').innerHTML = '✅ 已选择: ' + target.display;
-            showToast('✅ ' + turnName + '（托管）已选择: ' + target.display, 'success');
-
-            await fetchState();
-            await fetchTeams();
-            turnCompleted = true;
-            renderPlayers();
-
-            setTimeout(async function() {
-                await fetchState();
-                await fetchTeams();
-                turnCompleted = false;
-                renderPlayers();
-                checkAutoDraft();
-            }, 1500);
+        if (autoDraftStates[turnName]) {
+            document.getElementById('autoDraftStatus').innerHTML = '\ud83d\udedb ' + turnName + ' \u5df2\u5f00\u542f\u6258\u7ba1\uff0c\u670d\u52a1\u5668\u5c06\u81ea\u52a8\u9009\u62e9...';
         } else {
-            showToast('⚠️ ' + result.error, 'warning');
+            document.getElementById('autoDraftStatus').innerHTML = '';
         }
     }
 
@@ -928,10 +984,90 @@
         currentUser = name;
         localStorage.setItem('worldcup_identity', name);
         hideIdentityModal();
-        if (currentMode === 'preselect') renderPreselectPanel();
         updateUI();
         checkAutoDraft();
-        showToast('✅ 你是 ' + name + '（选秀顺位 #' + order + '）', 'success');
+        showToast('\u2705 \u4f60\u662f ' + name + '\uff08\u9009\u79c0\u987a\u4f4d #' + order + '\uff09', 'success');
+
+        // Check PIN status and load preselect
+        (async function() {
+            var pinStatus = await checkPinStatus(name);
+            var storedPin = getStoredPin(name);
+            if (pinStatus.has_pin) {
+                if (!storedPin) {
+                    // PIN exists but not stored locally - prompt for entry
+                    pendingPinIdentity = name;
+                    showPinEntryModal(name);
+                } else {
+                    // PIN stored locally - try to load
+                    await loadPreselectFromServer();
+                    await fetchAutoDraftState(name);
+                    updateUI();
+                    if (currentMode === 'preselect') renderPreselectPanel();
+                }
+            } else {
+                // No PIN set yet - prompt for setup
+                pendingPinIdentity = name;
+                showPinSetupModal(name);
+            }
+        })();
+    }
+
+    // ========== PIN Modals ==========
+    function showPinSetupModal() {
+        document.getElementById('pinSetupInput').value = '';
+        document.getElementById('pinSetupModal').classList.remove('hidden');
+        setTimeout(function() { document.getElementById('pinSetupInput').focus(); }, 100);
+    }
+
+    function hidePinSetupModal() {
+        document.getElementById('pinSetupModal').classList.add('hidden');
+        pendingPinIdentity = null;
+    }
+
+    async function confirmPinSetup() {
+        var pin = document.getElementById('pinSetupInput').value.trim();
+        if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
+        var name = pendingPinIdentity || currentUser;
+        var ok = await initPinOnServer(name, pin);
+        if (!ok) {
+            showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25\uff0c\u53ef\u80fd\u5df2\u5b58\u5728', 'warning');
+            return;
+        }
+        storePin(name, pin);
+        hidePinSetupModal();
+        showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
+        await loadPreselectFromServer();
+        if (currentMode === 'preselect') renderPreselectPanel();
+    }
+
+    function showPinEntryModal() {
+        document.getElementById('pinEntryInput').value = '';
+        document.getElementById('pinEntryModal').classList.remove('hidden');
+        setTimeout(function() { document.getElementById('pinEntryInput').focus(); }, 100);
+    }
+
+    function hidePinEntryModal() {
+        document.getElementById('pinEntryModal').classList.add('hidden');
+        pendingPinIdentity = null;
+    }
+
+    async function confirmPinEntry() {
+        var pin = document.getElementById('pinEntryInput').value.trim();
+        if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
+        var name = pendingPinIdentity || currentUser;
+        var ok = await verifyPinOnServer(name, pin);
+        if (!ok) {
+            showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u8bd5', 'warning');
+            document.getElementById('pinEntryInput').value = '';
+            return;
+        }
+        storePin(name, pin);
+        hidePinEntryModal();
+        showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
+        await loadPreselectFromServer();
+        await fetchAutoDraftState(name);
+        updateUI();
+        if (currentMode === 'preselect') renderPreselectPanel();
     }
 
     // ========== Utilities ==========
@@ -977,14 +1113,18 @@
         renderIdentityButtons();
         renderPlayers();
 
-        // Restore preselect state
-        var queue = loadPreselect();
-        queue.forEach(function(item) {
-            document.querySelectorAll('.player-btn').forEach(function(btn) {
-                if (parseInt(btn.dataset.playerId) === item.id) btn.classList.add('preselected');
-            });
-        });
+        // If user has identity, load preselect + auto-draft state from server
+        if (currentUser) {
+            var pinStatus = await checkPinStatus(currentUser);
+            var storedPin = getStoredPin(currentUser);
+            if (pinStatus.has_pin && storedPin) {
+                await loadPreselectFromServer();
+                await fetchAutoDraftState(currentUser);
+                updateUI();
+            }
+        }
 
+        // Show identity modal if no identity
         if (!currentUser) {
             showIdentityModal();
         }
