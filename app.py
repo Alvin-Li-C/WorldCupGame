@@ -251,9 +251,16 @@ def api_auto_draft_state(name):
 # ========== Init ==========
 
 def ensure_db_initialized():
-    """Initialize and seed DB on first run"""
+    """Initialize and seed DB on first run, re-seed if name_cn is missing"""
     db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'draft.db')
     if not os.path.exists(db_path):
+        seed_database()
+        return
+    # Check if any players have empty name_cn, re-seed if so
+    db = get_db()
+    empty_count = db.execute('SELECT COUNT(*) FROM players WHERE name_cn = ""').fetchone()[0]
+    db.close()
+    if empty_count > 0:
         seed_database()
 
 
