@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 选射手</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+            --gold: #f5c518;
+            --accent: #0f3460;
+            --text: #e0e0e0;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding-bottom: 80px;
+        }
+        .game-header {
+            background: linear-gradient(135deg, #0f3460, #1a1a2e);
+            padding: 0.8rem 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 1rem;
+        }
+        .game-header h1 {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        .turn-banner {
+            background: rgba(245,197,24,0.12);
+            border: 1px solid rgba(245,197,24,0.3);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .turn-banner strong { color: var(--gold); font-size: 1.2rem; }
+        .round-info {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+        .global-stats {
+            font-size: 0.8rem;
+            color: #8f8;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+        .current-identity {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        /* Mode switch */
+        .mode-switch {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+        }
+        .mode-btn {
+            padding: 0.4rem 1.2rem;
+            border: 1px solid #333;
+            background: #222;
+            color: #aaa;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mode-btn.active {
+            background: var(--gold);
+            color: #1a1a2e;
+            border-color: var(--gold);
+        }
+        .mode-btn:hover { border-color: var(--gold); }
+
+        /* Identity Modal */
+        .identity-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+            z-index: 99999; display: flex; align-items: center; justify-content: center;
+        }
+        .identity-overlay.hidden { display: none; }
+        .identity-card {
+            background: var(--card-bg); border: 1px solid var(--gold);
+            border-radius: 20px; padding: 2rem; max-width: 400px; width: 90%; text-align: center;
+        }
+        .identity-card h2 { color: var(--gold); font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .identity-card p { color: #aaa; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .identity-btn {
+            display: block; width: 100%; padding: 0.8rem 1rem; margin-bottom: 0.6rem;
+            background: #1a3a5c; border: 1px solid #2a5a8c; color: #fff;
+            border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            transition: all 0.2s; text-align: center;
+        }
+        .identity-btn:hover { background: #2a5a8c; transform: translateY(-1px); }
+        .identity-btn .draft-order {
+            display: block; font-size: 0.7rem; color: var(--gold); font-weight: 600; margin-top: 2px;
+        }
+
+        /* Confirm Modal */
+        .confirm-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+            z-index: 99998; display: flex; align-items: center; justify-content: center;
+        }
+        .confirm-overlay.hidden { display: none; }
+        .confirm-dialog {
+            background: var(--card-bg); border: 1px solid var(--gold);
+            border-radius: 20px; padding: 2rem; max-width: 380px; width: 90%; text-align: center;
+        }
+        .confirm-dialog .player-preview { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 1rem 0; }
+        .confirm-dialog .player-preview .player-name { color: var(--gold); }
+        .confirm-dialog .confirm-actions { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1.2rem; }
+        .confirm-dialog .confirm-actions button {
+            padding: 0.6rem 2rem; border-radius: 12px; font-size: 1rem;
+            font-weight: 700; cursor: pointer; border: none; transition: all 0.2s;
+        }
+        .confirm-dialog .btn-confirm-yes { background: var(--gold); color: #1a1a2e; }
+        .confirm-dialog .btn-confirm-yes:hover { background: #ffd700; transform: scale(1.05); }
+        .confirm-dialog .btn-confirm-no { background: #333; color: #aaa; border: 1px solid #555; }
+        .confirm-dialog .btn-confirm-no:hover { background: #444; color: #fff; }
+
+        /* Preselect Panel */
+        .preselect-panel {
+            background: var(--card-bg); border: 1px solid #2a2a4a;
+            border-radius: 12px; padding: 0.8rem 1rem; margin-bottom: 1rem; display: none;
+        }
+        .preselect-panel.show { display: block; }
+        .preselect-panel .panel-title {
+            font-size: 0.85rem; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .preselect-reset-btn {
+            float: right; background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.3);
+            color: #f88; border-radius: 12px; padding: 0.15rem 0.6rem;
+            font-size: 0.65rem; cursor: pointer;
+        }
+        .preselect-reset-btn:hover { background: rgba(255,80,80,0.3); color: #f44; }
+        .preselect-list { display: flex; flex-wrap: wrap; gap: 0.4rem; min-height: 2rem; }
+        .preselect-item {
+            background: rgba(245,197,24,0.15); border: 1px solid rgba(245,197,24,0.3);
+            border-radius: 20px; padding: 0.25rem 0.6rem; font-size: 0.75rem;
+            display: flex; align-items: center; gap: 0.3rem;
+        }
+        .preselect-item .order-num {
+            background: var(--gold); color: #1a1a2e; border-radius: 50%;
+            width: 18px; height: 18px; display: flex; align-items: center;
+            justify-content: center; font-size: 0.6rem; font-weight: 800;
+        }
+        .preselect-item .move-btn {
+            cursor: pointer; background: none; border: none; color: #aaa;
+            font-size: 0.55rem; padding: 0 1px; line-height: 1;
+        }
+        .preselect-item .move-btn:hover:not(:disabled) { color: var(--gold); }
+        .preselect-item .move-btn:disabled { opacity: 0.2; cursor: default; }
+        .preselect-item .remove-btn { cursor: pointer; color: #f88; font-size: 0.8rem; margin-left: 2px; }
+        .preselect-item .remove-btn:hover { color: #f44; }
+        .preselect-item.taken { opacity: 0.4; text-decoration: line-through; }
+        .preselect-empty { color: #555; font-size: 0.8rem; font-style: italic; }
+
+        /* Player buttons */
+        .player-btn {
+            width: 100%; padding: 0.4rem 0.3rem; border: 1px solid #2a2a4a;
+            background: #1e1e3a; color: #ccc; border-radius: 8px;
+            font-size: 0.7rem; cursor: pointer; transition: all 0.2s;
+            position: relative; text-align: center; line-height: 1.3;
+        }
+        .player-btn:hover:not(:disabled) { border-color: var(--gold); background: #2a2a4a; transform: translateY(-1px); }
+        .player-btn:disabled, .player-btn.selected { opacity: 0.35; cursor: default; border-color: #4a4; }
+        .player-btn.selected .pname { text-decoration: line-through; color: #6a6; }
+        .player-btn.selected .jersey { color: #6a6; }
+        .player-btn .jersey { display: block; font-size: 0.6rem; color: #888; }
+        .player-btn .pname { display: block; font-weight: 600; font-size: 0.7rem; }
+        .player-btn .position-badge {
+            display: inline-block; font-size: 0.5rem; padding: 1px 4px;
+            border-radius: 4px; background: rgba(245,197,24,0.2); color: var(--gold); margin-top: 1px;
+        }
+        .player-btn.preselected { border-color: var(--gold); background: rgba(245,197,24,0.1); }
+        .player-btn .preselect-badge {
+            position: absolute; top: -4px; right: -4px; background: var(--gold);
+            color: #1a1a2e; border-radius: 50%; width: 16px; height: 16px;
+            font-size: 0.55rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+        }
+        .player-btn.preselected .preselect-badge { display: flex; }
+        .team-card { background: var(--card-bg); border: 1px solid #2a2a4a; border-radius: 12px; margin-bottom: 0.6rem; overflow: hidden; }
+        .team-card .card-header {
+            padding: 0.5rem 0.8rem; cursor: pointer; display: flex;
+            align-items: center; justify-content: space-between;
+            background: linear-gradient(135deg, #1a2744, #16213e);
+        }
+        .team-card .card-header .flag { font-size: 1.2rem; margin-right: 0.5rem; }
+        .team-card .card-header .team-name { font-weight: 700; font-size: 0.9rem; }
+        .team-card .card-header .toggle-icon { transition: transform 0.3s; font-size: 0.7rem; color: #888; }
+        .team-card .card-header .toggle-icon.collapsed { transform: rotate(-90deg); }
+
+        /* Summary table */
+        .summary-section { margin-top: 2rem; }
+        .summary-section h3 { color: var(--gold); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+        .summary-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+        .summary-table th, .summary-table td { border: 1px solid #2a2a4a; padding: 0.4rem 0.3rem; text-align: center; }
+        .summary-table th { background: #1a2744; color: var(--gold); font-weight: 700; }
+        .summary-table td { background: var(--card-bg); }
+        .summary-table .current-pick-cell { background: rgba(245,197,24,0.15); font-weight: 700; }
+
+        /* Turn tip & auto draft */
+        .your-turn-tip {
+            background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3);
+            border-radius: 8px; padding: 0.5rem 1rem; text-align: center;
+            font-size: 0.85rem; color: #8f8; margin-top: 0.5rem;
+        }
+        .not-your-turn-tip {
+            background: rgba(255,100,100,0.1); border: 1px solid rgba(255,100,100,0.3);
+            border-radius: 8px; padding: 0.5rem 1rem; text-align: center;
+            font-size: 0.85rem; color: #f88; margin-top: 0.5rem;
+        }
+        .auto-draft-toggle {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.8rem; color: #aaa; cursor: pointer;
+            margin-top: 0.3rem; padding: 0.3rem 0.6rem;
+            border-radius: 8px; background: rgba(255,255,255,0.03);
+            transition: all 0.2s; user-select: none;
+        }
+        .auto-draft-toggle:hover { background: rgba(255,255,255,0.08); }
+        .auto-draft-toggle.on { color: #8f8; background: rgba(76,175,80,0.12); }
+        .auto-draft-toggle .toggle-track {
+            width: 36px; height: 20px; border-radius: 10px;
+            background: #444; position: relative; transition: background 0.2s; flex-shrink: 0;
+        }
+        .auto-draft-toggle.on .toggle-track { background: #4caf50; }
+        .auto-draft-toggle .toggle-thumb {
+            position: absolute; width: 16px; height: 16px; border-radius: 50%;
+            background: #ccc; top: 2px; left: 2px; transition: all 0.2s;
+        }
+        .auto-draft-toggle.on .toggle-thumb { background: #fff; left: 18px; }
+        .auto-draft-badge {
+            display: inline-block; padding: 1px 8px; border-radius: 10px;
+            font-size: 0.65rem; font-weight: 600; margin-left: auto;
+        }
+        .auto-draft-badge.on { background: rgba(76,175,80,0.2); color: #8f8; }
+        .auto-draft-badge.off { background: rgba(255,255,255,0.08); color: #888; }
+        .auto-draft-status { font-size: 0.75rem; color: #aaa; margin-top: 0.3rem; }
+
+        /* Action bar & toast */
+        .action-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: var(--card-bg); border-top: 1px solid #2a2a4a;
+            padding: 0.6rem 1rem; display: flex; gap: 0.5rem; justify-content: center; z-index: 999;
+        }
+        .action-bar button {
+            padding: 0.5rem 1.2rem; border-radius: 10px; font-size: 0.8rem;
+            font-weight: 600; border: none; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-export { background: #1a6a3c; color: #fff; }
+        .btn-export:hover { background: #228b22; }
+        .btn-reset { background: #6a1a1a; color: #f88; }
+        .btn-reset:hover { background: #8a2a2a; }
+        .btn-view-picks { background: #2a4a6a; color: #fff; }
+        .btn-view-picks:hover { background: #3a5a8a; }
+
+        .btn-next-turn {
+            display: block; margin: 0.5rem auto 0; padding: 0.5rem 1.5rem;
+            background: var(--gold); color: #1a1a2e; border: none; border-radius: 10px;
+            font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-next-turn:hover { transform: scale(1.05); background: #ffd700; }
+
+        .btn-immediate-pick {
+            display: inline-block; margin-left: 0.5rem; padding: 0.3rem 0.8rem;
+            background: rgba(245,197,24,0.2); color: var(--gold); border: 1px solid var(--gold);
+            border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-immediate-pick:hover { background: rgba(245,197,24,0.3); }
+        .toast-container {
+            position: fixed; top: 10px; right: 10px; z-index: 100000; display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .toast-msg {
+            padding: 0.6rem 1rem; border-radius: 10px; font-size: 0.8rem;
+            font-weight: 600; animation: fadeIn 0.3s;
+        }
+        .toast-msg.success { background: #1a6a3c; color: #fff; }
+        .toast-msg.warning { background: #8a6a1a; color: #fff; }
+        .toast-msg.info { background: #1a3a6a; color: #fff; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 576px) {
+            .player-btn { font-size: 0.65rem; padding: 0.3rem 0.2rem; }
+            .player-btn .pname { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== VIEW SELECTIONS MODAL ========== -->
+<div class="confirm-overlay hidden" id="selectionsModal">
+    <div class="confirm-dialog" style="max-width:500px;max-height:80vh;overflow-y:auto;">
+        <div style="font-size:0.9rem;color:var(--gold);font-weight:700;margin-bottom:0.8rem;">📋 选秀结果 — 各队已选球员</div>
+        <div id="selectionsModalBody"></div>
+        <div class="confirm-actions" style="margin-top:1rem;">
+            <button class="btn-confirm-no" onclick="hideSelectionsModal()">关闭</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== IDENTITY MODAL ========== -->
+<div class="identity-overlay" id="identityModal">
+    <div class="identity-card">
+        <h2>🏆 2026 选射手</h2>
+        <p>请选择你的身份</p>
+        <div id="identityButtons"></div>
+    </div>
+</div>
+
+<!-- ========== CONFIRM SELECTION MODAL ========== -->
+<div class="confirm-overlay hidden" id="confirmModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">确认选择</div>
+        <div class="player-preview" id="confirmPlayerPreview">
+            <span class="player-name" id="confirmPlayerName"></span>
+        </div>
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="cancelSelection()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmSelection()">确认选择</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PIN SETUP MODAL ========== -->
+<div class="confirm-overlay hidden" id="pinSetupModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">设置 PIN 密码</div>
+        <p style="color:#888;font-size:0.8rem;margin:0.5rem 0;">设置一个4位数字PIN，换设备时需要用此PIN同步预选队列</p>
+        <input type="password" id="pinSetupInput" maxlength="4" pattern="\d*" inputmode="numeric"
+               style="width:120px;padding:0.5rem;text-align:center;font-size:1.2rem;border-radius:10px;border:1px solid var(--gold);background:#1a1a2e;color:#fff;outline:none;">
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="hidePinSetupModal()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmPinSetup()">确认</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PIN ENTRY MODAL ========== -->
+<div class="confirm-overlay hidden" id="pinEntryModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">输入 PIN 密码</div>
+        <p style="color:#888;font-size:0.8rem;margin:0.5rem 0;">请输入该身份的PIN密码以同步预选队列</p>
+        <input type="password" id="pinEntryInput" maxlength="4" pattern="\d*" inputmode="numeric"
+               style="width:120px;padding:0.5rem;text-align:center;font-size:1.2rem;border-radius:10px;border:1px solid var(--gold);background:#1a1a2e;color:#fff;outline:none;">
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="hidePinEntryModal()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmPinEntry()">确认</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header class="game-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <h1 style="text-align:center;">🏆 2026 世界杯选射手</h1>
+            </div>
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="turn-banner" id="turnBanner">👉 轮到 <strong>--</strong> 选择</div>
+                <div class="round-info" id="roundInfo">第 <strong>1</strong> 轮 · 第 <strong>1</strong> 顺位 · 总计第 <strong>1</strong> 选</div>
+                <div class="global-stats" id="globalStats">已选 <span class="selected-count">0</span> 人 / 共 <span class="total-count">0</span> 人 · 剩余 <span class="remaining-count">0</span> 人</div>
+            </div>
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="current-identity" id="myIdentity">👤 当前身份: <span id="myName">—</span>
+                    <a href="#" onclick="showIdentityModal()" style="color:var(--gold);font-size:0.7rem;margin-left:0.3rem;">切换</a>
+                </div>
+                <div class="auto-draft-area" id="autoDraftArea" style="display:none;">
+                    <div class="auto-draft-toggle" id="autoDraftToggle" onclick="toggleAutoDraft()">
+                        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                        <span>🛌 托管模式</span>
+                        <span class="auto-draft-badge off" id="autoDraftBadge">未开启</span>
+                    </div>
+                    <div class="auto-draft-status" id="autoDraftStatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ========== MODE SWITCH ========== -->
+    <div class="mode-switch">
+        <button class="mode-btn active" id="modePick" onclick="switchMode('pick')">📋 选人模式</button>
+        <button class="mode-btn" id="modePre" onclick="switchMode('preselect')">📝 预选模式</button>
+    </div>
+
+    <!-- ========== PRE-SELECTION QUEUE ========== -->
+    <div class="preselect-panel" id="preselectPanel">
+        <div class="panel-title">📋 我的预选队列（按优先级）
+            <button class="preselect-reset-btn" onclick="resetPreselect()">🗑️ 清空</button>
+        </div>
+        <div class="preselect-list" id="preselectList">
+            <span class="preselect-empty">点击球员加入预选队列</span>
+        </div>
+    </div>
+
+    <!-- ========== TURN TIP ========== -->
+    <div id="turnTip"></div>
+
+    <!-- ========== PLAYER GRID ========== -->
+    <div id="playerGrid"></div>
+
+    <!-- ========== SUMMARY TABLE ========== -->
+    <div class="summary-section">
+        <h3>📋 选秀结果汇总</h3>
+        <div style="overflow-x:auto;">
+            <table class="summary-table" id="summaryTable">
+                <thead>
+                    <tr><th style="width:50px;">轮次</th></tr>
+                </thead>
+                <tbody id="summaryTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- ========== ACTION BAR ========== -->
+<div class="action-bar">
+    <button class="btn btn-view-picks" onclick="showSelectionsModal()">📋 查看已选</button>
+    <button class="btn btn-export" onclick="exportExcel()">📥 导出Excel</button>
+</div>
+
+<!-- ========== TOAST CONTAINER ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    // ========== State ==========
+    var currentUser = localStorage.getItem('worldcup_identity') || null;
+    var currentMode = 'pick';
+    var allTeams = [];
+    var gameState = null;
+    var PARTICIPANT_NAMES = [];
+    var selectedPlayerBtn = null;
+    var turnCompleted = false;
+    var preselectQueue = [];       // In-memory preselect cache [{id, display}]
+    var autoDraftStates = {};      // name -> boolean
+    var pendingPinIdentity = null;  // Identity waiting for PIN
+
+    // PIN helpers
+    function getStoredPin(name) { return localStorage.getItem('worldcup_pin_' + name) || ''; }
+    function storePin(name, pin) { localStorage.setItem('worldcup_pin_' + name, pin); }
+
+    // Preselect - sync accessors (read from in-memory cache)
+    function loadPreselect() { return preselectQueue; }
+    function savePreselect(q) { preselectQueue = q; savePreselectToServer(); }
+
+    // Preselect - async server sync
+    async function loadPreselectFromServer() {
+        if (!currentUser) { preselectQueue = []; return; }
+        var pin = getStoredPin(currentUser);
+        if (!pin) { preselectQueue = []; return; }
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(currentUser) + '?pin=' + encodeURIComponent(pin));
+        if (resp.status === 403) {
+            showToast('\u26a0\ufe0f PIN\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165', 'warning');
+            showPinEntryModal(currentUser);
+            return;
+        }
+        var data = await resp.json();
+        if (!data.pin_ok) { preselectQueue = []; return; }
+        preselectQueue = data.queue.map(function(pid) {
+            for (var i = 0; i < allTeams.length; i++) {
+                for (var j = 0; j < allTeams[i].players.length; j++) {
+                    if (allTeams[i].players[j].id === pid) {
+                        return {id: pid, display: allTeams[i].players[j].name_cn || allTeams[i].players[j].name};
+                    }
+                }
+            }
+            return {id: pid, display: '#' + pid};
+        });
+        // Update player button badges
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            btn.classList.remove('preselected');
+            var badge = btn.querySelector('.preselect-badge');
+            if (badge) badge.textContent = '';
+        });
+        preselectQueue.forEach(function(item, idx) {
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (parseInt(btn.dataset.playerId) === item.id) {
+                    btn.classList.add('preselected');
+                    updatePreselectBadge(btn, idx + 1);
+                }
+            });
+        });
+        renderPreselectPanel();
+    }
+
+    async function savePreselectToServer() {
+        if (!currentUser) return false;
+        var pin = getStoredPin(currentUser);
+        if (!pin) return false;
+        var ids = preselectQueue.map(function(item) { return item.id; });
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(currentUser), {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({pin: pin, queue: ids})
+        });
+        return resp.ok;
+    }
+
+    // Auto-draft API
+    async function fetchAutoDraftState(name) {
+        var resp = await fetch('/api/auto-draft/state/' + encodeURIComponent(name));
+        if (resp.ok) {
+            var data = await resp.json();
+            autoDraftStates[name] = data.enabled;
+            return data.enabled;
+        }
+        return false;
+    }
+
+    async function toggleAutoDraftOnServer(name, enabled) {
+        var resp = await fetch('/api/auto-draft/toggle', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, enabled: enabled})
+        });
+        if (resp.ok) autoDraftStates[name] = enabled;
+    }
+
+    // PIN API
+    async function checkPinStatus(name) {
+        var resp = await fetch('/api/preselect/' + encodeURIComponent(name) + '?pin=');
+        return await resp.json();
+    }
+
+    async function initPinOnServer(name, pin) {
+        var resp = await fetch('/api/preselect/init-pin', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, pin: pin})
+        });
+        return resp.ok;
+    }
+
+    async function verifyPinOnServer(name, pin) {
+        var resp = await fetch('/api/preselect/verify-pin', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: name, pin: pin})
+        });
+        if (resp.ok) return (await resp.json()).success;
+        return false;
+    }
+
+    // ========== API Calls ==========
+    async function fetchState() {
+        var resp = await fetch('/api/state');
+        gameState = await resp.json();
+        PARTICIPANT_NAMES = gameState.participants.map(function(p) { return p.name; });
+        return gameState;
+    }
+
+    async function fetchTeams() {
+        var resp = await fetch('/api/teams');
+        allTeams = await resp.json();
+        return allTeams;
+    }
+
+    async function selectPlayer(playerId) {
+        var resp = await fetch('/api/select', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({participant_name: currentUser, player_id: playerId})
+        });
+        return await resp.json();
+    }
+
+    // ========== Render Player Grid ==========
+    function renderPlayers() {
+        var grid = document.getElementById('playerGrid');
+        var html = '';
+        var groups = {};
+        allTeams.forEach(function(t) {
+            if (!groups[t.group_name]) groups[t.group_name] = [];
+            groups[t.group_name].push(t);
+        });
+        var groupKeys = Object.keys(groups).sort();
+        groupKeys.forEach(function(g) {
+            html += '<div class="group-section mb-4">';
+            html += '<div class="group-header" onclick="toggleGroup(this)" style="cursor:pointer;padding:0.4rem 0;margin-bottom:0.3rem;">' +
+                    '<span style="font-size:1rem;font-weight:700;color:var(--gold);">🏆 ' + g + '组</span>' +
+                    '<span class="toggle-icon" style="float:right;color:#888;font-size:0.7rem;">▼</span></div>';
+            html += '<div class="group-body" style="display:block;">';
+            groups[g].forEach(function(t) {
+                html += '<div class="team-card"><div class="card-header" onclick="toggleTeam(this)">' +
+                        '<span><span class="flag">' + t.flag_emoji + '</span><span class="team-name">' + t.name + '</span></span>' +
+                        '<span class="toggle-icon" style="font-size:0.7rem;color:#888;">▼</span></div>';
+                html += '<div class="card-body" style="display:block;padding:0.5rem;"><div class="row g-2">';
+                t.players.forEach(function(p) {
+                    var selectedClass = p.selected ? 'selected' : '';
+                    var disabled = p.selected ? 'disabled' : '';
+                    html += '<div class="col-4 col-sm-3 col-md-2 col-lg-1">' +
+                            '<button class="player-btn ' + selectedClass + '" ' + disabled +
+                            ' data-player-id="' + p.id + '" data-team-id="' + t.id + '" data-team-flag="' + t.flag_emoji + '">' +
+                            '<span class="jersey">#' + p.jersey_number + '</span>' +
+                            '<span class="pname">' + (p.name_cn || p.name) + '</span>' +
+                            '<span class="position-badge">' + p.position + '</span>' +
+                            '<span class="preselect-badge"></span></button></div>';
+                });
+                html += '</div></div></div>';
+            });
+            html += '</div></div>';
+        });
+        grid.innerHTML = html;
+
+        // Add click handlers
+        document.querySelectorAll('.player-btn:not(.selected)').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                if (currentMode === 'preselect') {
+                    addToPreselect(this);
+                } else if (currentUser === gameState.current_participant.name && !turnCompleted) {
+                    showConfirmModal(this);
+                }
+            });
+        });
+
+        // Restore preselect badges
+        var queue = loadPreselect();
+        queue.forEach(function(item) {
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (parseInt(btn.dataset.playerId) === item.id) {
+                    btn.classList.add('preselected');
+                }
+            });
+        });
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            var id = parseInt(btn.dataset.playerId);
+            for (var i = 0; i < queue.length; i++) {
+                if (queue[i].id == id) {
+                    updatePreselectBadge(btn, i + 1);
+                    break;
+                }
+            }
+        });
+
+        updateUI();
+    }
+
+    // ========== UI Update ==========
+    function updateUI() {
+        if (!gameState) return;
+        var cp = gameState.current_participant;
+
+        // Turn banner
+        document.querySelector('#turnBanner strong').textContent = cp ? cp.name : '--';
+
+        // Round info
+        document.querySelector('#roundInfo').innerHTML =
+            '第 <strong>' + gameState.current_round + '</strong> 轮 · 第 <strong>' + gameState.current_pick + '</strong> 顺位 · 总计第 <strong>' + (gameState.selected_count + 1) + '</strong> 选';
+
+        // Global stats
+        document.querySelector('#globalStats').innerHTML =
+            '已选 <span class="selected-count">' + gameState.selected_count + '</span> 人 / 共 <span class="total-count">' + gameState.total_players + '</span> 人 · 剩余 <span class="remaining-count">' + (gameState.total_players - gameState.selected_count) + '</span> 人';
+
+        // Identity
+        var myNameEl = document.getElementById('myName');
+        if (currentUser) {
+            myNameEl.textContent = currentUser + ' (#' + (function(){
+                for (var i = 0; i < gameState.participants.length; i++) {
+                    if (gameState.participants[i].name === currentUser) return gameState.participants[i].draft_order;
+                }
+                return '?';
+            })() + ')';
+        } else {
+            myNameEl.textContent = '—';
+        }
+
+        // Turn tip
+        var tipEl = document.getElementById('turnTip');
+        tipEl.innerHTML = '';
+
+        if (!currentUser) {
+            tipEl.innerHTML = '<div class="not-your-turn-tip">⚠️ 请先选择你的身份</div>';
+        } else if (!cp) {
+            tipEl.innerHTML = '<div class="not-your-turn-tip">🏁 游戏已结束</div>';
+        } else if (currentUser === cp.name && turnCompleted) {
+            tipEl.innerHTML = '<div class="your-turn-tip">✅ 已选择，即将进入下一顺位...</div>';
+        } else if (currentUser === cp.name) {
+            tipEl.innerHTML = '<div class="your-turn-tip">✅ 轮到你了！选择一名球员</div>';
+        } else {
+            if (autoDraftStates[cp.name]) {
+                tipEl.innerHTML = '<div class="not-your-turn-tip">🛌 ' + cp.name + ' 已开启托管，将自动选择...</div>';
+            } else {
+                tipEl.innerHTML = '<div class="not-your-turn-tip">⏳ 当前是 ' + cp.name + ' 的回合，请等待</div>';
+            }
+        }
+
+        // Player buttons state
+        var canSelect = currentUser && cp && currentUser === cp.name && !turnCompleted;
+        document.querySelectorAll('.player-btn').forEach(function(btn) {
+            if (btn.classList.contains('selected')) { btn.disabled = true; return; }
+            if (currentMode === 'preselect') {
+                btn.disabled = false;
+            } else if (canSelect) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        });
+
+        // Auto-draft area visibility
+        var adArea = document.getElementById('autoDraftArea');
+        adArea.style.display = currentUser ? 'block' : 'none';
+        var toggleEl = document.getElementById('autoDraftToggle');
+        var badgeEl = document.getElementById('autoDraftBadge');
+        if (autoDraftStates[currentUser]) {
+            toggleEl.classList.add('on');
+            badgeEl.textContent = '已开启';
+            badgeEl.className = 'auto-draft-badge on';
+        } else {
+            toggleEl.classList.remove('on');
+            badgeEl.textContent = '未开启';
+            badgeEl.className = 'auto-draft-badge off';
+        }
+
+        // Summary table
+        renderSummaryTable();
+    }
+
+    // ========== Confirm Selection Modal ==========
+    function showConfirmModal(btn) {
+        selectedPlayerBtn = btn;
+        var name = btn.querySelector('.pname').textContent;
+        var jersey = btn.querySelector('.jersey').textContent;
+        var flag = btn.dataset.teamFlag || '';
+        document.getElementById('confirmPlayerName').textContent = flag + ' ' + name + ' ' + jersey;
+        document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function hideConfirmModal() {
+        document.getElementById('confirmModal').classList.add('hidden');
+        selectedPlayerBtn = null;
+    }
+
+    function cancelSelection() { hideConfirmModal(); }
+
+    async function confirmSelection() {
+        var btn = selectedPlayerBtn;
+        if (!btn) return;
+        hideConfirmModal();
+        var playerId = parseInt(btn.dataset.playerId);
+        var name = btn.querySelector('.pname').textContent;
+
+        var result = await selectPlayer(playerId);
+        if (result.success) {
+            btn.classList.add('selected');
+            btn.disabled = true;
+            turnCompleted = true;
+            await fetchState();
+            await fetchTeams();
+            renderPlayers();
+            // Refresh auto-draft states (server may have auto-picked)
+            currentUser && await fetchAutoDraftState(currentUser);
+            checkAutoDraft();
+            showToast('\u2705 ' + currentUser + ' \u5df2\u9009\u62e9: ' + name, 'success');
+            // Auto-advance after 1.5s
+            setTimeout(async function() {
+                await fetchState();
+                await fetchTeams();
+                turnCompleted = false;
+                renderPlayers();
+                checkAutoDraft();
+            }, 1500);
+        } else {
+            showToast('\u26a0\ufe0f ' + result.error, 'warning');
+        }
+    }
+
+    // ========== Preselect ==========
+    function addToPreselect(btn) {
+        var id = parseInt(btn.dataset.playerId);
+        var display = btn.querySelector('.pname').textContent;
+        var queue = loadPreselect();
+        for (var i = 0; i < queue.length; i++) {
+            if (queue[i].id === id) { showToast('\u26a0\ufe0f \u8be5\u7403\u5458\u5df2\u5728\u9884\u9009\u961f\u5217', 'warning'); return; }
+        }
+        queue.push({id: id, display: display});
+        savePreselect(queue);
+        btn.classList.add('preselected');
+        updatePreselectBadge(btn, queue.length);
+        renderPreselectPanel();
+        showToast('\ud83d\udcdd \u5df2\u52a0\u5165\u9884\u9009\u961f\u5217 #' + queue.length + ': ' + display, 'info');
+    }
+
+    function removeFromPreselect(index) {
+        var queue = loadPreselect();
+        if (index >= 0 && index < queue.length) {
+            var removed = queue.splice(index, 1)[0];
+            savePreselect(queue);
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (parseInt(btn.dataset.playerId) === removed.id) {
+                    btn.classList.remove('preselected');
+                    var badge = btn.querySelector('.preselect-badge');
+                    if (badge) badge.textContent = '';
+                }
+            });
+            renderPreselectPanel();
+            showToast('\ud83d\uddd1\ufe0f \u5df2\u79fb\u9664: ' + removed.display, 'info');
+        }
+    }
+
+    function movePreselectItem(index, direction) {
+        var queue = loadPreselect();
+        var newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= queue.length) return;
+        var temp = queue[index];
+        queue[index] = queue[newIndex];
+        queue[newIndex] = temp;
+        savePreselect(queue);
+        renderPreselectPanel();
+    }
+
+    function resetPreselect() {
+        var queue = loadPreselect();
+        if (queue.length === 0) return;
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            btn.classList.remove('preselected');
+            var badge = btn.querySelector('.preselect-badge');
+            if (badge) badge.textContent = '';
+        });
+        savePreselect([]);
+        renderPreselectPanel();
+        showToast('\ud83d\uddd1\ufe0f \u5df2\u6e05\u7a7a\u9884\u9009\u961f\u5217', 'info');
+    }
+
+    function updatePreselectBadge(btn, order) {
+        var badge = btn.querySelector('.preselect-badge');
+        if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'preselect-badge';
+            btn.appendChild(badge);
+        }
+        badge.textContent = order;
+    }
+
+    function renderPreselectPanel() {
+        var list = document.getElementById('preselectList');
+        var queue = loadPreselect();
+        if (queue.length === 0) {
+            list.innerHTML = '<span class="preselect-empty">\u70b9\u51fb\u7403\u5458\u52a0\u5165\u9884\u9009\u961f\u5217</span>';
+            return;
+        }
+        var html = '';
+        for (var i = 0; i < queue.length; i++) {
+            var item = queue[i];
+            var isTaken = false;
+            document.querySelectorAll('.player-btn.selected').forEach(function(btn) {
+                if (parseInt(btn.dataset.playerId) === item.id) isTaken = true;
+            });
+            var takenClass = isTaken ? 'taken' : '';
+            var upBtn = i > 0 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', -1)">\u25b2</button>' : '<button class="move-btn" disabled>\u25b2</button>';
+            var downBtn = i < queue.length - 1 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', 1)">\u25bc</button>' : '<button class="move-btn" disabled>\u25bc</button>';
+            html += '<div class="preselect-item ' + takenClass + '">' + upBtn + downBtn +
+                    '<span class="order-num">' + (i + 1) + '</span>' +
+                    '<span>' + item.display + '</span>' +
+                    '<span class="remove-btn" onclick="removeFromPreselect(' + i + ')">\u2715</span></div>';
+        }
+        list.innerHTML = html;
+    }
+
+    // ========== Auto Draft ==========
+    function toggleAutoDraft() {
+        var el = document.getElementById('autoDraftToggle');
+        var isOn = el.classList.contains('on');
+        var newState = !isOn;
+        if (newState) {
+            el.classList.add('on');
+            document.getElementById('autoDraftBadge').textContent = '\u5df2\u5f00\u542f';
+            document.getElementById('autoDraftBadge').className = 'auto-draft-badge on';
+        } else {
+            el.classList.remove('on');
+            document.getElementById('autoDraftBadge').textContent = '\u672a\u5f00\u542f';
+            document.getElementById('autoDraftBadge').className = 'auto-draft-badge off';
+        }
+        // Sync to server (fire-and-forget)
+        toggleAutoDraftOnServer(currentUser, newState);
+        updateUI();
+    }
+
+    // checkAutoDraft: called after state updates
+    // With server-side auto-draft, the frontend just shows status messages
+    function checkAutoDraft() {
+        if (!gameState || !gameState.current_participant) return;
+        var turnName = gameState.current_participant.name;
+
+        if (autoDraftStates[turnName]) {
+            document.getElementById('autoDraftStatus').innerHTML = '\ud83d\udedb ' + turnName + ' \u5df2\u5f00\u542f\u6258\u7ba1\uff0c\u670d\u52a1\u5668\u5c06\u81ea\u52a8\u9009\u62e9...';
+        } else {
+            document.getElementById('autoDraftStatus').innerHTML = '';
+        }
+    }
+
+    // ========== Summary Table ==========
+    function renderSummaryTable() {
+        if (!gameState) return;
+        var picks = gameState.selections;
+        var names = PARTICIPANT_NAMES;
+        if (names.length === 0) return;
+
+        var headRow = document.querySelector('#summaryTable thead tr');
+        var headerHtml = '<th style="width:50px;">轮次</th>';
+        var colColors = ['rgba(255,215,0,0.08)', 'rgba(0,255,0,0.05)', 'rgba(0,150,255,0.05)', 'rgba(255,100,100,0.05)', 'rgba(200,100,255,0.05)'];
+        names.forEach(function(n, i) {
+            headerHtml += '<th class="participant-col" style="background:' + colColors[i % colColors.length] + ';">' + n + '</th>';
+        });
+        headRow.innerHTML = headerHtml;
+
+        // Group picks by round
+        var roundData = {};
+        picks.forEach(function(s) {
+            var r = s.round_number;
+            if (!roundData[r]) roundData[r] = [];
+            // Figure out column based on snake rule
+            var orderIndex = -1;
+            for (var i = 0; i < names.length; i++) {
+                if (names[i] === s.participant_name) {
+                    orderIndex = i;
+                    break;
+                }
+            }
+            if (orderIndex >= 0) {
+                var snake = (r % 2 === 1) ? [0,1,2,3,4] : [4,3,2,1,0];
+                var col = snake[s.pick_number - 1];
+                roundData[r].push({col: col, text: s.flag_emoji + ' ' + s.player_name + ' #' + s.jersey_number});
+            }
+        });
+
+        // Current pick info
+        var currentRound = gameState.current_round;
+        var currentPick = gameState.current_pick;
+
+        var tbody = document.getElementById('summaryTableBody');
+        var bodyHtml = '';
+        for (var r = 1; r <= 15; r++) {
+            bodyHtml += '<tr><td>' + r + '</td>';
+            for (var c = 0; c < names.length; c++) {
+                var cellText = '';
+                var isCurrent = (r === currentRound && (function(){
+                    var snake2 = (r % 2 === 1) ? [0,1,2,3,4] : [4,3,2,1,0];
+                    return snake2[currentPick - 1] === c && picks.length < r * 5 - (5 - currentPick);
+                })());
+                if (roundData[r]) {
+                    for (var p = 0; p < roundData[r].length; p++) {
+                        if (roundData[r][p].col === c) {
+                            cellText = roundData[r][p].text;
+                        }
+                    }
+                }
+                var cellClass = isCurrent ? 'current-pick-cell' : '';
+                bodyHtml += '<td class="' + cellClass + '">' + cellText + '</td>';
+            }
+            bodyHtml += '</tr>';
+        }
+        tbody.innerHTML = bodyHtml;
+    }
+
+    // ========== Mode Switch ==========
+    function switchMode(mode) {
+        currentMode = mode;
+        document.getElementById('modePick').classList.toggle('active', mode === 'pick');
+        document.getElementById('modePre').classList.toggle('active', mode === 'preselect');
+        document.getElementById('preselectPanel').classList.toggle('show', mode === 'preselect');
+        if (mode === 'preselect') renderPreselectPanel();
+        updateUI();
+    }
+
+    // ========== Identity ==========
+    function showIdentityModal() {
+        document.getElementById('identityModal').classList.remove('hidden');
+    }
+
+    function hideIdentityModal() {
+        document.getElementById('identityModal').classList.add('hidden');
+    }
+
+    function renderIdentityButtons() {
+        var container = document.getElementById('identityButtons');
+        var html = '';
+        gameState.participants.forEach(function(p) {
+            html += '<button class="identity-btn" onclick="setIdentity(\'' + p.name + '\', ' + p.draft_order + ')">' +
+                    p.name + '<span class="draft-order">选秀顺位 #' + p.draft_order + '</span></button>';
+        });
+        container.innerHTML = html;
+    }
+
+    function setIdentity(name, order) {
+        currentUser = name;
+        localStorage.setItem('worldcup_identity', name);
+        hideIdentityModal();
+        updateUI();
+        checkAutoDraft();
+        showToast('\u2705 \u4f60\u662f ' + name + '\uff08\u9009\u79c0\u987a\u4f4d #' + order + '\uff09', 'success');
+
+        // Check PIN status and load preselect
+        (async function() {
+            var pinStatus = await checkPinStatus(name);
+            var storedPin = getStoredPin(name);
+            if (pinStatus.has_pin) {
+                if (!storedPin) {
+                    // PIN exists but not stored locally - prompt for entry
+                    pendingPinIdentity = name;
+                    showPinEntryModal(name);
+                } else {
+                    // PIN stored locally - try to load
+                    await loadPreselectFromServer();
+                    await fetchAutoDraftState(name);
+                    updateUI();
+                    if (currentMode === 'preselect') renderPreselectPanel();
+                }
+            } else {
+                // No PIN set yet - prompt for setup
+                pendingPinIdentity = name;
+                showPinSetupModal(name);
+            }
+        })();
+    }
+
+    // ========== PIN Modals ==========
+    function showPinSetupModal() {
+        document.getElementById('pinSetupInput').value = '';
+        document.getElementById('pinSetupModal').classList.remove('hidden');
+        setTimeout(function() { document.getElementById('pinSetupInput').focus(); }, 100);
+    }
+
+    function hidePinSetupModal() {
+        document.getElementById('pinSetupModal').classList.add('hidden');
+        pendingPinIdentity = null;
+        // Revoke identity - PIN is required
+        currentUser = null;
+        localStorage.removeItem('worldcup_identity');
+        showIdentityModal();
+    }
+
+    async function confirmPinSetup() {
+        var pin = document.getElementById('pinSetupInput').value.trim();
+        if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
+        var name = pendingPinIdentity || currentUser;
+        var ok = await initPinOnServer(name, pin);
+        if (!ok) {
+            showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25\uff0c\u53ef\u80fd\u5df2\u5b58\u5728', 'warning');
+            return;
+        }
+        storePin(name, pin);
+        hidePinSetupModal();
+        showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
+        await loadPreselectFromServer();
+        if (currentMode === 'preselect') renderPreselectPanel();
+    }
+
+    function showPinEntryModal() {
+        document.getElementById('pinEntryInput').value = '';
+        document.getElementById('pinEntryModal').classList.remove('hidden');
+        setTimeout(function() { document.getElementById('pinEntryInput').focus(); }, 100);
+    }
+
+    function hidePinEntryModal() {
+        document.getElementById('pinEntryModal').classList.add('hidden');
+        pendingPinIdentity = null;
+        // Revoke identity - PIN verification required
+        currentUser = null;
+        localStorage.removeItem('worldcup_identity');
+        showIdentityModal();
+    }
+
+    async function confirmPinEntry() {
+        var pin = document.getElementById('pinEntryInput').value.trim();
+        if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
+        var name = pendingPinIdentity || currentUser;
+        var ok = await verifyPinOnServer(name, pin);
+        if (!ok) {
+            showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u8bd5', 'warning');
+            document.getElementById('pinEntryInput').value = '';
+            return;
+        }
+        storePin(name, pin);
+        hidePinEntryModal();
+        showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
+        await loadPreselectFromServer();
+        await fetchAutoDraftState(name);
+        updateUI();
+        if (currentMode === 'preselect') renderPreselectPanel();
+    }
+
+    // ========== Utilities ==========
+    function toggleGroup(header) {
+        var body = header.nextElementSibling;
+        var icon = header.querySelector('.toggle-icon');
+        if (body.style.display === 'none') { body.style.display = 'block'; icon.classList.remove('collapsed'); }
+        else { body.style.display = 'none'; icon.classList.add('collapsed'); }
+    }
+
+    function toggleTeam(header) {
+        var body = header.nextElementSibling;
+        var icon = header.querySelector('.toggle-icon');
+        if (body.style.display === 'none') { body.style.display = 'block'; }
+        else { body.style.display = 'none'; }
+    }
+
+    function showToast(msg, type) {
+        var container = document.getElementById('toastContainer');
+        var el = document.createElement('div');
+        el.className = 'toast-msg ' + (type || 'info');
+        el.textContent = msg;
+        container.appendChild(el);
+        setTimeout(function() { el.remove(); }, 3000);
+    }
+
+    // ========== Selections Modal ==========
+    function showSelectionsModal() {
+        var body = document.getElementById('selectionsModalBody');
+        if (!gameState || !gameState.selections || gameState.selections.length === 0) {
+            body.innerHTML = '<div style="color:#888;text-align:center;padding:1rem;">暂无选秀记录</div>';
+        } else {
+            // Group by participant name
+            var groups = {};
+            gameState.selections.forEach(function(s) {
+                if (!groups[s.participant_name]) groups[s.participant_name] = [];
+                groups[s.participant_name].push(s);
+            });
+            var html = '';
+            var participantOrder = {};
+            gameState.participants.forEach(function(p) { participantOrder[p.name] = p.draft_order; });
+            var sortedNames = Object.keys(groups).sort(function(a, b) { return (participantOrder[a] || 0) - (participantOrder[b] || 0); });
+            sortedNames.forEach(function(name) {
+                html += '<div style="margin-bottom:0.8rem;border:1px solid #2a2a4a;border-radius:10px;padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);">' +
+                        '<div style="font-weight:700;color:var(--gold);font-size:0.85rem;margin-bottom:0.3rem;">👤 ' + name + ' <span style="color:#888;font-size:0.7rem;">(#' + participantOrder[name] + ')</span></div>';
+                var picks = groups[name];
+                picks.sort(function(a, b) { return a.round_number - b.round_number || a.pick_number - b.pick_number; });
+                picks.forEach(function(p) {
+                    html += '<div style="display:inline-block;background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.2);border-radius:6px;padding:0.2rem 0.5rem;margin:0.15rem;font-size:0.7rem;">' +
+                            p.flag_emoji + ' ' + p.player_name + ' #' + p.jersey_number +
+                            ' <span style="color:#888;">R' + p.round_number + 'P' + p.pick_number + '</span></div>';
+                });
+                html += '</div>';
+            });
+            body.innerHTML = html;
+        }
+        document.getElementById('selectionsModal').classList.remove('hidden');
+    }
+
+    function hideSelectionsModal() {
+        document.getElementById('selectionsModal').classList.add('hidden');
+    }
+
+    function exportExcel() { window.location.href = '/api/export'; }
+
+    async function resetGame() {
+        if (!confirm('确定重置所有数据？')) return;
+        await fetch('/api/reset', {method: 'POST'});
+        await fetchState();
+        await fetchTeams();
+        turnCompleted = false;
+        renderPlayers();
+        showToast('🔄 游戏已重置', 'info');
+    }
+
+    // ========== Init ==========
+    async function init() {
+        await fetchState();
+        await fetchTeams();
+        renderIdentityButtons();
+        renderPlayers();
+
+        // If user has identity, load preselect + auto-draft state from server
+        if (currentUser) {
+            var pinStatus = await checkPinStatus(currentUser);
+            var storedPin = getStoredPin(currentUser);
+            if (pinStatus.has_pin && storedPin) {
+                await loadPreselectFromServer();
+                await fetchAutoDraftState(currentUser);
+                updateUI();
+            }
+        }
+
+        // Show identity modal if no identity
+        if (!currentUser) {
+            showIdentityModal();
+        }
+
+        renderPreselectPanel();
+        checkAutoDraft();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

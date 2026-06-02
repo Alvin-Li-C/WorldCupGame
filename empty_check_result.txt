@@ -1,0 +1,32 @@
+乌兹别克斯坦: 26 empty
+乌拉圭: 22 empty
+伊拉克: 24 empty
+伊朗: 20 empty
+佛得角: 26 empty
+克罗地亚: 14 empty
+刚果（金）: 26 empty
+加纳: 22 empty
+厄瓜多尔: 18 empty
+哥伦比亚: 24 empty
+土耳其: 23 empty
+埃及: 25 empty
+塞内加尔: 19 empty
+奥地利: 26 empty
+巴拉圭: 23 empty
+巴拿马: 26 empty
+库拉索: 26 empty
+挪威: 23 empty
+新西兰: 25 empty
+比利时: 19 empty
+沙特: 26 empty
+瑞典: 23 empty
+科特迪瓦: 26 empty
+突尼斯: 26 empty
+约旦: 26 empty
+苏格兰: 26 empty
+英格兰: 1 empty
+荷兰: 17 empty
+阿尔及利亚: 22 empty
+
+Total empty name_cn: 650
+Teams with empty names: 29

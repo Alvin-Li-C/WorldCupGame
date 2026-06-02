@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026世界杯选射手</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --grass-green: #2d8a4e;
+            --gold: #f5c518;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+        }
+        body {
+            background: var(--dark-bg);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        .game-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-bottom: 3px solid var(--gold);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .game-header h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 0;
+        }
+        .turn-banner {
+            background: linear-gradient(135deg, var(--gold), #ff6b35);
+            color: #1a1a2e;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .round-info {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+        .global-stats {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+        .global-stats .selected-count {
+            color: #8f8;
+            font-weight: 700;
+        }
+        .global-stats .total-count {
+            color: #fff;
+            font-weight: 700;
+        }
+        .global-stats .remain-count {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .group-section {
+            background: transparent;
+        }
+        .group-header {
+            background: linear-gradient(90deg, rgba(245,197,24,0.15), rgba(245,197,24,0.05));
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s;
+        }
+        .group-header:hover {
+            background: linear-gradient(90deg, rgba(245,197,24,0.25), rgba(245,197,24,0.08));
+        }
+        .group-header .group-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .group-header .toggle-icon {
+            color: var(--gold);
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+        .group-header .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+        }
+        .team-card .card-header {
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid #2a2a4a;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .team-card .card-header:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .team-card .card-header .team-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .team-card .card-header .team-pick-info {
+            color: #fff;
+            font-size: 0.85rem;
+        }
+        .team-card .card-header .flag {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .team-card .card-header .toggle-icon {
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+        .team-card .card-header .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .player-btn {
+            background: #1a3a5c;
+            border: 1px solid #2a5a8c;
+            color: #fff;
+            border-radius: 8px;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+        .player-btn:hover:not(:disabled) {
+            background: #2a5a8c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42,90,140,0.4);
+        }
+        .player-btn:disabled, .player-btn.selected {
+            background: #2a2a3a;
+            border-color: #3a3a4a;
+            color: #666;
+            cursor: not-allowed;
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        .player-btn .jersey {
+            display: block;
+            font-size: 0.65rem;
+            color: #8af;
+            font-weight: 700;
+        }
+        .player-btn .pname {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .player-btn .position-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0 4px;
+            border-radius: 3px;
+            color: #aaa;
+        }
+
+        /* Selection Summary */
+        .summary-section {
+            background: var(--card-bg);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        .summary-section h5 {
+            color: var(--gold);
+            font-weight: 700;
+            border-bottom: 1px solid #2a2a4a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .summary-table {
+            font-size: 0.8rem;
+            width: 100%;
+        }
+        .summary-table thead th {
+            background: rgba(255,255,255,0.05);
+            color: var(--gold);
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 2px solid #2a2a4a;
+        }
+        .summary-table tbody td {
+            padding: 0.4rem 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .summary-table tbody tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .participant-col {
+            border-left: 1px solid #2a2a4a;
+        }
+        .participant-header {
+            color: #fff;
+            font-weight: 700;
+        }
+        .empty-pick {
+            color: #444;
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-export {
+            background: var(--gold);
+            color: #1a1a2e;
+            font-weight: 700;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+        }
+        .btn-export:hover {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* ========== Identity Modal ========== */
+        .identity-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+        .identity-overlay.hidden {
+            display: none;
+        }
+        .identity-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        .identity-card h2 {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .identity-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .identity-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.6rem;
+            background: #1a3a5c;
+            border: 1px solid #2a5a8c;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .identity-btn:hover {
+            background: #2a5a8c;
+            transform: translateY(-1px);
+        }
+        .identity-btn .draft-order {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* ========== Confirm Selection Modal ========== */
+        .confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 99998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+        .confirm-overlay.hidden {
+            display: none;
+        }
+        .confirm-dialog {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+        }
+        .confirm-dialog .player-preview {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 1rem 0;
+        }
+        .confirm-dialog .player-preview .player-name {
+            color: var(--gold);
+        }
+        .confirm-dialog .confirm-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1.2rem;
+        }
+        .confirm-dialog .confirm-actions button {
+            padding: 0.6rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .confirm-dialog .btn-confirm-yes {
+            background: var(--gold);
+            color: #1a1a2e;
+        }
+        .confirm-dialog .btn-confirm-yes:hover {
+            background: #ffd700;
+            transform: scale(1.05);
+        }
+        .confirm-dialog .btn-confirm-no {
+            background: #333;
+            color: #aaa;
+            border: 1px solid #555;
+        }
+        .confirm-dialog .btn-confirm-no:hover {
+            background: #444;
+            color: #fff;
+        }
+        .current-identity {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+        .current-identity a {
+            color: var(--gold);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .current-identity a:hover {
+            color: #ffd700;
+        }
+        .not-your-turn-tip {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #f88;
+            margin-top: 0.5rem;
+        }
+        .your-turn-tip {
+            background: rgba(100,255,100,0.1);
+            border: 1px solid rgba(100,255,100,0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8f8;
+            margin-top: 0.5rem;
+        }
+
+        /* ========== Mode Switch ========== */
+        .mode-switch {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a4a;
+            margin-bottom: 1rem;
+        }
+        .mode-btn {
+            flex: 1;
+            padding: 0.6rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #666;
+            transition: all 0.2s;
+        }
+        .mode-btn.active {
+            background: var(--gold);
+            color: #1a1a2e;
+        }
+        .mode-btn:first-child {
+            border-right: 1px solid #2a2a4a;
+        }
+        .mode-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.05);
+        }
+        .mode-btn.pulse-glow {
+            animation: pulseGlow 1s ease-in-out 3;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.4); }
+            50% { box-shadow: 0 0 30px 10px rgba(245,197,24,0.7); transform: scale(1.08); }
+        }
+
+        /* ========== Pre-selection Queue ========== */
+        .preselect-panel {
+            background: var(--card-bg);
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .preselect-panel.show {
+            display: block;
+        }
+        .preselect-panel .panel-title {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .preselect-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            min-height: 2rem;
+        }
+        .preselect-item {
+            background: rgba(245,197,24,0.15);
+            border: 1px solid rgba(245,197,24,0.3);
+            border-radius: 20px;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .preselect-item .order-num {
+            background: var(--gold);
+            color: #1a1a2e;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+        }
+        .preselect-item .remove-btn {
+            cursor: pointer;
+            color: #f88;
+            font-size: 0.8rem;
+            margin-left: 2px;
+        }
+        .preselect-item .remove-btn:hover {
+            color: #f44;
+        }
+        .preselect-item .move-btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 0.55rem;
+            padding: 0 1px;
+            line-height: 1;
+        }
+        .preselect-item .move-btn:hover:not(:disabled) {
+            color: var(--gold);
+        }
+        .preselect-item .move-btn:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
+        .preselect-reset-btn {
+            float: right;
+            background: rgba(255,80,80,0.15);
+            border: 1px solid rgba(255,80,80,0.3);
+            color: #f88;
+            border-radius: 12px;
+            padding: 0.15rem 0.6rem;
+            font-size: 0.65rem;
+            cursor: pointer;
+        }
+        .preselect-reset-btn:hover {
+            background: rgba(255,80,80,0.3);
+            color: #f44;
+        }
+        .preselect-item.taken {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        .preselect-empty {
+            color: #555;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* ========== Auto-pick Button ========== */
+        .btn-auto-pick {
+            background: linear-gradient(135deg, #00c853, #00e676);
+            color: #1a1a2e;
+            font-weight: 800;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            width: 100%;
+            transition: all 0.2s;
+            animation: pulse 2s infinite;
+        }
+        .btn-auto-pick:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0,200,83,0.4);
+        }
+
+        /* ========== Pre-selection badge on player ========== */
+        .player-btn.preselected {
+            border-color: var(--gold);
+            box-shadow: 0 0 6px rgba(245,197,24,0.4);
+        }
+        .player-btn .preselect-badge {
+            display: none;
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--gold);
+            color: #1a1a2e;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 0.55rem;
+            font-weight: 800;
+            align-items: center;
+            justify-content: center;
+        }
+        .player-btn.preselected .preselect-badge {
+            display: flex;
+        }
+        .player-btn {
+            position: relative;
+        }
+
+        @media (max-width: 576px) {
+            .game-header h1 { font-size: 1.2rem; }
+            .turn-banner { font-size: 1rem; padding: 0.6rem 1rem; }
+            .player-btn { font-size: 0.75rem; padding: 0.3rem 0.4rem; }
+            .summary-table { font-size: 0.7rem; }
+        }
+
+        /* ========== Auto-draft (Away Mode) ========== */
+        .auto-draft-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #aaa;
+            cursor: pointer;
+            margin-top: 0.3rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .auto-draft-toggle:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .auto-draft-toggle.on {
+            color: #8f8;
+            background: rgba(76,175,80,0.12);
+        }
+        .auto-draft-toggle .toggle-track {
+            width: 36px;
+            height: 20px;
+            border-radius: 10px;
+            background: #444;
+            position: relative;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .auto-draft-toggle.on .toggle-track {
+            background: #4caf50;
+        }
+        .auto-draft-toggle .toggle-thumb {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ccc;
+            top: 2px;
+            left: 2px;
+            transition: all 0.2s;
+        }
+        .auto-draft-toggle.on .toggle-thumb {
+            background: #fff;
+            left: 18px;
+        }
+        .auto-draft-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 0.3rem;
+        }
+        .auto-draft-badge.on {
+            background: rgba(76,175,80,0.2);
+            color: #8f8;
+        }
+        .auto-draft-badge.off {
+            background: rgba(255,255,255,0.05);
+            color: #666;
+        }
+        .auto-draft-status {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.3rem;
+        }
+        .auto-draft-status .drafting {
+            color: #8f8;
+            animation: draftPulse 1s ease-in-out infinite;
+        }
+        @keyframes draftPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .btn-next-turn {
+            background: linear-gradient(135deg, #2196f3, #1565c0);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.4rem;
+        }
+        .btn-next-turn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(33,150,243,0.4);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== IDENTITY MODAL ========== -->
+<div class="identity-overlay" id="identityModal">
+    <div class="identity-card">
+        <h2>🏆 2026 选射手</h2>
+        <p>请选择你的身份</p>
+        <div id="identityButtons">
+            <button class="identity-btn" onclick="setIdentity('庆爷', 1)">
+                庆爷
+                <span class="draft-order">选秀顺位 #1</span>
+            </button>
+            <button class="identity-btn" onclick="setIdentity('耗子', 2)">
+                耗子
+                <span class="draft-order">选秀顺位 #2</span>
+            </button>
+            <button class="identity-btn" onclick="setIdentity('老王', 3)">
+                老王
+                <span class="draft-order">选秀顺位 #3</span>
+            </button>
+            <button class="identity-btn" onclick="setIdentity('李总', 4)">
+                李总
+                <span class="draft-order">选秀顺位 #4</span>
+            </button>
+            <button class="identity-btn" onclick="setIdentity('老闫', 5)">
+                老闫
+                <span class="draft-order">选秀顺位 #5</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== CONFIRM SELECTION MODAL ========== -->
+<div class="confirm-overlay hidden" id="confirmModal">
+    <div class="confirm-dialog">
+        <div style="font-size:0.9rem;color:#aaa;margin-bottom:0.3rem;">确认选择</div>
+        <div class="player-preview" id="confirmPlayerPreview">
+            <span class="team-flag" id="confirmTeamFlag"></span>
+            <span class="player-name" id="confirmPlayerName"></span>
+        </div>
+        <div class="confirm-actions">
+            <button class="btn-confirm-no" onclick="cancelSelection()">取消</button>
+            <button class="btn-confirm-yes" onclick="confirmSelection()">确认选择</button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header class="game-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-4 text-center text-md-start mb-2 mb-md-0">
+                <h1>🏆 2026 选射手</h1>
+            </div>
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="turn-banner" id="turnBanner">
+                    👉 轮到 <strong>老王</strong> 选择
+                </div>
+                <div class="round-info">
+                    第 <strong>3</strong> 轮 · 第 <strong>2</strong> 顺位 · 总计第 <strong>12</strong> 选
+                </div>
+                <div class="global-stats">
+                    已选 <span class="selected-count" id="selectedCount">2</span> 人 /
+                    共 <span class="total-count" id="totalCount">75</span> 人 ·
+                    剩余 <span class="remain-count" id="remainCount">73</span> 人
+                </div>
+                <div class="current-identity" id="currentIdentity">
+                    你是 <strong id="myName">—</strong>
+                    <a onclick="showIdentityModal()">[切换]</a>
+                </div>
+                <div id="turnTip"></div>
+                <div class="auto-draft-toggle" id="autoDraftToggle" onclick="toggleAutoDraft()">
+                    <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                    <span>🛌 托管模式</span>
+                    <span class="auto-draft-badge off" id="autoDraftBadge">未开启</span>
+                </div>
+                <div class="auto-draft-status" id="autoDraftStatus"></div>
+            </div>
+            <div class="col-12 col-md-4 text-center text-md-end">
+                <span class="badge bg-success fs-6 me-2">进行中</span>
+                <span class="text-light" style="font-size:0.85rem;">共15轮</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container py-3">
+
+    <!-- ========== MODE SWITCH ========== -->
+    <div class="mode-switch">
+        <button class="mode-btn active" id="modePick" onclick="switchMode('pick')">📋 选人模式</button>
+        <button class="mode-btn" id="modePre" onclick="switchMode('preselect')">📝 预选模式</button>
+    </div>
+
+    <!-- ========== PRE-SELECTION QUEUE ========== -->
+    <div class="preselect-panel" id="preselectPanel">
+        <div class="panel-title">📋 我的预选队列（按优先级）
+            <button class="preselect-reset-btn" id="preselectResetBtn" onclick="resetPreselect()">🗑️ 清空</button>
+        </div>
+        <div class="preselect-list" id="preselectList">
+            <span class="preselect-empty">点击球员加入预选队列</span>
+        </div>
+    </div>
+
+    <!-- ========== PLAYER GRID ========== -->
+    <div id="playerGrid">
+        <!-- A组 -->
+        <div class="group-section mb-4">
+            <div class="group-header" onclick="toggleGroup(this)">
+                <span class="group-name">🏆 A组</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="group-body" style="display: block;">
+                <!-- 球队: 巴西 -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇧🇷</span>
+                            <span class="team-name">巴西</span>
+                            <small class="ms-2 team-pick-info">(已选 2/8)</small>
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn selected" disabled>
+                                    <span class="jersey">#10</span>
+                                    <span class="pname">内马尔</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn selected" disabled>
+                                    <span class="jersey">#7</span>
+                                    <span class="pname">维尼修斯</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#9</span>
+                                    <span class="pname">里沙利松</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#11</span>
+                                    <span class="pname">罗德里戈</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#20</span>
+                                    <span class="pname">拉菲尼亚</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#21</span>
+                                    <span class="pname">马丁内利</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#18</span>
+                                    <span class="pname">热苏斯</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#22</span>
+                                    <span class="pname">埃斯特旺</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 球队: 阿根廷 -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇦🇷</span>
+                            <span class="team-name">阿根廷</span>
+                            <small class="text-muted ms-2">(已选 1/7)</small>
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#10</span>
+                                    <span class="pname">梅西</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn selected" disabled>
+                                    <span class="jersey">#9</span>
+                                    <span class="pname">阿尔瓦雷斯</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#11</span>
+                                    <span class="pname">迪马利亚</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#22</span>
+                                    <span class="pname">劳塔罗</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#15</span>
+                                    <span class="pname">冈萨雷斯</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#19</span>
+                                    <span class="pname">加纳乔</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn">
+                                    <span class="jersey">#17</span>
+                                    <span class="pname">科雷亚</span>
+                                    <span class="position-badge">FW</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 球队: 葡萄牙（占位） -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇵🇹</span>
+                            <span class="team-name">葡萄牙</span>
+                            <small class="text-muted ms-2">(已选 0/6)</small>
+                        </div>
+                        <span class="toggle-icon collapsed">▼</span>
+                    </div>
+                    <div class="card-body" style="display: none;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#7</span><span class="pname">C罗</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#9</span><span class="pname">拉莫斯</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#10</span><span class="pname">B席</span><span class="position-badge">MF</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#11</span><span class="pname">菲利克斯</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#17</span><span class="pname">莱奥</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#21</span><span class="pname">若塔</span><span class="position-badge">FW</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 球队: 摩洛哥（占位） -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇲🇦</span>
+                            <span class="team-name">摩洛哥</span>
+                            <small class="text-muted ms-2">(已选 0/5)</small>
+                        </div>
+                        <span class="toggle-icon collapsed">▼</span>
+                    </div>
+                    <div class="card-body" style="display: none;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#10</span><span class="pname">齐耶赫</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#19</span><span class="pname">恩内斯里</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#7</span><span class="pname">阿德利</span><span class="position-badge">MF</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#9</span><span class="pname">拉希米</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#20</span><span class="pname">阿布德</span><span class="position-badge">FW</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- B组 -->
+        <div class="group-section mb-4">
+            <div class="group-header" onclick="toggleGroup(this)">
+                <span class="group-name">🏆 B组</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="group-body" style="display: block;">
+                <!-- 球队: 法国 -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇫🇷</span>
+                            <span class="team-name">法国</span>
+                            <small class="text-muted ms-2">(已选 0/7)</small>
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#10</span><span class="pname">姆巴佩</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#9</span><span class="pname">吉鲁</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#7</span><span class="pname">格列兹曼</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#11</span><span class="pname">登贝莱</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#12</span><span class="pname">穆阿尼</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#20</span><span class="pname">巴尔科拉</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#14</span><span class="pname">小埃梅里</span><span class="position-badge">MF</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 球队: 英格兰（占位） -->
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div>
+                            <span class="flag">🇬🇧</span>
+                            <span class="team-name">英格兰</span>
+                            <small class="text-muted ms-2">(已选 0/6)</small>
+                        </div>
+                        <span class="toggle-icon collapsed">▼</span>
+                    </div>
+                    <div class="card-body" style="display: none;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#9</span><span class="pname">凯恩</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#10</span><span class="pname">福登</span><span class="position-badge">MF</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#7</span><span class="pname">萨卡</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#11</span><span class="pname">拉什福德</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#19</span><span class="pname">沃特金斯</span><span class="position-badge">FW</span></button>
+                            </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <button class="player-btn"><span class="jersey">#21</span><span class="pname">鲍恩</span><span class="position-badge">FW</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- C组（使用占位） -->
+        <div class="group-section mb-4">
+            <div class="group-header" onclick="toggleGroup(this)">
+                <span class="group-name">🏆 C组</span>
+                <span class="toggle-icon collapsed">▼</span>
+            </div>
+            <div class="group-body" style="display: none;">
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div><span class="flag">🇩🇪</span><span class="team-name">德国</span><small class="text-muted ms-2">(已选 0/6)</small></div>
+                        <span class="toggle-icon collapsed">▼</span>
+                    </div>
+                    <div class="card-body" style="display: none;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#9</span><span class="pname">菲尔克鲁格</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#10</span><span class="pname">穆西亚拉</span><span class="position-badge">MF</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#7</span><span class="pname">哈弗茨</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#11</span><span class="pname">萨内</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#19</span><span class="pname">翁达夫</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#13</span><span class="pname">拜尔</span><span class="position-badge">FW</span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="card-header" onclick="toggleTeam(this)">
+                        <div><span class="flag">🇪🇸</span><span class="team-name">西班牙</span><small class="text-muted ms-2">(已选 0/6)</small></div>
+                        <span class="toggle-icon collapsed">▼</span>
+                    </div>
+                    <div class="card-body" style="display: none;">
+                        <div class="row g-2">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#10</span><span class="pname">亚马尔</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#9</span><span class="pname">莫拉塔</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#7</span><span class="pname">奥尔莫</span><span class="position-badge">MF</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#11</span><span class="pname">威廉姆斯</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#19</span><span class="pname">奥亚萨瓦尔</span><span class="position-badge">FW</span></button></div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1"><button class="player-btn"><span class="jersey">#21</span><span class="pname">何塞卢</span><span class="position-badge">FW</span></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SELECTION SUMMARY ========== -->
+    <div class="summary-section">
+        <h5>📋 选秀结果汇总</h5>
+        <div class="table-responsive">
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th style="width:50px;">轮次</th>
+                        <th class="participant-col" style="background: rgba(255,215,0,0.08);">庆爷</th>
+                        <th class="participant-col" style="background: rgba(0,255,0,0.05);">耗子</th>
+                        <th class="participant-col" style="background: rgba(0,150,255,0.05);">老王</th>
+                        <th class="participant-col" style="background: rgba(255,100,100,0.05);">李总</th>
+                        <th class="participant-col" style="background: rgba(200,100,255,0.05);">老闫</th>
+                    </tr>
+                </thead>
+                <tbody id="summaryTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== ACTION BAR ========== -->
+    <div class="action-bar">
+        <button class="btn btn-export" onclick="exportExcel()">📥 导出Excel</button>
+    </div>
+
+</div>
+
+<!-- ========== TOAST CONTAINER ========== -->
+<div class="toast-container"></div>
+
+<script>
+    // ========== Game State (Mock) ==========
+    const MOCK_CURRENT_TURN = '老王';  // 模拟当前轮到谁
+
+    const ALL_PARTICIPANTS = [
+        { name: '庆爷', order: 1 },
+        { name: '耗子', order: 2 },
+        { name: '老王', order: 3 },
+        { name: '李总', order: 4 },
+        { name: '老闫', order: 5 }
+    ];
+
+    // ========== State ==========
+    let currentUser = localStorage.getItem('worldcup_identity') || null;
+    let currentMode = 'pick'; // 'pick' | 'preselect'
+
+    // ========== Pre-selection Queue ==========
+    function getPreselectKey() {
+        return 'worldcup_preselect_' + (currentUser || 'guest');
+    }
+
+    function loadPreselect() {
+        try {
+            return JSON.parse(localStorage.getItem(getPreselectKey())) || [];
+        } catch(e) { return []; }
+    }
+
+    function savePreselect(queue) {
+        localStorage.setItem(getPreselectKey(), JSON.stringify(queue));
+    }
+
+    function getPlayerIdentifier(btn) {
+        // Use team + number + name as unique identifier
+        var jersey = btn.querySelector('.jersey').textContent;
+        var name = btn.querySelector('.pname').textContent;
+        return jersey + '|' + name;
+    }
+
+    function getPlayerDisplayName(btn) {
+        var flag = '';
+        var teamHeader = btn.closest('.team-card');
+        if (teamHeader) {
+            var flagEl = teamHeader.querySelector('.card-header .flag');
+            if (flagEl) flag = flagEl.textContent + ' ';
+        }
+        var name = btn.querySelector('.pname').textContent;
+        var jersey = btn.querySelector('.jersey').textContent;
+        return flag + name + ' ' + jersey;
+    }
+
+    function addToPreselect(btn) {
+        if (btn.classList.contains('selected')) {
+            showToast('⚠️ 该球员已被选走', 'warning');
+            return;
+        }
+        if (btn.classList.contains('preselected')) {
+            showToast('⚠️ 已在预选队列中', 'warning');
+            return;
+        }
+
+        var queue = loadPreselect();
+        var id = getPlayerIdentifier(btn);
+        var display = getPlayerDisplayName(btn);
+
+        // Check for duplicate
+        for (var i = 0; i < queue.length; i++) {
+            if (queue[i].id === id) {
+                showToast('⚠️ 该球员已在预选队列', 'warning');
+                return;
+            }
+        }
+
+        queue.push({ id: id, display: display });
+        savePreselect(queue);
+
+        btn.classList.add('preselected');
+        updatePreselectBadge(btn, queue.length);
+        renderPreselectPanel();
+        updateImmediatePickButton();
+        showToast('📝 已加入预选队列 #' + queue.length + ': ' + display, 'info');
+    }
+
+    function removeFromPreselect(index) {
+        var queue = loadPreselect();
+        if (index >= 0 && index < queue.length) {
+            var removed = queue.splice(index, 1)[0];
+            savePreselect(queue);
+
+            // Remove preselected class from button
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (getPlayerIdentifier(btn) === removed.id) {
+                    btn.classList.remove('preselected');
+                    var badge = btn.querySelector('.preselect-badge');
+                    if (badge) badge.textContent = '';
+                }
+            });
+
+            renderPreselectPanel();
+            updateImmediatePickButton();
+            showToast('🗑️ 已移除: ' + removed.display, 'info');
+        }
+    }
+
+    function movePreselectItem(index, direction) {
+        var queue = loadPreselect();
+        var newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= queue.length) return;
+        // Swap
+        var temp = queue[index];
+        queue[index] = queue[newIndex];
+        queue[newIndex] = temp;
+        savePreselect(queue);
+        renderPreselectPanel();
+        updateImmediatePickButton();
+    }
+
+    function resetPreselect() {
+        var queue = loadPreselect();
+        if (queue.length === 0) return;
+        // Remove preselected class from all buttons
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            btn.classList.remove('preselected');
+            var badge = btn.querySelector('.preselect-badge');
+            if (badge) badge.textContent = '';
+        });
+        savePreselect([]);
+        renderPreselectPanel();
+        updateImmediatePickButton();
+        showToast('🗑️ 已清空预选队列', 'info');
+    }
+
+    function updatePreselectBadge(btn, order) {
+        var badge = btn.querySelector('.preselect-badge');
+        if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'preselect-badge';
+            btn.appendChild(badge);
+        }
+        badge.textContent = order;
+    }
+
+    function renderPreselectPanel() {
+        var panel = document.getElementById('preselectPanel');
+        var list = document.getElementById('preselectList');
+        var queue = loadPreselect();
+
+        if (queue.length === 0) {
+            list.innerHTML = '<span class="preselect-empty">点击球员加入预选队列</span>';
+            return;
+        }
+
+        var html = '';
+        for (var i = 0; i < queue.length; i++) {
+            var item = queue[i];
+            // Check if this player has already been selected
+            var isTaken = false;
+            document.querySelectorAll('.player-btn.selected').forEach(function(btn) {
+                if (getPlayerIdentifier(btn) === item.id) {
+                    isTaken = true;
+                }
+            });
+            var takenClass = isTaken ? 'taken' : '';
+            var upBtn = i > 0 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', -1)">▲</button>' : '<button class="move-btn" disabled>▲</button>';
+            var downBtn = i < queue.length - 1 ? '<button class="move-btn" onclick="movePreselectItem(' + i + ', 1)">▼</button>' : '<button class="move-btn" disabled>▼</button>';
+            html += '<div class="preselect-item ' + takenClass + '">' +
+                upBtn + downBtn +
+                '<span class="order-num">' + (i + 1) + '</span>' +
+                '<span>' + item.display + '</span>' +
+                '<span class="remove-btn" onclick="removeFromPreselect(' + i + ')">✕</span>' +
+                '</div>';
+        }
+        list.innerHTML = html;
+    }
+
+    // ========== Mock selection data (for summary table) ==========
+    var mockSelections = [];
+    var PARTICIPANT_NAMES = ['庆爷', '耗子', '老王', '李总', '老闫'];
+
+    // Snake draft: get column index for a given round and pick position
+    function getColumnForPick(roundIndex, pickInRound) {
+        // roundIndex: 0-based (0=round1, 1=round2...)
+        // pickInRound: 0-based (0=1st pick, 1=2nd pick...)
+        if (roundIndex % 2 === 0) {
+            // Odd rounds (1,3,5...) - forward: 庆爷,耗子,老王,李总,老闫
+            return pickInRound;
+        } else {
+            // Even rounds (2,4,6...) - reverse: 老闫,李总,老王,耗子,庆爷
+            return 4 - pickInRound;
+        }
+    }
+
+    function recordSelection(participantName, playerBtn) {
+        var display = getPlayerDisplayName(playerBtn);
+        mockSelections.push({
+            participant: participantName,
+            display: display
+        });
+    }
+
+    // Pre-populate mock data for demo
+    function initMockSelections() {
+        mockSelections = [];
+        // Round 1: Demo selections (forward order)
+        var demoR1 = [
+            {p:'庆爷', d:'🇧🇷 内马尔 #10'},
+            {p:'耗子', d:'🇦🇷 梅西 #10'},
+            {p:'老王', d:'🇫🇷 姆巴佩 #10'},
+            {p:'李总', d:'🇵🇹 C罗 #7'},
+            {p:'老闫', d:'🇪🇸 亚马尔 #19'}
+        ];
+        for (var i = 0; i < demoR1.length; i++) {
+            mockSelections.push({
+                participant: demoR1[i].p,
+                display: demoR1[i].d
+            });
+        }
+        // Round 2: 老王's turn (reverse order, 3rd pick = 老王 column)
+        // 2 picks done: 老闫→, 李总→, now waiting for 老王
+        var demoR2 = [
+            {p:'老闫', d:'🇧🇷 维尼修斯 #7'},
+            {p:'李总', d:'🇦🇷 阿尔瓦雷斯 #9'}
+        ];
+        for (var i = 0; i < demoR2.length; i++) {
+            mockSelections.push({
+                participant: demoR2[i].p,
+                display: demoR2[i].d
+            });
+        }
+    }
+
+    // ========== Auto-draft: Core pick logic (used by both timeout & immediate) ==========
+    function doAutoPick(turnName, queue) {
+        var firstAvailable = null;
+        for (var i = 0; i < queue.length; i++) {
+            var targetId = queue[i].id;
+            var found = false;
+            document.querySelectorAll('.player-btn:not(.selected)').forEach(function(btn) {
+                if (!found && getPlayerIdentifier(btn) === targetId) {
+                    found = true;
+                    firstAvailable = { btn: btn, name: btn.querySelector('.pname').textContent, targetId: targetId };
+                }
+            });
+            if (firstAvailable) break;
+        }
+
+        if (firstAvailable) {
+            var btn = firstAvailable.btn;
+            btn.classList.add('selected');
+            btn.disabled = true;
+            btn.classList.remove('preselected');
+            updateGlobalStats();
+            recordSelection(turnName, btn);
+            renderSummaryTable();
+            showToast('🛌 ' + turnName + '（托管）选中: ' + firstAvailable.name, 'info');
+
+            // Remove from queue
+            var q = loadPreselect();
+            for (var j = 0; j < q.length; j++) {
+                if (q[j].id === firstAvailable.targetId) {
+                    q.splice(j, 1);
+                    break;
+                }
+            }
+            savePreselect(q);
+            renderPreselectPanel();
+
+            document.getElementById('autoDraftStatus').innerHTML =
+                '✅ ' + turnName + '（托管）已选择: ' + firstAvailable.name;
+            showNextTurnButton();
+        } else {
+            // All taken - show BIG warning in turnTip (everyone sees it)
+            var tipEl = document.getElementById('turnTip');
+            tipEl.innerHTML = '<div class="not-your-turn-tip" style="color:#f88;font-size:1rem;">⚠️ ' + turnName + ' 的预选球员都已选走，无预选球员可选</div>';
+            document.getElementById('autoDraftStatus').innerHTML =
+                '⚠️ ' + turnName + ' 的预选球员都已选走，无预选球员可选';
+            showToast('⚠️ ' + turnName + '（托管）预选球员都已选走', 'warning');
+            showNextTurnButton();
+        }
+    }
+
+    // Immediate pick button (replaces old auto-pick button)
+    function updateImmediatePickButton() {
+        var tipEl = document.getElementById('turnTip');
+        var existingBtn = document.getElementById('immediatePickBtn');
+        if (existingBtn) existingBtn.remove();
+
+        // Only show when auto-draft is ON and it's your turn
+        if (currentUser === MOCK_CURRENT_TURN && isAutoDraft(currentUser)) {
+            var queue = loadPreselect();
+            if (queue.length > 0) {
+                var btn = document.createElement('button');
+                btn.id = 'immediatePickBtn';
+                btn.className = 'btn-auto-pick';
+                btn.onclick = function() {
+                    if (autoDraftTimer) {
+                        clearTimeout(autoDraftTimer);
+                        autoDraftTimer = null;
+                    }
+                    doAutoPick(currentUser, loadPreselect());
+                };
+                btn.textContent = '⚡ 立即选择（预选队列 ' + queue.length + ' 人）';
+                tipEl.appendChild(btn);
+            }
+        }
+    }
+    function renderSummaryTable() {
+        var tbody = document.querySelector('#summaryTableBody');
+        if (!tbody) return;
+
+        // Build grid: rows = rounds, cols = participants
+        // Find total rounds needed
+        var totalRounds = Math.max(4, Math.ceil(mockSelections.length / 5));
+        var grid = [];
+        for (var r = 0; r < totalRounds; r++) {
+            grid[r] = ['—', '—', '—', '—', '—'];
+        }
+
+        // Place each selection into correct grid position
+        for (var i = 0; i < mockSelections.length; i++) {
+            var sel = mockSelections[i];
+            var roundIdx = Math.floor(i / 5);
+            var pickInRound = i % 5;
+            var colIdx = getColumnForPick(roundIdx, pickInRound);
+            if (colIdx >= 0 && colIdx < 5 && roundIdx < totalRounds) {
+                grid[roundIdx][colIdx] = sel.display;
+            }
+        }
+
+        // Find current selecting position
+        var curPick = mockSelections.length;  // 0-based, next pick index
+        var curRoundIdx = Math.floor(curPick / 5);
+        var curPickInRound = curPick % 5;
+        var curCol = -1;
+        if (curRoundIdx < totalRounds && mockSelections.length < 75) {
+            curCol = getColumnForPick(curRoundIdx, curPickInRound);
+        }
+
+        // Render
+        var html = '';
+        for (var r = 0; r < totalRounds; r++) {
+            html += '<tr>';
+            html += '<td><strong>' + (r + 1) + '</strong></td>';
+            for (var c = 0; c < 5; c++) {
+                var val = grid[r][c];
+                var cls = 'participant-col';
+                if (val === '—') {
+                    cls += ' empty-pick';
+                }
+                // Highlight current selecting cell
+                if (r === curRoundIdx && c === curCol && curPickInRound < 5) {
+                    html += '<td class="' + cls + '" style="color: var(--gold); background: rgba(245,197,24,0.1);">← 选人中</td>';
+                } else {
+                    html += '<td class="' + cls + '">' + val + '</td>';
+                }
+            }
+            html += '</tr>';
+        }
+        tbody.innerHTML = html;
+    }
+
+    // ========== Global Stats ==========
+    function updateGlobalStats() {
+        var selected = document.querySelectorAll('.player-btn.selected').length;
+        var total = document.querySelectorAll('.player-btn').length;
+        var remain = total - selected;
+        document.getElementById('selectedCount').textContent = selected;
+        document.getElementById('totalCount').textContent = total;
+        document.getElementById('remainCount').textContent = remain;
+    }
+
+    // ========== Auto-draft (Away Mode) ==========
+    function getAutoDraftKey(name) {
+        return 'worldcup_autodraft_' + name;
+    }
+    function isAutoDraft(name) {
+        return localStorage.getItem(getAutoDraftKey(name)) === 'true';
+    }
+    function toggleAutoDraft() {
+        if (!currentUser) {
+            showToast('⚠️ 请先选择身份', 'warning');
+            return;
+        }
+        var key = getAutoDraftKey(currentUser);
+        var newVal = localStorage.getItem(key) !== 'true';
+        localStorage.setItem(key, newVal ? 'true' : 'false');
+        updateAutoDraftUI();
+        updateImmediatePickButton();
+        showToast(newVal ? '🛌 托管模式已开启，轮到你的回合时将自动选择' : '🛌 托管模式已关闭', newVal ? 'info' : 'warning');
+    }
+    function updateAutoDraftUI() {
+        var toggle = document.getElementById('autoDraftToggle');
+        var badge = document.getElementById('autoDraftBadge');
+        var status = document.getElementById('autoDraftStatus');
+        if (!currentUser) {
+            toggle.classList.remove('on');
+            badge.textContent = '未开启';
+            badge.className = 'auto-draft-badge off';
+            status.innerHTML = '';
+            return;
+        }
+        var on = isAutoDraft(currentUser);
+        toggle.classList.toggle('on', on);
+        if (on) {
+            badge.textContent = '已开启';
+            badge.className = 'auto-draft-badge on';
+            var queue = loadPreselect();
+            if (currentUser === MOCK_CURRENT_TURN) {
+                // It's your turn - message shown in turnTip with immediate button
+                if (queue.length === 0) {
+                    status.innerHTML = '⚡ 预选队列为空，请先添加预选球员';
+                } else {
+                    status.innerHTML = '';
+                }
+            } else {
+                if (queue.length === 0) {
+                    status.innerHTML = '⚡ 预选队列为空，请先添加预选球员';
+                } else {
+                    status.innerHTML = '⚡ 已预选 ' + queue.length + ' 人，到你的回合将自动选择';
+                }
+            }
+        } else {
+            badge.textContent = '未开启';
+            badge.className = 'auto-draft-badge off';
+            status.innerHTML = '';
+        }
+    }
+
+    // Auto-draft: the current turn participant's pre-select queue status
+    function getParticipantQueueStatus(name) {
+        // For demo, each participant has their own pre-select queue stored under their name
+        var key = 'worldcup_preselect_' + name;
+        var raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : [];
+    }
+    function saveParticipantQueue(name, queue) {
+        localStorage.setItem('worldcup_preselect_' + name, JSON.stringify(queue));
+    }
+
+    // Auto-draft trigger: called after updateUI when it's someone's turn
+    var autoDraftTimer = null;
+    function checkAutoDraft() {
+        if (autoDraftTimer) {
+            clearTimeout(autoDraftTimer);
+            autoDraftTimer = null;
+        }
+
+        var turnName = MOCK_CURRENT_TURN;
+        if (!isAutoDraft(turnName)) return;
+
+        var queue = getParticipantQueueStatus(turnName);
+        if (queue.length === 0) {
+            // Has auto-draft but no queue - show BIG warning in turnTip (everyone sees it)
+            var tipEl = document.getElementById('turnTip');
+            tipEl.innerHTML = '<div class="not-your-turn-tip" style="color:#f88;font-size:1rem;">⚠️ ' + turnName + ' 已开启托管，但预选队列为空，无预选球员可选</div>';
+            document.getElementById('autoDraftStatus').innerHTML =
+                '⚠️ ' + turnName + ' 已开启托管，但预选队列为空，无预选球员可选';
+            showNextTurnButton();
+        }
+
+        // Has auto-draft + queue → auto-pick after a brief delay
+        var status = document.getElementById('autoDraftStatus');
+        status.innerHTML = '<span class="drafting">🔄 ' + turnName + ' 托管中，正在自动选择...</span>';
+
+        autoDraftTimer = setTimeout(function() {
+            autoDraftTimer = null;
+            // Execute auto-pick without modal confirmation
+            var firstAvailable = null;
+            for (var i = 0; i < queue.length; i++) {
+                var targetId = queue[i].id;
+                var found = false;
+                document.querySelectorAll('.player-btn:not(.selected)').forEach(function(btn) {
+                    if (!found && getPlayerIdentifier(btn) === targetId) {
+                        found = true;
+                        firstAvailable = { btn: btn, name: btn.querySelector('.pname').textContent, targetId: targetId };
+                    }
+                });
+                if (firstAvailable) break;
+            }
+
+            if (firstAvailable) {
+                var btn = firstAvailable.btn;
+                btn.classList.add('selected');
+                btn.disabled = true;
+                btn.classList.remove('preselected');
+                updateGlobalStats();
+                recordSelection(turnName, btn);
+                renderSummaryTable();
+                showToast('🛌 ' + turnName + '（托管）选中: ' + firstAvailable.name, 'info');
+
+                // Remove from queue
+                var q = getParticipantQueueStatus(turnName);
+                for (var j = 0; j < q.length; j++) {
+                    if (q[j].id === firstAvailable.targetId) {
+                        q.splice(j, 1);
+                        break;
+                    }
+                }
+                saveParticipantQueue(turnName, q);
+
+                // If current user triggered the auto-draft for someone else
+                document.getElementById('autoDraftStatus').innerHTML =
+                    '✅ ' + turnName + '（托管）已选择: ' + firstAvailable.name;
+
+                // Show next-turn button
+                showNextTurnButton();
+            } else {
+                document.getElementById('autoDraftStatus').innerHTML =
+                    '⚠️ ' + turnName + ' 的预选球员都已选走，请手动处理';
+                showToast('⚠️ ' + turnName + '（托管）预选球员都已选走', 'warning');
+                showNextTurnButton();
+            }
+        }, 1500);
+    }
+
+    function cancelAutoDraft() {
+        if (autoDraftTimer) {
+            clearTimeout(autoDraftTimer);
+            autoDraftTimer = null;
+        }
+    }
+
+    // ========== Turn Advancement (Demo) ==========
+    var currentPickIndex = 7; // 0-based, 7 picks done in demo (5 R1 + 2 R2)
+    var turnCompleted = false; // blocks re-selection in same turn
+
+    function getParticipantAtPick(pickIndex) {
+        var roundIdx = Math.floor(pickIndex / 5);
+        var pickInRound = pickIndex % 5;
+        if (roundIdx % 2 === 0) {
+            // Forward: 庆爷,耗子,老王,李总,老闫
+            return PARTICIPANT_NAMES[pickInRound];
+        } else {
+            // Reverse: 老闫,李总,老王,耗子,庆爷
+            return PARTICIPANT_NAMES[4 - pickInRound];
+        }
+    }
+
+    function showNextTurnButton() {
+        var tipEl = document.getElementById('turnTip');
+        // Remove existing next-turn button
+        var oldBtn = document.getElementById('btnNextTurn');
+        if (oldBtn) oldBtn.remove();
+
+        var btn = document.createElement('button');
+        btn.id = 'btnNextTurn';
+        btn.className = 'btn-next-turn';
+        btn.onclick = advanceTurn;
+        btn.textContent = '⏭️ 下一位，继续选秀';
+        tipEl.appendChild(btn);
+    }
+
+    function advanceTurn() {
+        currentPickIndex++;
+        MOCK_CURRENT_TURN = getParticipantAtPick(currentPickIndex);
+        turnCompleted = false; // allow the new turn participant to select
+
+        // Update round info
+        var round = Math.floor(currentPickIndex / 5) + 1;
+        var pickInRound = currentPickIndex % 5 + 1;
+        var totalPick = currentPickIndex + 1;
+        document.querySelector('.round-info').innerHTML =
+            '第 <strong>' + round + '</strong> 轮 · 第 <strong>' + pickInRound + '</strong> 顺位 · 总计第 <strong>' + totalPick + '</strong> 选';
+
+        // Remove next-turn button
+        var oldBtn = document.getElementById('btnNextTurn');
+        if (oldBtn) oldBtn.remove();
+
+        updateUI();
+        checkAutoDraft();
+    }
+
+    // ========== Mode Switch ==========
+    function switchMode(mode) {
+        currentMode = mode;
+        document.getElementById('modePick').classList.toggle('active', mode === 'pick');
+        document.getElementById('modePre').classList.toggle('active', mode === 'preselect');
+        document.getElementById('preselectPanel').classList.toggle('show', mode === 'preselect');
+
+        if (mode === 'preselect') {
+            renderPreselectPanel();
+        }
+        updateUI();
+    }
+
+    // ========== Identity Management ==========
+    function showIdentityModal() {
+        document.getElementById('identityModal').classList.remove('hidden');
+    }
+
+    function hideIdentityModal() {
+        document.getElementById('identityModal').classList.add('hidden');
+    }
+
+    function setIdentity(name, order) {
+        currentUser = name;
+        localStorage.setItem('worldcup_identity', name);
+        hideIdentityModal();
+        // Re-render preselect panel for new user
+        if (currentMode === 'preselect') {
+            renderPreselectPanel();
+        }
+        updateUI();
+        checkAutoDraft();
+        showToast('✅ 你是 ' + name + '（选秀顺位 #' + order + '）', 'success');
+    }
+
+    // ========== UI Update ==========
+    function updateUI() {
+        // 更新身份显示
+        var myNameEl = document.getElementById('myName');
+        if (currentUser) {
+            var p = ALL_PARTICIPANTS.find(function(x) { return x.name === currentUser; });
+            myNameEl.textContent = currentUser + '（#' + (p ? p.order : '?') + '）';
+        } else {
+            myNameEl.textContent = '—';
+        }
+
+        // 更新轮到谁
+        document.querySelector('#turnBanner strong').textContent = MOCK_CURRENT_TURN;
+
+        // 更新回合信息（动态）
+        var round = Math.floor(currentPickIndex / 5) + 1;
+        var pickInRound = currentPickIndex % 5 + 1;
+        var totalPick = currentPickIndex + 1;
+        document.querySelector('.round-info').innerHTML =
+            '第 <strong>' + round + '</strong> 轮 · 第 <strong>' + pickInRound + '</strong> 顺位 · 总计第 <strong>' + totalPick + '</strong> 选';
+
+        // 更新turn提示
+        var tipEl = document.getElementById('turnTip');
+        tipEl.innerHTML = '';
+
+        if (!currentUser) {
+            tipEl.innerHTML = '<div class="not-your-turn-tip">⚠️ 请先选择你的身份</div>';
+        } else if (currentUser === MOCK_CURRENT_TURN && turnCompleted) {
+            tipEl.innerHTML = '<div class="your-turn-tip">✅ 已选择，即将进入下一顺位...</div>';
+        } else if (currentUser === MOCK_CURRENT_TURN) {
+            tipEl.innerHTML = '<div class="your-turn-tip">✅ 轮到你了！选择一名球员</div>';
+            updateImmediatePickButton();
+        } else {
+            if (isAutoDraft(MOCK_CURRENT_TURN)) {
+                tipEl.innerHTML = '<div class="not-your-turn-tip">🛌 ' + MOCK_CURRENT_TURN + ' 已开启托管，将自动选择...</div>';
+            } else {
+                tipEl.innerHTML = '<div class="not-your-turn-tip">⏳ 当前是 ' + MOCK_CURRENT_TURN + ' 的回合，请等待</div>';
+            }
+        }
+
+        // 更新球员按钮
+        var canSelect = currentUser && currentUser === MOCK_CURRENT_TURN && !turnCompleted;
+        document.querySelectorAll('.player-btn').forEach(function(btn) {
+            if (btn.classList.contains('selected')) {
+                btn.disabled = true;
+                return;
+            }
+
+            if (currentMode === 'preselect') {
+                // In preselect mode, anyone can add to queue when it's not their turn
+                btn.disabled = false;
+            } else if (canSelect) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        });
+
+        // 更新托管显示
+        updateAutoDraftUI();
+    }
+
+    // ========== Init ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add preselect badge container to all player buttons
+        document.querySelectorAll('.player-btn').forEach(function(btn) {
+            var badge = document.createElement('span');
+            badge.className = 'preselect-badge';
+            btn.appendChild(badge);
+        });
+
+        // Restore preselected state
+        var queue = loadPreselect();
+        queue.forEach(function(item) {
+            document.querySelectorAll('.player-btn').forEach(function(btn) {
+                if (getPlayerIdentifier(btn) === item.id) {
+                    btn.classList.add('preselected');
+                }
+            });
+        });
+        // Also re-number badges
+        document.querySelectorAll('.player-btn.preselected').forEach(function(btn) {
+            var id = getPlayerIdentifier(btn);
+            for (var i = 0; i < queue.length; i++) {
+                if (queue[i].id === id) {
+                    updatePreselectBadge(btn, i + 1);
+                    break;
+                }
+            }
+        });
+
+        if (!currentUser) {
+            showIdentityModal();
+        } else {
+            updateUI();
+            checkAutoDraft();
+        }
+
+        if (currentMode === 'preselect') {
+            renderPreselectPanel();
+            document.getElementById('preselectPanel').classList.add('show');
+        }
+
+        updateGlobalStats();
+        initMockSelections();
+        renderSummaryTable();
+    });
+
+    // ========== Confirm Selection Modal ==========
+    var selectedPlayerBtn = null;
+
+    function showConfirmModal(btn) {
+        selectedPlayerBtn = btn;
+        var name = btn.querySelector('.pname').textContent;
+        var jersey = btn.querySelector('.jersey').textContent;
+        var flag = '';
+        var teamHeader = btn.closest('.team-card');
+        if (teamHeader) {
+            var flagEl = teamHeader.querySelector('.card-header .flag');
+            if (flagEl) flag = flagEl.textContent;
+        }
+        document.getElementById('confirmTeamFlag').textContent = flag;
+        document.getElementById('confirmPlayerName').textContent = name + ' ' + jersey;
+        document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function hideConfirmModal() {
+        document.getElementById('confirmModal').classList.add('hidden');
+        selectedPlayerBtn = null;
+    }
+
+    function confirmSelection() {
+        var btn = selectedPlayerBtn;
+        if (!btn) return;
+        hideConfirmModal();
+
+        var name = btn.querySelector('.pname').textContent;
+        btn.classList.add('selected');
+        btn.disabled = true;
+        updateGlobalStats();
+        recordSelection(MOCK_CURRENT_TURN, btn);
+        renderSummaryTable();
+        showToast('✅ ' + MOCK_CURRENT_TURN + ' 已选择: ' + name, 'success');
+        turnCompleted = true;
+        updateUI();
+        // Auto-advance after 1.5 seconds
+        setTimeout(function() {
+            advanceTurn();
+        }, 1500);
+    }
+
+    function cancelSelection() {
+        hideConfirmModal();
+    }
+
+    // ========== Player Click ==========
+    document.querySelectorAll('.player-btn:not(.selected)').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            if (currentMode === 'preselect') {
+                addToPreselect(this);
+            } else if (currentUser === MOCK_CURRENT_TURN && !turnCompleted) {
+                showConfirmModal(this);
+            }
+        });
+    });
+
+    // ========== Collapse ==========
+    function toggleGroup(header) {
+        var body = header.nextElementSibling;
+        var icon = header.querySelector('.toggle-icon');
+        if (body.style.display === 'none') {
+            body.style.display = 'block';
+            icon.classList.remove('collapsed');
+        } else {
+            body.style.display = 'none';
+            icon.classList.add('collapsed');
+        }
+    }
+
+    function toggleTeam(header) {
+        var body = header.nextElementSibling;
+        var icon = header.querySelector('.toggle-icon');
+        if (body.style.display === 'none') {
+            body.style.display = 'block';
+            icon.classList.remove('collapsed');
+        } else {
+            body.style.display = 'none';
+            icon.classList.add('collapsed');
+        }
+    }
+
+    // ========== Toast ==========
+    function showToast(message, type) {
+        var container = document.querySelector('.toast-container');
+        var toast = document.createElement('div');
+        toast.className = 'toast align-items-center text-bg-' + type + ' border-0 show';
+        toast.role = 'alert';
+        toast.innerHTML = '<div class="d-flex"><div class="toast-body">' + message + '</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>';
+        container.appendChild(toast);
+        setTimeout(function() { toast.remove(); }, 3000);
+    }
+
+    function exportExcel() {
+        showToast('📥 正在下载选秀结果...', 'info');
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
