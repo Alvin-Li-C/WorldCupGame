@@ -60,6 +60,13 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/stats')
+def stats():
+    import os
+    stats_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'wcq_player_stats_table.html')
+    return send_file(stats_path)
+
+
 @app.route('/api/state')
 def api_state():
     state = get_current_state()
@@ -81,9 +88,14 @@ def api_select():
     data = request.get_json(force=True)
     participant_name = data.get('participant_name')
     player_id = data.get('player_id')
+    pin = data.get('pin', '')
 
     if not participant_name or not player_id:
-        return jsonify({'success': False, 'error': '缺少参数'}), 400
+        return jsonify({'success': False, 'error': '\u7f3a\u5c11\u53c2\u6570'}), 400
+
+    # Verify PIN before allowing selection
+    if not verify_pin_for_participant(participant_name, pin):
+        return jsonify({'success': False, 'error': 'PIN\u9a8c\u8bc1\u5931\u8d25'}), 403
 
     validation = validate_selection(participant_name, player_id)
     if not validation['valid']:

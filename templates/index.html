@@ -570,10 +570,11 @@
     }
 
     async function selectPlayer(playerId) {
+        var pin = getStoredPin(currentUser) || '';
         var resp = await fetch('/api/select', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({participant_name: currentUser, player_id: playerId})
+            body: JSON.stringify({participant_name: currentUser, player_id: playerId, pin: pin})
         });
         return await resp.json();
     }
@@ -1081,8 +1082,14 @@
         var name = pendingPinIdentity || currentUser;
         var ok = await verifyPinOnServer(name, pin);
         if (!ok) {
-            showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u8bd5', 'warning');
+            showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u65b0\u9009\u62e9\u8eab\u4efd', 'warning');
+            // Revoke identity
+            currentUser = null;
+            localStorage.removeItem('worldcup_identity');
             document.getElementById('pinEntryInput').value = '';
+            pendingPinIdentity = null;
+            hidePinEntryModal();
+            showIdentityModal();
             return;
         }
         storePin(name, pin);
