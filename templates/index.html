@@ -581,7 +581,9 @@
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({participant_name: currentUser, player_id: playerId, pin: pin})
         });
-        return await resp.json();
+        var data = await resp.json();
+        data._status = resp.status;
+        return data;
     }
 
     // ========== Render Player Grid ==========
@@ -782,6 +784,12 @@
             }, 1500);
         } else {
             showToast('\u26a0\ufe0f ' + result.error, 'warning');
+            if (result._status === 403) {
+                // PIN validation failed - revoke identity
+                currentUser = null;
+                localStorage.removeItem('worldcup_identity');
+                showIdentityModal();
+            }
         }
     }
 
@@ -985,6 +993,9 @@
 
     // ========== Identity ==========
     function showIdentityModal() {
+        // Revoke any existing identity immediately when switching
+        currentUser = null;
+        localStorage.removeItem('worldcup_identity');
         document.getElementById('identityModal').classList.remove('hidden');
     }
 
@@ -1003,12 +1014,7 @@
     }
 
     function setIdentity(name, order) {
-        currentUser = name;
-        localStorage.setItem('worldcup_identity', name);
         hideIdentityModal();
-        updateUI();
-        checkAutoDraft();
-        showToast('\u2705 \u4f60\u662f ' + name + '\uff08\u9009\u79c0\u987a\u4f4d #' + order + '\uff09', 'success');
 
         // Check PIN status and load preselect
         (async function() {
@@ -1020,7 +1026,12 @@
                     pendingPinIdentity = name;
                     showPinEntryModal(name);
                 } else {
-                    // PIN stored locally - try to load
+                    // PIN stored locally - safe to set identity
+                    currentUser = name;
+                    localStorage.setItem('worldcup_identity', name);
+                    updateUI();
+                    checkAutoDraft();
+                    showToast('\u2705 \u4f60\u662f ' + name + '\uff08\u9009\u79c0\u987a\u4f4d #' + order + '\uff09', 'success');
                     await loadPreselectFromServer();
                     await fetchAutoDraftState(name);
                     updateUI();
@@ -1060,8 +1071,13 @@
             return;
         }
         storePin(name, pin);
+        // Set identity after PIN setup succeeds (no race condition)
+        currentUser = name;
+        localStorage.setItem('worldcup_identity', name);
         hidePinSetupModal();
         showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
+        updateUI();
+        checkAutoDraft();
         await loadPreselectFromServer();
         if (currentMode === 'preselect') renderPreselectPanel();
     }
@@ -1098,8 +1114,13 @@
             return;
         }
         storePin(name, pin);
+        // Set identity after PIN verification succeeds (no race condition)
+        currentUser = name;
+        localStorage.setItem('worldcup_identity', name);
         hidePinEntryModal();
         showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
+        updateUI();
+        checkAutoDraft();
         await loadPreselectFromServer();
         await fetchAutoDraftState(name);
         updateUI();
