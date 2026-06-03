@@ -9,7 +9,8 @@ from game_logic import (
     is_game_over, get_snake_order,
     init_pin_for_participant, verify_pin_for_participant,
     get_queue_for_participant, save_queue_for_participant,
-    toggle_auto_draft_for_participant, get_auto_draft_state_for_participant
+    toggle_auto_draft_for_participant, get_auto_draft_state_for_participant,
+    _execute_auto_draft
 )
 from seed_data import seed_database
 import openpyxl
@@ -65,6 +66,13 @@ def stats():
     import os
     stats_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'wcq_player_stats_table.html')
     return send_file(stats_path)
+
+
+@app.route('/teams')
+def teams():
+    import os
+    teams_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'team_ranking_top500.html')
+    return send_file(teams_path)
 
 
 @app.route('/api/state')
@@ -253,8 +261,14 @@ def api_toggle_auto_draft():
     if not name:
         return jsonify({'success': False, 'error': '缺少参数'}), 400
     toggle_auto_draft_for_participant(name, enabled)
-    # Also save as on-server toggle state
-    return jsonify({'success': True})
+    # On enabling, immediately check if it's this participant's turn
+    auto_picks = []
+    if enabled:
+        db = get_db()
+        auto_picks = _execute_auto_draft(db)
+        db.commit()
+        db.close()
+    return jsonify({'success': True, 'auto_picks': auto_picks})
 
 
 @app.route('/api/auto-draft/state/<name>')
