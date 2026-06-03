@@ -1,0 +1,5133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 WC 射手排名 Top 500 (按国家队分组)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; max-width: 1400px; margin: 0 auto; }
+h1 { text-align: center; margin-bottom: 4px; font-size: 26px; color: #fff; }
+.subtitle { text-align: center; color: #888; margin-bottom: 6px; font-size: 13px; }
+.summary { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+.summary-item { background: #1a2632; border: 1px solid #2a3a4a; border-radius: 8px; padding: 8px 16px; text-align: center; }
+.summary-item .val { font-size: 22px; font-weight: 700; color: #4fc3f7; }
+.summary-item .label { font-size: 11px; color: #888; margin-top: 2px; }
+
+/* Search */
+.search-bar { display: flex; justify-content: center; margin-bottom: 20px; }
+.search-bar input { padding: 8px 14px; border-radius: 8px; border: 1px solid #333; background: #1a2632; color: #fff; font-size: 14px; width: 280px; }
+.search-bar input::placeholder { color: #666; }
+
+/* Team card */
+.team-card { background: #151f2b; border: 1px solid #1e2e3e; border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
+.team-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #1a2632; border-left: 4px solid #4fc3f7; border-radius: 10px 10px 0 0; }
+.team-title { display: flex; align-items: center; gap: 10px; }
+.team-badge { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+.team-cn { font-size: 18px; font-weight: 700; color: #fff; }
+.team-en { font-size: 12px; color: #888; }
+.team-stats { display: flex; gap: 16px; align-items: center; }
+.player-count { background: #2a3a4a; padding: 3px 10px; border-radius: 12px; font-size: 12px; color: #4fc3f7; font-weight: 600; }
+.team-total { font-size: 13px; color: #aaa; }
+
+/* Table */
+.team-table { width: 100%; border-collapse: collapse; }
+.team-table th { background: #1e2e3e; padding: 6px 10px; text-align: left; font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid #2a3a4a; }
+.team-table td { padding: 6px 10px; font-size: 13px; border-bottom: 1px solid #1a2530; }
+.team-table tr:hover { background: #1a2a3a; }
+.team-table .num { text-align: center; width: 50px; }
+.team-table .pname { font-weight: 600; color: #fff; white-space: nowrap; }
+.team-table .score-cell { color: #4fc3f7; font-weight: 700; }
+.team-table .zero { color: #555; }
+.team-table th.num { text-align: center; }
+
+/* Rank badges */
+.rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 20px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+.rank-1 { background: #ffd700; color: #000; }
+.rank-2 { background: #c0c0c0; color: #000; }
+.rank-3 { background: #cd7f32; color: #fff; }
+.rank-num { color: #888; font-size: 12px; }
+
+/* Position colors */
+.pos-gk { color: #ff9800; } .pos-fw { color: #e91e63; }
+.pos-mf { color: #4caf50; } .pos-df { color: #2196f3; }
+.pos-cell { font-size: 11px; text-align: center; }
+
+/* Nav */
+.nav { text-align: center; margin-bottom: 16px; }
+.nav a { color: #4fc3f7; text-decoration: none; font-size: 14px; padding: 6px 16px; border: 1px solid #2a3a4a; border-radius: 6px; background: #1a2632; transition: all 0.2s; }
+.nav a:hover { background: #243444; }
+
+/* Responsive grid */
+@media (min-width: 900px) {
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
+/* Hidden by search */
+.team-card.hidden { display: none; }
+</style>
+</head>
+<body>
+<h1>2026 世界杯射手排名 Top 500</h1>
+<p class="subtitle">按国家队分组 · 国家队内按得分排序 · 国家队按球员人数排序</p>
+
+<div class="summary">
+  <div class="summary-item"><div class="val">500</div><div class="label">球员总数</div></div>
+  <div class="summary-item"><div class="val">46</div><div class="label">国家队数</div></div>
+  <div class="summary-item"><div class="val">Spain</div><div class="label">人数最多</div></div>
+</div>
+
+<div class="nav">
+  <a href="/stats">射手排名详情 →</a>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="search" placeholder="搜索球员或国家队 (中文/英文)..." />
+</div>
+
+<div class="team-grid" id="teamGrid">
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c60b1e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c60b1e"></span>
+      <span class="team-cn">西班牙</span>
+      <span class="team-en">Spain</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">24人</span>
+      <span class="team-total">总分: 69.10</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-badge rank-2">2</span></td>
+  <td class="pname" title="Mikel Oyarzabal">奥亚萨瓦尔</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">10.09</td>
+  <td class="num">0.849</td>
+  <td class="num">0.540</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-badge rank-3">3</span></td>
+  <td class="pname" title="Lamine Yamal">亚马尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">7.62</td>
+  <td class="num">1.035</td>
+  <td class="num">0.470</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">5</span></td>
+  <td class="pname" title="Ferrán Torres">费兰·托雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">6.28</td>
+  <td class="num">0.710</td>
+  <td class="num">0.446</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">6</span></td>
+  <td class="pname" title="Mikel Merino">梅里诺</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">6.28</td>
+  <td class="num">0.719</td>
+  <td class="num">0.374</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">10</span></td>
+  <td class="pname" title="Nico Williams">尼科·威廉姆斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">5.07</td>
+  <td class="num">0.815</td>
+  <td class="num">0.415</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">17</span></td>
+  <td class="pname" title="Dani Olmo">达尼·奥尔莫</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">4.22</td>
+  <td class="num">0.980</td>
+  <td class="num">0.420</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">23</span></td>
+  <td class="pname" title="Pedri">佩德里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">3.44</td>
+  <td class="num">0.370</td>
+  <td class="num">0.214</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">24</span></td>
+  <td class="pname" title="Yeremy Pino">皮诺</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">3.40</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">25</span></td>
+  <td class="pname" title="Victor Munoz">穆尼奥斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">3.40</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">28</span></td>
+  <td class="pname" title="Alex Baena">巴埃纳</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">3.05</td>
+  <td class="num">0.696</td>
+  <td class="num">0.272</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">34</span></td>
+  <td class="pname" title="Borja Iglesias">伊格莱西亚斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.81</td>
+  <td class="num">1.060</td>
+  <td class="num">0.429</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">39</span></td>
+  <td class="pname" title="Martín Zubimendi">苏比门迪</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.58</td>
+  <td class="num">0.190</td>
+  <td class="num">0.164</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">105</span></td>
+  <td class="pname" title="Fabian Ruiz">法比安·鲁伊斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.46</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">106</span></td>
+  <td class="pname" title="Gavi">加维</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.46</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">115</span></td>
+  <td class="pname" title="Aymeric Laporte">拉波尔特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.38</td>
+  <td class="num">0.127</td>
+  <td class="num">0.071</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">142</span></td>
+  <td class="pname" title="Marc Cucurella">库库雷利亚</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.17</td>
+  <td class="num">0.076</td>
+  <td class="num">0.060</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">163</span></td>
+  <td class="pname" title="Pedro Porro">波罗</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.04</td>
+  <td class="num">0.100</td>
+  <td class="num">0.067</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">164</span></td>
+  <td class="pname" title="Álex Grimaldo">格里马尔多</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.04</td>
+  <td class="num">0.080</td>
+  <td class="num">0.053</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">167</span></td>
+  <td class="pname" title="Pau Cubarsí">库巴西</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.03</td>
+  <td class="num">0.086</td>
+  <td class="num">0.061</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">336</span></td>
+  <td class="pname" title="Marcos Llorente">马科斯·略伦特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.53</td>
+  <td class="num">0.041</td>
+  <td class="num">0.048</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">367</span></td>
+  <td class="pname" title="Eric Garcia">埃里克·加西亚</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">368</span></td>
+  <td class="pname" title="Marc Pubill">普维尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">418</span></td>
+  <td class="pname" title="Rodri">罗德里</td>
+  <td class="pos-cell pos-df">DF,MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.600</td>
+  <td class="num">0.082</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">439</span></td>
+  <td class="pname" title="Jesus Rodríguez">赫苏斯·罗德里格斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.148</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#002395">
+    <div class="team-title">
+      <span class="team-badge" style="background:#002395"></span>
+      <span class="team-cn">法国</span>
+      <span class="team-en">France</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">23人</span>
+      <span class="team-total">总分: 41.69</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-badge rank-1">1</span></td>
+  <td class="pname" title="Kylian Mbappé">姆巴佩</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">10.43</td>
+  <td class="num">1.272</td>
+  <td class="num">0.652</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">20</span></td>
+  <td class="pname" title="Jean-Philippe Mateta">马特塔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">3.71</td>
+  <td class="num">0.610</td>
+  <td class="num">0.402</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">22</span></td>
+  <td class="pname" title="Michael Olise">奥利塞</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">3.48</td>
+  <td class="num">0.455</td>
+  <td class="num">0.263</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">29</span></td>
+  <td class="pname" title="Marcus Thuram">图拉姆</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.95</td>
+  <td class="num">1.525</td>
+  <td class="num">0.275</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">62</span></td>
+  <td class="pname" title="Ousmane Dembélé">登贝莱</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">2.12</td>
+  <td class="num">0.950</td>
+  <td class="num">0.379</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">64</span></td>
+  <td class="pname" title="Manu Koné">科内</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.08</td>
+  <td class="num">0.159</td>
+  <td class="num">0.153</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">65</span></td>
+  <td class="pname" title="N'Golo Kanté">恩戈洛·坎特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.08</td>
+  <td class="num">0.133</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">91</span></td>
+  <td class="pname" title="Bradley Barcola">巴尔科拉</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.196</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">93</span></td>
+  <td class="pname" title="Aurélien Tchouaméni">琼阿梅尼</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.61</td>
+  <td class="num">0.047</td>
+  <td class="num">0.132</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">117</span></td>
+  <td class="pname" title="Désiré Doué">杜埃</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.37</td>
+  <td class="num">0.920</td>
+  <td class="num">0.195</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">127</span></td>
+  <td class="pname" title="Rayan Cherki">谢尔基</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.25</td>
+  <td class="num">0.291</td>
+  <td class="num">0.167</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">152</span></td>
+  <td class="pname" title="Warren Zaïre-Emery">扎伊尔·埃梅里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.10</td>
+  <td class="num">0.073</td>
+  <td class="num">0.141</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">154</span></td>
+  <td class="pname" title="Lucas Digne">迪涅</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.09</td>
+  <td class="num">0.153</td>
+  <td class="num">0.078</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">178</span></td>
+  <td class="pname" title="Adrien Rabiot">拉比奥</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.98</td>
+  <td class="num">0.383</td>
+  <td class="num">0.180</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">183</span></td>
+  <td class="pname" title="Jules Koundé">孔德</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.94</td>
+  <td class="num">0.124</td>
+  <td class="num">0.074</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">218</span></td>
+  <td class="pname" title="Maghnes Akliouche">阿克利乌舍</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.78</td>
+  <td class="num">0.400</td>
+  <td class="num">0.189</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">244</span></td>
+  <td class="pname" title="Theo Hernández">特奥</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.71</td>
+  <td class="num">0.053</td>
+  <td class="num">0.051</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">248</span></td>
+  <td class="pname" title="Lucas Hernández">卢卡斯·埃尔南德斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.044</td>
+  <td class="num">0.049</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">265</span></td>
+  <td class="pname" title="Ibrahima Konaté">科纳特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.036</td>
+  <td class="num">0.046</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">266</span></td>
+  <td class="pname" title="William Saliba">萨利巴</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.036</td>
+  <td class="num">0.046</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">340</span></td>
+  <td class="pname" title="Dayot Upamecano">于帕梅卡诺</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.016</td>
+  <td class="num">0.037</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">355</span></td>
+  <td class="pname" title="Malo Gusto">古斯托</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.50</td>
+  <td class="num">0.165</td>
+  <td class="num">0.076</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">467</span></td>
+  <td class="pname" title="Maxence Lacroix">拉克鲁瓦</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#fcd116">
+    <div class="team-title">
+      <span class="team-badge" style="background:#fcd116"></span>
+      <span class="team-cn">巴西</span>
+      <span class="team-en">Brazil</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">23人</span>
+      <span class="team-total">总分: 36.54</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">8</span></td>
+  <td class="pname" title="Raphinha">拉菲尼亚</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">5.85</td>
+  <td class="num">0.540</td>
+  <td class="num">0.382</td>
+  <td class="num">+1.16</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">12</span></td>
+  <td class="pname" title="Vinicius Júnior">维尼修斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">4.71</td>
+  <td class="num">0.408</td>
+  <td class="num">0.382</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">19</span></td>
+  <td class="pname" title="Neymar">内马尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">3.99</td>
+  <td class="num">0.760</td>
+  <td class="num">0.336</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">49</span></td>
+  <td class="pname" title="Igor Thiago">伊戈尔·蒂亚戈</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.39</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">50</span></td>
+  <td class="pname" title="Rayan">拉扬</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.39</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">68</span></td>
+  <td class="pname" title="Gabriel Jesus">加布里埃尔·热苏斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.97</td>
+  <td class="num">0.030</td>
+  <td class="num">0.269</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">70</span></td>
+  <td class="pname" title="Casemiro">卡塞米罗</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.94</td>
+  <td class="num">0.152</td>
+  <td class="num">0.151</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">88</span></td>
+  <td class="pname" title="Gabriel Martinelli">马丁内利</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.66</td>
+  <td class="num">0.404</td>
+  <td class="num">0.242</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">113</span></td>
+  <td class="pname" title="Luiz Henrique">路易斯·恩里克</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.39</td>
+  <td class="num">0.500</td>
+  <td class="num">0.250</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">114</span></td>
+  <td class="pname" title="Bruno Guimarães">布鲁诺·吉马良斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.38</td>
+  <td class="num">0.100</td>
+  <td class="num">0.118</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">146</span></td>
+  <td class="pname" title="Lucas Paquetá">卢卡斯·帕克塔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.13</td>
+  <td class="num">0.168</td>
+  <td class="num">0.156</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">151</span></td>
+  <td class="pname" title="Endrick">恩德里克</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.11</td>
+  <td class="num">0.050</td>
+  <td class="num">0.300</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">168</span></td>
+  <td class="pname" title="Fabinho">法比尼奥</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.02</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">190</span></td>
+  <td class="pname" title="Gabriel Magalhães">加布里埃尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.91</td>
+  <td class="num">0.079</td>
+  <td class="num">0.069</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">221</span></td>
+  <td class="pname" title="Matheus Cunha">马特乌斯·库尼亚</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.78</td>
+  <td class="num">0.141</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">239</span></td>
+  <td class="pname" title="Douglas Santos">道格拉斯·桑托斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.73</td>
+  <td class="num">0.080</td>
+  <td class="num">0.053</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">297</span></td>
+  <td class="pname" title="Alex Sandro">亚历克斯·桑德罗</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.044</td>
+  <td class="num">0.049</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">301</span></td>
+  <td class="pname" title="Marquinhos">马尔基尼奥斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.045</td>
+  <td class="num">0.047</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">363</span></td>
+  <td class="pname" title="Danilo">达尼洛</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.037</td>
+  <td class="num">0.044</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">378</span></td>
+  <td class="pname" title="Wesley">韦斯利</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.038</td>
+  <td class="num">0.048</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">474</span></td>
+  <td class="pname" title="Bremer">布雷默</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">475</span></td>
+  <td class="pname" title="Leo Pereira">莱奥·佩雷拉</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">476</span></td>
+  <td class="pname" title="Eder Militao">埃德尔·米利唐</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.050</td>
+  <td class="num">0.050</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#000000">
+    <div class="team-title">
+      <span class="team-badge" style="background:#000000"></span>
+      <span class="team-cn">德国</span>
+      <span class="team-en">Germany</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">21人</span>
+      <span class="team-total">总分: 37.84</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">18</span></td>
+  <td class="pname" title="Nick Woltemade">尼克·沃尔特马德</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">4.13</td>
+  <td class="num">0.317</td>
+  <td class="num">0.337</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">21</span></td>
+  <td class="pname" title="Florian Wirtz">弗洛里安·维尔茨</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">3.49</td>
+  <td class="num">0.410</td>
+  <td class="num">0.259</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">27</span></td>
+  <td class="pname" title="Joshua Kimmich">约书亚·基米希</td>
+  <td class="pos-cell pos-df">DF,MF</td>
+  <td class="num score-cell">3.09</td>
+  <td class="num">0.353</td>
+  <td class="num">0.162</td>
+  <td class="num">+0.99</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">36</span></td>
+  <td class="pname" title="Leroy Sané">勒鲁瓦·萨内</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">2.76</td>
+  <td class="num">0.484</td>
+  <td class="num">0.214</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">44</span></td>
+  <td class="pname" title="Kai Havertz">凯·哈弗茨</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.42</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">45</span></td>
+  <td class="pname" title="Lennart Karl">伦纳特·卡尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.42</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">46</span></td>
+  <td class="pname" title="Jamal Musiala">贾马尔·穆西亚拉</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.42</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">47</span></td>
+  <td class="pname" title="Deniz Undav">德尼兹·翁达夫</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.42</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">54</span></td>
+  <td class="pname" title="Leon Goretzka">莱昂·格雷茨卡</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.24</td>
+  <td class="num">0.282</td>
+  <td class="num">0.200</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">100</span></td>
+  <td class="pname" title="Aleksandar Pavlovic">亚历山大·帕夫洛维奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.50</td>
+  <td class="num">0.069</td>
+  <td class="num">0.125</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">111</span></td>
+  <td class="pname" title="Jamie Leweling">杰米·勒韦林</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.43</td>
+  <td class="num">0.418</td>
+  <td class="num">0.182</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">119</span></td>
+  <td class="pname" title="Angelo Stiller">安杰洛·施蒂勒</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.35</td>
+  <td class="num">0.138</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">120</span></td>
+  <td class="pname" title="Felix Nmecha">费利克斯·恩梅查</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.33</td>
+  <td class="num">0.756</td>
+  <td class="num">0.211</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">121</span></td>
+  <td class="pname" title="Maximilian Beier">马克西米利安·拜尔</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.31</td>
+  <td class="num">0.089</td>
+  <td class="num">0.324</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">162</span></td>
+  <td class="pname" title="David Raum">大卫·劳姆</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.05</td>
+  <td class="num">0.146</td>
+  <td class="num">0.088</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">165</span></td>
+  <td class="pname" title="Pascal Gross">帕斯卡尔·格罗斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.04</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">166</span></td>
+  <td class="pname" title="Nadiem Amiri">纳迪姆·阿米里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.04</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">216</span></td>
+  <td class="pname" title="Waldemar Anton">瓦尔德马·安东</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.79</td>
+  <td class="num">0.216</td>
+  <td class="num">0.090</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">273</span></td>
+  <td class="pname" title="Antonio Rüdiger">安东尼奥·吕迪格</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.042</td>
+  <td class="num">0.048</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">318</span></td>
+  <td class="pname" title="Nico Schlotterbeck">尼科·施洛特贝克</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.073</td>
+  <td class="num">0.055</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">412</span></td>
+  <td class="pname" title="Jonathan Tah">约纳坦·塔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.016</td>
+  <td class="num">0.037</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#cf081f">
+    <div class="team-title">
+      <span class="team-badge" style="background:#cf081f"></span>
+      <span class="team-cn">英格兰</span>
+      <span class="team-en">England</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">21人</span>
+      <span class="team-total">总分: 33.76</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">4</span></td>
+  <td class="pname" title="Harry Kane">哈里·凯恩</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">6.95</td>
+  <td class="num">0.800</td>
+  <td class="num">0.568</td>
+  <td class="num">+0.64</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">37</span></td>
+  <td class="pname" title="Jude Bellingham">裘德·贝林厄姆</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.72</td>
+  <td class="num">0.590</td>
+  <td class="num">0.294</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">42</span></td>
+  <td class="pname" title="Noni Madueke">诺尼·马杜埃凯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.49</td>
+  <td class="num">0.436</td>
+  <td class="num">0.224</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">52</span></td>
+  <td class="pname" title="Marcus Rashford">马库斯·拉什福德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.35</td>
+  <td class="num">0.479</td>
+  <td class="num">0.256</td>
+  <td class="num">+0.73</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">59</span></td>
+  <td class="pname" title="Eberechi Eze">埃贝雷奇·埃泽</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">2.22</td>
+  <td class="num">1.129</td>
+  <td class="num">0.404</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">66</span></td>
+  <td class="pname" title="Ivan Toney">伊万·托尼</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.06</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">71</span></td>
+  <td class="pname" title="Declan Rice">德克兰·赖斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.92</td>
+  <td class="num">0.354</td>
+  <td class="num">0.234</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">83</span></td>
+  <td class="pname" title="Elliot Anderson">埃利奥特·安德森</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.71</td>
+  <td class="num">0.229</td>
+  <td class="num">0.177</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">90</span></td>
+  <td class="pname" title="Bukayo Saka">布卡约·萨卡</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.65</td>
+  <td class="num">0.460</td>
+  <td class="num">0.212</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">118</span></td>
+  <td class="pname" title="Anthony Gordon">安东尼·戈登</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.36</td>
+  <td class="num">0.762</td>
+  <td class="num">0.277</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">129</span></td>
+  <td class="pname" title="Morgan Rogers">摩根·罗杰斯</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">1.25</td>
+  <td class="num">0.225</td>
+  <td class="num">0.178</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">161</span></td>
+  <td class="pname" title="Ezri Konsa">埃兹里·孔萨</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.171</td>
+  <td class="num">0.103</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">180</span></td>
+  <td class="pname" title="Marc Guéhi">马克·格伊</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.97</td>
+  <td class="num">0.193</td>
+  <td class="num">0.087</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">189</span></td>
+  <td class="pname" title="Jarell Quansah">贾雷尔·宽萨</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.92</td>
+  <td class="num">0.300</td>
+  <td class="num">0.078</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">196</span></td>
+  <td class="pname" title="Kobbie Mainoo">科比·梅努</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.88</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">252</span></td>
+  <td class="pname" title="Ollie Watkins">奥利·沃特金斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.341</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">294</span></td>
+  <td class="pname" title="Reece James">里斯·詹姆斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.102</td>
+  <td class="num">0.069</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">304</span></td>
+  <td class="pname" title="Dan Burn">丹·伯恩</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.59</td>
+  <td class="num">0.076</td>
+  <td class="num">0.059</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">348</span></td>
+  <td class="pname" title="John Stones">约翰·斯通斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.037</td>
+  <td class="num">0.047</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">369</span></td>
+  <td class="pname" title="Jordan Henderson">乔丹·亨德森</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.48</td>
+  <td class="num">0.124</td>
+  <td class="num">0.145</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">443</span></td>
+  <td class="pname" title="Djed Spence">杰德·斯彭斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.062</td>
+  <td class="num">0.052</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#006600">
+    <div class="team-title">
+      <span class="team-badge" style="background:#006600"></span>
+      <span class="team-cn">葡萄牙</span>
+      <span class="team-en">Portugal</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">21人</span>
+      <span class="team-total">总分: 32.99</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">7</span></td>
+  <td class="pname" title="Cristiano Ronaldo">C罗</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">6.10</td>
+  <td class="num">1.249</td>
+  <td class="num">0.655</td>
+  <td class="num">+0.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">16</span></td>
+  <td class="pname" title="Bruno Fernandes">布鲁诺·费尔南德斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">4.26</td>
+  <td class="num">0.586</td>
+  <td class="num">0.302</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">38</span></td>
+  <td class="pname" title="João Neves">若昂·内维斯</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">2.59</td>
+  <td class="num">0.514</td>
+  <td class="num">0.265</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">61</span></td>
+  <td class="pname" title="João Félix">菲利克斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.13</td>
+  <td class="num">0.952</td>
+  <td class="num">0.475</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">72</span></td>
+  <td class="pname" title="Rúben Neves">鲁本·内维斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.91</td>
+  <td class="num">0.410</td>
+  <td class="num">0.235</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">76</span></td>
+  <td class="pname" title="Goncalo Guedes">格德斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.84</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">80</span></td>
+  <td class="pname" title="Vitinha">维蒂尼亚</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.76</td>
+  <td class="num">0.244</td>
+  <td class="num">0.188</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">101</span></td>
+  <td class="pname" title="Gonçalo Ramos">拉莫斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.49</td>
+  <td class="num">1.067</td>
+  <td class="num">0.482</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">110</span></td>
+  <td class="pname" title="Bernardo Silva">贝尔纳多·席尔瓦</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.44</td>
+  <td class="num">0.177</td>
+  <td class="num">0.159</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">136</span></td>
+  <td class="pname" title="João Cancelo">坎塞洛</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.20</td>
+  <td class="num">0.381</td>
+  <td class="num">0.145</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">138</span></td>
+  <td class="pname" title="Francisco Trincão">特林康</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.20</td>
+  <td class="num">0.171</td>
+  <td class="num">0.323</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">143</span></td>
+  <td class="pname" title="Pedro Neto">内托</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.16</td>
+  <td class="num">0.200</td>
+  <td class="num">0.163</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">207</span></td>
+  <td class="pname" title="Francisco Conceição">孔塞桑</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.84</td>
+  <td class="num">1.086</td>
+  <td class="num">0.225</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">217</span></td>
+  <td class="pname" title="Samuel Costa">萨穆·科斯塔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.79</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">219</span></td>
+  <td class="pname" title="Rafael Leão">莱奥</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.78</td>
+  <td class="num">0.354</td>
+  <td class="num">0.178</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">260</span></td>
+  <td class="pname" title="Diogo Dalot">达洛特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.188</td>
+  <td class="num">0.074</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">267</span></td>
+  <td class="pname" title="Nuno Mendes">门德斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.111</td>
+  <td class="num">0.069</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">268</span></td>
+  <td class="pname" title="Nélson Semedo">塞梅多</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.193</td>
+  <td class="num">0.087</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">291</span></td>
+  <td class="pname" title="Renato Veiga">韦加</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.153</td>
+  <td class="num">0.078</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">361</span></td>
+  <td class="pname" title="Gonçalo Inácio">伊纳西奥</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.150</td>
+  <td class="num">0.070</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">376</span></td>
+  <td class="pname" title="Rúben Dias">鲁本·迪亚斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.47</td>
+  <td class="num">0.041</td>
+  <td class="num">0.046</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e11a22">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e11a22"></span>
+      <span class="team-cn">克罗地亚</span>
+      <span class="team-en">Croatia</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">21人</span>
+      <span class="team-total">总分: 17.35</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">56</span></td>
+  <td class="pname" title="Ante Budimir">安特·布迪米尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.24</td>
+  <td class="num">0.759</td>
+  <td class="num">0.459</td>
+  <td class="num">+0.79</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">69</span></td>
+  <td class="pname" title="Ivan Perišić">伊万·佩里西奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.96</td>
+  <td class="num">0.610</td>
+  <td class="num">0.349</td>
+  <td class="num">+0.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">97</span></td>
+  <td class="pname" title="Andrej Kramarić">安德雷·克拉马里奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.56</td>
+  <td class="num">0.734</td>
+  <td class="num">0.396</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">128</span></td>
+  <td class="pname" title="Luka Modrić">卢卡·莫德里奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.25</td>
+  <td class="num">0.423</td>
+  <td class="num">0.247</td>
+  <td class="num">+0.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">145</span></td>
+  <td class="pname" title="Petar Musa">佩塔尔·穆萨</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.13</td>
+  <td class="num">0.383</td>
+  <td class="num">0.354</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">192</span></td>
+  <td class="pname" title="Toni Fruk">托尼·弗鲁克</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.91</td>
+  <td class="num">0.714</td>
+  <td class="num">0.296</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">212</span></td>
+  <td class="pname" title="Mario Pašalić">马里奥·帕萨利奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.82</td>
+  <td class="num">0.251</td>
+  <td class="num">0.191</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">224</span></td>
+  <td class="pname" title="Igor Matanovic">伊戈尔·马塔诺维奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.77</td>
+  <td class="num">0.200</td>
+  <td class="num">0.336</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">226</span></td>
+  <td class="pname" title="Nikola Vlašić">尼古拉·弗拉希奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.76</td>
+  <td class="num">0.585</td>
+  <td class="num">0.211</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">228</span></td>
+  <td class="pname" title="Luka Sučić">卢卡·苏契奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.76</td>
+  <td class="num">0.767</td>
+  <td class="num">0.230</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">235</span></td>
+  <td class="pname" title="Petar Sucic">佩塔尔·苏契奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.74</td>
+  <td class="num">0.162</td>
+  <td class="num">0.155</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">292</span></td>
+  <td class="pname" title="Mateo Kovačić">马特奥·科瓦契奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.136</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">309</span></td>
+  <td class="pname" title="Marco Pašalić">马尔科·帕萨利奇</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.584</td>
+  <td class="num">0.253</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">333</span></td>
+  <td class="pname" title="Kristijan Jakić">克里斯蒂安·亚基奇</td>
+  <td class="pos-cell pos-df">DF,MF</td>
+  <td class="num score-cell">0.53</td>
+  <td class="num">0.265</td>
+  <td class="num">0.122</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">364</span></td>
+  <td class="pname" title="Duje Ćaleta-Car">杜耶·查莱塔-察尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.167</td>
+  <td class="num">0.098</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">409</span></td>
+  <td class="pname" title="Martin Erlic">马丁·埃尔利奇</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.300</td>
+  <td class="num">0.078</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">420</span></td>
+  <td class="pname" title="Joško Gvardiol">约什科·格瓦迪奥尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.200</td>
+  <td class="num">0.098</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">426</span></td>
+  <td class="pname" title="Martin Baturina">马丁·巴图里纳</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.168</td>
+  <td class="num">0.154</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">457</span></td>
+  <td class="pname" title="Nikola Moro">尼古拉·莫罗</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.176</td>
+  <td class="num">0.155</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">488</span></td>
+  <td class="pname" title="Marin Pongračić">马林·蓬格拉契奇</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.144</td>
+  <td class="num">0.077</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">497</span></td>
+  <td class="pname" title="Josip Stanišić">约瑟普·斯塔尼西奇</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.32</td>
+  <td class="num">0.110</td>
+  <td class="num">0.070</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#ff6600">
+    <div class="team-title">
+      <span class="team-badge" style="background:#ff6600"></span>
+      <span class="team-cn">荷兰</span>
+      <span class="team-en">Netherlands</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">20人</span>
+      <span class="team-total">总分: 23.08</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">14</span></td>
+  <td class="pname" title="Cody Gakpo">科迪·加克波</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">4.45</td>
+  <td class="num">0.444</td>
+  <td class="num">0.395</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">82</span></td>
+  <td class="pname" title="Donyell Malen">唐耶尔·马伦</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.72</td>
+  <td class="num">0.640</td>
+  <td class="num">0.326</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">84</span></td>
+  <td class="pname" title="Tijjani Reijnders">泰贾尼·赖因德斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.71</td>
+  <td class="num">0.504</td>
+  <td class="num">0.286</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">89</span></td>
+  <td class="pname" title="Denzel Dumfries">丹泽尔·邓弗里斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.66</td>
+  <td class="num">0.414</td>
+  <td class="num">0.204</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">107</span></td>
+  <td class="pname" title="Brian Brobbey">布里安·布罗比</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.45</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">108</span></td>
+  <td class="pname" title="Memphis Depay">孟菲斯·德佩</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.45</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">109</span></td>
+  <td class="pname" title="Crysencio Summerville">克里森西奥·萨默维尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.45</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">170</span></td>
+  <td class="pname" title="Noa Lang">诺阿·朗</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.02</td>
+  <td class="num">0.900</td>
+  <td class="num">0.388</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">172</span></td>
+  <td class="pname" title="Ryan Gravenberch">瑞安·赫拉芬贝赫</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.00</td>
+  <td class="num">0.140</td>
+  <td class="num">0.146</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">181</span></td>
+  <td class="pname" title="Virgil van Dijk">菲尔吉尔·范戴克</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.96</td>
+  <td class="num">0.182</td>
+  <td class="num">0.116</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">198</span></td>
+  <td class="pname" title="Frenkie de Jong">弗朗基·德容</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.87</td>
+  <td class="num">0.073</td>
+  <td class="num">0.116</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">225</span></td>
+  <td class="pname" title="Wout Weghorst">沃特·韦格霍斯特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.77</td>
+  <td class="num">0.084</td>
+  <td class="num">0.299</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">254</span></td>
+  <td class="pname" title="Quinten Timber">昆滕·廷贝尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.68</td>
+  <td class="num">0.329</td>
+  <td class="num">0.177</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">286</span></td>
+  <td class="pname" title="Teun Koopmeiners">特恩·库普梅纳斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">287</span></td>
+  <td class="pname" title="Marten de Roon">马滕·德鲁恩</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">288</span></td>
+  <td class="pname" title="Guus Til">赫斯·蒂尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">289</span></td>
+  <td class="pname" title="Mats Weiffer">马茨·维弗</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">305</span></td>
+  <td class="pname" title="Justin Kluivert">贾斯汀·克鲁伊维特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.59</td>
+  <td class="num">0.103</td>
+  <td class="num">0.137</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">421</span></td>
+  <td class="pname" title="Micky van de Ven">米基·范德文</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.087</td>
+  <td class="num">0.065</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">422</span></td>
+  <td class="pname" title="Jurriën Timber">尤里恩·廷贝尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.103</td>
+  <td class="num">0.067</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c8102e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c8102e"></span>
+      <span class="team-cn">比利时</span>
+      <span class="team-en">Belgium</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">19人</span>
+      <span class="team-total">总分: 30.52</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">13</span></td>
+  <td class="pname" title="Romelu Lukaku">罗梅卢·卢卡库</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">4.59</td>
+  <td class="num">0.442</td>
+  <td class="num">0.368</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">15</span></td>
+  <td class="pname" title="Kevin De Bruyne">凯文·德布劳内</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">4.39</td>
+  <td class="num">0.749</td>
+  <td class="num">0.383</td>
+  <td class="num">+1.49</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">31</span></td>
+  <td class="pname" title="Jeremy Doku">杰雷米·多库</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">2.90</td>
+  <td class="num">0.614</td>
+  <td class="num">0.368</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">41</span></td>
+  <td class="pname" title="Charles De Ketelaere">查尔斯·德凯特拉雷</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.51</td>
+  <td class="num">0.470</td>
+  <td class="num">0.388</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">43</span></td>
+  <td class="pname" title="Youri Tielemans">尤里·蒂勒曼斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.44</td>
+  <td class="num">0.498</td>
+  <td class="num">0.272</td>
+  <td class="num">+0.73</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">78</span></td>
+  <td class="pname" title="Hans Vanaken">汉斯·瓦纳肯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.79</td>
+  <td class="num">0.557</td>
+  <td class="num">0.301</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">86</span></td>
+  <td class="pname" title="Alexis Saelemaekers">亚历克西斯·萨勒马克尔斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.70</td>
+  <td class="num">0.600</td>
+  <td class="num">0.421</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">94</span></td>
+  <td class="pname" title="Nicolas Raskin">尼古拉·拉斯金</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.59</td>
+  <td class="num">0.298</td>
+  <td class="num">0.213</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">98</span></td>
+  <td class="pname" title="Matias Fernandez-Pardo">马蒂亚斯·费尔南德斯-帕尔多</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.55</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">139</span></td>
+  <td class="pname" title="Leandro Trossard">莱安德罗·特罗萨德</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.19</td>
+  <td class="num">0.332</td>
+  <td class="num">0.215</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">153</span></td>
+  <td class="pname" title="Maxim De Cuyper">马克西姆·德克伊珀</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">1.10</td>
+  <td class="num">0.430</td>
+  <td class="num">0.189</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">208</span></td>
+  <td class="pname" title="Dodi Lukebakio">多迪·卢克巴吉奥</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.84</td>
+  <td class="num">0.320</td>
+  <td class="num">0.348</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">210</span></td>
+  <td class="pname" title="Thomas Meunier">托马斯·默尼耶</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.83</td>
+  <td class="num">0.410</td>
+  <td class="num">0.168</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">243</span></td>
+  <td class="pname" title="Amadou Onana">阿马杜·奥纳纳</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.72</td>
+  <td class="num">0.077</td>
+  <td class="num">0.130</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">256</span></td>
+  <td class="pname" title="Timothy Castagne">蒂莫西·卡斯塔涅</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.67</td>
+  <td class="num">0.183</td>
+  <td class="num">0.098</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">325</span></td>
+  <td class="pname" title="Arthur Theate">阿蒂尔·蒂特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.108</td>
+  <td class="num">0.076</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">390</span></td>
+  <td class="pname" title="Koni De Winter">科尼·德温特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.45</td>
+  <td class="num">0.136</td>
+  <td class="num">0.069</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">445</span></td>
+  <td class="pname" title="Brandon Mechele">布兰登·梅赫莱</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.273</td>
+  <td class="num">0.077</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">462</span></td>
+  <td class="pname" title="Zeno Debast">泽诺·德巴斯特</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.029</td>
+  <td class="num">0.041</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#75aadb">
+    <div class="team-title">
+      <span class="team-badge" style="background:#75aadb"></span>
+      <span class="team-cn">阿根廷</span>
+      <span class="team-en">Argentina</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">19人</span>
+      <span class="team-total">总分: 27.61</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">9</span></td>
+  <td class="pname" title="Lionel Messi">利昂内尔·梅西</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">5.44</td>
+  <td class="num">0.762</td>
+  <td class="num">0.584</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">33</span></td>
+  <td class="pname" title="Julián Álvarez">胡利安·阿尔瓦雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.83</td>
+  <td class="num">0.310</td>
+  <td class="num">0.324</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">51</span></td>
+  <td class="pname" title="Nicolás González">尼古拉斯·冈萨雷斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">2.37</td>
+  <td class="num">0.315</td>
+  <td class="num">0.332</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">55</span></td>
+  <td class="pname" title="Thiago Almada">蒂亚戈·阿尔马达</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">2.24</td>
+  <td class="num">0.472</td>
+  <td class="num">0.278</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">58</span></td>
+  <td class="pname" title="Lautaro Martínez">劳塔罗·马丁内斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.23</td>
+  <td class="num">0.363</td>
+  <td class="num">0.357</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">75</span></td>
+  <td class="pname" title="Jose Manuel Lopez">何塞·曼努埃尔·洛佩斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.86</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">99</span></td>
+  <td class="pname" title="Enzo Fernández">恩佐·费尔南德斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.51</td>
+  <td class="num">0.152</td>
+  <td class="num">0.151</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">104</span></td>
+  <td class="pname" title="Alexis Mac Allister">亚历克西斯·麦卡利斯特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.47</td>
+  <td class="num">0.178</td>
+  <td class="num">0.166</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">116</span></td>
+  <td class="pname" title="Rodrigo De Paul">罗德里戈·德保罗</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.38</td>
+  <td class="num">0.144</td>
+  <td class="num">0.146</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">176</span></td>
+  <td class="pname" title="Giuliano Simeone">朱利亚诺·西蒙尼</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.98</td>
+  <td class="num">0.368</td>
+  <td class="num">0.211</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">202</span></td>
+  <td class="pname" title="Nicolás Otamendi">尼古拉斯·奥塔门迪</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.85</td>
+  <td class="num">0.101</td>
+  <td class="num">0.084</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">214</span></td>
+  <td class="pname" title="Valentin Barco">巴伦廷·巴尔科</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.80</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">223</span></td>
+  <td class="pname" title="Nicolás Tagliafico">尼古拉斯·塔利亚菲科</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.77</td>
+  <td class="num">0.094</td>
+  <td class="num">0.078</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">281</span></td>
+  <td class="pname" title="Leandro Paredes">莱安德罗·帕雷德斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.63</td>
+  <td class="num">0.115</td>
+  <td class="num">0.135</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">300</span></td>
+  <td class="pname" title="Lisandro Martínez">利桑德罗·马丁内斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.300</td>
+  <td class="num">0.096</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">397</span></td>
+  <td class="pname" title="Giovani Lo Celso">乔瓦尼·洛塞尔索</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.086</td>
+  <td class="num">0.133</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">400</span></td>
+  <td class="pname" title="Nicolás Paz">尼科·帕斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.145</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">435</span></td>
+  <td class="pname" title="Exequiel Palacios">埃塞基耶尔·帕拉西奥斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.117</td>
+  <td class="num">0.143</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">438</span></td>
+  <td class="pname" title="Cristian Romero">克里斯蒂安·罗梅罗</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.033</td>
+  <td class="num">0.039</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#fcd116">
+    <div class="team-title">
+      <span class="team-badge" style="background:#fcd116"></span>
+      <span class="team-cn">哥伦比亚</span>
+      <span class="team-en">Colombia</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">18人</span>
+      <span class="team-total">总分: 18.02</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">26</span></td>
+  <td class="pname" title="Luis Díaz">路易斯·迪亚斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">3.23</td>
+  <td class="num">0.558</td>
+  <td class="num">0.490</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">73</span></td>
+  <td class="pname" title="James Rodríguez">哈梅斯·罗德里格斯</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.88</td>
+  <td class="num">0.403</td>
+  <td class="num">0.310</td>
+  <td class="num">+0.24</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">95</span></td>
+  <td class="pname" title="Jhon Córdoba">约翰·科尔多瓦</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.59</td>
+  <td class="num">0.488</td>
+  <td class="num">0.407</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">133</span></td>
+  <td class="pname" title="Juan Camilo Hernandez">胡安·卡米洛·埃尔南德斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.21</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">134</span></td>
+  <td class="pname" title="Luis Suarez">路易斯·苏亚雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.21</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">135</span></td>
+  <td class="pname" title="Carlos Andres Gomez">卡洛斯·安德烈斯·戈麦斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.21</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">140</span></td>
+  <td class="pname" title="Richard Ríos">里查德·里奥斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.19</td>
+  <td class="num">0.298</td>
+  <td class="num">0.236</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">184</span></td>
+  <td class="pname" title="Jhon Arias">约翰·阿里亚斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.94</td>
+  <td class="num">0.203</td>
+  <td class="num">0.183</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">206</span></td>
+  <td class="pname" title="Jefferson Lerma">杰弗森·莱尔马</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.84</td>
+  <td class="num">0.136</td>
+  <td class="num">0.141</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">247</span></td>
+  <td class="pname" title="Jaminton Campaz">哈明顿·坎帕斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.70</td>
+  <td class="num">0.047</td>
+  <td class="num">0.297</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">250</span></td>
+  <td class="pname" title="Kevin Castaño">凯文·卡斯塔尼奥</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.135</td>
+  <td class="num">0.144</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">302</span></td>
+  <td class="pname" title="Davinson Sánchez">达温松·桑切斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.117</td>
+  <td class="num">0.090</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">341</span></td>
+  <td class="pname" title="Gustavo Puerta">古斯塔沃·普埃尔塔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">342</span></td>
+  <td class="pname" title="Juan Fernando Quintero">胡安·费尔南多·金特罗</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">374</span></td>
+  <td class="pname" title="Jorge Carrascal">豪尔赫·卡拉斯卡尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.47</td>
+  <td class="num">0.350</td>
+  <td class="num">0.196</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">396</span></td>
+  <td class="pname" title="Yerry Mina">耶里·米纳</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.180</td>
+  <td class="num">0.101</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">424</span></td>
+  <td class="pname" title="Daniel Muñoz">丹尼尔·穆尼奥斯</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.065</td>
+  <td class="num">0.059</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">432</span></td>
+  <td class="pname" title="Juan Camilo Portilla">胡安·卡米洛·波蒂利亚</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.073</td>
+  <td class="num">0.133</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e11a22">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e11a22"></span>
+      <span class="team-cn">瑞士</span>
+      <span class="team-en">Switzerland</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">15人</span>
+      <span class="team-total">总分: 18.17</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">30</span></td>
+  <td class="pname" title="Granit Xhaka">格拉尼特·扎卡</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.95</td>
+  <td class="num">0.314</td>
+  <td class="num">0.219</td>
+  <td class="num">+1.42</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">35</span></td>
+  <td class="pname" title="Breel Embolo">布里尔·恩博洛</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.79</td>
+  <td class="num">0.559</td>
+  <td class="num">0.434</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">40</span></td>
+  <td class="pname" title="Dan Ndoye">恩多耶</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">2.53</td>
+  <td class="num">0.371</td>
+  <td class="num">0.358</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">92</span></td>
+  <td class="pname" title="Ruben Vargas">鲁本·巴尔加斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.63</td>
+  <td class="num">0.175</td>
+  <td class="num">0.284</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">124</span></td>
+  <td class="pname" title="Zeki Amdouni">阿姆杜尼</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.26</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">125</span></td>
+  <td class="pname" title="Noah Okafor">诺亚·奥卡福</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.26</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">171</span></td>
+  <td class="pname" title="Johan Manzambi">曼赞比</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.02</td>
+  <td class="num">0.581</td>
+  <td class="num">0.398</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">201</span></td>
+  <td class="pname" title="Remo Freuler">弗鲁勒</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.86</td>
+  <td class="num">0.060</td>
+  <td class="num">0.120</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">246</span></td>
+  <td class="pname" title="Michel Aebischer">埃比舍尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.71</td>
+  <td class="num">0.141</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">296</span></td>
+  <td class="pname" title="Silvan Widmer">威德默</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.184</td>
+  <td class="num">0.102</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">319</span></td>
+  <td class="pname" title="Nico Elvedi">埃尔维迪</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.113</td>
+  <td class="num">0.077</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">329</span></td>
+  <td class="pname" title="Fabian Rieder">法比安·里德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.086</td>
+  <td class="num">0.130</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">330</span></td>
+  <td class="pname" title="Ardon Jashari">亚沙里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">350</span></td>
+  <td class="pname" title="Djibril Sow">索乌</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.036</td>
+  <td class="num">0.125</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">427</span></td>
+  <td class="pname" title="Manuel Akanji">曼努埃尔·阿坎吉</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.063</td>
+  <td class="num">0.056</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c8102e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c8102e"></span>
+      <span class="team-cn">挪威</span>
+      <span class="team-en">Norway</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">15人</span>
+      <span class="team-total">总分: 15.05</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">11</span></td>
+  <td class="pname" title="Erling Haaland">埃尔林·哈兰德</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">4.81</td>
+  <td class="num">1.210</td>
+  <td class="num">0.775</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">79</span></td>
+  <td class="pname" title="Thelo Aasgaard">塞洛·奥斯加德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.78</td>
+  <td class="num">1.400</td>
+  <td class="num">0.325</td>
+  <td class="num">+1.09</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">96</span></td>
+  <td class="pname" title="Antonio Nusa">安东尼奥·努萨</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.58</td>
+  <td class="num">0.492</td>
+  <td class="num">0.285</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">149</span></td>
+  <td class="pname" title="Alexander Sorloth">亚历山大·瑟尔洛特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.11</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">150</span></td>
+  <td class="pname" title="Jorgen Strand Larsen">约尔根·斯特兰德·拉森</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.11</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">278</span></td>
+  <td class="pname" title="Sander Berge">桑德尔·贝格</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.050</td>
+  <td class="num">0.100</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">353</span></td>
+  <td class="pname" title="Patrick Berg">帕特里克·贝格</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.50</td>
+  <td class="num">0.115</td>
+  <td class="num">0.138</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">366</span></td>
+  <td class="pname" title="Andreas Schjelderup">安德烈亚斯·谢尔德鲁普</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.442</td>
+  <td class="num">0.206</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">370</span></td>
+  <td class="pname" title="Martin Odegaard">马丁·厄德高</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.48</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">371</span></td>
+  <td class="pname" title="Fredrik Aursnes">弗雷德里克·奥尔斯内斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.48</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">384</span></td>
+  <td class="pname" title="Kristian Thorstvedt">克里斯蒂安·索尔斯维特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.080</td>
+  <td class="num">0.142</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">386</span></td>
+  <td class="pname" title="Kristoffer Ajer">克里斯托弗·阿耶尔</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.097</td>
+  <td class="num">0.073</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">402</span></td>
+  <td class="pname" title="Julian Ryerson">尤利安·吕尔松</td>
+  <td class="pos-cell pos-df">DF,MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.087</td>
+  <td class="num">0.069</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">425</span></td>
+  <td class="pname" title="Oscar Bobb">奥斯卡·鲍勃</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.111</td>
+  <td class="num">0.140</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">481</span></td>
+  <td class="pname" title="Morten Thorsby">莫滕·索尔比</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.107</td>
+  <td class="num">0.143</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#126f1e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#126f1e"></span>
+      <span class="team-cn">墨西哥</span>
+      <span class="team-en">Mexico</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">15人</span>
+      <span class="team-total">总分: 11.49</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">102</span></td>
+  <td class="pname" title="Raúl Jiménez">劳尔·希门尼斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.48</td>
+  <td class="num">0.298</td>
+  <td class="num">0.342</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">156</span></td>
+  <td class="pname" title="Cesar Huerta">塞萨尔·韦尔塔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">157</span></td>
+  <td class="pname" title="Guillermo Martinez">吉列尔莫·马丁内斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">158</span></td>
+  <td class="pname" title="Santiago Gimenez">圣地亚哥·希门尼斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">159</span></td>
+  <td class="pname" title="Roberto Alvarado">罗伯托·阿尔瓦拉多</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">227</span></td>
+  <td class="pname" title="Erik Lira">埃里克·利拉</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.76</td>
+  <td class="num">0.113</td>
+  <td class="num">0.141</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">237</span></td>
+  <td class="pname" title="Brian Gutiérrez">布里安·古铁雷斯</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.74</td>
+  <td class="num">0.216</td>
+  <td class="num">0.164</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">249</span></td>
+  <td class="pname" title="Orbelín Pineda">奥韦林·皮内达</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.136</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">277</span></td>
+  <td class="pname" title="Álvaro Fidalgo">阿尔瓦罗·菲达尔戈</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.128</td>
+  <td class="num">0.147</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">279</span></td>
+  <td class="pname" title="Armando González">阿曼多·冈萨雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.63</td>
+  <td class="num">0.315</td>
+  <td class="num">0.346</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">311</span></td>
+  <td class="pname" title="Julián Quiñones">胡利安·基尼奥内斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.129</td>
+  <td class="num">0.147</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">381</span></td>
+  <td class="pname" title="Luis Chavez">路易斯·查韦斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">382</span></td>
+  <td class="pname" title="Gilberto Mora">希尔韦托·莫拉</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.141</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">415</span></td>
+  <td class="pname" title="Alexis Vega">亚历克西斯·贝加</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.135</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">477</span></td>
+  <td class="pname" title="Obed Vargas">奥贝德·巴尔加斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.138</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#fcdd00">
+    <div class="team-title">
+      <span class="team-badge" style="background:#fcdd00"></span>
+      <span class="team-cn">厄瓜多尔</span>
+      <span class="team-en">Ecuador</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">15人</span>
+      <span class="team-total">总分: 10.19</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">63</span></td>
+  <td class="pname" title="Enner Valencia">恩纳·瓦伦西亚</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.10</td>
+  <td class="num">0.682</td>
+  <td class="num">0.547</td>
+  <td class="num">+0.27</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">229</span></td>
+  <td class="pname" title="Anthony Valencia">安东尼·巴伦西亚</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">230</span></td>
+  <td class="pname" title="Jeremy Arevalo">杰雷米·阿雷瓦洛</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">231</span></td>
+  <td class="pname" title="John Yeboah">约翰·耶博阿</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">232</span></td>
+  <td class="pname" title="Gonzalo Plata">贡萨洛·普拉塔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">242</span></td>
+  <td class="pname" title="Nilson Angulo">尼尔松·安古洛</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.72</td>
+  <td class="num">0.312</td>
+  <td class="num">0.198</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">257</span></td>
+  <td class="pname" title="Kevin Rodríguez">凯文·罗德里格斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.66</td>
+  <td class="num">0.475</td>
+  <td class="num">0.404</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">280</span></td>
+  <td class="pname" title="Moisés Caicedo">莫伊塞斯·凯塞多</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.63</td>
+  <td class="num">0.152</td>
+  <td class="num">0.151</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">315</span></td>
+  <td class="pname" title="Kendry Páez">肯德里·派斯</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.297</td>
+  <td class="num">0.220</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">375</span></td>
+  <td class="pname" title="Jordy Caicedo">霍尔迪·凯塞多</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.47</td>
+  <td class="num">0.326</td>
+  <td class="num">0.348</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">380</span></td>
+  <td class="pname" title="Pervis Estupiñán">佩维斯·埃斯图皮南</td>
+  <td class="pos-cell pos-df">DF,MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.153</td>
+  <td class="num">0.113</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">393</span></td>
+  <td class="pname" title="Pedro Vite">佩德罗·维特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.091</td>
+  <td class="num">0.121</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">410</span></td>
+  <td class="pname" title="Jordy Alcivar">霍尔迪·阿尔西瓦尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.128</td>
+  <td class="num">0.147</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">431</span></td>
+  <td class="pname" title="Ángelo Preciado">安赫洛·普雷西亚多</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.120</td>
+  <td class="num">0.134</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">499</span></td>
+  <td class="pname" title="Denil Castillo">德尼尔·卡斯蒂略</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.32</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c1272d">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c1272d"></span>
+      <span class="team-cn">摩洛哥</span>
+      <span class="team-en">Morocco</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">15人</span>
+      <span class="team-total">总分: 10.02</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">103</span></td>
+  <td class="pname" title="Brahim Díaz">卜拉欣·迪亚斯</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.48</td>
+  <td class="num">0.163</td>
+  <td class="num">0.155</td>
+  <td class="num">+0.71</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">185</span></td>
+  <td class="pname" title="Abdessamad Ezzalzouli">埃扎卢利</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.94</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">186</span></td>
+  <td class="pname" title="Yassine Gessime">亚辛</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.94</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">187</span></td>
+  <td class="pname" title="Ayoub Amaimouni-Echghouyabe">阿迈穆尼-埃奇古亚布</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.94</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">193</span></td>
+  <td class="pname" title="Ayoub El Kaabi">卡埃比</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.90</td>
+  <td class="num">0.654</td>
+  <td class="num">0.420</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">236</span></td>
+  <td class="pname" title="Neil El Aynaoui">艾纳维</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.74</td>
+  <td class="num">0.109</td>
+  <td class="num">0.139</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">259</span></td>
+  <td class="pname" title="Ismael Saibari">塞巴里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.66</td>
+  <td class="num">0.368</td>
+  <td class="num">0.215</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">270</span></td>
+  <td class="pname" title="Sofyan Amrabat">索菲扬·阿姆拉巴特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.086</td>
+  <td class="num">0.123</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">343</span></td>
+  <td class="pname" title="Azzedine Ounahi">奥纳西</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.302</td>
+  <td class="num">0.187</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">388</span></td>
+  <td class="pname" title="Bilal El Khannouss">埃尔哈努斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.45</td>
+  <td class="num">0.188</td>
+  <td class="num">0.162</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">428</span></td>
+  <td class="pname" title="Samir El Mourabet">穆拉贝特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">429</span></td>
+  <td class="pname" title="Ayyoub Bouaddi">布阿迪</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">447</span></td>
+  <td class="pname" title="Nayef Aguerd">纳耶夫·阿格尔德</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.093</td>
+  <td class="num">0.070</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">492</span></td>
+  <td class="pname" title="Chadi Riad">里亚德</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.156</td>
+  <td class="num">0.062</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">500</span></td>
+  <td class="pname" title="Soufiane Rahimi">拉希米</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.32</td>
+  <td class="num">0.232</td>
+  <td class="num">0.163</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#01043a">
+    <div class="team-title">
+      <span class="team-badge" style="background:#01043a"></span>
+      <span class="team-cn">日本</span>
+      <span class="team-en">Japan</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">14人</span>
+      <span class="team-total">总分: 8.27</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">112</span></td>
+  <td class="pname" title="Ayase Ueda">上田绮世</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.42</td>
+  <td class="num">0.189</td>
+  <td class="num">0.272</td>
+  <td class="num">+0.44</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">213</span></td>
+  <td class="pname" title="Koki Ogawa">小川航基</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.80</td>
+  <td class="num">0.606</td>
+  <td class="num">0.428</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">233</span></td>
+  <td class="pname" title="Kento Shiode">盐贝健人</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">234</span></td>
+  <td class="pname" title="Keisuke Goto">后藤启介</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.75</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">253</span></td>
+  <td class="pname" title="Takefusa Kubo">久保建英</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.345</td>
+  <td class="num">0.243</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">328</span></td>
+  <td class="pname" title="Daichi Kamada">镰田大地</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.271</td>
+  <td class="num">0.208</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">362</span></td>
+  <td class="pname" title="Yukinari Sugawara">菅原由势</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.194</td>
+  <td class="num">0.163</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">365</span></td>
+  <td class="pname" title="Yuito Suzuki">铃木唯人</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.160</td>
+  <td class="num">0.152</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">405</span></td>
+  <td class="pname" title="Ritsu Doan">堂安律</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.43</td>
+  <td class="num">0.152</td>
+  <td class="num">0.151</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">423</span></td>
+  <td class="pname" title="Junya Ito">伊东纯也</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.41</td>
+  <td class="num">0.273</td>
+  <td class="num">0.194</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">436</span></td>
+  <td class="pname" title="Kaishu Sano">佐野海舟</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.036</td>
+  <td class="num">0.125</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">444</span></td>
+  <td class="pname" title="Daizen Maeda">前田大然</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.279</td>
+  <td class="num">0.188</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">448</span></td>
+  <td class="pname" title="Ao Tanaka">田中碧</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.082</td>
+  <td class="num">0.119</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">465</span></td>
+  <td class="pname" title="Wataru Endo">远藤航</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.048</td>
+  <td class="num">0.095</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#002fa7">
+    <div class="team-title">
+      <span class="team-badge" style="background:#002fa7"></span>
+      <span class="team-cn">乌拉圭</span>
+      <span class="team-en">Uruguay</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">13人</span>
+      <span class="team-total">总分: 11.96</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">48</span></td>
+  <td class="pname" title="Darwin Núñez">达尔文·努涅斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.41</td>
+  <td class="num">0.480</td>
+  <td class="num">0.424</td>
+  <td class="num">+0.32</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">87</span></td>
+  <td class="pname" title="Rodrigo Aguirre">罗德里戈·阿吉雷</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.68</td>
+  <td class="num">0.521</td>
+  <td class="num">0.414</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">130</span></td>
+  <td class="pname" title="Federico Valverde">费德里科·巴尔韦德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.24</td>
+  <td class="num">0.259</td>
+  <td class="num">0.220</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">160</span></td>
+  <td class="pname" title="Nicolás De La Cruz">尼古拉斯·德拉克鲁斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.07</td>
+  <td class="num">0.330</td>
+  <td class="num">0.229</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">174</span></td>
+  <td class="pname" title="Giorgian De Arrascaeta">乔治安·德阿拉斯卡埃塔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.99</td>
+  <td class="num">0.435</td>
+  <td class="num">0.261</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">188</span></td>
+  <td class="pname" title="Facundo Pellistri">法昆多·佩利斯特里</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.92</td>
+  <td class="num">0.113</td>
+  <td class="num">0.204</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">238</span></td>
+  <td class="pname" title="Brian Rodríguez">布里安·罗德里格斯</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.73</td>
+  <td class="num">0.300</td>
+  <td class="num">0.206</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">293</span></td>
+  <td class="pname" title="Rodrigo Bentancur">罗德里戈·本坦库尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.079</td>
+  <td class="num">0.114</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">360</span></td>
+  <td class="pname" title="Rodrigo Zalazar">罗德里戈·萨拉查</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.160</td>
+  <td class="num">0.339</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">373</span></td>
+  <td class="pname" title="Emiliano Martínez">埃米利亚诺·马丁内斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.47</td>
+  <td class="num">0.073</td>
+  <td class="num">0.141</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">379</span></td>
+  <td class="pname" title="Manuel Ugarte">曼努埃尔·乌加特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.054</td>
+  <td class="num">0.089</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">392</span></td>
+  <td class="pname" title="Maxi Araujo">马克西·阿劳霍</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.45</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">404</span></td>
+  <td class="pname" title="Federico Viñas">费德里科·比尼亚斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.43</td>
+  <td class="num">0.460</td>
+  <td class="num">0.362</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#ed2939">
+    <div class="team-title">
+      <span class="team-badge" style="background:#ed2939"></span>
+      <span class="team-cn">奥地利</span>
+      <span class="team-en">Austria</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">12人</span>
+      <span class="team-total">总分: 9.74</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">53</span></td>
+  <td class="pname" title="Marcel Sabitzer">萨比策</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">2.28</td>
+  <td class="num">0.697</td>
+  <td class="num">0.420</td>
+  <td class="num">+0.47</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">77</span></td>
+  <td class="pname" title="Marko Arnautović">马尔科·阿瑙托维奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.81</td>
+  <td class="num">0.787</td>
+  <td class="num">0.512</td>
+  <td class="num">+0.27</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">144</span></td>
+  <td class="pname" title="Michael Gregoritsch">米歇尔·格雷戈里施</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.15</td>
+  <td class="num">0.613</td>
+  <td class="num">0.447</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">209</span></td>
+  <td class="pname" title="Christoph Baumgartner">克里斯托弗·鲍姆加特纳</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.83</td>
+  <td class="num">0.294</td>
+  <td class="num">0.213</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">222</span></td>
+  <td class="pname" title="Sasa Kalajdzic">萨萨·卡拉季奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.78</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">310</span></td>
+  <td class="pname" title="Konrad Laimer">康拉德·莱默</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.123</td>
+  <td class="num">0.137</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">352</span></td>
+  <td class="pname" title="Romano Schmid">罗马诺·施密德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.50</td>
+  <td class="num">0.169</td>
+  <td class="num">0.158</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">357</span></td>
+  <td class="pname" title="Nicolas Seiwald">尼古拉斯·塞沃尔德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.077</td>
+  <td class="num">0.114</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">485</span></td>
+  <td class="pname" title="Patrick Wimmer">帕特里克·维默尔</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.167</td>
+  <td class="num">0.154</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">486</span></td>
+  <td class="pname" title="Carney Chukwuemeka">卡尔尼·丘库埃梅卡</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">487</span></td>
+  <td class="pname" title="Paul Wanner">保尔·万纳尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">496</span></td>
+  <td class="pname" title="Xaver Schlager">泽弗尔·施拉格</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.32</td>
+  <td class="num">0.053</td>
+  <td class="num">0.124</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#fcd116">
+    <div class="team-title">
+      <span class="team-badge" style="background:#fcd116"></span>
+      <span class="team-cn">塞内加尔</span>
+      <span class="team-en">Senegal</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">12人</span>
+      <span class="team-total">总分: 8.97</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">74</span></td>
+  <td class="pname" title="Sadio Mané">萨迪奥·马内</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.88</td>
+  <td class="num">0.517</td>
+  <td class="num">0.428</td>
+  <td class="num">+0.46</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">123</span></td>
+  <td class="pname" title="Nicolas Jackson">尼古拉斯·杰克逊</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.28</td>
+  <td class="num">0.403</td>
+  <td class="num">0.367</td>
+  <td class="num">+0.52</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">179</span></td>
+  <td class="pname" title="Iliman Ndiaye">伊利曼·恩迪亚耶</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.97</td>
+  <td class="num">0.259</td>
+  <td class="num">0.308</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">240</span></td>
+  <td class="pname" title="Assane Diao">阿桑·迪奥</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.73</td>
+  <td class="num">0.308</td>
+  <td class="num">0.345</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">258</span></td>
+  <td class="pname" title="Ismaila Sarr">伊斯梅拉·萨尔</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.66</td>
+  <td class="num">0.307</td>
+  <td class="num">0.215</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">261</span></td>
+  <td class="pname" title="Ibrahim Mbaye">易卜拉欣·姆巴耶</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">262</span></td>
+  <td class="pname" title="Bamba Dieng">班巴·迪昂</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">264</span></td>
+  <td class="pname" title="Pape Matar Sarr">帕普·马塔尔·萨尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.342</td>
+  <td class="num">0.241</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">407</span></td>
+  <td class="pname" title="Pape Gueye">帕普·盖耶</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.43</td>
+  <td class="num">0.191</td>
+  <td class="num">0.163</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">441</span></td>
+  <td class="pname" title="Idrissa Gana Gueye">伊德里萨·盖耶</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.073</td>
+  <td class="num">0.111</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">458</span></td>
+  <td class="pname" title="Lamine Camara">拉明·卡马拉</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.171</td>
+  <td class="num">0.158</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">498</span></td>
+  <td class="pname" title="Habib Diarra">哈比卜·迪亚拉</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.32</td>
+  <td class="num">0.115</td>
+  <td class="num">0.142</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#ff9900">
+    <div class="team-title">
+      <span class="team-badge" style="background:#ff9900"></span>
+      <span class="team-cn">科特迪瓦</span>
+      <span class="team-en">Cote dIvoire</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">12人</span>
+      <span class="team-total">总分: 7.84</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">131</span></td>
+  <td class="pname" title="Bazoumana Touré">巴祖马纳·图雷</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.23</td>
+  <td class="num">0.311</td>
+  <td class="num">0.346</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">173</span></td>
+  <td class="pname" title="Ibrahim Sangaré">易卜拉欣·桑加雷</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.00</td>
+  <td class="num">0.246</td>
+  <td class="num">0.187</td>
+  <td class="num">+0.52</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">220</span></td>
+  <td class="pname" title="Evann Guessand">埃万·盖桑</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.78</td>
+  <td class="num">0.417</td>
+  <td class="num">0.371</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">274</span></td>
+  <td class="pname" title="Ange-Yoan Bonny">博尼</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">275</span></td>
+  <td class="pname" title="Elye Wahi">瓦希</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">290</span></td>
+  <td class="pname" title="Seko Fofana">塞科·福法纳</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.331</td>
+  <td class="num">0.217</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">298</span></td>
+  <td class="pname" title="Oumar Diakité">奥马尔·迪亚基特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.333</td>
+  <td class="num">0.345</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">327</span></td>
+  <td class="pname" title="Franck Kessié">凯西</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.192</td>
+  <td class="num">0.172</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">351</span></td>
+  <td class="pname" title="Yan Diomandé">扬·迪奥曼德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.337</td>
+  <td class="num">0.180</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">354</span></td>
+  <td class="pname" title="Amad Diallo">阿玛德·迪亚洛</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.50</td>
+  <td class="num">0.210</td>
+  <td class="num">0.164</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">413</span></td>
+  <td class="pname" title="Guela Doué">盖拉·杜埃</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.114</td>
+  <td class="num">0.141</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">456</span></td>
+  <td class="pname" title="Simon Adingra">西蒙·阿丁格拉</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.239</td>
+  <td class="num">0.186</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e30a17">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e30a17"></span>
+      <span class="team-cn">土耳其</span>
+      <span class="team-en">Turkiye</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">11人</span>
+      <span class="team-total">总分: 7.20</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">122</span></td>
+  <td class="pname" title="Hakan Çalhanoğlu">哈坎·恰尔汗奥卢</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">1.28</td>
+  <td class="num">0.348</td>
+  <td class="num">0.237</td>
+  <td class="num">+0.54</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">141</span></td>
+  <td class="pname" title="Kerem Aktürkoğlu">凯雷姆·阿克蒂尔科格卢</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.17</td>
+  <td class="num">0.387</td>
+  <td class="num">0.366</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">251</span></td>
+  <td class="pname" title="Arda Güler">阿尔达·居莱尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.69</td>
+  <td class="num">0.295</td>
+  <td class="num">0.214</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">282</span></td>
+  <td class="pname" title="Kenan Yildiz">凯南·伊尔迪兹</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">283</span></td>
+  <td class="pname" title="Baris Alper Yilmaz">巴里什·阿尔珀·伊尔马兹</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">284</span></td>
+  <td class="pname" title="Oguz Aydin">奥乌兹·艾登</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">285</span></td>
+  <td class="pname" title="Irfan Can Kahveci">伊尔凡·詹·卡赫韦奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.62</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">403</span></td>
+  <td class="pname" title="İsmail Yüksek">伊斯梅尔·于克塞克</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.115</td>
+  <td class="num">0.136</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">417</span></td>
+  <td class="pname" title="Orkun Kökçü">奥尔昆·科克曲</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.290</td>
+  <td class="num">0.198</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">459</span></td>
+  <td class="pname" title="Deniz Gül">德尼兹·居尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.422</td>
+  <td class="num">0.357</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">466</span></td>
+  <td class="pname" title="Yunus Akgün">尤努斯·阿克金</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#002868">
+    <div class="team-title">
+      <span class="team-badge" style="background:#002868"></span>
+      <span class="team-cn">美国</span>
+      <span class="team-en">United States</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">10人</span>
+      <span class="team-total">总分: 6.06</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">200</span></td>
+  <td class="pname" title="Folarin Balogun">福拉林·巴洛贡</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.86</td>
+  <td class="num">0.311</td>
+  <td class="num">0.346</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">203</span></td>
+  <td class="pname" title="Tim Weah">蒂莫西·维亚</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.85</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">204</span></td>
+  <td class="pname" title="Haji Wright">哈吉·赖特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.85</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">205</span></td>
+  <td class="pname" title="Alejandro Zendejas">亚历杭德罗·赞德哈斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.85</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">335</span></td>
+  <td class="pname" title="Malik Tillman">马利克·蒂尔曼</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.53</td>
+  <td class="num">0.126</td>
+  <td class="num">0.146</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">356</span></td>
+  <td class="pname" title="Weston McKennie">韦斯顿·麦肯尼</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.50</td>
+  <td class="num">0.237</td>
+  <td class="num">0.162</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">387</span></td>
+  <td class="pname" title="Christian Pulisic">克里斯蒂安·普利西奇</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.129</td>
+  <td class="num">0.147</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">419</span></td>
+  <td class="pname" title="Sebastian Berhalter">塞巴斯蒂安·贝哈尔特</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.130</td>
+  <td class="num">0.147</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">434</span></td>
+  <td class="pname" title="Ricardo Pepi">里卡多·佩皮</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.341</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">460</span></td>
+  <td class="pname" title="Tyler Adams">泰勒·亚当斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.150</td>
+  <td class="num">0.150</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#11457e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#11457e"></span>
+      <span class="team-cn">捷克</span>
+      <span class="team-en">Czechia</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">9人</span>
+      <span class="team-total">总分: 6.69</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">67</span></td>
+  <td class="pname" title="Patrik Schick">帕特里克·希克</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">2.05</td>
+  <td class="num">0.638</td>
+  <td class="num">0.488</td>
+  <td class="num">+0.47</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">191</span></td>
+  <td class="pname" title="Pavel Šulc">帕维尔·舒尔茨</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.91</td>
+  <td class="num">0.395</td>
+  <td class="num">0.276</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">211</span></td>
+  <td class="pname" title="Tomáš Souček">托马什·绍切克</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.82</td>
+  <td class="num">0.309</td>
+  <td class="num">0.238</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">303</span></td>
+  <td class="pname" title="Tomáš Chorý">托马斯·乔里</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.271</td>
+  <td class="num">0.320</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">306</span></td>
+  <td class="pname" title="Lukáš Provod">卢卡斯·普罗沃德</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.269</td>
+  <td class="num">0.207</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">377</span></td>
+  <td class="pname" title="Mojmír Chytil">莫伊米尔·希季尔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.304</td>
+  <td class="num">0.344</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">383</span></td>
+  <td class="pname" title="Lukáš Červ">卢卡斯·切尔夫</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.251</td>
+  <td class="num">0.191</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">414</span></td>
+  <td class="pname" title="Ladislav Krejčí">拉吉斯拉夫·克雷伊奇</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.179</td>
+  <td class="num">0.121</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">440</span></td>
+  <td class="pname" title="David Jurásek">大卫·尤拉塞克</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.100</td>
+  <td class="num">0.138</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#002395">
+    <div class="team-title">
+      <span class="team-badge" style="background:#002395"></span>
+      <span class="team-cn">波黑</span>
+      <span class="team-en">Bosnia and Herzegovina</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">9人</span>
+      <span class="team-total">总分: 5.95</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">126</span></td>
+  <td class="pname" title="Edin Džeko">埃丁·哲科</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.25</td>
+  <td class="num">0.572</td>
+  <td class="num">0.460</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">155</span></td>
+  <td class="pname" title="Ermedin Demirović">埃尔梅丁·德米罗维奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.08</td>
+  <td class="num">0.356</td>
+  <td class="num">0.353</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">269</span></td>
+  <td class="pname" title="Haris Tabakovic">哈里斯·塔巴科维奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.482</td>
+  <td class="num">0.378</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">314</span></td>
+  <td class="pname" title="Kerim Alajbegović">克里姆·阿拉伊贝戈维奇</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.665</td>
+  <td class="num">0.322</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">320</span></td>
+  <td class="pname" title="Esmir Bajraktarevic">埃斯米尔·巴里亚克塔雷维奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.323</td>
+  <td class="num">0.222</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">331</span></td>
+  <td class="pname" title="Jovo Lukic">约沃·卢基奇</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">337</span></td>
+  <td class="pname" title="Nikola Katić">尼克拉·卡蒂奇</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.324</td>
+  <td class="num">0.176</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">401</span></td>
+  <td class="pname" title="Benjamin Tahirovic">本亚明·塔希罗维奇</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.193</td>
+  <td class="num">0.172</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">461</span></td>
+  <td class="pname" title="Samed Baždar">萨梅德·巴日达尔</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.912</td>
+  <td class="num">0.331</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e01111">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e01111"></span>
+      <span class="team-cn">加拿大</span>
+      <span class="team-en">Canada</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">8人</span>
+      <span class="team-total">总分: 7.37</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">32</span></td>
+  <td class="pname" title="Jonathan David">乔纳森·戴维</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.87</td>
+  <td class="num">0.490</td>
+  <td class="num">0.376</td>
+  <td class="num">+1.50</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">175</span></td>
+  <td class="pname" title="Cyle Larin">凯尔·拉林</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.99</td>
+  <td class="num">0.322</td>
+  <td class="num">0.348</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">194</span></td>
+  <td class="pname" title="Tani Oluwaseyi">塔尼·奥卢瓦塞伊</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.90</td>
+  <td class="num">0.326</td>
+  <td class="num">0.348</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">245</span></td>
+  <td class="pname" title="Promise David">普罗米斯·戴维</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.71</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">299</span></td>
+  <td class="pname" title="Ismaël Koné">伊斯梅尔·科内</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.60</td>
+  <td class="num">0.133</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">334</span></td>
+  <td class="pname" title="Tajon Buchanan">塔容·布坎南</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.53</td>
+  <td class="num">0.135</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">408</span></td>
+  <td class="pname" title="Mathieu Choiniere">马修·舒瓦尼埃</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.138</td>
+  <td class="num">0.149</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">472</span></td>
+  <td class="pname" title="Marcelo Flores">马塞洛·弗洛雷斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.132</td>
+  <td class="num">0.148</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#007229">
+    <div class="team-title">
+      <span class="team-badge" style="background:#007229"></span>
+      <span class="team-cn">阿尔及利亚</span>
+      <span class="team-en">Algeria</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">8人</span>
+      <span class="team-total">总分: 5.91</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">60</span></td>
+  <td class="pname" title="Mohamed Amoura">穆罕默德·阿穆拉</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">2.19</td>
+  <td class="num">0.790</td>
+  <td class="num">0.573</td>
+  <td class="num">+0.71</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">241</span></td>
+  <td class="pname" title="Riyad Mahrez">里亚德·马赫雷斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.72</td>
+  <td class="num">0.275</td>
+  <td class="num">0.319</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">263</span></td>
+  <td class="pname" title="Amine Gouiri">阿明·古伊里</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.65</td>
+  <td class="num">0.275</td>
+  <td class="num">0.319</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">321</span></td>
+  <td class="pname" title="Adil Boulbina">阿迪勒·布尔比纳</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">322</span></td>
+  <td class="pname" title="Nadhir Benbouali">纳迪尔·本布阿利</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">323</span></td>
+  <td class="pname" title="Fares Ghedjemis">法雷斯·盖杰米斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">470</span></td>
+  <td class="pname" title="Houssem Aouar">侯塞姆·奥瓦尔</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.206</td>
+  <td class="num">0.164</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">479</span></td>
+  <td class="pname" title="Ramiz Zerrouki">拉米兹·泽鲁基</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.195</td>
+  <td class="num">0.163</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#003876">
+    <div class="team-title">
+      <span class="team-badge" style="background:#003876"></span>
+      <span class="team-cn">苏格兰</span>
+      <span class="team-en">Scotland</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">8人</span>
+      <span class="team-total">总分: 5.15</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">132</span></td>
+  <td class="pname" title="Che Adams">切·亚当斯</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.23</td>
+  <td class="num">0.514</td>
+  <td class="num">0.412</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">195</span></td>
+  <td class="pname" title="Scott McTominay">斯科特·麦克托米奈</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.88</td>
+  <td class="num">0.367</td>
+  <td class="num">0.243</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">276</span></td>
+  <td class="pname" title="Ross Stewart">罗斯·斯图尔特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">308</span></td>
+  <td class="pname" title="John McGinn">约翰·麦金</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.167</td>
+  <td class="num">0.157</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">345</span></td>
+  <td class="pname" title="Lewis Ferguson">刘易斯·弗格森</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.124</td>
+  <td class="num">0.140</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">359</span></td>
+  <td class="pname" title="Ben Gannon-Doak">本·多克</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.368</td>
+  <td class="num">0.219</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">394</span></td>
+  <td class="pname" title="Ryan Christie">瑞安·克里斯蒂</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.211</td>
+  <td class="num">0.169</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">442</span></td>
+  <td class="pname" title="Lyndon Dykes">林顿·戴克斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.242</td>
+  <td class="num">0.329</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#005b99">
+    <div class="team-title">
+      <span class="team-badge" style="background:#005b99"></span>
+      <span class="team-cn">瑞典</span>
+      <span class="team-en">Sweden</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">8人</span>
+      <span class="team-total">总分: 4.93</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">81</span></td>
+  <td class="pname" title="Viktor Gyökeres">维克托·约克雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.73</td>
+  <td class="num">0.353</td>
+  <td class="num">0.351</td>
+  <td class="num">+0.60</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">197</span></td>
+  <td class="pname" title="Alexander Isak">亚历山大·伊萨克</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.87</td>
+  <td class="num">0.672</td>
+  <td class="num">0.427</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">313</span></td>
+  <td class="pname" title="Gustaf Nilsson">古斯塔夫·尼尔松</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">416</span></td>
+  <td class="pname" title="Yasin Ayari">亚辛·阿亚里</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.153</td>
+  <td class="num">0.151</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">464</span></td>
+  <td class="pname" title="Anthony Elanga">安东尼·埃兰加</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.130</td>
+  <td class="num">0.143</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">491</span></td>
+  <td class="pname" title="Jesper Karlström">耶斯佩尔·卡尔斯特伦</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.046</td>
+  <td class="num">0.118</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">493</span></td>
+  <td class="pname" title="Benjamin Nygren">本亚明·尼格伦</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.131</td>
+  <td class="num">0.144</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">494</span></td>
+  <td class="pname" title="Alexander Bernhardsson">亚历山大·伯恩哈德松</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.179</td>
+  <td class="num">0.159</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#d52b1e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#d52b1e"></span>
+      <span class="team-cn">巴拉圭</span>
+      <span class="team-en">Paraguay</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">8人</span>
+      <span class="team-total">总分: 4.01</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">182</span></td>
+  <td class="pname" title="Julio Enciso">胡利奥·恩西索</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.95</td>
+  <td class="num">0.493</td>
+  <td class="num">0.330</td>
+  <td class="num">+0.18</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">326</span></td>
+  <td class="pname" title="Miguel Almirón">米格尔·阿尔米隆</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.254</td>
+  <td class="num">0.216</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">349</span></td>
+  <td class="pname" title="Antonio Sanabria">安东尼奥·萨纳夫里亚</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.316</td>
+  <td class="num">0.334</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">391</span></td>
+  <td class="pname" title="Diego Gómez">迭戈·戈麦斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.45</td>
+  <td class="num">0.285</td>
+  <td class="num">0.224</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">411</span></td>
+  <td class="pname" title="Ramón Sosa">拉蒙·索萨</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.42</td>
+  <td class="num">0.402</td>
+  <td class="num">0.287</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">433</span></td>
+  <td class="pname" title="Isidro Pitta">伊西德罗·皮塔</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.192</td>
+  <td class="num">0.313</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">449</span></td>
+  <td class="pname" title="Alex Arce">亚历克斯·阿尔塞</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.277</td>
+  <td class="num">0.335</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">455</span></td>
+  <td class="pname" title="Matías Galarza">马蒂亚斯·加拉尔萨</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.37</td>
+  <td class="num">0.440</td>
+  <td class="num">0.247</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#ce1126">
+    <div class="team-title">
+      <span class="team-badge" style="background:#ce1126"></span>
+      <span class="team-cn">加纳</span>
+      <span class="team-en">Ghana</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">7人</span>
+      <span class="team-total">总分: 4.33</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">85</span></td>
+  <td class="pname" title="Jordan Ayew">乔丹·阿尤</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.70</td>
+  <td class="num">0.598</td>
+  <td class="num">0.477</td>
+  <td class="num">+0.69</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">307</span></td>
+  <td class="pname" title="Antoine Semenyo">安托万·塞梅尼奥</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.57</td>
+  <td class="num">0.244</td>
+  <td class="num">0.298</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">344</span></td>
+  <td class="pname" title="Thomas Partey">托马斯·帕尔特伊</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.286</td>
+  <td class="num">0.212</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">398</span></td>
+  <td class="pname" title="Christopher Bonsu Baah">克里斯托弗·邦苏·巴</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">399</span></td>
+  <td class="pname" title="Prince Kwabena Adu">普林斯·夸贝纳·阿杜</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">489</span></td>
+  <td class="pname" title="Iñaki Williams">伊尼亚基·威廉姆斯</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.262</td>
+  <td class="num">0.189</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">490</span></td>
+  <td class="pname" title="Kwasi Sibo">夸西·西博</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.111</td>
+  <td class="num">0.140</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e60000">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e60000"></span>
+      <span class="team-cn">韩国</span>
+      <span class="team-en">Korea Republic</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">6人</span>
+      <span class="team-total">总分: 3.50</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">147</span></td>
+  <td class="pname" title="Son Heung-min">孙兴慜</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.12</td>
+  <td class="num">0.246</td>
+  <td class="num">0.207</td>
+  <td class="num">+0.56</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">295</span></td>
+  <td class="pname" title="Cho Gue-sung">曹圭成</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.61</td>
+  <td class="num">0.369</td>
+  <td class="num">0.354</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">324</span></td>
+  <td class="pname" title="Lee Kang-in">李刚仁</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.55</td>
+  <td class="num">0.258</td>
+  <td class="num">0.216</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">389</span></td>
+  <td class="pname" title="Oh Hyeon-gyu">吴贤揆</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.45</td>
+  <td class="num">0.985</td>
+  <td class="num">0.510</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">437</span></td>
+  <td class="pname" title="Hwang In-beom">黄仁范</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.39</td>
+  <td class="num">0.130</td>
+  <td class="num">0.137</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">446</span></td>
+  <td class="pname" title="Lee Jae-sung">李在城</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.188</td>
+  <td class="num">0.173</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c8102e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c8102e"></span>
+      <span class="team-cn">埃及</span>
+      <span class="team-en">Egypt</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">5人</span>
+      <span class="team-total">总分: 4.84</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">57</span></td>
+  <td class="pname" title="Mohamed Salah">穆罕默德·萨拉赫</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">2.23</td>
+  <td class="num">0.600</td>
+  <td class="num">0.388</td>
+  <td class="num">+0.82</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">177</span></td>
+  <td class="pname" title="Omar Marmoush">奥马尔·马尔穆什</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.98</td>
+  <td class="num">0.186</td>
+  <td class="num">0.162</td>
+  <td class="num">+0.61</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">271</span></td>
+  <td class="pname" title="Aqtay Abdallah">阿卜杜拉·阿卜杜拉</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">272</span></td>
+  <td class="pname" title="Hamza Abdelkarim">哈姆扎·阿卜杜勒卡里姆</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.64</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">480</span></td>
+  <td class="pname" title="Hamdy Fathy">哈姆迪·法特希</td>
+  <td class="pos-cell pos-mf">MF,DF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.085</td>
+  <td class="num">0.122</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#00843d">
+    <div class="team-title">
+      <span class="team-badge" style="background:#00843d"></span>
+      <span class="team-cn">伊朗</span>
+      <span class="team-en">IR Iran</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">5人</span>
+      <span class="team-total">总分: 2.87</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">137</span></td>
+  <td class="pname" title="Mehdi Taremi">迈赫迪·塔雷米</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">1.20</td>
+  <td class="num">0.396</td>
+  <td class="num">0.310</td>
+  <td class="num">+0.31</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">347</span></td>
+  <td class="pname" title="Dennis Dargahi">丹尼斯·达尔加希</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">395</span></td>
+  <td class="pname" title="Saeid Ezatolahi">赛义德·埃扎托拉希</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.44</td>
+  <td class="num">0.183</td>
+  <td class="num">0.170</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">453</span></td>
+  <td class="pname" title="Mehdi Ghaedi">迈赫迪·加埃迪</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.37</td>
+  <td class="num">0.244</td>
+  <td class="num">0.195</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">473</span></td>
+  <td class="pname" title="Alireza Jahanbakhsh">阿里雷扎·贾汉巴赫什</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.181</td>
+  <td class="num">0.164</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#e7002a">
+    <div class="team-title">
+      <span class="team-badge" style="background:#e7002a"></span>
+      <span class="team-cn">突尼斯</span>
+      <span class="team-en">Tunisia</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">5人</span>
+      <span class="team-total">总分: 2.51</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">215</span></td>
+  <td class="pname" title="Elias Achouri">埃利亚斯·阿乔里</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.79</td>
+  <td class="num">0.169</td>
+  <td class="num">0.157</td>
+  <td class="num">+0.54</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">332</span></td>
+  <td class="pname" title="Ali Abdi">阿里·阿布迪</td>
+  <td class="pos-cell pos-df">DF</td>
+  <td class="num score-cell">0.54</td>
+  <td class="num">0.087</td>
+  <td class="num">0.069</td>
+  <td class="num">+0.40</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">346</span></td>
+  <td class="pname" title="Hazem Mastouri">哈齐姆·马斯图里</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.51</td>
+  <td class="num">0.387</td>
+  <td class="num">0.363</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">482</span></td>
+  <td class="pname" title="Khalil Ayari">哈利勒·阿亚里</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">483</span></td>
+  <td class="pname" title="Rayan Elloumi">拉扬·埃卢米</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#ffcc00">
+    <div class="team-title">
+      <span class="team-badge" style="background:#ffcc00"></span>
+      <span class="team-cn">澳大利亚</span>
+      <span class="team-en">Australia</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">4人</span>
+      <span class="team-total">总分: 2.15</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">169</span></td>
+  <td class="pname" title="Nestory Irankunda">伊兰昆达</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">1.02</td>
+  <td class="num">0.258</td>
+  <td class="num">0.329</td>
+  <td class="num">+0.68</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">450</span></td>
+  <td class="pname" title="Velupilly">尼山·韦卢皮莱</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">451</span></td>
+  <td class="pname" title="Volpato">克里斯蒂安·沃尔帕托</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">452</span></td>
+  <td class="pname" title="Tete Yengi">特特·延吉</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.38</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#007f4f">
+    <div class="team-title">
+      <span class="team-badge" style="background:#007f4f"></span>
+      <span class="team-cn">刚果（金）</span>
+      <span class="team-en">Congo DR</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">3人</span>
+      <span class="team-total">总分: 1.52</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">312</span></td>
+  <td class="pname" title="Yoane Wissa">约阿纳·维萨</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.311</td>
+  <td class="num">0.346</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">316</span></td>
+  <td class="pname" title="Cédric Bakambu">巴坎布</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.301</td>
+  <td class="num">0.343</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">430</span></td>
+  <td class="pname" title="Theo Bongonda">蒂奥·博格纳达</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.40</td>
+  <td class="num">0.322</td>
+  <td class="num">0.348</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#0099b5">
+    <div class="team-title">
+      <span class="team-badge" style="background:#0099b5"></span>
+      <span class="team-cn">乌兹别克斯坦</span>
+      <span class="team-en">Uzbekistan</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">3人</span>
+      <span class="team-total">总分: 1.23</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">385</span></td>
+  <td class="pname" title="Eldor Shomurodov">埃尔多尔·肖穆罗多夫</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.46</td>
+  <td class="num">0.311</td>
+  <td class="num">0.326</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">406</span></td>
+  <td class="pname" title="Otabek Shukurov">奥塔别克·舒库罗夫</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.43</td>
+  <td class="num">0.138</td>
+  <td class="num">0.142</td>
+  <td class="num">+0.23</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">469</span></td>
+  <td class="pname" title="Jaloliddin Masharipov">贾洛利丁·马沙里波夫</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.179</td>
+  <td class="num">0.246</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#003366">
+    <div class="team-title">
+      <span class="team-badge" style="background:#003366"></span>
+      <span class="team-cn">佛得角</span>
+      <span class="team-en">Cape Verde</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">3人</span>
+      <span class="team-total">总分: 1.22</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">339</span></td>
+  <td class="pname" title="Dailon Livramento">戴隆·利夫拉门托</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.515</td>
+  <td class="num">0.415</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">463</span></td>
+  <td class="pname" title="Garry Rodrigues">加里·罗德里格斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.36</td>
+  <td class="num">0.259</td>
+  <td class="num">0.326</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">478</span></td>
+  <td class="pname" title="Gilson Tavares">吉尔森·塔瓦雷斯</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.350</td>
+  <td class="num">0.350</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#7a1f3d">
+    <div class="team-title">
+      <span class="team-badge" style="background:#7a1f3d"></span>
+      <span class="team-cn">卡塔尔</span>
+      <span class="team-en">Qatar</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">2人</span>
+      <span class="team-total">总分: 1.36</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">199</span></td>
+  <td class="pname" title="Almoez Ali">埃莫兹·阿里</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.87</td>
+  <td class="num">0.253</td>
+  <td class="num">0.292</td>
+  <td class="num">+0.45</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">358</span></td>
+  <td class="pname" title="Akram Afif">阿克拉姆·阿菲夫</td>
+  <td class="pos-cell pos-mf">MF,FW</td>
+  <td class="num score-cell">0.49</td>
+  <td class="num">0.208</td>
+  <td class="num">0.188</td>
+  <td class="num">+0.20</td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#000000">
+    <div class="team-title">
+      <span class="team-badge" style="background:#000000"></span>
+      <span class="team-cn">新西兰</span>
+      <span class="team-en">New Zealand</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">2人</span>
+      <span class="team-total">总分: 1.23</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">255</span></td>
+  <td class="pname" title="Chris Wood">克里斯·伍德</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.67</td>
+  <td class="num">1.017</td>
+  <td class="num">0.557</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">317</span></td>
+  <td class="pname" title="Ben Waine">本·韦恩</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.56</td>
+  <td class="num">0.527</td>
+  <td class="num">0.371</td>
+  <td class="num">+0.39</td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#007a4d">
+    <div class="team-title">
+      <span class="team-badge" style="background:#007a4d"></span>
+      <span class="team-cn">南非</span>
+      <span class="team-en">South Africa</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">2人</span>
+      <span class="team-total">总分: 0.86</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">338</span></td>
+  <td class="pname" title="Lyle Foster">莱尔·福斯特</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.52</td>
+  <td class="num">0.372</td>
+  <td class="num">0.358</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">484</span></td>
+  <td class="pname" title="Evidence Makgopa">埃维登斯·马科戈帕</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.396</td>
+  <td class="num">0.358</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#003399">
+    <div class="team-title">
+      <span class="team-badge" style="background:#003399"></span>
+      <span class="team-cn">库拉索</span>
+      <span class="team-en">Curacao</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">2人</span>
+      <span class="team-total">总分: 0.82</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">372</span></td>
+  <td class="pname" title="Leandro Bacuna">莱安多·巴库纳</td>
+  <td class="pos-cell pos-mf">MF</td>
+  <td class="num score-cell">0.47</td>
+  <td class="num">0.132</td>
+  <td class="num">0.140</td>
+  <td class="num">+0.33</td>
+</tr><tr>
+  <td class="num"><span class="rank-num">468</span></td>
+  <td class="pname" title="Kenji Gorré">肯吉·戈雷</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">0.35</td>
+  <td class="num">0.387</td>
+  <td class="num">0.367</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#00209f">
+    <div class="team-title">
+      <span class="team-badge" style="background:#00209f"></span>
+      <span class="team-cn">海地</span>
+      <span class="team-en">Haiti</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">2人</span>
+      <span class="team-total">总分: 0.70</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">454</span></td>
+  <td class="pname" title="Duckens Nazon">纳宗</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.37</td>
+  <td class="num">0.603</td>
+  <td class="num">0.464</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr><tr>
+  <td class="num"><span class="rank-num">495</span></td>
+  <td class="pname" title="Frantzdy Pierrot">皮埃罗</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.33</td>
+  <td class="num">0.294</td>
+  <td class="num">0.322</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#c8102e">
+    <div class="team-title">
+      <span class="team-badge" style="background:#c8102e"></span>
+      <span class="team-cn">约旦</span>
+      <span class="team-en">Jordan</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">1人</span>
+      <span class="team-total">总分: 1.11</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">148</span></td>
+  <td class="pname" title="Ali Olwan">阿里·奥尔万</td>
+  <td class="pos-cell pos-fw">FW,MF</td>
+  <td class="num score-cell">1.11</td>
+  <td class="num">0.271</td>
+  <td class="num">0.301</td>
+  <td class="num">+0.70</td>
+</tr></tbody>
+  </table>
+</div>
+
+<div class="team-card">
+  <div class="team-header" style="border-left-color:#002a7f">
+    <div class="team-title">
+      <span class="team-badge" style="background:#002a7f"></span>
+      <span class="team-cn">巴拿马</span>
+      <span class="team-en">Panama</span>
+    </div>
+    <div class="team-stats">
+      <span class="player-count">1人</span>
+      <span class="team-total">总分: 0.34</span>
+    </div>
+  </div>
+  <table class="team-table">
+    <thead><tr>
+      <th class="num">#</th><th>球员</th><th>位置</th>
+      <th class="num">得分</th><th class="num">xG/90</th>
+      <th class="num">Shrk</th><th class="num">PK</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="num"><span class="rank-num">471</span></td>
+  <td class="pname" title="José Fajardo">法贾尔多</td>
+  <td class="pos-cell pos-fw">FW</td>
+  <td class="num score-cell">0.34</td>
+  <td class="num">0.464</td>
+  <td class="num">0.391</td>
+  <td class="num"><span class="zero">0</span></td>
+</tr></tbody>
+  </table>
+</div>
+</div>
+
+<script>
+const search = document.getElementById('search');
+const cards = document.querySelectorAll('.team-card');
+
+search.addEventListener('input', () => {
+  const q = search.value.toLowerCase().trim();
+  if (!q) {
+    cards.forEach(c => c.classList.remove('hidden'));
+    return;
+  }
+  cards.forEach(card => {
+    const header = card.querySelector('.team-header');
+    const teamMatch = header.textContent.toLowerCase().includes(q);
+    const rows = card.querySelectorAll('tbody tr');
+    let playerMatch = false;
+    rows.forEach(r => {
+      const name = r.querySelector('.pname');
+      const title = name ? (name.getAttribute('title') || '') + ' ' + name.textContent : '';
+      if (title.toLowerCase().includes(q)) {
+        r.style.display = '';
+        playerMatch = true;
+      } else {
+        r.style.display = q ? 'none' : '';
+      }
+    });
+    card.classList.toggle('hidden', !teamMatch && !playerMatch);
+  });
+});
+</script>
+</body>
+</html>

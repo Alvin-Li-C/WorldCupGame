@@ -217,13 +217,13 @@ td { padding: 6px; white-space: nowrap; line-height: 1.4; }
     <th data-col="player">Player</th>
     <th data-col="team">Team</th>
     <th data-col="pos">Pos</th>
-    <th data-col="team_share" class="num">Share%</th>
-    <th data-col="final_projected_g" class="num">Total Score</th>
-    <th data-col="pk_bonus" class="num">PK+</th>
+    <th data-col="final_projected_g" class="num" title="\u9884\u671fWC\u8fdb\u7403\u6570 (xG\u4ee3\u7406+\u8d1d\u53f6\u65af\u6536\u7f29+\u7403\u961f\u5f3a\u5ea6+\u70b9\u7403)">Total Score</th>
+    <th data-col="xg_proxy" class="num" title="xG\u4ee3\u7406: SoT*0.30 + \u975eSoT\u5c04\u95e8*0.08 (\u6bcf90\u5206\u949f)">xG/90</th>
+    <th data-col="shrunk_xg_per90" class="num" title="\u8d1d\u53f6\u65af\u6536\u7f29\u540e\u7684xG/90 (\u5c0f\u6837\u672c\u5411\u4f4d\u7f6e\u5148\u9a8c\u6536\u7f29)">Shrk xG</th>
+    <th data-col="team_mult" class="num" title="\u7403\u961f\u5b9e\u529b\u4e58\u6570 = \u7403\u961f\u9884\u6d4b\u8fdb\u7403 / \u6240\u6709\u7403\u961f\u4e2d\u4f4d\u6570">Team Mult</th>
+    <th data-col="expected_wc_90s" class="num" title="\u9884\u671fWC\u51fa\u573a90\u5206\u949f\u6570 (\u8003\u8651\u8f6e\u6362)">WC 90s</th>
+    <th data-col="pk_bonus" class="num" title="\u70b9\u7403\u52a0\u6210 (\u4e0a\u96501.5\u7403)">PK+</th>
     <th data-col="og" class="num">OG</th>
-    <th data-col="gls_per90" class="num">G/90</th>
-    <th data-col="sh" class="num">Sh</th>
-    <th data-col="g_sh" class="num">G/Sh</th>
   </tr>
 </thead>
 <tbody id="rkTbody"></tbody>
@@ -300,7 +300,7 @@ function renderFull() {
   let filtered = DATA.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q)) return false;
+    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn && r.name_cn.includes(q))) return false;
     if (sf === 'has' && r.sh === 0) return false;
     if (sf === 'no' && r.sh > 0) return false;
     return true;
@@ -314,7 +314,7 @@ function renderFull() {
     const teamHasShots = hasTeamShotData(r.team);
     return '<tr>'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
-      + '<td class="player-name">'+r.player+'</td>'
+      + '<td class="player-name"><span title="'+r.player+'">'+displayName(r)+'</span></td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
       + '<td class="num">'+r.age+'</td>'
       + '<td class="num">'+numCell(r.mp)+'</td>'
@@ -380,6 +380,8 @@ function rankBadge(r) {
   return '<span class="rank-default">'+r+'</span>';
 }
 
+function displayName(r) { return r.name_cn || r.player; }
+
 function scoreBar(score, maxScore) {
   const pct = Math.max(3, (score / maxScore) * 100);
   return '<span class="score-bar" style="width:'+pct.toFixed(0)+'px"></span>';
@@ -392,7 +394,7 @@ function renderRanking() {
   let filtered = RANKING.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q)) return false;
+    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn && r.name_cn.includes(q))) return false;
     return true;
   });
   
@@ -419,20 +421,18 @@ function renderRanking() {
       rankHtml = rankBadge(r.rank);
     }
     
-    const teamHasShots = hasTeamShotData(r.team);
-    
     return '<tr>'
       + '<td class="num">'+rankHtml+'</td>'
-      + '<td class="player-name">'+r.player+'</td>'
+      + '<td class="player-name"><span title="'+r.player+'">'+displayName(r)+'</span></td>'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
-      + '<td class="num">'+r.team_share+'%</td>'
       + '<td class="num">'+scoreBar(r.final_projected_g, maxScore)+r.final_projected_g.toFixed(2)+'</td>'
+      + '<td class="num">'+(r.xg_proxy > 0 ? r.xg_proxy.toFixed(3) : '<span class="stat-na">-</span>')+'</td>'
+      + '<td class="num">'+(r.shrunk_xg_per90 > 0 ? r.shrunk_xg_per90.toFixed(3) : '<span class="stat-na">-</span>')+'</td>'
+      + '<td class="num">'+(r.team_mult > 0 ? r.team_mult.toFixed(2) : '<span class="stat-na">-</span>')+'</td>'
+      + '<td class="num">'+(r.expected_wc_90s > 0 ? r.expected_wc_90s.toFixed(1) : '<span class="stat-na">-</span>')+'</td>'
       + '<td class="num">'+(r.pk_bonus > 0 ? '<span style="color:#4fc3f7">+'+r.pk_bonus.toFixed(2)+'</span>' : '<span class="stat-zero">0.00</span>')+'</td>'
       + '<td class="num">'+(r.og > 0 ? '<span style="color:#ff9800">'+r.og+'</span>' : '<span class="stat-zero">0</span>')+'</td>'
-      + '<td class="num">'+r.gls_per90.toFixed(2)+'</td>'
-      + (teamHasShots ? '<td class="num">'+r.sh+'</td>' : '<td class="num"><span class="stat-na">-</span></td>')
-      + (teamHasShots && r.sh > 0 ? '<td class="num">'+(r.g_sh !== undefined ? r.g_sh.toFixed(2) : '0.00')+'</td>' : '<td class="num"><span class="stat-na">-</span></td>')
       + '</tr>';
   }).join('');
   

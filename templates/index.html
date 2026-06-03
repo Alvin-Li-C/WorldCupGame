@@ -534,7 +534,10 @@
             method: 'POST', headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({participant_name: name, enabled: enabled})
         });
-        if (resp.ok) autoDraftStates[name] = enabled;
+        if (!resp.ok) return null;
+        var data = await resp.json();
+        autoDraftStates[name] = enabled;
+        return data;
     }
 
     // PIN API
@@ -884,16 +887,26 @@
         var newState = !isOn;
         if (newState) {
             el.classList.add('on');
-            document.getElementById('autoDraftBadge').textContent = '\u5df2\u5f00\u542f';
+            document.getElementById('autoDraftBadge').textContent = '已开启';
             document.getElementById('autoDraftBadge').className = 'auto-draft-badge on';
         } else {
             el.classList.remove('on');
-            document.getElementById('autoDraftBadge').textContent = '\u672a\u5f00\u542f';
+            document.getElementById('autoDraftBadge').textContent = '未开启';
             document.getElementById('autoDraftBadge').className = 'auto-draft-badge off';
         }
-        // Sync to server (fire-and-forget)
-        toggleAutoDraftOnServer(currentUser, newState);
         updateUI();
+        // Sync to server and handle auto-selections
+        toggleAutoDraftOnServer(currentUser, newState).then(function(data) {
+            if (data && data.auto_picks && data.auto_picks.length > 0) {
+                // Server auto-selected; refresh everything
+                fetchState().then(function() {
+                    fetchTeams().then(function() {
+                        turnCompleted = currentUser === gameState.current_participant.name;
+                        renderPlayers();
+                    });
+                });
+            }
+        });
     }
 
     // checkAutoDraft: called after state updates
@@ -1153,7 +1166,7 @@
                 picks.sort(function(a, b) { return a.round_number - b.round_number || a.pick_number - b.pick_number; });
                 picks.forEach(function(p) {
                     html += '<div style="display:inline-block;background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.2);border-radius:6px;padding:0.2rem 0.5rem;margin:0.15rem;font-size:0.7rem;">' +
-                            p.flag_emoji + ' ' + p.player_name + ' #' + p.jersey_number +
+                            p.flag_emoji + ' ' + (p.player_name_cn || p.player_name) + ' #' + p.jersey_number +
                             ' <span style="color:#888;">R' + p.round_number + 'P' + p.pick_number + '</span></div>';
                 });
                 html += '</div>';
