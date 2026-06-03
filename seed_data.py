@@ -1425,11 +1425,11 @@ def seed_database():
 
     # Insert participants
     participants = [
-        ('庆爷', 1),
-        ('耗子', 2),
-        ('老王', 3),
-        ('李总', 4),
-        ('老闫', 5),
+        ('耗子', 1),
+        ('庆爷', 2),
+        ('李总', 3),
+        ('老闫', 4),
+        ('老王', 5),
     ]
     for name, order in participants:
         cur.execute('INSERT INTO participants (name, draft_order) VALUES (?, ?)', (name, order))
