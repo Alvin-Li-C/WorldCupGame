@@ -468,8 +468,13 @@
         if (!pin) { preselectQueue = []; return; }
         var resp = await fetch('/api/preselect/' + encodeURIComponent(currentUser) + '?pin=' + encodeURIComponent(pin));
         if (resp.status === 403) {
-            showToast('\u26a0\ufe0f PIN\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165', 'warning');
-            showPinEntryModal(currentUser);
+            showToast('\u26a0\ufe0f PIN\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u9009\u62e9\u8eab\u4efd', 'warning');
+            // Revoke identity - PIN verification required
+            preselectQueue = [];
+            currentUser = null;
+            localStorage.removeItem('worldcup_identity');
+            hidePinEntryModal();
+            showIdentityModal();
             return;
         }
         var data = await resp.json();

@@ -201,18 +201,22 @@ def is_game_over():
 def init_pin_for_participant(participant_name, pin):
     """Set initial PIN for a participant. Returns True on success."""
     db = get_db()
+    pin_hash = hashlib.sha256(pin.encode()).hexdigest()
     existing = db.execute(
         'SELECT participant_name FROM preselect_queues WHERE participant_name = ?',
         (participant_name,)
     ).fetchone()
     if existing:
-        db.close()
-        return False
-    pin_hash = hashlib.sha256(pin.encode()).hexdigest()
-    db.execute(
-        'INSERT INTO preselect_queues (participant_name, pin_hash) VALUES (?, ?)',
-        (participant_name, pin_hash)
-    )
+        # Row exists (e.g. auto-draft created it without PIN), update it
+        db.execute(
+            'UPDATE preselect_queues SET pin_hash = ? WHERE participant_name = ?',
+            (pin_hash, participant_name)
+        )
+    else:
+        db.execute(
+            'INSERT INTO preselect_queues (participant_name, pin_hash) VALUES (?, ?)',
+            (participant_name, pin_hash)
+        )
     db.commit()
     db.close()
     return True

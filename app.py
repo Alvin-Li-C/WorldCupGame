@@ -216,7 +216,9 @@ def api_get_preselect(name):
 
     if not pin:
         db.close()
-        return jsonify({'queue': [], 'has_pin': True})
+        # Only report has_pin if hash is actually set (not just row exists from auto-draft)
+        has_pin = bool(row['pin_hash'])
+        return jsonify({'queue': [], 'has_pin': has_pin})
 
     # Verify PIN
     if hashlib.sha256(pin.encode()).hexdigest() != row['pin_hash']:
