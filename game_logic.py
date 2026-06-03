@@ -50,6 +50,7 @@ def get_current_state():
     selections = db.execute('''
         SELECT s.id, s.round_number, s.pick_number,
                p.name AS participant_name, pl.name AS player_name,
+               pl.name_cn AS player_name_cn,
                pl.jersey_number, t.name AS team_name, t.flag_emoji,
                s.created_at
         FROM selections s
