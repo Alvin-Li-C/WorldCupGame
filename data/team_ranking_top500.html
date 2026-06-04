@@ -5135,29 +5135,35 @@ search.addEventListener('input', () => {
   });
 });
 
-// Fetch draft selections and highlight selected players
-fetch('/api/teams')
-  .then(r => r.json())
-  .then(teams => {
-    const selectedNames = new Set();
-    teams.forEach(t => {
-      t.players.forEach(p => {
-        if (p.selected) selectedNames.add(p.name);
+// Auto-refresh selection status every 5 seconds
+function refreshSelections() {
+  fetch('/api/teams')
+    .then(r => r.json())
+    .then(teams => {
+      const selectedNames = new Set();
+      teams.forEach(t => {
+        t.players.forEach(p => {
+          if (p.selected) selectedNames.add(p.name);
+        });
       });
-    });
-    if (selectedNames.size === 0) return;
-    document.querySelectorAll('tbody tr[data-player]').forEach(row => {
-      const playerName = row.getAttribute('data-player');
-      if (selectedNames.has(playerName)) {
-        row.classList.add('selected');
+      document.querySelectorAll('tbody tr[data-player]').forEach(row => {
+        const playerName = row.getAttribute('data-player');
         const pnameCell = row.querySelector('.pname');
-        if (pnameCell && !pnameCell.querySelector('.selected-badge')) {
-          pnameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">已选</span>');
+        if (!pnameCell) return;
+        const badge = pnameCell.querySelector('.selected-badge');
+        if (selectedNames.has(playerName)) {
+          row.classList.add('selected');
+          if (!badge) pnameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">已选</span>');
+        } else {
+          row.classList.remove('selected');
+          if (badge) badge.remove();
         }
-      }
-    });
-  })
-  .catch(() => {});
+      });
+    })
+    .catch(() => {});
+}
+refreshSelections();
+setInterval(refreshSelections, 5000);
 </script>
 </body>
 </html>
