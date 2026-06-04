@@ -319,6 +319,10 @@
         <h2>🏆 2026 选射手</h2>
         <p>请选择你的身份</p>
         <div id="identityButtons"></div>
+        <div id="gateSuccess" style="display:none;">
+            <p style="color:#8f8;font-size:1.1rem;font-weight:700;margin-top:1rem;">PIN 验证通过</p>
+            <p style="color:#aaa;font-size:0.9rem;" id="gateCountdown">3 秒后进入选秀...</p>
+        </div>
     </div>
 </div>
 
@@ -365,6 +369,7 @@
 </div>
 
 <!-- ========== HEADER ========== -->
+<div id="gameContent" style="display:none;">
 <header class="game-header">
     <div class="container">
         <div class="row align-items-center">
@@ -441,6 +446,8 @@
 <div class="action-bar">
     <button class="btn btn-view-picks" onclick="showSelectionsModal()">📋 查看已选</button>
     <button class="btn btn-export" onclick="exportExcel()">📥 导出Excel</button>
+</div>
+
 </div>
 
 <!-- ========== TOAST CONTAINER ========== -->
@@ -1024,10 +1031,10 @@
     function setIdentity(name, order) {
         currentUser = name;
         localStorage.setItem('worldcup_identity', name);
-        hideIdentityModal();
-        updateUI();
-        checkAutoDraft();
-        showToast('\u2705 \u4f60\u662f ' + name + '\uff08\u9009\u79c0\u987a\u4f4d #' + order + '\uff09', 'success');
+        // Show verifying state in gate
+        document.getElementById('identityButtons').style.display = 'none';
+        document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
+        document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u9a8c\u8bc1\u8eab\u4efd\uff0c\u8bf7\u7a0d\u5019';
 
         // Check PIN status and load preselect
         (async function() {
@@ -1042,8 +1049,7 @@
                     // PIN stored locally - try to load
                     await loadPreselectFromServer();
                     await fetchAutoDraftState(name);
-                    updateUI();
-                    if (currentMode === 'preselect') renderPreselectPanel();
+                    showVerificationSuccess(name);
                 }
             } else {
                 // No PIN set yet - prompt for setup
@@ -1066,6 +1072,7 @@
         // Revoke identity - PIN is required
         currentUser = null;
         localStorage.removeItem('worldcup_identity');
+        resetGateUI();
         showIdentityModal();
     }
 
@@ -1081,8 +1088,7 @@
         storePin(name, pin);
         hidePinSetupModal();
         showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
-        await loadPreselectFromServer();
-        if (currentMode === 'preselect') renderPreselectPanel();
+        showVerificationSuccess(name);
     }
 
     function showPinEntryModal() {
@@ -1097,6 +1103,7 @@
         // Revoke identity - PIN verification required
         currentUser = null;
         localStorage.removeItem('worldcup_identity');
+        resetGateUI();
         showIdentityModal();
     }
 
@@ -1113,16 +1120,15 @@
             document.getElementById('pinEntryInput').value = '';
             pendingPinIdentity = null;
             hidePinEntryModal();
+            // Reset gate UI
+            resetGateUI();
             showIdentityModal();
             return;
         }
         storePin(name, pin);
         hidePinEntryModal();
         showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
-        await loadPreselectFromServer();
-        await fetchAutoDraftState(name);
-        updateUI();
-        if (currentMode === 'preselect') renderPreselectPanel();
+        showVerificationSuccess(name);
     }
 
     // ========== Utilities ==========
@@ -1198,31 +1204,63 @@
         showToast('🔄 游戏已重置', 'info');
     }
 
+    function resetGateUI() {
+        document.getElementById('gateSuccess').style.display = 'none';
+        document.getElementById('identityButtons').style.display = '';
+        document.querySelector('#identityModal .identity-card h2').textContent = '\ud83c\udfc6 2026 \u9009\u5c04\u624b';
+        document.querySelector('#identityModal .identity-card p').textContent = '\u8bf7\u9009\u62e9\u4f60\u7684\u8eab\u4efd';
+    }
+
+    function showVerificationSuccess(name) {
+        document.getElementById('gateSuccess').style.display = 'block';
+        document.querySelector('#identityModal .identity-card h2').textContent = '\u2705 ' + name;
+        document.querySelector('#identityModal .identity-card p').textContent = '';
+        document.getElementById('identityButtons').style.display = 'none';
+        var count = 3;
+        document.getElementById('gateCountdown').textContent = count + ' \u79d2\u540e\u8fdb\u5165\u9009\u79c0...';
+        var timer = setInterval(function() {
+            count--;
+            if (count > 0) {
+                document.getElementById('gateCountdown').textContent = count + ' \u79d2\u540e\u8fdb\u5165\u9009\u79c0...';
+            } else {
+                clearInterval(timer);
+                enterGame();
+            }
+        }, 1000);
+    }
+
+    function enterGame() {
+        hideIdentityModal();
+        document.getElementById('gameContent').style.display = 'block';
+        renderPlayers();
+        renderPreselectPanel();
+        checkAutoDraft();
+        showToast('\u5df2\u8fdb\u5165\u9009\u79c0', 'success');
+    }
+
     // ========== Init ==========
     async function init() {
         await fetchState();
         await fetchTeams();
         renderIdentityButtons();
-        renderPlayers();
 
-        // If user has identity, load preselect + auto-draft state from server
+        // If user has identity and cached PIN, auto-verify
         if (currentUser) {
             var pinStatus = await checkPinStatus(currentUser);
             var storedPin = getStoredPin(currentUser);
             if (pinStatus.has_pin && storedPin) {
                 await loadPreselectFromServer();
                 await fetchAutoDraftState(currentUser);
-                updateUI();
+                showVerificationSuccess(currentUser);
+                return;
             }
+            // PIN invalid, clear identity and show gate
+            currentUser = null;
+            localStorage.removeItem('worldcup_identity');
         }
 
-        // Show identity modal if no identity
-        if (!currentUser) {
-            showIdentityModal();
-        }
-
-        renderPreselectPanel();
-        checkAutoDraft();
+        // Show identity modal (gate)
+        showIdentityModal();
     }
 
     document.addEventListener('DOMContentLoaded', init);
