@@ -85,6 +85,52 @@
         }
         .mode-btn:hover { border-color: var(--gold); }
 
+        /* Search Section */
+        .search-section {
+            position: relative; margin-bottom: 0.8rem;
+        }
+        .search-section input {
+            width: 100%; padding: 0.5rem 0.8rem; border: 1px solid #333;
+            background: #1e1e3a; color: #fff; border-radius: 10px;
+            font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+        }
+        .search-section input:focus { border-color: var(--gold); }
+        .search-section input::placeholder { color: #666; }
+        .search-results {
+            display: none; position: absolute; left: 0; right: 0; top: 100%;
+            background: var(--card-bg); border: 1px solid var(--gold);
+            border-radius: 0 0 10px 10px; max-height: 300px; overflow-y: auto;
+            z-index: 100; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+        .search-results.show { display: block; }
+        .search-result-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.5rem 0.8rem; border-bottom: 1px solid #2a2a4a;
+            transition: background 0.15s;
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover { background: #1a2744; }
+        .search-result-info {
+            display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; flex: 1;
+        }
+        .search-result-info .sr-flag { font-size: 1rem; }
+        .search-result-info .sr-team { color: #888; font-size: 0.7rem; }
+        .search-result-info .sr-cn { color: #fff; font-weight: 600; }
+        .search-result-info .sr-en { color: #aaa; font-size: 0.7rem; }
+        .search-result-info .sr-pos {
+            font-size: 0.6rem; padding: 1px 5px; border-radius: 4px;
+            background: rgba(245,197,24,0.2); color: var(--gold);
+        }
+        .search-add-btn {
+            padding: 0.3rem 0.7rem; border: 1px solid var(--gold);
+            background: rgba(245,197,24,0.15); color: var(--gold);
+            border-radius: 8px; font-size: 0.7rem; font-weight: 600;
+            cursor: pointer; white-space: nowrap; transition: all 0.2s;
+        }
+        .search-add-btn:hover:not(:disabled) { background: var(--gold); color: #1a1a2e; }
+        .search-add-btn:disabled { opacity: 0.4; cursor: default; border-color: #4a4; color: #4a4; }
+        .search-no-result { padding: 1rem; text-align: center; color: #666; font-size: 0.8rem; }
+
         /* Identity Modal */
         .identity-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -406,6 +452,12 @@
         <button class="mode-btn" id="modePre" onclick="switchMode('preselect')">📝 预选模式</button>
     </div>
 
+    <!-- ========== PLAYER SEARCH ========== -->
+    <div class="search-section" id="searchSection">
+        <input type="text" id="playerSearch" placeholder="搜索球员（中文/英文）" autocomplete="off">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+
     <!-- ========== PRE-SELECTION QUEUE ========== -->
     <div class="preselect-panel" id="preselectPanel">
         <div class="panel-title">📋 我的预选队列（按优先级）
@@ -461,6 +513,138 @@
     var autoDraftStates = {};      // name -> boolean
     var pendingPinIdentity = null;  // Identity waiting for PIN
     var verificationTimer = null;     // showVerificationSuccess countdown timer
+    var searchDebounceTimer = null;   // search input debounce
+
+    // ========== Player Search ==========
+    function performSearch(query) {
+        var q = query.trim().toLowerCase();
+        if (!q) { hideSearchResults(); return; }
+        var results = [];
+        allTeams.forEach(function(team) {
+            team.players.forEach(function(p) {
+                var nameEn = (p.name || '').toLowerCase();
+                var nameCn = p.name_cn || '';
+                if (nameEn.indexOf(q) !== -1 || nameCn.indexOf(q) !== -1) {
+                    results.push({
+                        id: p.id, name: p.name, name_cn: nameCn,
+                        position: p.position, selected: p.selected,
+                        team_name: team.name, flag: team.flag_emoji
+                    });
+                }
+            });
+        });
+        renderSearchResults(results.slice(0, 20));
+    }
+
+    function renderSearchResults(results) {
+        var container = document.getElementById('searchResults');
+        if (results.length === 0) {
+            container.innerHTML = '<div class="search-no-result">\u627e\u4e0d\u5230\u5339\u914d\u7684\u7403\u5458</div>';
+            container.classList.add('show');
+            return;
+        }
+        var html = '';
+        results.forEach(function(r) {
+            var isTaken = r.selected;
+            var btnText = isTaken ? '\u5df2\u9009' : '\u52a0\u5165';
+            var btnDisabled = isTaken ? 'disabled' : '';
+            var itemStyle = isTaken ? 'opacity:0.4;' : '';
+            html += '<div class="search-result-item" style="' + itemStyle + '">' +
+                    '<div class="search-result-info">' +
+                    '<span class="sr-flag">' + r.flag + '</span>' +
+                    '<span class="sr-team">' + r.team_name + '</span>' +
+                    '<span class="sr-cn">' + (r.name_cn || r.name) + '</span>' +
+                    '<span class="sr-en">' + r.name + '</span>' +
+                    '<span class="sr-pos">' + r.position + '</span>' +
+                    '</div>' +
+                    '<button class="search-add-btn" ' + btnDisabled +
+                    ' onclick="onSearchAdd(' + r.id + ', this)"' +
+                    ' data-player-id="' + r.id + '"' +
+                    ' data-name-cn="' + (r.name_cn || r.name).replace(/"/g, '&quot;') + '"' +
+                    ' data-name-en="' + r.name.replace(/"/g, '&quot;') + '"' +
+                    ' data-team-flag="' + r.flag + '">' +
+                    btnText + '</button></div>';
+        });
+        container.innerHTML = html;
+        container.classList.add('show');
+    }
+
+    function hideSearchResults() {
+        document.getElementById('searchResults').classList.remove('show');
+    }
+
+    async function onSearchAdd(playerId, btn) {
+        var nameCn = btn.dataset.nameCn;
+        var nameEn = btn.dataset.nameEn;
+        var display = nameCn || nameEn;
+        var flag = btn.dataset.teamFlag || '';
+
+        if (currentMode === 'preselect') {
+            // Preselect mode: add to queue
+            var queue = loadPreselect();
+            for (var i = 0; i < queue.length; i++) {
+                if (queue[i].id === playerId) {
+                    showToast('\u26a0\ufe0f \u8be5\u7403\u5458\u5df2\u5728\u9884\u9009\u961f\u5217', 'warning');
+                    return;
+                }
+            }
+            queue.push({id: playerId, display: display});
+            savePreselect(queue);
+            // Update the grid button if visible
+            document.querySelectorAll('.player-btn').forEach(function(gb) {
+                if (parseInt(gb.dataset.playerId) === playerId) {
+                    gb.classList.add('preselected');
+                    updatePreselectBadge(gb, queue.length);
+                }
+            });
+            renderPreselectPanel();
+            showToast('\ud83d\udcdd \u5df2\u52a0\u5165\u9884\u9009\u961f\u5217 #' + queue.length + ': ' + display, 'info');
+            btn.disabled = true;
+            btn.textContent = '\u5df2\u52a0\u5165';
+        } else {
+            // Pick mode: show same confirm modal as regular selection
+            if (currentUser !== gameState.current_participant.name || turnCompleted) {
+                showToast('\u26a0\ufe0f \u73b0\u5728\u4e0d\u662f\u4f60\u7684\u56de\u5408', 'warning');
+                return;
+            }
+            // Find the grid button; if not visible (team collapsed), build a virtual one
+            var gridBtn = null;
+            document.querySelectorAll('.player-btn').forEach(function(gb) {
+                if (parseInt(gb.dataset.playerId) === playerId) gridBtn = gb;
+            });
+            if (!gridBtn) {
+                gridBtn = document.createElement('button');
+                gridBtn.className = 'player-btn';
+                gridBtn.dataset.playerId = playerId;
+                gridBtn.dataset.teamFlag = flag;
+                var pnameSpan = document.createElement('span');
+                pnameSpan.className = 'pname';
+                pnameSpan.textContent = display;
+                var jerseySpan = document.createElement('span');
+                jerseySpan.className = 'jersey';
+                jerseySpan.textContent = '';
+                gridBtn.appendChild(jerseySpan);
+                gridBtn.appendChild(pnameSpan);
+            }
+            hideSearchResults();
+            document.getElementById('playerSearch').value = '';
+            showConfirmModal(gridBtn);
+        }
+    }
+
+    // Search input event (debounced)
+    document.getElementById('playerSearch').addEventListener('input', function() {
+        var val = this.value;
+        clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = setTimeout(function() { performSearch(val); }, 200);
+    });
+
+    // Click outside to close search results
+    document.addEventListener('click', function(e) {
+        if (!document.getElementById('searchSection').contains(e.target)) {
+            hideSearchResults();
+        }
+    });
 
     // PIN helpers
     function getStoredPin(name) { return localStorage.getItem('worldcup_pin_' + name) || ''; }
