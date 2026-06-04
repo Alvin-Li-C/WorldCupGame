@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 WCQ Player Statistics</title>
+<title>2026 世预赛球员数据</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Roboto, sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; }
 h1 { text-align: center; margin-bottom: 4px; font-size: 24px; color: #fff; }
 .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 13px; }
 
@@ -66,59 +66,59 @@ tr.selected .player-name { color: #81c784; }
 </style>
 </head>
 <body>
-<h1>2026 WCQ Player Statistics</h1>
-<p class="subtitle">FBref — All 48 World Cup qualified teams (2061 players)</p>
+<h1>2026 世预赛球员数据</h1>
+<p class="subtitle">FBref — 全部 48 支世界杯参赛队（2061名球员）</p>
 
 <div class="tabs">
-  <button class="tab active" data-tab="full">Complete Data</button>
-  <button class="tab" data-tab="ranking">Shooter Ranking</button>
+  <button class="tab active" data-tab="full">完整数据</button>
+  <button class="tab" data-tab="ranking">射手排名</button>
 </div>
 
 <!-- ===== TAB 1: Full Data ===== -->
 <div id="tab-full" class="tab-content active">
-<div class="legend">'0' = tracked but zero | '-' = no shot data for this confederation</div>
+<div class="legend">'0' = 有记录但为零 | '-' = 该联赛无射门数据</div>
 <div class="controls">
-  <select id="teamFilter"><option value="">All Teams</option></select>
-  <select id="posFilter"><option value="">All Positions</option><option value="GK">GK</option><option value="DF">DF</option><option value="MF">MF</option><option value="FW">FW</option></select>
-  <input type="text" id="search" placeholder="Search player...">
-  <select id="shotFilter"><option value="">All</option><option value="has">Has shot data</option><option value="no">No shot data</option></select>
+  <select id="teamFilter"><option value="">所有球队</option></select>
+  <select id="posFilter"><option value="">所有位置</option><option value="GK">GK</option><option value="DF">DF</option><option value="MF">MF</option><option value="FW">FW</option></select>
+  <input type="text" id="search" placeholder="搜索球员...">
+  <select id="shotFilter"><option value="">全部</option><option value="has">有射门数据</option><option value="no">无射门数据</option></select>
 </div>
 <div class="table-wrapper">
 <table>
 <thead>
   <tr>
-    <th colspan="3" class="group-header">Team</th>
-    <th colspan="4" class="group-header">Player Info</th>
-    <th colspan="3" class="group-header">Playing Time</th>
-    <th colspan="7" class="group-header">Goals &amp; Assists</th>
-    <th colspan="6" class="group-header">Shooting</th>
-    <th colspan="3" class="group-header">Discipline</th>
+    <th colspan="3" class="group-header">球队</th>
+    <th colspan="4" class="group-header">球员信息</th>
+    <th colspan="3" class="group-header">出场时间</th>
+    <th colspan="7" class="group-header">进球与助攻</th>
+    <th colspan="6" class="group-header">射门</th>
+    <th colspan="3" class="group-header">纪律</th>
   </tr>
   <tr>
-    <th data-col="team">Team</th>
-    <th data-col="player">Player</th>
-    <th data-col="pos">Pos</th>
-    <th data-col="age" class="num">Age</th>
-    <th data-col="mp" class="num">MP</th>
-    <th data-col="starts" class="num">Starts</th>
-    <th data-col="min" class="num">Min</th>
-    <th data-col="gls" class="num">Gls</th>
-    <th data-col="ast" class="num">Ast</th>
+    <th data-col="team">球队</th>
+    <th data-col="player">球员</th>
+    <th data-col="pos">位置</th>
+    <th data-col="age" class="num">年龄</th>
+    <th data-col="mp" class="num">出场</th>
+    <th data-col="starts" class="num">首发</th>
+    <th data-col="min" class="num">分钟</th>
+    <th data-col="gls" class="num">进球</th>
+    <th data-col="ast" class="num">助攻</th>
     <th data-col="ga" class="num">G+A</th>
     <th data-col="g_pk" class="num">G-PK</th>
     <th data-col="pk" class="num">PK</th>
     <th data-col="pkatt" class="num">PKatt</th>
     <th data-col="gls_per90" class="num">G/90</th>
     <th data-col="ast_per90" class="num">A/90</th>
-    <th data-col="sh" class="num">Sh</th>
-    <th data-col="sot" class="num">SoT</th>
-    <th data-col="sot_pct" class="num">SoT%</th>
+    <th data-col="sh" class="num">射门</th>
+    <th data-col="sot" class="num">射正</th>
+    <th data-col="sot_pct" class="num">射正%</th>
     <th data-col="g_sh" class="num">G/Sh</th>
     <th data-col="g_sot" class="num">G/SoT</th>
-    <th data-col="sh_per90" class="num">Sh/90</th>
-    <th data-col="og" class="num">OG</th>
-    <th data-col="cry" class="num">Yel</th>
-    <th data-col="crr" class="num">Red</th>
+    <th data-col="sh_per90" class="num">射门/90</th>
+    <th data-col="og" class="num">乌龙</th>
+    <th data-col="cry" class="num">黄牌</th>
+    <th data-col="crr" class="num">红牌</th>
   </tr>
 </thead>
 <tbody id="tbody"></tbody>
@@ -130,26 +130,26 @@ tr.selected .player-name { color: #81c784; }
 <!-- ===== TAB 2: Shooter Ranking ===== -->
 <div id="tab-ranking" class="tab-content">
 <div class="controls">
-  <select id="rkTeamFilter"><option value="">All Teams</option></select>
-  <select id="rkPosFilter"><option value="">All Positions</option><option value="GK">GK</option><option value="DF">DF</option><option value="MF">MF</option><option value="FW">FW</option></select>
-  <input type="text" id="rkSearch" placeholder="Search player...">
-  <label style="color:#aaa;font-size:13px"><input type="checkbox" id="mcToggle"> Monte Carlo (luck simulation)</label>
-  <span id="mcInfo" class="mc-info" title="Each team's projected goals adjusted by random factor 0.85-1.15. Shows rank range across 1000 simulations.">ⓘ</span>
+  <select id="rkTeamFilter"><option value="">所有球队</option></select>
+  <select id="rkPosFilter"><option value="">所有位置</option><option value="GK">GK</option><option value="DF">DF</option><option value="MF">MF</option><option value="FW">FW</option></select>
+  <input type="text" id="rkSearch" placeholder="搜索球员...">
+  <label style="color:#aaa;font-size:13px"><input type="checkbox" id="mcToggle"> 蒙特卡洛（运气模拟）</label>
+  <span id="mcInfo" class="mc-info" title="每队预测进球乘以0.85-1.15随机因子，展示1000次模拟的排名区间。">ⓘ</span>
 </div>
 <div class="table-wrapper">
 <table>
 <thead>
   <tr id="rkHeader">
-    <th data-col="rank" class="num">Rank</th>
-    <th data-col="player">Player</th>
-    <th data-col="team">Team</th>
-    <th data-col="pos">Pos</th>
-    <th data-col="team_share" class="num">Share%</th>
-    <th data-col="final_projected_g" class="num">Total Score</th>
+    <th data-col="rank" class="num">排名</th>
+    <th data-col="player">球员</th>
+    <th data-col="team">球队</th>
+    <th data-col="pos">位置</th>
+    <th data-col="team_share" class="num">占比%</th>
+    <th data-col="final_projected_g" class="num">总分</th>
     <th data-col="pk_bonus" class="num">PK+</th>
     <th data-col="og" class="num">OG</th>
     <th data-col="gls_per90" class="num">G/90</th>
-    <th data-col="sh" class="num">Sh</th>
+    <th data-col="sh" class="num">射门</th>
     <th data-col="g_sh" class="num">G/Sh</th>
   </tr>
 </thead>
@@ -308,7 +308,7 @@ function renderFull() {
       + '<td class="num">'+numCell(r.crr)+'</td>'
       + '</tr>';
   }).join('');
-  countEl.textContent = 'Showing '+filtered.length+' / '+DATA.length+' players';
+  countEl.textContent = '显示 '+filtered.length+' / '+DATA.length+' 名球员';
   applySelection();
   document.querySelectorAll('#tab-full thead th').forEach(th => {
     th.classList.remove('sorted-asc', 'sorted-desc');
@@ -406,7 +406,7 @@ function renderRanking() {
       + '</tr>';
   }).join('');
   
-  rkCount.textContent = 'Showing '+filtered.length+' / '+RANKING.length+' players';
+  rkCount.textContent = '显示 '+filtered.length+' / '+RANKING.length+' 名球员';
   applySelection();
   
   // Update header sort indicators
