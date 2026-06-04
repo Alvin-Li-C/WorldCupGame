@@ -16,6 +16,12 @@ if os.path.exists(ranking_path):
     with open(ranking_path, "r", encoding="utf-8") as f:
         ranking_data = json.load(f)
 
+# Build name_cn lookup from ranking data
+name_cn_map = {}
+for r in ranking_data.get("deterministic", []):
+    if r.get("name_cn"):
+        name_cn_map[r["player"]] = r["name_cn"]
+
 # Build rows
 rows = []
 for team, players in data.items():
@@ -23,6 +29,7 @@ for team, players in data.items():
         rows.append({
             "team": team,
             "player": p["player"],
+            "name_cn": name_cn_map.get(p["player"], ""),
             "pos": p["pos"],
             "age": p["age"],
             "mp": p["mp"],
@@ -348,7 +355,7 @@ function renderFull() {
   let filtered = DATA.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q)) return false;
+    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn||'').toLowerCase().includes(q)) return false;
     if (sf === 'has' && r.sh === 0) return false;
     if (sf === 'no' && r.sh > 0) return false;
     return true;
@@ -362,7 +369,7 @@ function renderFull() {
     const teamHasShots = hasTeamShotData(r.team);
     return '<tr data-player="'+r.player+'">'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
-      + '<td class="player-name">'+r.player+'</td>'
+      + '<td class="player-name" title="'+r.player+'">'+(r.name_cn||r.player)+'</td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
       + '<td class="num">'+r.age+'</td>'
       + '<td class="num">'+numCell(r.mp)+'</td>'
@@ -441,7 +448,7 @@ function renderRanking() {
   let filtered = RANKING.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q)) return false;
+    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn||'').toLowerCase().includes(q)) return false;
     return true;
   });
   
@@ -472,7 +479,7 @@ function renderRanking() {
     
     return '<tr data-player="'+r.player+'">'
       + '<td class="num">'+rankHtml+'</td>'
-      + '<td class="player-name">'+r.player+'</td>'
+      + '<td class="player-name" title="'+r.player+'">'+(r.name_cn||r.player)+'</td>'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
       + '<td class="num">'+r.team_share+'%</td>'
