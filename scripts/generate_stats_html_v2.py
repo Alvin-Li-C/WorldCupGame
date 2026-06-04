@@ -248,6 +248,48 @@ const TEAM_COLORS = """ + json.dumps(TEAM_COLORS, ensure_ascii=False) + """;
 const mcMap = {};
 MC.forEach(m => { mcMap[m.player+'|'+m.team] = m; });
 
+// ========== Selection overlay (auto-poll) ==========
+const norm = s => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/[-']/g, ' ').replace(/\\s+/g, ' ').trim().toLowerCase();
+const reversed = s => { const p = s.split(' '); return p.length >= 2 ? p[p.length-1] + ' ' + p.slice(0,-1).join(' ') : s; };
+let selectedNames = new Set();
+
+function applySelection() {
+  document.querySelectorAll('tbody tr[data-player]').forEach(row => {
+    const rn = norm(row.getAttribute('data-player'));
+    const nameCell = row.querySelector('.player-name');
+    if (!nameCell) return;
+    const badge = nameCell.querySelector('.selected-badge');
+    if (selectedNames.has(rn) || selectedNames.has(reversed(rn))) {
+      row.classList.add('selected');
+      if (!badge) nameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">\u5df2\u9009</span>');
+    } else {
+      row.classList.remove('selected');
+      if (badge) badge.remove();
+    }
+  });
+}
+
+function refreshSelections() {
+  fetch('/api/teams')
+    .then(r => r.json())
+    .then(teams => {
+      selectedNames = new Set();
+      teams.forEach(t => {
+        t.players.forEach(p => {
+          if (p.selected) {
+            const n = norm(p.name);
+            selectedNames.add(n);
+            selectedNames.add(reversed(n));
+          }
+        });
+      });
+      applySelection();
+    })
+    .catch(() => {});
+}
+refreshSelections();
+setInterval(refreshSelections, 5000);
+
 // ========== TAB SWITCHING ==========
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -467,47 +509,6 @@ rkSearch.addEventListener('input', renderRanking);
 mcToggle.addEventListener('change', renderRanking);
 renderRanking();
 
-// ========== Selection overlay (auto-poll) ==========
-const norm = s => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/[-']/g, ' ').replace(/\\s+/g, ' ').trim().toLowerCase();
-const reversed = s => { const p = s.split(' '); return p.length >= 2 ? p[p.length-1] + ' ' + p.slice(0,-1).join(' ') : s; };
-let selectedNames = new Set();
-
-function applySelection() {
-  document.querySelectorAll('tbody tr[data-player]').forEach(row => {
-    const rn = norm(row.getAttribute('data-player'));
-    const nameCell = row.querySelector('.player-name');
-    if (!nameCell) return;
-    const badge = nameCell.querySelector('.selected-badge');
-    if (selectedNames.has(rn) || selectedNames.has(reversed(rn))) {
-      row.classList.add('selected');
-      if (!badge) nameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">\u5df2\u9009</span>');
-    } else {
-      row.classList.remove('selected');
-      if (badge) badge.remove();
-    }
-  });
-}
-
-function refreshSelections() {
-  fetch('/api/teams')
-    .then(r => r.json())
-    .then(teams => {
-      selectedNames = new Set();
-      teams.forEach(t => {
-        t.players.forEach(p => {
-          if (p.selected) {
-            const n = norm(p.name);
-            selectedNames.add(n);
-            selectedNames.add(reversed(n));
-          }
-        });
-      });
-      applySelection();
-    })
-    .catch(() => {});
-}
-refreshSelections();
-setInterval(refreshSelections, 5000);
 </script>
 </body></html>"""
 
