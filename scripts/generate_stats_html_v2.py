@@ -136,6 +136,12 @@ td { padding: 6px; white-space: nowrap; line-height: 1.4; }
 .score-bar { display: inline-block; height: 14px; border-radius: 3px; background: linear-gradient(90deg, #4fc3f7, #1565c0); min-width: 4px; vertical-align: middle; margin-right: 4px; }
 .mc-info { color: #666; font-size: 11px; cursor: help; border-bottom: 1px dotted #555; }
 .volatile { color: #ff9800; }
+
+/* Selected player */
+tr.selected { background: rgba(76, 175, 80, 0.15) !important; }
+tr.selected td { border-bottom-color: rgba(76, 175, 80, 0.3); }
+tr.selected .player-name { color: #81c784; }
+.selected-badge { display: inline-block; background: #4caf50; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 8px; margin-left: 6px; font-weight: 600; vertical-align: middle; }
 </style>
 </head>
 <body>
@@ -312,7 +318,7 @@ function renderFull() {
   });
   tbody.innerHTML = filtered.map(r => {
     const teamHasShots = hasTeamShotData(r.team);
-    return '<tr>'
+    return '<tr data-player="'+r.player+'">'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
       + '<td class="player-name">'+r.player+'</td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
@@ -340,6 +346,7 @@ function renderFull() {
       + '</tr>';
   }).join('');
   countEl.textContent = 'Showing '+filtered.length+' / '+DATA.length+' players';
+  applySelection();
   document.querySelectorAll('#tab-full thead th').forEach(th => {
     th.classList.remove('sorted-asc', 'sorted-desc');
     if (th.dataset.col === sortCol) th.classList.add(sortDir > 0 ? 'sorted-asc' : 'sorted-desc');
@@ -421,7 +428,7 @@ function renderRanking() {
     
     const teamHasShots = hasTeamShotData(r.team);
     
-    return '<tr>'
+    return '<tr data-player="'+r.player+'">'
       + '<td class="num">'+rankHtml+'</td>'
       + '<td class="player-name">'+r.player+'</td>'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
@@ -437,6 +444,7 @@ function renderRanking() {
   }).join('');
   
   rkCount.textContent = 'Showing '+filtered.length+' / '+RANKING.length+' players';
+  applySelection();
   
   // Update header sort indicators
   document.querySelectorAll('#tab-ranking thead th').forEach(th => {
@@ -458,6 +466,48 @@ rkPosFilter.addEventListener('change', renderRanking);
 rkSearch.addEventListener('input', renderRanking);
 mcToggle.addEventListener('change', renderRanking);
 renderRanking();
+
+// ========== Selection overlay (auto-poll) ==========
+const norm = s => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/[-']/g, ' ').replace(/\\s+/g, ' ').trim().toLowerCase();
+const reversed = s => { const p = s.split(' '); return p.length >= 2 ? p[p.length-1] + ' ' + p.slice(0,-1).join(' ') : s; };
+let selectedNames = new Set();
+
+function applySelection() {
+  document.querySelectorAll('tbody tr[data-player]').forEach(row => {
+    const rn = norm(row.getAttribute('data-player'));
+    const nameCell = row.querySelector('.player-name');
+    if (!nameCell) return;
+    const badge = nameCell.querySelector('.selected-badge');
+    if (selectedNames.has(rn) || selectedNames.has(reversed(rn))) {
+      row.classList.add('selected');
+      if (!badge) nameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">\u5df2\u9009</span>');
+    } else {
+      row.classList.remove('selected');
+      if (badge) badge.remove();
+    }
+  });
+}
+
+function refreshSelections() {
+  fetch('/api/teams')
+    .then(r => r.json())
+    .then(teams => {
+      selectedNames = new Set();
+      teams.forEach(t => {
+        t.players.forEach(p => {
+          if (p.selected) {
+            const n = norm(p.name);
+            selectedNames.add(n);
+            selectedNames.add(reversed(n));
+          }
+        });
+      });
+      applySelection();
+    })
+    .catch(() => {});
+}
+refreshSelections();
+setInterval(refreshSelections, 5000);
 </script>
 </body></html>"""
 

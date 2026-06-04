@@ -57,6 +57,12 @@ td { padding: 6px; white-space: nowrap; line-height: 1.4; }
 .score-bar { display: inline-block; height: 14px; border-radius: 3px; background: linear-gradient(90deg, #4fc3f7, #1565c0); min-width: 4px; vertical-align: middle; margin-right: 4px; }
 .mc-info { color: #666; font-size: 11px; cursor: help; border-bottom: 1px dotted #555; }
 .volatile { color: #ff9800; }
+
+/* Selected player */
+tr.selected { background: rgba(76, 175, 80, 0.15) !important; }
+tr.selected td { border-bottom-color: rgba(76, 175, 80, 0.3); }
+tr.selected .player-name { color: #81c784; }
+.selected-badge { display: inline-block; background: #4caf50; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 8px; margin-left: 6px; font-weight: 600; vertical-align: middle; }
 </style>
 </head>
 <body>
@@ -138,13 +144,13 @@ td { padding: 6px; white-space: nowrap; line-height: 1.4; }
     <th data-col="player">Player</th>
     <th data-col="team">Team</th>
     <th data-col="pos">Pos</th>
-    <th data-col="final_projected_g" class="num" title="预期WC进球数 (xG代理+贝叶斯收缩+球队强度+点球)">Total Score</th>
-    <th data-col="xg_proxy" class="num" title="xG代理: SoT*0.30 + 非SoT射门*0.08 (每90分钟)">xG/90</th>
-    <th data-col="shrunk_xg_per90" class="num" title="贝叶斯收缩后的xG/90 (小样本向位置先验收缩)">Shrk xG</th>
-    <th data-col="team_mult" class="num" title="球队实力乘数 = 球队预测进球 / 所有球队中位数">Team Mult</th>
-    <th data-col="expected_wc_90s" class="num" title="预期WC出场90分钟数 (考虑轮换)">WC 90s</th>
-    <th data-col="pk_bonus" class="num" title="点球加成 (上限1.5球)">PK+</th>
+    <th data-col="team_share" class="num">Share%</th>
+    <th data-col="final_projected_g" class="num">Total Score</th>
+    <th data-col="pk_bonus" class="num">PK+</th>
     <th data-col="og" class="num">OG</th>
+    <th data-col="gls_per90" class="num">G/90</th>
+    <th data-col="sh" class="num">Sh</th>
+    <th data-col="g_sh" class="num">G/Sh</th>
   </tr>
 </thead>
 <tbody id="rkTbody"></tbody>
@@ -221,7 +227,7 @@ function renderFull() {
   let filtered = DATA.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn && r.name_cn.includes(q))) return false;
+    if (q && !r.player.toLowerCase().includes(q)) return false;
     if (sf === 'has' && r.sh === 0) return false;
     if (sf === 'no' && r.sh > 0) return false;
     return true;
@@ -233,9 +239,9 @@ function renderFull() {
   });
   tbody.innerHTML = filtered.map(r => {
     const teamHasShots = hasTeamShotData(r.team);
-    return '<tr>'
+    return '<tr data-player="'+r.player+'">'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
-      + '<td class="player-name"><span title="'+r.player+'">'+displayName(r)+'</span></td>'
+      + '<td class="player-name">'+r.player+'</td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
       + '<td class="num">'+r.age+'</td>'
       + '<td class="num">'+numCell(r.mp)+'</td>'
@@ -261,6 +267,7 @@ function renderFull() {
       + '</tr>';
   }).join('');
   countEl.textContent = 'Showing '+filtered.length+' / '+DATA.length+' players';
+  applySelection();
   document.querySelectorAll('#tab-full thead th').forEach(th => {
     th.classList.remove('sorted-asc', 'sorted-desc');
     if (th.dataset.col === sortCol) th.classList.add(sortDir > 0 ? 'sorted-asc' : 'sorted-desc');
@@ -301,8 +308,6 @@ function rankBadge(r) {
   return '<span class="rank-default">'+r+'</span>';
 }
 
-function displayName(r) { return r.name_cn || r.player; }
-
 function scoreBar(score, maxScore) {
   const pct = Math.max(3, (score / maxScore) * 100);
   return '<span class="score-bar" style="width:'+pct.toFixed(0)+'px"></span>';
@@ -315,7 +320,7 @@ function renderRanking() {
   let filtered = RANKING.filter(r => {
     if (tf && r.team !== tf) return false;
     if (pf && !r.pos.includes(pf)) return false;
-    if (q && !r.player.toLowerCase().includes(q) && !(r.name_cn && r.name_cn.includes(q))) return false;
+    if (q && !r.player.toLowerCase().includes(q)) return false;
     return true;
   });
   
@@ -342,22 +347,25 @@ function renderRanking() {
       rankHtml = rankBadge(r.rank);
     }
     
-    return '<tr>'
+    const teamHasShots = hasTeamShotData(r.team);
+    
+    return '<tr data-player="'+r.player+'">'
       + '<td class="num">'+rankHtml+'</td>'
-      + '<td class="player-name"><span title="'+r.player+'">'+displayName(r)+'</span></td>'
+      + '<td class="player-name">'+r.player+'</td>'
       + '<td><div class="team-cell"><span class="team-badge" style="background:'+(TEAM_COLORS[r.team]||'#666')+'"></span>'+r.team.replace(/-/g,' ')+'</div></td>'
       + '<td class="'+posClass(r.pos)+'">'+r.pos+'</td>'
+      + '<td class="num">'+r.team_share+'%</td>'
       + '<td class="num">'+scoreBar(r.final_projected_g, maxScore)+r.final_projected_g.toFixed(2)+'</td>'
-      + '<td class="num">'+(r.xg_proxy > 0 ? r.xg_proxy.toFixed(3) : '<span class="stat-na">-</span>')+'</td>'
-      + '<td class="num">'+(r.shrunk_xg_per90 > 0 ? r.shrunk_xg_per90.toFixed(3) : '<span class="stat-na">-</span>')+'</td>'
-      + '<td class="num">'+(r.team_mult > 0 ? r.team_mult.toFixed(2) : '<span class="stat-na">-</span>')+'</td>'
-      + '<td class="num">'+(r.expected_wc_90s > 0 ? r.expected_wc_90s.toFixed(1) : '<span class="stat-na">-</span>')+'</td>'
       + '<td class="num">'+(r.pk_bonus > 0 ? '<span style="color:#4fc3f7">+'+r.pk_bonus.toFixed(2)+'</span>' : '<span class="stat-zero">0.00</span>')+'</td>'
       + '<td class="num">'+(r.og > 0 ? '<span style="color:#ff9800">'+r.og+'</span>' : '<span class="stat-zero">0</span>')+'</td>'
+      + '<td class="num">'+r.gls_per90.toFixed(2)+'</td>'
+      + (teamHasShots ? '<td class="num">'+r.sh+'</td>' : '<td class="num"><span class="stat-na">-</span></td>')
+      + (teamHasShots && r.sh > 0 ? '<td class="num">'+(r.g_sh !== undefined ? r.g_sh.toFixed(2) : '0.00')+'</td>' : '<td class="num"><span class="stat-na">-</span></td>')
       + '</tr>';
   }).join('');
   
   rkCount.textContent = 'Showing '+filtered.length+' / '+RANKING.length+' players';
+  applySelection();
   
   // Update header sort indicators
   document.querySelectorAll('#tab-ranking thead th').forEach(th => {
@@ -379,5 +387,47 @@ rkPosFilter.addEventListener('change', renderRanking);
 rkSearch.addEventListener('input', renderRanking);
 mcToggle.addEventListener('change', renderRanking);
 renderRanking();
+
+// ========== Selection overlay (auto-poll) ==========
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-']/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+const reversed = s => { const p = s.split(' '); return p.length >= 2 ? p[p.length-1] + ' ' + p.slice(0,-1).join(' ') : s; };
+let selectedNames = new Set();
+
+function applySelection() {
+  document.querySelectorAll('tbody tr[data-player]').forEach(row => {
+    const rn = norm(row.getAttribute('data-player'));
+    const nameCell = row.querySelector('.player-name');
+    if (!nameCell) return;
+    const badge = nameCell.querySelector('.selected-badge');
+    if (selectedNames.has(rn) || selectedNames.has(reversed(rn))) {
+      row.classList.add('selected');
+      if (!badge) nameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">已选</span>');
+    } else {
+      row.classList.remove('selected');
+      if (badge) badge.remove();
+    }
+  });
+}
+
+function refreshSelections() {
+  fetch('/api/teams')
+    .then(r => r.json())
+    .then(teams => {
+      selectedNames = new Set();
+      teams.forEach(t => {
+        t.players.forEach(p => {
+          if (p.selected) {
+            const n = norm(p.name);
+            selectedNames.add(n);
+            selectedNames.add(reversed(n));
+          }
+        });
+      });
+      applySelection();
+    })
+    .catch(() => {});
+}
+refreshSelections();
+setInterval(refreshSelections, 5000);
 </script>
 </body></html>
