@@ -1038,23 +1038,29 @@
 
         // Check PIN status and load preselect
         (async function() {
-            var pinStatus = await checkPinStatus(name);
-            var storedPin = getStoredPin(name);
-            if (pinStatus.has_pin) {
-                if (!storedPin) {
-                    // PIN exists but not stored locally - prompt for entry
-                    pendingPinIdentity = name;
-                    showPinEntryModal(name);
+            try {
+                var pinStatus = await checkPinStatus(name);
+                var storedPin = getStoredPin(name);
+                if (pinStatus.has_pin) {
+                    if (!storedPin) {
+                        // PIN exists but not stored locally - prompt for entry
+                        pendingPinIdentity = name;
+                        showPinEntryModal(name);
+                    } else {
+                        // PIN stored locally - try to load
+                        await loadPreselectFromServer();
+                        await fetchAutoDraftState(name);
+                        showVerificationSuccess(name);
+                    }
                 } else {
-                    // PIN stored locally - try to load
-                    await loadPreselectFromServer();
-                    await fetchAutoDraftState(name);
-                    showVerificationSuccess(name);
+                    // No PIN set yet - prompt for setup
+                    pendingPinIdentity = name;
+                    showPinSetupModal(name);
                 }
-            } else {
-                // No PIN set yet - prompt for setup
-                pendingPinIdentity = name;
-                showPinSetupModal(name);
+            } catch (e) {
+                console.error('Verification error:', e);
+                showToast('\u26a0\ufe0f \u9a8c\u8bc1\u5931\u8d25: ' + e.message, 'warning');
+                resetGateUI();
             }
         })();
     }
