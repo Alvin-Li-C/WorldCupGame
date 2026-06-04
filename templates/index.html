@@ -959,7 +959,7 @@
             if (orderIndex >= 0) {
                 var snake = (r % 2 === 1) ? [0,1,2,3,4] : [4,3,2,1,0];
                 var col = snake[s.pick_number - 1];
-                roundData[r].push({col: col, text: s.flag_emoji + ' ' + s.player_name + ' #' + s.jersey_number});
+                roundData[r].push({col: col, text: s.flag_emoji + ' ' + (s.player_name_cn || s.player_name) + ' #' + s.jersey_number});
             }
         });
 
