@@ -96,7 +96,7 @@ def generate():
 
             pk_cell = f'+{pk:.2f}' if pk > 0 else '<span class="zero">0</span>'
 
-            rows_html += f"""<tr>
+            rows_html += f"""<tr data-player="{eng_tooltip}">
   <td class="num">{rank_badge}</td>
   <td class="pname" title="{eng_tooltip}">{name_display}</td>
   <td class="pos-cell pos-{pos.split(',')[0].strip().lower()}">{pos}</td>
@@ -198,6 +198,12 @@ h1 {{ text-align: center; margin-bottom: 4px; font-size: 26px; color: #fff; }}
 
 /* Hidden by search */
 .team-card.hidden {{ display: none; }}
+
+/* Selected player */
+tr.selected {{ background: rgba(76, 175, 80, 0.15) !important; }}
+tr.selected td {{ border-bottom-color: rgba(76, 175, 80, 0.3); }}
+tr.selected .pname {{ color: #81c784; }}
+.selected-badge {{ display: inline-block; background: #4caf50; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 8px; margin-left: 6px; font-weight: 600; vertical-align: middle; }}
 </style>
 </head>
 <body>
@@ -250,6 +256,30 @@ search.addEventListener('input', () => {{
     card.classList.toggle('hidden', !teamMatch && !playerMatch);
   }});
 }});
+
+// Fetch draft selections and highlight selected players
+fetch('/api/teams')
+  .then(r => r.json())
+  .then(teams => {{
+    const selectedNames = new Set();
+    teams.forEach(t => {{
+      t.players.forEach(p => {{
+        if (p.selected) selectedNames.add(p.name);
+      }});
+    }});
+    if (selectedNames.size === 0) return;
+    document.querySelectorAll('tbody tr[data-player]').forEach(row => {{
+      const playerName = row.getAttribute('data-player');
+      if (selectedNames.has(playerName)) {{
+        row.classList.add('selected');
+        const pnameCell = row.querySelector('.pname');
+        if (pnameCell && !pnameCell.querySelector('.selected-badge')) {{
+          pnameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">已选</span>');
+        }}
+      }}
+    }});
+  }})
+  .catch(() => {{}});
 </script>
 </body>
 </html>"""
