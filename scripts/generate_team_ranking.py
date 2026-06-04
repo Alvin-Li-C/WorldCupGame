@@ -258,7 +258,13 @@ search.addEventListener('input', () => {{
 }});
 
 // Auto-refresh selection status every 5 seconds
-const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-']/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+const reversed = s => {{ const p = s.split(' '); return p.length >= 2 ? p[p.length-1] + ' ' + p.slice(0,-1).join(' ') : s; }};
+function addNameVariants(set, name) {{
+  const n = norm(name);
+  set.add(n);
+  set.add(reversed(n));
+}}
 function refreshSelections() {{
   fetch('/api/teams')
     .then(r => r.json())
@@ -266,15 +272,15 @@ function refreshSelections() {{
       const selectedNames = new Set();
       teams.forEach(t => {{
         t.players.forEach(p => {{
-          if (p.selected) selectedNames.add(norm(p.name));
+          if (p.selected) addNameVariants(selectedNames, p.name);
         }});
       }});
       document.querySelectorAll('tbody tr[data-player]').forEach(row => {{
-        const playerName = norm(row.getAttribute('data-player'));
+        const rn = norm(row.getAttribute('data-player'));
         const pnameCell = row.querySelector('.pname');
         if (!pnameCell) return;
         const badge = pnameCell.querySelector('.selected-badge');
-        if (selectedNames.has(playerName)) {{
+        if (selectedNames.has(rn) || selectedNames.has(reversed(rn))) {{
           row.classList.add('selected');
           if (!badge) pnameCell.insertAdjacentHTML('beforeend', '<span class="selected-badge">已选</span>');
         }} else {{
