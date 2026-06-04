@@ -201,6 +201,7 @@
         }
         .team-card .card-header .flag { font-size: 1.2rem; margin-right: 0.5rem; }
         .team-card .card-header .team-name { font-weight: 700; font-size: 0.9rem; }
+        .group-header .toggle-icon.collapsed { transform: rotate(-90deg); }
         .team-card .card-header .toggle-icon { transition: transform 0.3s; font-size: 0.7rem; color: #888; }
         .team-card .card-header .toggle-icon.collapsed { transform: rotate(-90deg); }
 
@@ -606,13 +607,13 @@
             html += '<div class="group-section mb-4">';
             html += '<div class="group-header" onclick="toggleGroup(this)" style="cursor:pointer;padding:0.4rem 0;margin-bottom:0.3rem;">' +
                     '<span style="font-size:1rem;font-weight:700;color:var(--gold);">🏆 ' + g + '组</span>' +
-                    '<span class="toggle-icon" style="float:right;color:#888;font-size:0.7rem;">▼</span></div>';
-            html += '<div class="group-body" style="display:block;">';
+                    '<span class="toggle-icon collapsed" style="float:right;color:#888;font-size:0.7rem;">▼</span></div>';
+            html += '<div class="group-body" style="display:none;">';
             groups[g].forEach(function(t) {
                 html += '<div class="team-card"><div class="card-header" onclick="toggleTeam(this)">' +
                         '<span><span class="flag">' + t.flag_emoji + '</span><span class="team-name">' + t.name + '</span></span>' +
-                        '<span class="toggle-icon" style="font-size:0.7rem;color:#888;">▼</span></div>';
-                html += '<div class="card-body" style="display:block;padding:0.5rem;"><div class="row g-2">';
+                        '<span class="toggle-icon collapsed" style="font-size:0.7rem;color:#888;">▼</span></div>';
+                html += '<div class="card-body" style="display:none;"><div class="row g-2">';
                 t.players.forEach(function(p) {
                     var selectedClass = p.selected ? 'selected' : '';
                     var disabled = p.selected ? 'disabled' : '';
@@ -1135,8 +1136,8 @@
     function toggleTeam(header) {
         var body = header.nextElementSibling;
         var icon = header.querySelector('.toggle-icon');
-        if (body.style.display === 'none') { body.style.display = 'block'; }
-        else { body.style.display = 'none'; }
+        if (body.style.display === 'none') { body.style.display = 'block'; icon.classList.remove('collapsed'); }
+        else { body.style.display = 'none'; icon.classList.add('collapsed'); }
     }
 
     function showToast(msg, type) {
