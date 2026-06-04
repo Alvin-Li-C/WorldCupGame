@@ -2,7 +2,7 @@ from models import get_db
 import json
 import hashlib
 
-TOTAL_ROUNDS = 248
+TOTAL_ROUNDS = 250
 PICKS_PER_ROUND = 5
 TOTAL_PARTICIPANTS = 5
 
@@ -163,14 +163,22 @@ def record_selection(participant_name, player_id):
             'UPDATE game_state SET state_value = "completed" WHERE state_key = "status"'
         )
     else:
-        db.execute(
-            'UPDATE game_state SET state_value = ? WHERE state_key = "current_round"',
-            (str(next_round),)
-        )
-        db.execute(
-            'UPDATE game_state SET state_value = ? WHERE state_key = "current_pick"',
-            (str(next_pick),)
-        )
+        # Check if all players have been selected
+        total_players = db.execute('SELECT COUNT(*) FROM players').fetchone()[0]
+        selected_count = db.execute('SELECT COUNT(*) FROM selections').fetchone()[0]
+        if selected_count >= total_players:
+            db.execute(
+                'UPDATE game_state SET state_value = "completed" WHERE state_key = "status"'
+            )
+        else:
+            db.execute(
+                'UPDATE game_state SET state_value = ? WHERE state_key = "current_round"',
+                (str(next_round),)
+            )
+            db.execute(
+                'UPDATE game_state SET state_value = ? WHERE state_key = "current_pick"',
+                (str(next_pick),)
+            )
 
     db.execute(
         'UPDATE game_state SET state_value = ? WHERE state_key = "last_participant_id"',
@@ -395,13 +403,22 @@ def _execute_auto_draft(db):
             )
             break
         else:
-            db.execute(
-                'UPDATE game_state SET state_value = ? WHERE state_key = "current_round"',
-                (str(next_round),)
-            )
-            db.execute(
-                'UPDATE game_state SET state_value = ? WHERE state_key = "current_pick"',
-                (str(next_pick),)
-            )
+            # Check if all players have been selected
+            total_players = db.execute('SELECT COUNT(*) FROM players').fetchone()[0]
+            selected_count = db.execute('SELECT COUNT(*) FROM selections').fetchone()[0]
+            if selected_count >= total_players:
+                db.execute(
+                    'UPDATE game_state SET state_value = "completed" WHERE state_key = "status"'
+                )
+                break
+            else:
+                db.execute(
+                    'UPDATE game_state SET state_value = ? WHERE state_key = "current_round"',
+                    (str(next_round),)
+                )
+                db.execute(
+                    'UPDATE game_state SET state_value = ? WHERE state_key = "current_pick"',
+                    (str(next_pick),)
+                )
 
     return picks

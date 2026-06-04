@@ -83,6 +83,9 @@ PLAYERS_DATA = {
         ('Julian Quinones', '胡利安·基尼奥内斯', 21, 'FW'),
         ('Raul Jimenez', '劳尔·希门尼斯', 22, 'FW'),
         ('Santiago Gimenez', '圣地亚哥·希门尼斯', 23, 'FW'),
+        ('Cesar Montes', '塞萨尔·蒙特斯', 24, 'DF'),
+        ('Fidel Ambriz', '菲德尔·安布里斯', 25, 'MF'),
+        ('Jorge Meraz', '豪尔赫·梅拉兹', 26, 'DF'),
     ],
     '捷克': [
         ('Lukas Hornicek', '卢卡斯·霍尼切克', 1, 'GK'),
@@ -306,6 +309,7 @@ PLAYERS_DATA = {
         ('Gabriel Martinelli', '马丁内利', 23, 'FW'),
         ('Rayan', '拉扬', 24, 'FW'),
         ('Neymar', '内马尔', 25, 'FW'),
+        ('Savio', '萨维奥', 26, 'FW'),
     ],
     '海地': [
         ('Johnny Placide', '普拉西德', 1, 'GK'),
@@ -555,6 +559,9 @@ PLAYERS_DATA = {
         ('Nilson Angulo', '尼尔松·安古洛', 21, 'FW'),
         ('Anthony Valencia', '安东尼·巴伦西亚', 22, 'FW'),
         ('Jeremy Arevalo', '杰雷米·阿雷瓦洛', 23, 'FW'),
+        ('Jackson Minda', '杰克逊·明达', 24, 'DF'),
+        ('Jose Cifuentes', '何塞·西富恩特斯', 25, 'MF'),
+        ('Dixon Arroyo', '迪克松·阿罗约', 26, 'MF'),
     ],
     '德国': [
         ('Oliver Baumann', '奥利弗·鲍曼', 1, 'GK'),
@@ -582,6 +589,7 @@ PLAYERS_DATA = {
         ('Leroy Sane', '勒鲁瓦·萨内', 23, 'FW'),
         ('Deniz Undav', '德尼兹·翁达夫', 24, 'FW'),
         ('Nick Woltemade', '尼克·沃尔特马德', 25, 'FW'),
+        ('Robin Gosens', '罗宾·戈森斯', 26, 'DF'),
     ],
     '科特迪瓦': [
         ('Yahia Fofana', '叶海亚·福法纳', 1, 'GK'),
@@ -778,7 +786,6 @@ PLAYERS_DATA = {
         ('Omar Marmoush', '奥马尔·马尔穆什', 24, 'FW'),
         ('Mohamed Salah', '穆罕默德·萨拉赫', 25, 'FW'),
         ('Aqtay Abdallah', '阿卜杜拉·阿卜杜拉', 26, 'FW'),
-        ('Hamza Abdelkarim', '哈姆扎·阿卜杜勒卡里姆', 27, 'FW'),
     ],
     '伊朗': [
         ('Alireza Beiranvand', '阿里雷扎·贝兰万德', 1, 'GK'),
@@ -1031,8 +1038,6 @@ PLAYERS_DATA = {
         ('Assane Diao', '阿桑·迪奥', 24, 'FW'),
         ('Ibrahim Mbaye', '易卜拉欣·姆巴耶', 25, 'FW'),
         ('Nicolas Jackson', '尼古拉斯·杰克逊', 26, 'FW'),
-        ('Bamba Dieng', '班巴·迪昂', 27, 'FW'),
-        ('Cherif Ndiaye', '谢里夫·恩迪亚耶', 28, 'FW'),
     ],
     '伊拉克': [
         ('Fahad Talib', '法哈德·塔利卜', 1, 'GK'),
@@ -1059,6 +1064,8 @@ PLAYERS_DATA = {
         ('Ali Yousef', '阿里·优素福', 22, 'FW'),
         ('Aymen Hussein', '埃曼·侯赛因', 23, 'FW'),
         ('Mohanad Ali', '莫哈纳德·阿里', 24, 'FW'),
+        ('Ahmed Yahya', '艾哈迈德·叶海亚', 25, 'FW'),
+        ('Safaa Hadi', '萨法·哈迪', 26, 'DF'),
     ],
     '阿尔及利亚': [
         ('Luca Zidane', '卢卡·齐达内', 1, 'GK'),
@@ -1232,7 +1239,6 @@ PLAYERS_DATA = {
         ('Diogo Costa', '迪奥戈·科斯塔', 1, 'GK'),
         ('Jose Sa', '若泽·萨', 2, 'GK'),
         ('Rui Silva', '鲁伊·席尔瓦', 3, 'GK'),
-        ('Ricardo Velho', '里卡多·韦略', 4, 'GK'),
         ('Diogo Dalot', '达洛特', 5, 'DF'),
         ('Matheus Nunes', '努内斯', 6, 'DF'),
         ('Nelson Semedo', '塞梅多', 7, 'DF'),
