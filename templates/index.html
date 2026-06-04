@@ -383,7 +383,7 @@
             </div>
             <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="current-identity" id="myIdentity">👤 当前身份: <span id="myName">—</span>
-                    <a href="#" onclick="showIdentityModal()" style="color:var(--gold);font-size:0.7rem;margin-left:0.3rem;">切换</a>
+                    <a href="#" onclick="showIdentityModal();return false;" style="color:var(--gold);font-size:0.7rem;margin-left:0.3rem;">切换</a>
                 </div>
                 <div class="auto-draft-area" id="autoDraftArea" style="display:none;">
                     <div class="auto-draft-toggle" id="autoDraftToggle" onclick="toggleAutoDraft()">
@@ -465,6 +465,7 @@
     var preselectQueue = [];       // In-memory preselect cache [{id, display}]
     var autoDraftStates = {};      // name -> boolean
     var pendingPinIdentity = null;  // Identity waiting for PIN
+    var verificationTimer = null;     // showVerificationSuccess countdown timer
 
     // PIN helpers
     function getStoredPin(name) { return localStorage.getItem('worldcup_pin_' + name) || ''; }
@@ -1019,6 +1020,12 @@
 
     // ========== Identity ==========
     function showIdentityModal() {
+        // Clear any running verification countdown and reset gate UI
+        if (verificationTimer) {
+            clearInterval(verificationTimer);
+            verificationTimer = null;
+        }
+        resetGateUI();
         document.getElementById('identityModal').classList.remove('hidden');
     }
 
@@ -1258,12 +1265,14 @@
         document.getElementById('identityButtons').style.display = 'none';
         var count = 3;
         document.getElementById('gateCountdown').textContent = count + ' \u79d2\u540e\u8fdb\u5165\u9009\u79c0...';
-        var timer = setInterval(function() {
+        if (verificationTimer) { clearInterval(verificationTimer); verificationTimer = null; }
+        verificationTimer = setInterval(function() {
             count--;
             if (count > 0) {
                 document.getElementById('gateCountdown').textContent = count + ' \u79d2\u540e\u8fdb\u5165\u9009\u79c0...';
             } else {
-                clearInterval(timer);
+                clearInterval(verificationTimer);
+                verificationTimer = null;
                 enterGame();
             }
         }, 1000);
