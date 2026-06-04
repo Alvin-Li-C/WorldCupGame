@@ -555,8 +555,16 @@
 
     // PIN API
     async function checkPinStatus(name) {
-        var resp = await fetch('/api/preselect/' + encodeURIComponent(name) + '?pin=');
-        return await resp.json();
+        var controller = new AbortController();
+        var t = setTimeout(function() { controller.abort(); }, 8000);
+        try {
+            var resp = await fetch('/api/preselect/' + encodeURIComponent(name) + '?pin=', {signal: controller.signal});
+            clearTimeout(t);
+            return await resp.json();
+        } catch (e) {
+            clearTimeout(t);
+            throw e;
+        }
     }
 
     async function initPinOnServer(name, pin) {
@@ -1031,35 +1039,34 @@
     function setIdentity(name, order) {
         currentUser = name;
         localStorage.setItem('worldcup_identity', name);
-        // Show verifying state in gate
-        document.getElementById('identityButtons').style.display = 'none';
-        document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
-        document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u9a8c\u8bc1\u8eab\u4efd\uff0c\u8bf7\u7a0d\u5019';
 
-        // Check PIN status and load preselect
+        // Fast path: cached PIN exists → show entry modal immediately
+        var storedPin = getStoredPin(name);
+        if (storedPin) {
+            document.getElementById('identityButtons').style.display = 'none';
+            pendingPinIdentity = name;
+            showPinEntryModal(name);
+            return;
+        }
+
+        // No cached PIN → check server (show checking state, NOT verifying)
+        document.getElementById('identityButtons').style.display = 'none';
+        document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u68c0\u67e5\u4e2d...';
+        document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u68c0\u67e5\u8eab\u4efd\u72b6\u6001';
+
         (async function() {
             try {
                 var pinStatus = await checkPinStatus(name);
-                var storedPin = getStoredPin(name);
                 if (pinStatus.has_pin) {
-                    if (!storedPin) {
-                        // PIN exists but not stored locally - prompt for entry
-                        pendingPinIdentity = name;
-                        showPinEntryModal(name);
-                    } else {
-                        // PIN stored locally - try to load
-                        await loadPreselectFromServer();
-                        await fetchAutoDraftState(name);
-                        showVerificationSuccess(name);
-                    }
+                    pendingPinIdentity = name;
+                    showPinEntryModal(name);
                 } else {
-                    // No PIN set yet - prompt for setup
                     pendingPinIdentity = name;
                     showPinSetupModal(name);
                 }
             } catch (e) {
-                console.error('Verification error:', e);
-                showToast('\u26a0\ufe0f \u9a8c\u8bc1\u5931\u8d25: ' + e.message, 'warning');
+                console.error('Check error:', e);
+                showToast('\u26a0\ufe0f \u68c0\u67e5\u5931\u8d25\uff1a' + e.message, 'warning');
                 resetGateUI();
             }
         })();
@@ -1086,15 +1093,25 @@
         var pin = document.getElementById('pinSetupInput').value.trim();
         if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
         var name = pendingPinIdentity || currentUser;
-        var ok = await initPinOnServer(name, pin);
-        if (!ok) {
-            showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25\uff0c\u53ef\u80fd\u5df2\u5b58\u5728', 'warning');
-            return;
+        // Show verifying state BEFORE server call
+        document.getElementById('pinSetupModal').classList.add('hidden');
+        document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
+        document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u8bbe\u7f6e\u5e76\u9a8c\u8bc1PIN';
+        try {
+            var ok = await initPinOnServer(name, pin);
+            if (!ok) {
+                showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25\uff0c\u53ef\u80fd\u5df2\u5b58\u5728', 'warning');
+                resetGateUI();
+                return;
+            }
+            storePin(name, pin);
+            showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
+            showVerificationSuccess(name);
+        } catch (e) {
+            console.error('PIN setup error:', e);
+            showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25: ' + e.message, 'warning');
+            resetGateUI();
         }
-        storePin(name, pin);
-        hidePinSetupModal();
-        showToast('\u2705 PIN\u8bbe\u7f6e\u6210\u529f', 'success');
-        showVerificationSuccess(name);
     }
 
     function showPinEntryModal() {
@@ -1117,24 +1134,33 @@
         var pin = document.getElementById('pinEntryInput').value.trim();
         if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
         var name = pendingPinIdentity || currentUser;
-        var ok = await verifyPinOnServer(name, pin);
-        if (!ok) {
-            showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u65b0\u9009\u62e9\u8eab\u4efd', 'warning');
-            // Revoke identity
+        // Show verifying state BEFORE server call
+        document.getElementById('pinEntryModal').classList.add('hidden');
+        document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
+        document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u9a8c\u8bc1PIN';
+        try {
+            var ok = await verifyPinOnServer(name, pin);
+            if (!ok) {
+                showToast('\u26a0\ufe0f PIN\u9519\u8bef\uff0c\u8bf7\u91cd\u65b0\u9009\u62e9\u8eab\u4efd', 'warning');
+                currentUser = null;
+                localStorage.removeItem('worldcup_identity');
+                document.getElementById('pinEntryInput').value = '';
+                pendingPinIdentity = null;
+                resetGateUI();
+                return;
+            }
+            storePin(name, pin);
+            showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
+            showVerificationSuccess(name);
+        } catch (e) {
+            console.error('PIN verify error:', e);
+            showToast('\u26a0\ufe0f PIN\u9a8c\u8bc1\u5931\u8d25: ' + e.message, 'warning');
             currentUser = null;
             localStorage.removeItem('worldcup_identity');
             document.getElementById('pinEntryInput').value = '';
             pendingPinIdentity = null;
-            hidePinEntryModal();
-            // Reset gate UI
             resetGateUI();
-            showIdentityModal();
-            return;
         }
-        storePin(name, pin);
-        hidePinEntryModal();
-        showToast('\u2705 PIN\u9a8c\u8bc1\u6210\u529f', 'success');
-        showVerificationSuccess(name);
     }
 
     // ========== Utilities ==========
