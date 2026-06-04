@@ -1074,6 +1074,7 @@
 
     // ========== PIN Modals ==========
     function showPinSetupModal() {
+        document.getElementById('identityModal').classList.add('hidden');
         document.getElementById('pinSetupInput').value = '';
         document.getElementById('pinSetupModal').classList.remove('hidden');
         setTimeout(function() { document.getElementById('pinSetupInput').focus(); }, 100);
@@ -1093,8 +1094,9 @@
         var pin = document.getElementById('pinSetupInput').value.trim();
         if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
         var name = pendingPinIdentity || currentUser;
-        // Show verifying state BEFORE server call
+        // Hide PIN modal, restore identity overlay with verifying state
         document.getElementById('pinSetupModal').classList.add('hidden');
+        document.getElementById('identityModal').classList.remove('hidden');
         document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
         document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u8bbe\u7f6e\u5e76\u9a8c\u8bc1PIN';
         try {
@@ -1102,6 +1104,7 @@
             if (!ok) {
                 showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25\uff0c\u53ef\u80fd\u5df2\u5b58\u5728', 'warning');
                 resetGateUI();
+                showIdentityModal();
                 return;
             }
             storePin(name, pin);
@@ -1111,10 +1114,12 @@
             console.error('PIN setup error:', e);
             showToast('\u26a0\ufe0f PIN\u8bbe\u7f6e\u5931\u8d25: ' + e.message, 'warning');
             resetGateUI();
+            showIdentityModal();
         }
     }
 
     function showPinEntryModal() {
+        document.getElementById('identityModal').classList.add('hidden');
         document.getElementById('pinEntryInput').value = '';
         document.getElementById('pinEntryModal').classList.remove('hidden');
         setTimeout(function() { document.getElementById('pinEntryInput').focus(); }, 100);
@@ -1134,8 +1139,9 @@
         var pin = document.getElementById('pinEntryInput').value.trim();
         if (pin.length < 4) { showToast('\u26a0\ufe0f \u8bf7\u8f93\u51654\u4f4d\u6570\u5b57PIN', 'warning'); return; }
         var name = pendingPinIdentity || currentUser;
-        // Show verifying state BEFORE server call
+        // Hide PIN modal, restore identity overlay with verifying state
         document.getElementById('pinEntryModal').classList.add('hidden');
+        document.getElementById('identityModal').classList.remove('hidden');
         document.querySelector('#identityModal .identity-card h2').textContent = '\u23f3 \u9a8c\u8bc1\u4e2d...';
         document.querySelector('#identityModal .identity-card p').textContent = '\u6b63\u5728\u9a8c\u8bc1PIN';
         try {
@@ -1147,6 +1153,7 @@
                 document.getElementById('pinEntryInput').value = '';
                 pendingPinIdentity = null;
                 resetGateUI();
+                showIdentityModal();
                 return;
             }
             storePin(name, pin);
@@ -1160,6 +1167,7 @@
             document.getElementById('pinEntryInput').value = '';
             pendingPinIdentity = null;
             resetGateUI();
+            showIdentityModal();
         }
     }
 
