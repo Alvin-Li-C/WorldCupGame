@@ -2,7 +2,7 @@ from models import get_db
 import json
 import hashlib
 
-TOTAL_ROUNDS = 15
+TOTAL_ROUNDS = 248
 PICKS_PER_ROUND = 5
 TOTAL_PARTICIPANTS = 5
 
@@ -74,6 +74,8 @@ def get_current_state():
         'current_round': round_val,
         'current_pick': pick_val,
         'status': status,
+        'total_rounds': TOTAL_ROUNDS,
+        'picks_per_round': PICKS_PER_ROUND,
         'current_participant': {
             'id': participant['id'],
             'name': participant['name'],
@@ -314,7 +316,7 @@ def _execute_auto_draft(db):
     """
     picks = []
 
-    for _ in range(5):  # Safety limit
+    for _ in range(1250):  # Safety limit - cover all possible picks
         # Check game not over
         status_row = db.execute(
             'SELECT state_value FROM game_state WHERE state_key = "status"'

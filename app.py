@@ -167,7 +167,8 @@ def api_export():
         ws.cell(1, i + 2, p['name'])
 
     # Data
-    for r in range(1, 16):
+    max_round = max(grid.keys()) if grid else 0
+    for r in range(1, max_round + 1):
         ws.cell(r + 1, 1, r)
         for cp in range(2, 7):
             if r in grid and cp in grid[r]:

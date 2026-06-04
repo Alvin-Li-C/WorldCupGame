@@ -210,7 +210,7 @@
         .summary-section h3 { color: var(--gold); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
         .summary-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
         .summary-table th, .summary-table td { border: 1px solid #2a2a4a; padding: 0.4rem 0.3rem; text-align: center; }
-        .summary-table th { background: #1a2744; color: var(--gold); font-weight: 700; }
+        .summary-table th { background: #1a2744; color: var(--gold); font-weight: 700; position: sticky; top: 0; z-index: 1; }
         .summary-table td { background: var(--card-bg); }
         .summary-table .current-pick-cell { background: rgba(245,197,24,0.15); font-weight: 700; }
 
@@ -430,7 +430,7 @@
     <!-- ========== SUMMARY TABLE ========== -->
     <div class="summary-section">
         <h3>📋 选秀结果汇总</h3>
-        <div style="overflow-x:auto;">
+        <div style="overflow-x:auto;max-height:600px;overflow-y:auto;">
             <table class="summary-table" id="summaryTable">
                 <thead>
                     <tr><th style="width:50px;">轮次</th></tr>
@@ -985,13 +985,15 @@
 
         var tbody = document.getElementById('summaryTableBody');
         var bodyHtml = '';
-        for (var r = 1; r <= 15; r++) {
+        var totalRounds = gameState.total_rounds || 248;
+        var picksPerRound = gameState.picks_per_round || 5;
+        for (var r = 1; r <= totalRounds; r++) {
             bodyHtml += '<tr><td>' + r + '</td>';
             for (var c = 0; c < names.length; c++) {
                 var cellText = '';
                 var isCurrent = (r === currentRound && (function(){
                     var snake2 = (r % 2 === 1) ? [0,1,2,3,4] : [4,3,2,1,0];
-                    return snake2[currentPick - 1] === c && picks.length < r * 5 - (5 - currentPick);
+                    return snake2[currentPick - 1] === c && picks.length < (r - 1) * picksPerRound + currentPick;
                 })());
                 if (roundData[r]) {
                     for (var p = 0; p < roundData[r].length; p++) {
