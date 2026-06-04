@@ -130,6 +130,7 @@ def api_export():
     selections = db.execute('''
         SELECT s.round_number, s.pick_number,
                p.name AS participant_name, pl.name AS player_name,
+               pl.name_cn AS player_name_cn,
                pl.jersey_number, t.name AS team_name
         FROM selections s
         JOIN participants p ON s.participant_id = p.id
@@ -153,7 +154,8 @@ def api_export():
             col = snake.index(order) + 2  # col 0=round, col 6=6th participant (none)
             if r not in grid:
                 grid[r] = {}
-            grid[r][col] = f"{s['player_name']} #{s['jersey_number']} ({s['team_name']})"
+            name = s['player_name_cn'] or s['player_name']
+            grid[r][col] = f"{name} #{s['jersey_number']} ({s['team_name']})"
 
     wb = openpyxl.Workbook()
     ws = wb.active
