@@ -258,6 +258,7 @@ search.addEventListener('input', () => {{
 }});
 
 // Auto-refresh selection status every 5 seconds
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 function refreshSelections() {{
   fetch('/api/teams')
     .then(r => r.json())
@@ -265,11 +266,11 @@ function refreshSelections() {{
       const selectedNames = new Set();
       teams.forEach(t => {{
         t.players.forEach(p => {{
-          if (p.selected) selectedNames.add(p.name);
+          if (p.selected) selectedNames.add(norm(p.name));
         }});
       }});
       document.querySelectorAll('tbody tr[data-player]').forEach(row => {{
-        const playerName = row.getAttribute('data-player');
+        const playerName = norm(row.getAttribute('data-player'));
         const pnameCell = row.querySelector('.pname');
         if (!pnameCell) return;
         const badge = pnameCell.querySelector('.selected-badge');
