@@ -149,9 +149,7 @@ def api_export():
                 order = p['draft_order']
                 break
         if order:
-            # figure out column based on snake rule
-            snake = get_snake_order(r)
-            col = snake.index(order) + 2  # col 0=round, col 6=6th participant (none)
+            col = order + 1  # col 1=round, col 2-6=participants by draft_order
             if r not in grid:
                 grid[r] = {}
             name = s['player_name_cn'] or s['player_name']
