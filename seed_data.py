@@ -584,7 +584,7 @@ PLAYERS_DATA = {
         ('Jamie Leweling', '杰米·勒韦林', 18, 'MF'),
         ('Maximilian Beier', '马克西米利安·拜尔', 19, 'FW'),
         ('Kai Havertz', '凯·哈弗茨', 20, 'FW'),
-        ('Lennart Karl', '伦纳特·卡尔', 21, 'FW'),
+        ('Assan Ouedraogo', '阿桑·韦德拉奥果', 21, 'MF'),
         ('Jamal Musiala', '贾马尔·穆西亚拉', 22, 'FW'),
         ('Leroy Sane', '勒鲁瓦·萨内', 23, 'FW'),
         ('Deniz Undav', '德尼兹·翁达夫', 24, 'FW'),
