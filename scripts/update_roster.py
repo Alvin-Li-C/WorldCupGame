@@ -13,7 +13,8 @@ DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # === EDIT THIS LIST FOR EACH ROSTER UPDATE ===
 CHANGES = [
     # (球队, 受伤球员英文名, 新球员英文名, 新球员中文名, 新号码, 位置)
-    # Example: ('德国', 'Injured Player', 'New Player', '新球员', 99, 'MF'),
+    ('德国', 'Lennart Karl', 'Assan Ouedraogo', '阿桑·韦德拉奥果', 21, 'MF'),
+    ('德国', 'Robin Gosens', 'Nadiem Amiri', '纳迪姆·阿米里', 20, 'MF'),
 ]
 
 
