@@ -589,7 +589,7 @@ PLAYERS_DATA = {
         ('Leroy Sane', '勒鲁瓦·萨内', 23, 'FW'),
         ('Deniz Undav', '德尼兹·翁达夫', 24, 'FW'),
         ('Nick Woltemade', '尼克·沃尔特马德', 25, 'FW'),
-        ('Robin Gosens', '罗宾·戈森斯', 26, 'DF'),
+        ('Nadiem Amiri', '纳迪姆·阿米里', 20, 'MF'),
     ],
     '科特迪瓦': [
         ('Yahia Fofana', '叶海亚·福法纳', 1, 'GK'),
