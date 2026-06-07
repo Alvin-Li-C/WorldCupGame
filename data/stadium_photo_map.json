@@ -5,7 +5,7 @@
     {"keys": ["bbva", "monterrey", "volcán"], "photo": "bbva.jpg", "label": "Estadio BBVA · Monterrey"},
     {"keys": ["mercedes-benz", "atlanta"], "photo": "mercedes_atlanta.jpg", "label": "Mercedes-Benz Stadium · Atlanta"},
     {"keys": ["gillette", "foxborough"], "photo": "gillette.jpg", "label": "Gillette Stadium · Foxborough"},
-    {"keys": ["metlife", "rutherford"], "photo": "metlife.jpg", "label": "MetLife Stadium · East Rutherford"},
+    {"keys": ["metlife", "rutherford", "new york", "new jersey"], "photo": "metlife.jpg", "label": "MetLife Stadium · East Rutherford"},
     {"keys": ["lincoln financial", "philadelphia"], "photo": "lincoln.jpg", "label": "Lincoln Financial Field · Philadelphia"},
     {"keys": ["lumen", "seattle"], "photo": "lumen.jpg", "label": "Lumen Field · Seattle"},
     {"keys": ["levi", "santa clara"], "photo": "levis.jpg", "label": "Levi's Stadium · Santa Clara"},

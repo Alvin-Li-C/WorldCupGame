@@ -52,7 +52,7 @@ powershell -ExecutionPolicy Bypass -File scripts\register_daily_briefing_task.ps
 python scripts\download_stadium_photos.py
 ```
 
-16 张球场图在 `static/stadiums/`；WC Logo 为 `static/wc2026-logo.svg`（简报/积分榜页眉）。
+图源：[ArchDaily 中文网](https://www.archdaily.cn/cn/993991/2026nian-fifashi-jie-bei-zai-mei-guo-zai-mo-xi-ge-zai-jia-na-da)（`images.adsttc.com`，国内可访问）。16 张球场图在 `static/stadiums/`；WC Logo 为 `static/wc2026-logo.svg`。
 
 ## PythonAnywhere
 
