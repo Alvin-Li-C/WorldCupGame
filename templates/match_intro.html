@@ -353,6 +353,7 @@
         }
         .roster-row.filled { border-left: 2px solid var(--gold); }
         .side-panel.home .roster-row.filled { border-left: none; border-right: 2px solid var(--gold); }
+        .player.multi .player-inner + .player-inner { margin-top: 0.35rem; }
 
         .person {
             font-size: 0.68rem;
@@ -522,12 +523,19 @@ var MOCK_AWAY = {{ m.away_roster | tojson }};
 
 function renderRoster(containerId, data) {
     document.getElementById(containerId).innerHTML = PARTICIPANTS.map(function(name) {
-        var p = data[name];
-        var star = p && p.pick <= 20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
-        var playerHtml = p
-            ? '<div class="player"><div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div></div>'
-            : '<div class="player empty">—</div>';
-        return '<div class="roster-row' + (p ? ' filled' : '') + '">' +
+        var raw = data[name];
+        var list = !raw ? [] : (Array.isArray(raw) ? raw : [raw]);
+        var playerHtml;
+        if (!list.length) {
+            playerHtml = '<div class="player empty">—</div>';
+        } else {
+            var multi = list.length > 1 ? ' multi' : '';
+            playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
+                var star = p.pick <= 20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
+                return '<div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div>';
+            }).join('') + '</div>';
+        }
+        return '<div class="roster-row' + (list.length ? ' filled' : '') + '">' +
             '<div class="person">' + name + '</div>' + playerHtml + '</div>';
     }).join('');
 }
@@ -589,8 +597,16 @@ function initMatch() {
     document.getElementById('metaText').textContent = d.meta;
 
     ['home', 'away'].forEach(function(s) {
-        document.getElementById(s + 'Flag').src = '/static/flags/' + d[s + 'Flag'] + '.png';
-        document.getElementById(s + 'Name').textContent = d[s + 'Name'];
+        var flagEl = document.getElementById(s + 'Flag');
+        var code = d[s + 'Flag'];
+        var teamName = d[s + 'Name'];
+        flagEl.alt = teamName;
+        flagEl.onerror = function() {
+            flagEl.onerror = null;
+            flagEl.src = '/static/flags/xx.png';
+        };
+        flagEl.src = '/static/flags/' + code + '.png';
+        document.getElementById(s + 'Name').textContent = teamName;
         document.getElementById(s + 'Owner').textContent = d[s + 'Owner'];
     });
 

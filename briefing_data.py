@@ -229,24 +229,28 @@ def open_db_readonly():
 
 
 def get_roster_for_team(team_name):
-    """Per-participant pick from team_name (or null)."""
+    """Per-participant all picks from team_name (list per person, or null)."""
     db = get_db()
     participants = db.execute('SELECT id, name FROM participants ORDER BY draft_order').fetchall()
     roster = {}
     for p in participants:
-        row = db.execute('''
+        rows = db.execute('''
             SELECT pl.jersey_number, pl.name_cn, pl.name, s.pick_number
             FROM selections s
             JOIN players pl ON pl.id = s.player_id
             JOIN teams t ON t.id = pl.team_id
             WHERE s.participant_id = ? AND t.name = ?
-        ''', (p['id'], team_name)).fetchone()
-        if row:
-            roster[p['name']] = {
-                'num': row['jersey_number'],
-                'name': row['name_cn'] or row['name'],
-                'pick': row['pick_number'],
-            }
+            ORDER BY s.pick_number
+        ''', (p['id'], team_name)).fetchall()
+        if rows:
+            roster[p['name']] = [
+                {
+                    'num': row['jersey_number'],
+                    'name': row['name_cn'] or row['name'],
+                    'pick': row['pick_number'],
+                }
+                for row in rows
+            ]
         else:
             roster[p['name']] = None
     db.close()
