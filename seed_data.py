@@ -3,7 +3,9 @@ import os
 
 from models import get_db, init_db
 
-TEAM_INFO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'basedata', 'teamInfo.txt')
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+TEAM_OWNERSHIP_JSON = os.path.join(ROOT_DIR, 'data', 'team_ownership.json')
+TEAM_INFO_PATH = os.path.join(ROOT_DIR, 'static', 'basedata', 'teamInfo.txt')
 PARTICIPANT_NAMES = ('耗子', '庆爷', '李总', '老闫', '老王')
 TEAMS_PER_OWNER = 8
 
@@ -1453,10 +1455,16 @@ def seed_database():
 
 
 def load_team_ownership():
-    """Read teamInfo.txt JSON; validate 5 owners x 8 teams."""
-    if not os.path.isfile(TEAM_INFO_PATH):
-        raise FileNotFoundError(f'Missing team ownership file: {TEAM_INFO_PATH}')
-    with open(TEAM_INFO_PATH, encoding='utf-8') as f:
+    """Read team ownership JSON; validate 5 owners x 8 teams."""
+    if os.path.isfile(TEAM_OWNERSHIP_JSON):
+        path = TEAM_OWNERSHIP_JSON
+    elif os.path.isfile(TEAM_INFO_PATH):
+        path = TEAM_INFO_PATH
+    else:
+        raise FileNotFoundError(
+            f'Missing team ownership: {TEAM_OWNERSHIP_JSON} or {TEAM_INFO_PATH}'
+        )
+    with open(path, encoding='utf-8') as f:
         data = json.load(f)
     if set(data.keys()) != set(PARTICIPANT_NAMES):
         raise ValueError(f'teamInfo keys must be exactly {PARTICIPANT_NAMES}')
