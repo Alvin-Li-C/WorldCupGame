@@ -5,6 +5,17 @@ import hashlib
 TOTAL_ROUNDS = 250
 PICKS_PER_ROUND = 5
 TOTAL_PARTICIPANTS = 5
+TOP20_CUTOFF = 20
+
+
+def global_pick_number(round_number, pick_number):
+    """Overall draft slot (1-based) across all rounds."""
+    return (round_number - 1) * PICKS_PER_ROUND + pick_number
+
+
+def is_top20_pick(round_number, pick_number):
+    """True if this selection was made in the first 20 overall draft picks."""
+    return global_pick_number(round_number, pick_number) <= TOP20_CUTOFF
 
 
 def get_snake_order(round_number):

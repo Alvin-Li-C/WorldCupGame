@@ -531,7 +531,7 @@ function renderRoster(containerId, data) {
         } else {
             var multi = list.length > 1 ? ' multi' : '';
             playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
-                var star = p.pick <= 20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
+                var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
                 return '<div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div>';
             }).join('') + '</div>';
         }

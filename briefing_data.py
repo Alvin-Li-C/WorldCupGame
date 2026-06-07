@@ -4,6 +4,7 @@ import os
 import sqlite3
 
 from briefing.time_utils import fixture_beijing_date, today_bj_str, yesterday_bj_str
+from game_logic import global_pick_number, is_top20_pick
 from models import DB_PATH, get_db
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -185,7 +186,7 @@ def get_selections_roster():
     roster = {}
     for p in parts:
         row = db.execute('''
-            SELECT pl.jersey_number, pl.name_cn, pl.name, s.pick_number
+            SELECT pl.jersey_number, pl.name_cn, pl.name, s.round_number, s.pick_number
             FROM selections s
             JOIN players pl ON pl.id = s.player_id
             WHERE s.participant_id = ?
@@ -196,8 +197,8 @@ def get_selections_roster():
             roster[p['name']] = {
                 'num': row['jersey_number'],
                 'name': row['name_cn'] or row['name'],
-                'pick_number': row['pick_number'],
-                'top20': row['pick_number'] <= 20,
+                'pick_number': global_pick_number(row['round_number'], row['pick_number']),
+                'top20': is_top20_pick(row['round_number'], row['pick_number']),
             }
         else:
             roster[p['name']] = None
@@ -213,15 +214,22 @@ def get_selections_for_display(db=None):
         close = True
     rows = db.execute('''
         SELECT p.name AS participant, pl.id AS player_id, pl.name_cn, pl.name,
-               pl.jersey_number, t.name AS team_name, s.pick_number
+               pl.jersey_number, t.name AS team_name, s.round_number, s.pick_number
         FROM selections s
         JOIN participants p ON p.id = s.participant_id
         JOIN players pl ON pl.id = s.player_id
         JOIN teams t ON t.id = pl.team_id
+        ORDER BY s.round_number, s.pick_number
     ''').fetchall()
     if close:
         db.close()
-    return [dict(r) for r in rows]
+    out = []
+    for r in rows:
+        item = dict(r)
+        item['pick_number'] = global_pick_number(r['round_number'], r['pick_number'])
+        item['top20'] = is_top20_pick(r['round_number'], r['pick_number'])
+        out.append(item)
+    return out
 
 
 def open_db_readonly():
@@ -235,19 +243,20 @@ def get_roster_for_team(team_name):
     roster = {}
     for p in participants:
         rows = db.execute('''
-            SELECT pl.jersey_number, pl.name_cn, pl.name, s.pick_number
+            SELECT pl.jersey_number, pl.name_cn, pl.name, s.round_number, s.pick_number
             FROM selections s
             JOIN players pl ON pl.id = s.player_id
             JOIN teams t ON t.id = pl.team_id
             WHERE s.participant_id = ? AND t.name = ?
-            ORDER BY s.pick_number
+            ORDER BY s.round_number, s.pick_number
         ''', (p['id'], team_name)).fetchall()
         if rows:
             roster[p['name']] = [
                 {
                     'num': row['jersey_number'],
                     'name': row['name_cn'] or row['name'],
-                    'pick': row['pick_number'],
+                    'pick': global_pick_number(row['round_number'], row['pick_number']),
+                    'top20': is_top20_pick(row['round_number'], row['pick_number']),
                 }
                 for row in rows
             ]

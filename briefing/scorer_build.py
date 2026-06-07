@@ -66,7 +66,7 @@ def build_match_scorers(api_match, home_cn, away_cn, team_map, selections, api_t
                     f'+{goals} 乌龙+{ogs * 2}' if goals and ogs else '+0'
                 ))
             ),
-            'top20': sel.get('pick_number', 99) <= 20,
+            'top20': bool(sel.get('top20')),
         })
     our_scorers.sort(key=lambda x: (-x['points'], x['player_name_cn']))
     return {'our_scorers': our_scorers, 'unmatched_scorers': unmatched}

@@ -535,7 +535,7 @@ var MOCK_AWAY = {
 function renderRoster(containerId, data) {
     document.getElementById(containerId).innerHTML = PARTICIPANTS.map(function(name) {
         var p = data[name];
-        var star = p && p.pick <= 20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
+        var star = p && p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
         var playerHtml = p
             ? '<div class="player"><div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div></div>'
             : '<div class="player empty">—</div>';

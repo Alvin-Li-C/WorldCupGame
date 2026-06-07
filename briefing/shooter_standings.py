@@ -140,7 +140,7 @@ def compute_shooter_standings(history=None, latest=None, selections=None):
             'goals': goals,
             'own_goals': ogs,
             'points': points,
-            'top20': sel.get('pick_number', 99) <= 20,
+            'top20': bool(sel.get('top20')),
         })
 
     players_out.sort(key=lambda x: (-x['points'], -x['goals'], x['pick']))
