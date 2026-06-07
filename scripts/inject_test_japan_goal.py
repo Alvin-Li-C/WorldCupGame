@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Inject Koki Ogawa (小川航基) goal for 庆爷 into shooter standings demo."""
+"""LOCAL DEMO ONLY — writes history JSON. Run cleanup_test_scorer_injections.py after.
+Do not commit results to git / do not upload to PA."""
 import os
 import sys
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Inject Son Heung-min goal into history for shooter standings demo."""
+"""LOCAL DEMO ONLY — writes history JSON. Run cleanup_test_scorer_injections.py after.
+Do not commit results to git / do not upload to PA."""
 import json
 import os
 import sys

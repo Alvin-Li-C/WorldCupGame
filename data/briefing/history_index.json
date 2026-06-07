@@ -53,19 +53,6 @@
               "goal_count": 1,
               "display": "+1",
               "top20": true
-            },
-            {
-              "player_id": 562,
-              "participant": "庆爷",
-              "player_name_cn": "小川航基",
-              "player_name_en": "Koki Ogawa",
-              "jersey_number": 16,
-              "goals": 1,
-              "own_goals": 0,
-              "points": 1,
-              "goal_count": 1,
-              "display": "+1",
-              "top20": true
             }
           ],
           "unmatched_scorers": []
@@ -112,21 +99,7 @@
           "away_team": "韩国",
           "home_score": 2,
           "away_score": 1,
-          "our_scorers": [
-            {
-              "player_id": 102,
-              "participant": "李总",
-              "player_name_cn": "孙兴慜",
-              "player_name_en": "Heung-Min Son",
-              "jersey_number": 24,
-              "goals": 1,
-              "own_goals": 0,
-              "points": 1,
-              "goal_count": 1,
-              "display": "+1",
-              "top20": false
-            }
-          ],
+          "our_scorers": [],
           "unmatched_scorers": []
         }
       ]
