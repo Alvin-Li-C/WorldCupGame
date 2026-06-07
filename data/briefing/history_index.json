@@ -10,99 +10,18 @@
   "reports": {
     "2026-06-19": {
       "date": "2026-06-19",
-      "match_count": 2,
-      "matches": [
-        {
-          "fixture_id": 7,
-          "home_team": "巴西",
-          "away_team": "摩洛哥",
-          "home_score": 2,
-          "away_score": 1,
-          "stadium_photo": "azteca.jpg",
-          "our_scorers": [
-            {
-              "participant": "耗子",
-              "player_name_cn": "维尼修斯",
-              "jersey_number": 10,
-              "goal_count": 1,
-              "display": "+1",
-              "top20": true
-            },
-            {
-              "participant": "庆爷",
-              "player_name_cn": "恩内斯里",
-              "jersey_number": 19,
-              "goal_count": 1,
-              "display": "+1",
-              "top20": false
-            }
-          ]
-        },
-        {
-          "fixture_id": 19,
-          "home_team": "德国",
-          "away_team": "日本",
-          "home_score": 1,
-          "away_score": 1,
-          "stadium_photo": "azteca.jpg",
-          "our_scorers": [
-            {
-              "participant": "李总",
-              "player_name_cn": "维尔茨",
-              "jersey_number": 10,
-              "goal_count": 1,
-              "display": "+1",
-              "top20": true
-            }
-          ],
-          "unmatched_scorers": []
-        }
-      ]
+      "match_count": 0,
+      "matches": []
     },
     "2026-06-18": {
       "date": "2026-06-18",
-      "match_count": 2,
-      "matches": [
-        {
-          "fixture_id": 1,
-          "home_team": "墨西哥",
-          "away_team": "捷克",
-          "home_score": 3,
-          "away_score": 0,
-          "our_scorers": [
-            {
-              "participant": "耗子",
-              "player_name_cn": "亚历克西斯·贝加",
-              "goal_count": 2,
-              "display": "+2",
-              "top20": true
-            }
-          ]
-        },
-        {
-          "fixture_id": 33,
-          "home_team": "法国",
-          "away_team": "挪威",
-          "home_score": 2,
-          "away_score": 0,
-          "our_scorers": []
-        }
-      ]
+      "match_count": 0,
+      "matches": []
     },
     "2026-06-11": {
       "date": "2026-06-11",
-      "match_count": 1,
-      "matches": [
-        {
-          "fixture_id": 2,
-          "home_team": "南非",
-          "away_team": "韩国",
-          "home_score": 2,
-          "away_score": 1,
-          "our_scorers": [],
-          "unmatched_scorers": []
-        }
-      ]
+      "match_count": 0,
+      "matches": []
     },
     "2026-06-17": {
       "date": "2026-06-17",
