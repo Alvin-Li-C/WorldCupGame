@@ -161,7 +161,13 @@ def load_briefing_enriched():
 
 
 def get_owner_map():
-    """team_name -> participant name or None."""
+    """team_name -> participant name. teamInfo.txt is the source of truth."""
+    try:
+        from seed_data import load_team_ownership
+        ownership = load_team_ownership()
+        return {team: owner for owner, teams in ownership.items() for team in teams}
+    except (FileNotFoundError, ValueError):
+        pass
     db = get_db()
     rows = db.execute('''
         SELECT t.name AS team_name, p.name AS owner

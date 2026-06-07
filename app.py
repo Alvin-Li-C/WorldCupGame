@@ -463,7 +463,7 @@ def ensure_db_initialized():
     db.close()
     if empty_count > 0:
         seed_database()
-    if own_count == 0:
+    if own_count != 40:
         _sync_ownership_if_needed()
 
 
