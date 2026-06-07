@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球队实时得分榜 · Mock 预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b12;
+            --surface: rgba(15, 20, 32, 0.88);
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --text: #f4f4f5;
+            --muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+        .wc-backdrop {
+            position: fixed; inset: 0; z-index: 0; overflow: hidden;
+            background: #070b12;
+        }
+        .wc-backdrop-photo {
+            position: absolute; inset: -8%;
+            background: url('../static/stadiums/azteca.jpg') center 40% / cover no-repeat;
+            filter: saturate(1.12) contrast(1.06);
+            animation: wcPan 32s ease-in-out infinite alternate;
+        }
+        @keyframes wcPan {
+            from { transform: scale(1) translateY(0); }
+            to { transform: scale(1.07) translateY(-1%); }
+        }
+        .wc-backdrop-scrim {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7,11,18,0.5) 0%, rgba(7,11,18,0.78) 50%, rgba(7,11,18,0.94) 100%),
+                radial-gradient(ellipse 100% 55% at 50% 15%, rgba(201,162,39,0.14), transparent 50%);
+            pointer-events: none;
+        }
+        .wc-backdrop-watermark {
+            position: absolute; top: 8%; left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.8rem, 9vw, 4.5rem);
+            font-weight: 800; letter-spacing: 0.28em;
+            color: rgba(255,255,255,0.045);
+            white-space: nowrap; pointer-events: none; user-select: none;
+        }
+        .wc-backdrop-badge {
+            position: absolute; bottom: 1.5rem; right: 1.5rem;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+            color: rgba(201,162,39,0.35); text-transform: uppercase;
+            pointer-events: none;
+        }
+        .page {
+            position: relative; z-index: 1;
+            max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+        }
+        .mock-nav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+            padding: 0.75rem 0; margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .mock-nav a {
+            font-size: 0.75rem; font-weight: 600; text-decoration: none;
+            color: var(--muted); padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border); border-radius: 4px;
+        }
+        .mock-nav a:hover { color: var(--gold-light); border-color: rgba(201,162,39,0.4); }
+        .mock-nav a.active { color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.08); }
+        .mock-tag { margin-left: auto; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        h1 {
+            font-size: 1.5rem; font-weight: 800; color: var(--gold-light);
+            margin-bottom: 0.25rem; text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+        }
+        .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+        .rules-bar {
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+            padding: 0.75rem 1rem; margin-bottom: 1.5rem;
+            background: rgba(15, 20, 32, 0.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(201,162,39,0.25);
+            border-radius: 6px; font-size: 0.8rem; color: var(--muted);
+        }
+        .rules-bar strong { color: var(--gold-light); }
+        .demo-switch {
+            display: flex; gap: 0.5rem; margin-bottom: 1.5rem;
+        }
+        .demo-switch button {
+            font-family: inherit; font-size: 0.75rem; font-weight: 600;
+            padding: 0.4rem 0.9rem; border-radius: 4px; cursor: pointer;
+            border: 1px solid var(--border); background: transparent; color: var(--muted);
+        }
+        .demo-switch button.active {
+            color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.1);
+        }
+        .empty-state {
+            text-align: center; padding: 4rem 2rem;
+            background: rgba(15, 20, 32, 0.65);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px dashed var(--border);
+            border-radius: 8px; color: var(--muted);
+        }
+        .empty-state h2 { font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+        .leaderboard { display: none; }
+        .leaderboard.visible { display: block; }
+        .rank-card {
+            background: rgba(15, 20, 32, 0.72);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px; margin-bottom: 0.75rem; overflow: hidden;
+        }
+        .rank-card.rank-1 { border-color: rgba(201,162,39,0.45); }
+        .rank-header {
+            display: grid;
+            grid-template-columns: 48px 1fr auto auto;
+            gap: 0.75rem; align-items: center;
+            padding: 1rem 1.25rem; cursor: pointer;
+            transition: background 0.15s;
+        }
+        .rank-header:hover { background: rgba(255,255,255,0.03); }
+        .rank-num {
+            font-size: 1.25rem; font-weight: 800; color: var(--muted);
+            text-align: center;
+        }
+        .rank-1 .rank-num { color: var(--gold); }
+        .participant-name {
+            font-size: 1.05rem; font-weight: 700;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .participant-dot {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .record { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+        .pts-col { text-align: right; }
+        .pts-value { font-size: 1.5rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+        .pts-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
+        .expand-icon {
+            font-size: 0.7rem; color: var(--muted);
+            transition: transform 0.2s;
+        }
+        .rank-card.expanded .expand-icon { transform: rotate(180deg); }
+        .team-detail {
+            display: none; border-top: 1px solid var(--border);
+            padding: 0.5rem 1.25rem 1rem;
+        }
+        .rank-card.expanded .team-detail { display: block; }
+        .team-table {
+            width: 100%; border-collapse: collapse; font-size: 0.78rem;
+        }
+        .team-table th {
+            text-align: left; font-weight: 600; color: var(--muted);
+            padding: 0.5rem 0.4rem; border-bottom: 1px solid var(--border);
+            font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .team-table th.num { text-align: center; }
+        .team-table td { padding: 0.45rem 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .team-table td.num { text-align: center; font-variant-numeric: tabular-nums; }
+        .team-table tr:last-child td { border-bottom: none; }
+        .team-table .pts { color: var(--gold-light); font-weight: 700; }
+        .group-tag {
+            font-size: 0.65rem; color: var(--muted);
+            background: rgba(255,255,255,0.06); padding: 0.1rem 0.35rem;
+            border-radius: 2px; margin-left: 0.35rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wc-backdrop" aria-hidden="true">
+    <div class="wc-backdrop-photo"></div>
+    <div class="wc-backdrop-scrim"></div>
+    <div class="wc-backdrop-watermark">FIFA WORLD CUP 2026</div>
+    <div class="wc-backdrop-badge">USA · MEXICO · CANADA</div>
+</div>
+<div class="page">
+    <nav class="mock-nav">
+        <a href="/briefing">每日简报</a>
+        <a href="/standings/teams" class="active">球队积分榜</a>
+        <a href="/standings/shooters">射手积分榜</a>
+        <span class="mock-tag">Mock · 无后端</span>
+    </nav>
+
+    <h1>球队实时得分榜</h1>
+    <p class="subtitle">归属球队累计积分 · 更新于 2026-06-12 09:00</p>
+
+    <div class="rules-bar">
+        <span>计分规则：<strong>胜 3 分</strong> · <strong>平 1 分</strong> · <strong>负 0 分</strong></span>
+        <span>（规则未来可在后端配置调整）</span>
+    </div>
+
+    <div class="demo-switch">
+        <button type="button" class="active" data-view="live">小组赛进行中</button>
+        <button type="button" data-view="empty">赛初（无赛果）</button>
+    </div>
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+        <h2>尚无完场比赛</h2>
+        <p>首场小组赛结束后，此处将显示 5 人归属球队累计积分排名。</p>
+    </div>
+
+    <div id="leaderboard" class="leaderboard visible"></div>
+</div>
+
+<script>
+var COLORS = {
+    '耗子': '#f5c518',
+    '庆爷': '#4ade80',
+    '李总': '#38bdf8',
+    '老闫': '#f87171',
+    '老王': '#c084fc'
+};
+
+var MOCK_DATA = [
+    {
+        rank: 1, participant: '耗子', points: 18, wins: 5, draws: 3, losses: 2, played: 10,
+        teams: [
+            { team: '墨西哥', group: 'A', w: 2, d: 0, l: 0, pts: 6 },
+            { team: '巴西', group: 'C', w: 1, d: 1, l: 0, pts: 4 },
+            { team: '法国', group: 'D', w: 1, d: 1, l: 1, pts: 4 },
+            { team: '荷兰', group: 'F', w: 1, d: 1, l: 1, pts: 4 }
+        ]
+    },
+    {
+        rank: 2, participant: '庆爷', points: 15, wins: 4, draws: 3, losses: 3, played: 10,
+        teams: [
+            { team: '南非', group: 'A', w: 0, d: 1, l: 1, pts: 1 },
+            { team: '德国', group: 'E', w: 2, d: 0, l: 0, pts: 6 },
+            { team: '西班牙', group: 'H', w: 1, d: 1, l: 0, pts: 4 },
+            { team: '葡萄牙', group: 'G', w: 1, d: 1, l: 2, pts: 4 }
+        ]
+    },
+    {
+        rank: 3, participant: '李总', points: 12, wins: 3, draws: 3, losses: 4, played: 10,
+        teams: [
+            { team: '韩国', group: 'B', w: 0, d: 2, l: 0, pts: 2 },
+            { team: '摩洛哥', group: 'C', w: 1, d: 1, l: 1, pts: 4 },
+            { team: '英格兰', group: 'F', w: 1, d: 0, l: 2, pts: 3 },
+            { team: '比利时', group: 'G', w: 1, d: 0, l: 1, pts: 3 }
+        ]
+    },
+    {
+        rank: 4, participant: '老闫', points: 9, wins: 2, draws: 3, losses: 5, played: 10,
+        teams: [
+            { team: '日本', group: 'E', w: 1, d: 1, l: 1, pts: 4 },
+            { team: '克罗地亚', group: 'H', w: 1, d: 0, l: 2, pts: 3 },
+            { team: '瑞士', group: 'D', w: 0, d: 2, l: 1, pts: 2 }
+        ]
+    },
+    {
+        rank: 5, participant: '老王', points: 6, wins: 1, draws: 3, losses: 6, played: 10,
+        teams: [
+            { team: '捷克', group: 'B', w: 0, d: 2, l: 0, pts: 2 },
+            { team: '美国', group: 'A', w: 0, d: 1, l: 2, pts: 1 },
+            { team: '乌拉圭', group: 'C', w: 1, d: 0, l: 2, pts: 3 }
+        ]
+    }
+];
+
+function renderLeaderboard() {
+    var el = document.getElementById('leaderboard');
+    el.innerHTML = MOCK_DATA.map(function(row) {
+        var color = COLORS[row.participant] || '#888';
+        var teamsHtml = row.teams.map(function(t) {
+            return '<tr>' +
+                '<td>' + t.team + '<span class="group-tag">' + t.group + '组</span></td>' +
+                '<td class="num">' + t.w + '</td>' +
+                '<td class="num">' + t.d + '</td>' +
+                '<td class="num">' + t.l + '</td>' +
+                '<td class="num pts">' + t.pts + '</td>' +
+                '</tr>';
+        }).join('');
+        return '<div class="rank-card rank-' + row.rank + '" data-rank="' + row.rank + '">' +
+            '<div class="rank-header" onclick="toggleExpand(this.parentElement)">' +
+                '<div class="rank-num">' + row.rank + '</div>' +
+                '<div>' +
+                    '<div class="participant-name">' +
+                        '<span class="participant-dot" style="background:' + color + '"></span>' +
+                        row.participant +
+                    '</div>' +
+                    '<div class="record">' + row.wins + '胜 ' + row.draws + '平 ' + row.losses + '负 · ' + row.played + '场</div>' +
+                '</div>' +
+                '<div class="pts-col">' +
+                    '<div class="pts-value">' + row.points + '</div>' +
+                    '<div class="pts-label">积分</div>' +
+                '</div>' +
+                '<div class="expand-icon">▼</div>' +
+            '</div>' +
+            '<div class="team-detail">' +
+                '<table class="team-table">' +
+                    '<thead><tr>' +
+                        '<th>归属球队</th><th class="num">胜</th><th class="num">平</th><th class="num">负</th><th class="num">积分</th>' +
+                    '</tr></thead>' +
+                    '<tbody>' + teamsHtml + '</tbody>' +
+                '</table>' +
+            '</div>' +
+        '</div>';
+    }).join('');
+}
+
+function toggleExpand(card) {
+    card.classList.toggle('expanded');
+}
+
+function setView(view) {
+    var isEmpty = view === 'empty';
+    document.getElementById('emptyState').style.display = isEmpty ? 'block' : 'none';
+    document.getElementById('leaderboard').classList.toggle('visible', !isEmpty);
+}
+
+document.querySelectorAll('.demo-switch button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.demo-switch button').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        setView(btn.getAttribute('data-view'));
+    });
+});
+
+renderLeaderboard();
+setView('live');
+</script>
+</body>
+</html>

@@ -83,3 +83,37 @@ def init_db():
     )
     conn.commit()
     conn.close()
+
+
+def migrate_briefing_tables():
+    """Additive migration for briefing; does not touch draft tables."""
+    conn = get_db()
+    conn.executescript('''
+        CREATE TABLE IF NOT EXISTS team_ownership (
+            team_id INTEGER PRIMARY KEY REFERENCES teams(id),
+            participant_id INTEGER NOT NULL REFERENCES participants(id)
+        );
+
+        CREATE TABLE IF NOT EXISTS match_results (
+            fixture_id INTEGER PRIMARY KEY,
+            home_team TEXT NOT NULL,
+            away_team TEXT NOT NULL,
+            home_score INTEGER,
+            away_score INTEGER,
+            status TEXT NOT NULL DEFAULT 'scheduled',
+            played_date TEXT,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS match_goals (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fixture_id INTEGER NOT NULL,
+            player_id INTEGER REFERENCES players(id),
+            player_name_cn TEXT NOT NULL,
+            team_name TEXT NOT NULL,
+            minute INTEGER,
+            UNIQUE(fixture_id, player_id, minute)
+        );
+    ''')
+    conn.commit()
+    conn.close()

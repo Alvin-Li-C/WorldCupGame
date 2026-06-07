@@ -1,4 +1,11 @@
+import json
+import os
+
 from models import get_db, init_db
+
+TEAM_INFO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'basedata', 'teamInfo.txt')
+PARTICIPANT_NAMES = ('耗子', '庆爷', '李总', '老闫', '老王')
+TEAMS_PER_OWNER = 8
 
 
 # 48 teams in 12 groups (A-L), 4 per group
@@ -1445,5 +1452,60 @@ def seed_database():
     print(f'Seeded: {len(TEAMS)} teams, {player_count} players, {len(participants)} participants')
 
 
+def load_team_ownership():
+    """Read teamInfo.txt JSON; validate 5 owners x 8 teams."""
+    if not os.path.isfile(TEAM_INFO_PATH):
+        raise FileNotFoundError(f'Missing team ownership file: {TEAM_INFO_PATH}')
+    with open(TEAM_INFO_PATH, encoding='utf-8') as f:
+        data = json.load(f)
+    if set(data.keys()) != set(PARTICIPANT_NAMES):
+        raise ValueError(f'teamInfo keys must be exactly {PARTICIPANT_NAMES}')
+    seen = set()
+    team_names = {t[0] for t in TEAMS}
+    for owner, teams in data.items():
+        if len(teams) != TEAMS_PER_OWNER:
+            raise ValueError(f'{owner} must have {TEAMS_PER_OWNER} teams, got {len(teams)}')
+        for name in teams:
+            if name not in team_names:
+                raise ValueError(f'Unknown team: {name}')
+            if name in seen:
+                raise ValueError(f'Duplicate team assignment: {name}')
+            seen.add(name)
+    if len(seen) != 40:
+        raise ValueError(f'Expected 40 assigned teams, got {len(seen)}')
+    return data
+
+
+def sync_team_ownership():
+    """Sync team_ownership table only; never touches selections."""
+    ownership = load_team_ownership()
+    db = get_db()
+    db.execute('DELETE FROM team_ownership')
+    for owner_name, team_names in ownership.items():
+        prow = db.execute('SELECT id FROM participants WHERE name = ?', (owner_name,)).fetchone()
+        if not prow:
+            db.close()
+            raise ValueError(f'Participant not found: {owner_name}')
+        participant_id = prow['id']
+        for team_name in team_names:
+            trow = db.execute('SELECT id FROM teams WHERE name = ?', (team_name,)).fetchone()
+            if not trow:
+                db.close()
+                raise ValueError(f'Team not found: {team_name}')
+            db.execute(
+                'INSERT INTO team_ownership (team_id, participant_id) VALUES (?, ?)',
+                (trow['id'], participant_id),
+            )
+    db.commit()
+    db.close()
+
+
 if __name__ == '__main__':
-    seed_database()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == 'sync-ownership':
+        from models import migrate_briefing_tables
+        migrate_briefing_tables()
+        sync_team_ownership()
+        print('Synced team_ownership from teamInfo.txt')
+    else:
+        seed_database()

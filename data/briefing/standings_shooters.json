@@ -1,0 +1,202 @@
+{
+  "generated_at": "2026-06-08T06:17:13+08:00",
+  "empty": false,
+  "rules": {
+    "goal": 1,
+    "own_goal": 2,
+    "penalty_shootout": 0,
+    "note": "90分钟与加时点球按进球+1；点球大战不计"
+  },
+  "participants": [
+    {
+      "participant": "庆爷",
+      "points": 1,
+      "goals": 1,
+      "own_goals": 0
+    },
+    {
+      "participant": "李总",
+      "points": 1,
+      "goals": 1,
+      "own_goals": 0
+    },
+    {
+      "participant": "老王",
+      "points": 0,
+      "goals": 0,
+      "own_goals": 0
+    },
+    {
+      "participant": "老闫",
+      "points": 0,
+      "goals": 0,
+      "own_goals": 0
+    },
+    {
+      "participant": "耗子",
+      "points": 0,
+      "goals": 0,
+      "own_goals": 0
+    }
+  ],
+  "players": [
+    {
+      "player_id": 102,
+      "participant": "李总",
+      "name": "孙兴慜",
+      "name_en": "Heung-Min Son",
+      "team": "韩国",
+      "pick": 1,
+      "goals": 1,
+      "own_goals": 0,
+      "points": 1,
+      "top20": true,
+      "rank": 1
+    },
+    {
+      "player_id": 562,
+      "participant": "庆爷",
+      "name": "小川航基",
+      "name_en": "Koki Ogawa",
+      "team": "日本",
+      "pick": 6,
+      "goals": 1,
+      "own_goals": 0,
+      "points": 1,
+      "top20": true,
+      "rank": 2
+    },
+    {
+      "player_id": 66,
+      "participant": "耗子",
+      "name": "奥尔韦图·马卡尼亚",
+      "name_en": "Olwethy Makhanya",
+      "team": "南非",
+      "pick": 1,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 3
+    },
+    {
+      "player_id": 5,
+      "participant": "老王",
+      "name": "伊斯雷尔·雷耶斯",
+      "name_en": "Israel Reyes",
+      "team": "墨西哥",
+      "pick": 1,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 4
+    },
+    {
+      "player_id": 1,
+      "participant": "庆爷",
+      "name": "卡洛斯·阿塞韦多",
+      "name_en": "Carlos Acevedo",
+      "team": "墨西哥",
+      "pick": 2,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 5
+    },
+    {
+      "player_id": 6,
+      "participant": "老闫",
+      "name": "赫苏斯·加利亚多",
+      "name_en": "Jesus Gallardo",
+      "team": "墨西哥",
+      "pick": 2,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 6
+    },
+    {
+      "player_id": 2,
+      "participant": "李总",
+      "name": "吉列尔莫·奥乔亚",
+      "name_en": "Guillermo Ochoa",
+      "team": "墨西哥",
+      "pick": 3,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 7
+    },
+    {
+      "player_id": 7,
+      "participant": "李总",
+      "name": "约翰·巴斯克斯",
+      "name_en": "Johan Vasquez",
+      "team": "墨西哥",
+      "pick": 3,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 8
+    },
+    {
+      "player_id": 3,
+      "participant": "老闫",
+      "name": "劳尔·兰赫尔",
+      "name_en": "Raul Rangel",
+      "team": "墨西哥",
+      "pick": 4,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 9
+    },
+    {
+      "player_id": 8,
+      "participant": "庆爷",
+      "name": "豪尔赫·桑切斯",
+      "name_en": "Jorge Sanchez",
+      "team": "墨西哥",
+      "pick": 4,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 10
+    },
+    {
+      "player_id": 4,
+      "participant": "老王",
+      "name": "埃德松·阿尔瓦雷斯",
+      "name_en": "Edson Alvarez",
+      "team": "墨西哥",
+      "pick": 5,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 11
+    },
+    {
+      "player_id": 9,
+      "participant": "耗子",
+      "name": "马特奥·查韦斯",
+      "name_en": "Mateo Chavez",
+      "team": "墨西哥",
+      "pick": 5,
+      "goals": 0,
+      "own_goals": 0,
+      "points": 0,
+      "top20": true,
+      "rank": 12
+    }
+  ],
+  "unmatched_count": 0,
+  "unmatched": []
+}

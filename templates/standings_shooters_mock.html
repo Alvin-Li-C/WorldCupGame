@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>射手实时得分榜 · Mock 预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b12;
+            --surface: rgba(15, 20, 32, 0.88);
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --text: #f4f4f5;
+            --muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+        .wc-backdrop {
+            position: fixed; inset: 0; z-index: 0; overflow: hidden;
+            background: #070b12;
+        }
+        .wc-backdrop-photo {
+            position: absolute; inset: -8%;
+            background: url('../static/stadiums/sofi.jpg') center 35% / cover no-repeat;
+            filter: saturate(1.12) contrast(1.06);
+            animation: wcPan 32s ease-in-out infinite alternate;
+        }
+        @keyframes wcPan {
+            from { transform: scale(1) translateY(0); }
+            to { transform: scale(1.07) translateY(-1%); }
+        }
+        .wc-backdrop-scrim {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7,11,18,0.5) 0%, rgba(7,11,18,0.78) 50%, rgba(7,11,18,0.94) 100%),
+                radial-gradient(ellipse 100% 55% at 50% 15%, rgba(201,162,39,0.14), transparent 50%);
+            pointer-events: none;
+        }
+        .wc-backdrop-watermark {
+            position: absolute; top: 8%; left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.8rem, 9vw, 4.5rem);
+            font-weight: 800; letter-spacing: 0.28em;
+            color: rgba(255,255,255,0.045);
+            white-space: nowrap; pointer-events: none; user-select: none;
+        }
+        .wc-backdrop-badge {
+            position: absolute; bottom: 1.5rem; right: 1.5rem;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+            color: rgba(201,162,39,0.35); text-transform: uppercase;
+            pointer-events: none;
+        }
+        .page {
+            position: relative; z-index: 1;
+            max-width: 1000px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+        }
+        .mock-nav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+            padding: 0.75rem 0; margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .mock-nav a {
+            font-size: 0.75rem; font-weight: 600; text-decoration: none;
+            color: var(--muted); padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border); border-radius: 4px;
+        }
+        .mock-nav a:hover { color: var(--gold-light); border-color: rgba(201,162,39,0.4); }
+        .mock-nav a.active { color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.08); }
+        .mock-tag { margin-left: auto; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        h1 {
+            font-size: 1.5rem; font-weight: 800; color: var(--gold-light);
+            margin-bottom: 0.25rem; text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+        }
+        .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+        .rules-bar {
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            padding: 0.75rem 1rem; margin-bottom: 1.5rem;
+            background: rgba(15, 20, 32, 0.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(201,162,39,0.25);
+            border-radius: 6px; font-size: 0.8rem; color: var(--muted);
+        }
+        .rules-bar strong { color: var(--gold-light); }
+        .demo-switch { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .demo-switch button {
+            font-family: inherit; font-size: 0.75rem; font-weight: 600;
+            padding: 0.4rem 0.9rem; border-radius: 4px; cursor: pointer;
+            border: 1px solid var(--border); background: transparent; color: var(--muted);
+        }
+        .demo-switch button.active {
+            color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.1);
+        }
+        .empty-state {
+            text-align: center; padding: 4rem 2rem;
+            background: rgba(15, 20, 32, 0.65);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px dashed var(--border);
+            border-radius: 8px; color: var(--muted);
+        }
+        .empty-state h2 { font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+        .content { display: none; }
+        .content.visible { display: block; }
+        .totals-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 720px) { .totals-grid { grid-template-columns: repeat(2, 1fr); } }
+        .total-card {
+            background: rgba(15, 20, 32, 0.72);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 0.75rem; text-align: center;
+            border-top: 3px solid var(--accent, #888);
+        }
+        .total-card .name { font-size: 0.75rem; font-weight: 600; color: var(--muted); margin-bottom: 0.25rem; }
+        .total-card .pts { font-size: 1.35rem; font-weight: 800; color: var(--gold-light); }
+        .total-card .detail { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+        .table-wrap {
+            background: rgba(15, 20, 32, 0.72);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px; overflow: hidden;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        thead { background: rgba(0,0,0,0.25); }
+        th {
+            text-align: left; padding: 0.65rem 0.75rem;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--muted);
+            border-bottom: 1px solid var(--border);
+        }
+        th.num { text-align: center; }
+        td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        td.num { text-align: center; font-variant-numeric: tabular-nums; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        tr:last-child td { border-bottom: none; }
+        .rank-cell { font-weight: 800; color: var(--muted); width: 40px; }
+        tr.top3 .rank-cell { color: var(--gold); }
+        .participant-badge {
+            display: inline-block; font-size: 0.7rem; font-weight: 600;
+            padding: 0.15rem 0.45rem; border-radius: 3px;
+            background: rgba(255,255,255,0.06);
+        }
+        .player-name { font-weight: 600; }
+        .star { color: var(--gold); margin-left: 0.15rem; }
+        .pts-cell { font-weight: 800; color: var(--gold-light); font-size: 0.95rem; }
+        .og-cell { color: #f87171; }
+        .filter-bar {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+        }
+        .filter-bar button {
+            font-family: inherit; font-size: 0.72rem; font-weight: 600;
+            padding: 0.3rem 0.65rem; border-radius: 20px; cursor: pointer;
+            border: 1px solid var(--border); background: transparent; color: var(--muted);
+        }
+        .filter-bar button.active {
+            color: var(--text); border-color: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+<body>
+<div class="wc-backdrop" aria-hidden="true">
+    <div class="wc-backdrop-photo"></div>
+    <div class="wc-backdrop-scrim"></div>
+    <div class="wc-backdrop-watermark">FIFA WORLD CUP 2026</div>
+    <div class="wc-backdrop-badge">USA · MEXICO · CANADA</div>
+</div>
+<div class="page">
+    <nav class="mock-nav">
+        <a href="/briefing">每日简报</a>
+        <a href="/standings/teams">球队积分榜</a>
+        <a href="/standings/shooters" class="active">射手积分榜</a>
+        <span class="mock-tag">Mock · 无后端</span>
+    </nav>
+
+    <h1>射手实时得分榜</h1>
+    <p class="subtitle">选秀球员累计得分 · 更新于 2026-06-12 09:00</p>
+
+    <div class="rules-bar">
+        <span>计分规则：进球 <strong>+1</strong> · 乌龙球 <strong>+2</strong>（每名选秀球员分别累计）</span>
+    </div>
+
+    <div class="demo-switch">
+        <button type="button" class="active" data-view="live">小组赛进行中</button>
+        <button type="button" data-view="empty">赛初（无进球）</button>
+    </div>
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+        <h2>尚无进球记录</h2>
+        <p>选秀球员取得进球或乌龙后，此处将显示累计得分排名。</p>
+    </div>
+
+    <div id="content" class="content visible">
+        <div class="totals-grid" id="totalsGrid"></div>
+
+        <div class="filter-bar" id="filterBar">
+            <button type="button" class="active" data-filter="all">全部球员</button>
+            <button type="button" data-filter="耗子">耗子</button>
+            <button type="button" data-filter="庆爷">庆爷</button>
+            <button type="button" data-filter="李总">李总</button>
+            <button type="button" data-filter="老闫">老闫</button>
+            <button type="button" data-filter="老王">老王</button>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="num">#</th>
+                        <th>归属</th>
+                        <th>球员</th>
+                        <th>国家队</th>
+                        <th class="num">进球</th>
+                        <th class="num">乌龙</th>
+                        <th class="num">得分</th>
+                    </tr>
+                </thead>
+                <tbody id="playerTable"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+var COLORS = {
+    '耗子': '#f5c518',
+    '庆爷': '#4ade80',
+    '李总': '#38bdf8',
+    '老闫': '#f87171',
+    '老王': '#c084fc'
+};
+
+var PLAYERS = [
+    { rank: 1, participant: '耗子', name: '基利安·姆巴佩', team: '法国', pick: 2, goals: 3, own_goals: 0, points: 3 },
+    { rank: 2, participant: '庆爷', name: '哈里·凯恩', team: '英格兰', pick: 5, goals: 2, own_goals: 0, points: 2 },
+    { rank: 3, participant: '李总', name: '孙兴慜', team: '韩国', pick: 8, goals: 1, own_goals: 0, points: 1 },
+    { rank: 4, participant: '耗子', name: '亚历克西斯·贝加', team: '墨西哥', pick: 17, goals: 1, own_goals: 0, points: 1 },
+    { rank: 5, participant: '庆爷', name: '珀西·塔乌', team: '南非', pick: 22, goals: 1, own_goals: 0, points: 1 },
+    { rank: 6, participant: '老闫', name: '堂安律', team: '日本', pick: 31, goals: 0, own_goals: 1, points: 2 },
+    { rank: 7, participant: '老王', name: '帕特里克·施克', team: '捷克', pick: 45, goals: 0, own_goals: 0, points: 0 },
+    { rank: 8, participant: '李总', name: '优素福·恩内斯里', team: '摩洛哥', pick: 12, goals: 0, own_goals: 0, points: 0 }
+];
+
+var TOTALS = [
+    { participant: '耗子', points: 4, goals: 4, own_goals: 0 },
+    { participant: '庆爷', points: 3, goals: 3, own_goals: 0 },
+    { participant: '李总', points: 1, goals: 1, own_goals: 0 },
+    { participant: '老闫', points: 2, goals: 0, own_goals: 1 },
+    { participant: '老王', points: 0, goals: 0, own_goals: 0 }
+];
+
+var currentFilter = 'all';
+
+function renderTotals() {
+    var sorted = TOTALS.slice().sort(function(a, b) { return b.points - a.points; });
+    document.getElementById('totalsGrid').innerHTML = sorted.map(function(t) {
+        var color = COLORS[t.participant];
+        var detail = t.goals + '球';
+        if (t.own_goals) detail += ' · ' + t.own_goals + '乌龙';
+        return '<div class="total-card" style="--accent:' + color + '; border-top-color:' + color + '">' +
+            '<div class="name">' + t.participant + '</div>' +
+            '<div class="pts">' + t.points + '</div>' +
+            '<div class="detail">' + detail + '</div>' +
+        '</div>';
+    }).join('');
+}
+
+function renderTable() {
+    var rows = PLAYERS.filter(function(p) {
+        return currentFilter === 'all' || p.participant === currentFilter;
+    });
+    document.getElementById('playerTable').innerHTML = rows.map(function(p, i) {
+        var topClass = p.rank <= 3 ? 'top3' : '';
+        var star = p.pick <= 20 ? '<span class="star">★</span>' : '';
+        return '<tr class="' + topClass + '">' +
+            '<td class="num rank-cell">' + p.rank + '</td>' +
+            '<td><span class="participant-badge" style="border-left:3px solid ' + COLORS[p.participant] + '">' + p.participant + '</span></td>' +
+            '<td class="player-name">' + p.name + star + '</td>' +
+            '<td>' + p.team + '</td>' +
+            '<td class="num">' + p.goals + '</td>' +
+            '<td class="num og-cell">' + (p.own_goals || '—') + '</td>' +
+            '<td class="num pts-cell">' + p.points + '</td>' +
+        '</tr>';
+    }).join('');
+}
+
+function setView(view) {
+    var isEmpty = view === 'empty';
+    document.getElementById('emptyState').style.display = isEmpty ? 'block' : 'none';
+    document.getElementById('content').classList.toggle('visible', !isEmpty);
+}
+
+document.querySelectorAll('.demo-switch button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.demo-switch button').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        setView(btn.getAttribute('data-view'));
+    });
+});
+
+document.querySelectorAll('#filterBar button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('#filterBar button').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter');
+        renderTable();
+    });
+});
+
+renderTotals();
+renderTable();
+setView('live');
+</script>
+</body>
+</html>

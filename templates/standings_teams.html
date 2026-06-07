@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球队实时得分榜 · 2026 世界杯</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b12;
+            --surface: rgba(15, 20, 32, 0.88);
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --text: #f4f4f5;
+            --muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+        .wc-backdrop {
+            position: fixed; inset: 0; z-index: 0; overflow: hidden;
+            background: #070b12;
+        }
+        .wc-backdrop-photo {
+            position: absolute; inset: -8%;
+            background: url('../static/stadiums/azteca.jpg') center 40% / cover no-repeat;
+            filter: saturate(1.12) contrast(1.06);
+            animation: wcPan 32s ease-in-out infinite alternate;
+        }
+        @keyframes wcPan {
+            from { transform: scale(1) translateY(0); }
+            to { transform: scale(1.07) translateY(-1%); }
+        }
+        .wc-backdrop-scrim {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7,11,18,0.5) 0%, rgba(7,11,18,0.78) 50%, rgba(7,11,18,0.94) 100%),
+                radial-gradient(ellipse 100% 55% at 50% 15%, rgba(201,162,39,0.14), transparent 50%);
+            pointer-events: none;
+        }
+        .wc-backdrop-watermark {
+            position: absolute; top: 8%; left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.8rem, 9vw, 4.5rem);
+            font-weight: 800; letter-spacing: 0.28em;
+            color: rgba(255,255,255,0.045);
+            white-space: nowrap; pointer-events: none; user-select: none;
+        }
+        .page {
+            position: relative; z-index: 1;
+            max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+        }
+        .mock-nav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+            padding: 0.75rem 0; margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .mock-nav a {
+            font-size: 0.75rem; font-weight: 600; text-decoration: none;
+            color: var(--muted); padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border); border-radius: 4px;
+        }
+        .mock-nav a:hover { color: var(--gold-light); border-color: rgba(201,162,39,0.4); }
+        .mock-nav a.active { color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.08); }
+        h1 {
+            font-size: 1.5rem; font-weight: 800; color: var(--gold-light);
+            margin-bottom: 0.25rem;
+        }
+        .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+        .wc-logo-wrap { margin-bottom: 0.75rem; }
+        .wc-logo { height: 44px; width: auto; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45)); }
+        .rules-bar {
+            display: flex; flex-wrap: wrap; gap: 0.5rem 1rem;
+            padding: 0.75rem 1rem; margin-bottom: 1.5rem;
+            background: rgba(15, 20, 32, 0.55);
+            border: 1px solid rgba(201,162,39,0.25);
+            border-radius: 6px; font-size: 0.75rem; color: var(--muted);
+            line-height: 1.5;
+        }
+        .rules-bar strong { color: var(--gold-light); }
+        .empty-state {
+            text-align: center; padding: 4rem 2rem;
+            background: rgba(15, 20, 32, 0.65);
+            border: 1px dashed var(--border);
+            border-radius: 8px; color: var(--muted);
+        }
+        .rank-card {
+            background: rgba(15, 20, 32, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px; margin-bottom: 0.75rem; overflow: hidden;
+        }
+        .rank-card.rank-1 { border-color: rgba(201,162,39,0.45); }
+        .rank-header {
+            display: grid;
+            grid-template-columns: 48px 1fr auto auto;
+            gap: 0.75rem; align-items: center;
+            padding: 1rem 1.25rem; cursor: pointer;
+        }
+        .rank-header:hover { background: rgba(255,255,255,0.03); }
+        .rank-num { font-size: 1.25rem; font-weight: 800; color: var(--muted); text-align: center; }
+        .rank-1 .rank-num { color: var(--gold); }
+        .participant-name { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .participant-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .record { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+        .pts-col { text-align: right; }
+        .pts-value { font-size: 1.5rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+        .pts-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
+        .expand-icon { font-size: 0.7rem; color: var(--muted); transition: transform 0.2s; }
+        .rank-card.expanded .expand-icon { transform: rotate(180deg); }
+        .team-detail { display: none; border-top: 1px solid var(--border); padding: 0.5rem 1.25rem 1rem; }
+        .rank-card.expanded .team-detail { display: block; }
+        .team-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+        .team-table th {
+            text-align: left; font-weight: 600; color: var(--muted);
+            padding: 0.5rem 0.3rem; border-bottom: 1px solid var(--border);
+            font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .team-table th.num { text-align: center; }
+        .team-table td { padding: 0.45rem 0.3rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .team-table td.num { text-align: center; font-variant-numeric: tabular-nums; }
+        .team-table .pts { color: var(--gold-light); font-weight: 700; }
+        .group-tag {
+            font-size: 0.6rem; color: var(--muted);
+            background: rgba(255,255,255,0.06); padding: 0.1rem 0.3rem;
+            border-radius: 2px; margin-left: 0.25rem;
+        }
+        .bonus-hint { font-size: 0.6rem; color: var(--muted); display: block; }
+    </style>
+</head>
+<body>
+<div class="wc-backdrop" aria-hidden="true">
+    <div class="wc-backdrop-photo"></div>
+    <div class="wc-backdrop-scrim"></div>
+    <div class="wc-backdrop-watermark">FIFA WORLD CUP 2026</div>
+</div>
+<div class="page">
+    <nav class="mock-nav">
+        <a href="/briefing">每日简报</a>
+        <a href="/standings/teams" class="active">球队积分榜</a>
+        <a href="/standings/shooters">射手积分榜</a>
+    </nav>
+
+    <div class="wc-logo-wrap">
+        <img src="/static/wc2026-logo.svg" alt="FIFA World Cup 2026" class="wc-logo">
+    </div>
+    <h1>球队实时得分榜</h1>
+    <p class="subtitle">归属球队累计积分 · 更新于 {{ (standings.generated_at or '')[:16].replace('T', ' ') }}</p>
+
+    <div class="rules-bar">
+        <span>小组赛：<strong>胜 +3</strong> · <strong>平 +1</strong> · 负 +0</span>
+        <span>小组出线：<strong>第1/2/3名（出线）各 +1</strong> · 第4名不加</span>
+        <span>淘汰赛：<strong>晋级 +3</strong>（含加时/点球，只看晋级方）· <strong>季军 +1</strong>（第四名不加分）· <strong>冠军 +4</strong></span>
+    </div>
+
+    {% if standings.empty %}
+    <div class="empty-state">
+        <h2>尚无完场比赛</h2>
+        <p>首场小组赛结束后，此处将显示 5 人归属球队累计积分排名。</p>
+    </div>
+    {% else %}
+    <div id="leaderboard">
+        {% for row in standings.participants %}
+        <div class="rank-card rank-{{ row.rank }}" data-rank="{{ row.rank }}">
+            <div class="rank-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="rank-num">{{ row.rank }}</div>
+                <div>
+                    <div class="participant-name">
+                        <span class="participant-dot" style="background:{{ colors.get(row.participant, '#888') }}"></span>
+                        {{ row.participant }}
+                    </div>
+                    <div class="record">{{ row.wins }}胜 {{ row.draws }}平 {{ row.losses }}负 · {{ row.played }}场</div>
+                </div>
+                <div class="pts-col">
+                    <div class="pts-value">{{ row.points }}</div>
+                    <div class="pts-label">积分</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="team-detail">
+                {% if row.teams %}
+                <table class="team-table">
+                    <thead>
+                        <tr>
+                            <th>归属球队</th>
+                            <th class="num">胜</th>
+                            <th class="num">平</th>
+                            <th class="num">负</th>
+                            <th class="num">小组</th>
+                            <th class="num">奖励</th>
+                            <th class="num">淘汰</th>
+                            <th class="num">合计</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in row.teams %}
+                        <tr>
+                            <td>
+                                {{ t.team }}<span class="group-tag">{{ t.group }}组</span>
+                                {% if t.bonus_reason %}<span class="bonus-hint">{{ t.bonus_reason }}</span>{% endif %}
+                            </td>
+                            <td class="num">{{ t.w }}</td>
+                            <td class="num">{{ t.d }}</td>
+                            <td class="num">{{ t.l }}</td>
+                            <td class="num">{{ t.group_pts }}</td>
+                            <td class="num">{% if t.bonus_pts %}+{{ t.bonus_pts }}{% else %}—{% endif %}</td>
+                            <td class="num">{% if t.knockout_pts %}+{{ t.knockout_pts }}{% else %}—{% endif %}</td>
+                            <td class="num pts">{{ t.total_pts }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="record">暂无归属球队得分</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>

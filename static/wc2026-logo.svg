@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" role="img" aria-label="FIFA World Cup 2026">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8d48b"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <circle cx="36" cy="36" r="28" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <path d="M36 14 L42 30 L58 30 L45 40 L50 56 L36 46 L22 56 L27 40 L14 30 L30 30 Z" fill="url(#g)" opacity="0.9"/>
+  <text x="78" y="30" fill="#f4f4f5" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing="0.12em">FIFA WORLD CUP</text>
+  <text x="78" y="54" fill="url(#g)" font-family="Inter,Segoe UI,sans-serif" font-size="22" font-weight="800" letter-spacing="0.08em">2026</text>
+</svg>

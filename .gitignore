@@ -1,1 +1,8 @@
 backups/
+instance/draft.db
+__pycache__/
+*.pyc
+static/basedata/*.txt
+.env
+data/screenshot_*.png
+instance/

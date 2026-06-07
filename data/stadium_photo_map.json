@@ -1,0 +1,21 @@
+{
+  "venues": [
+    {"keys": ["azteca"], "photo": "azteca.jpg", "label": "Estadio Azteca · Mexico City"},
+    {"keys": ["akron", "zapopan"], "photo": "akron.jpg", "label": "Estadio Akron · Guadalajara"},
+    {"keys": ["bbva", "monterrey", "volcán"], "photo": "bbva.jpg", "label": "Estadio BBVA · Monterrey"},
+    {"keys": ["mercedes-benz", "atlanta"], "photo": "mercedes_atlanta.jpg", "label": "Mercedes-Benz Stadium · Atlanta"},
+    {"keys": ["gillette", "foxborough"], "photo": "gillette.jpg", "label": "Gillette Stadium · Foxborough"},
+    {"keys": ["metlife", "rutherford"], "photo": "metlife.jpg", "label": "MetLife Stadium · East Rutherford"},
+    {"keys": ["lincoln financial", "philadelphia"], "photo": "lincoln.jpg", "label": "Lincoln Financial Field · Philadelphia"},
+    {"keys": ["lumen", "seattle"], "photo": "lumen.jpg", "label": "Lumen Field · Seattle"},
+    {"keys": ["levi", "santa clara"], "photo": "levis.jpg", "label": "Levi's Stadium · Santa Clara"},
+    {"keys": ["sofi", "inglewood"], "photo": "sofi.jpg", "label": "SoFi Stadium · Los Angeles"},
+    {"keys": ["bc place", "vancouver"], "photo": "bcplace.jpg", "label": "BC Place · Vancouver"},
+    {"keys": ["bmo field", "toronto"], "photo": "bmo.jpg", "label": "BMO Field · Toronto"},
+    {"keys": ["at&t", "att stadium", "arlington"], "photo": "att.jpg", "label": "AT&T Stadium · Arlington"},
+    {"keys": ["nrg", "houston"], "photo": "nrg.jpg", "label": "NRG Stadium · Houston"},
+    {"keys": ["hard rock", "miami"], "photo": "hardrock.jpg", "label": "Hard Rock Stadium · Miami"},
+    {"keys": ["arrowhead", "kansas city"], "photo": "arrowhead.jpg", "label": "Arrowhead Stadium · Kansas City"}
+  ],
+  "default_photo": "sofi.jpg"
+}

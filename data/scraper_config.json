@@ -1,0 +1,38 @@
+{
+  "provider": "football-data.org",
+  "api_token_file": "static/basedata/football-data.txt",
+  "api_token_env": "FOOTBALL_DATA_TOKEN",
+  "team_name_map_file": "data/team_name_map.json",
+  "llm": {
+    "provider": "cursor_sdk",
+    "model": "composer-2.5",
+    "api_key_file": "static/basedata/AIKey.txt",
+    "api_key_env": "CURSOR_API_KEY",
+    "max_candidates_per_match": 20,
+    "lookback_hours": 48,
+    "retry_once": true
+  },
+  "news": {
+    "max_per_match": 3,
+    "rss_feeds": [
+      "https://www.espn.com/espn/rss/soccer/news"
+    ],
+    "search_api_env": "NEWS_API_KEY",
+    "impact_keywords": {
+      "tactics": 42,
+      "formation": 38,
+      "game plan": 36,
+      "feud": 35,
+      "locker room": 34,
+      "row": 32,
+      "injury": 40,
+      "doubtful": 30,
+      "suspended": 38,
+      "key player": 28,
+      "slump": 26
+    },
+    "our_pick_bonus": 15
+  },
+  "pythonanywhere_url": "https://tolerance.pythonanywhere.com",
+  "import_token_env": "IMPORT_BRIEFING_TOKEN"
+}

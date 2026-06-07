@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日简报 · Mock 预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b12;
+            --surface: rgba(15, 20, 32, 0.85);
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --text: #f4f4f5;
+            --muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+        .wc-backdrop {
+            position: fixed; inset: 0; z-index: 0; overflow: hidden;
+            background: #070b12;
+        }
+        .wc-backdrop-photo {
+            position: absolute; inset: -8%;
+            background: url('../static/stadiums/sofi.jpg') center 35% / cover no-repeat;
+            filter: saturate(1.12) contrast(1.06);
+            animation: wcPan 32s ease-in-out infinite alternate;
+        }
+        @keyframes wcPan {
+            from { transform: scale(1) translateY(0); }
+            to { transform: scale(1.07) translateY(-1%); }
+        }
+        .wc-backdrop-scrim {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7,11,18,0.5) 0%, rgba(7,11,18,0.78) 50%, rgba(7,11,18,0.94) 100%),
+                radial-gradient(ellipse 100% 55% at 50% 15%, rgba(201,162,39,0.14), transparent 50%);
+            pointer-events: none;
+        }
+        .wc-backdrop-watermark {
+            position: absolute; top: 8%; left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.8rem, 9vw, 4.5rem);
+            font-weight: 800; letter-spacing: 0.28em;
+            color: rgba(255,255,255,0.045);
+            white-space: nowrap; pointer-events: none; user-select: none;
+        }
+        .wc-backdrop-badge {
+            position: absolute; bottom: 1.5rem; right: 1.5rem;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+            color: rgba(201,162,39,0.35); text-transform: uppercase;
+            pointer-events: none;
+        }
+        .page {
+            position: relative; z-index: 1;
+            max-width: 900px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+        }
+        .mock-nav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+            padding: 0.75rem 0; margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .mock-nav a {
+            font-size: 0.75rem; font-weight: 600; text-decoration: none;
+            color: var(--muted); padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border); border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .mock-nav a:hover { color: var(--gold-light); border-color: rgba(201,162,39,0.4); }
+        .mock-nav a.active { color: var(--gold); border-color: var(--gold); background: rgba(201,162,39,0.08); }
+        .mock-tag {
+            margin-left: auto; font-size: 0.6rem; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--muted);
+        }
+        h1 {
+            font-size: 1.5rem; font-weight: 800; color: var(--gold-light);
+            margin-bottom: 0.25rem;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+        }
+        .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+        .section-title {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .section-title::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .card {
+            background: rgba(15, 20, 32, 0.72);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+        }
+        .match-row {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; flex-wrap: wrap;
+        }
+        .scoreline {
+            font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em;
+        }
+        .scorers {
+            margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted);
+            line-height: 1.7;
+        }
+        .scorers strong { color: var(--text); font-weight: 600; }
+        .badge-goal {
+            display: inline-block; font-size: 0.7rem; font-weight: 700;
+            color: var(--gold); background: rgba(201,162,39,0.15);
+            padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.25rem;
+        }
+        .star { color: var(--gold); }
+        .btn-link {
+            font-size: 0.75rem; font-weight: 600; color: var(--gold-light);
+            text-decoration: none; white-space: nowrap;
+            padding: 0.35rem 0.75rem; border: 1px solid rgba(201,162,39,0.35);
+            border-radius: 4px;
+        }
+        .btn-link:hover { background: rgba(201,162,39,0.1); }
+        .today-row {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; flex-wrap: wrap;
+        }
+        .today-meta { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+        .today-meta span { margin-right: 1rem; }
+        .key-news {
+            margin-top: 1rem; padding-top: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+        .key-news-title {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;
+        }
+        .news-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .news-item {
+            font-size: 0.8rem; line-height: 1.45; color: var(--text);
+            display: flex; align-items: flex-start; gap: 0.5rem;
+        }
+        .news-item a { color: inherit; text-decoration: none; }
+        .news-item a:hover { color: var(--gold-light); }
+        .news-rank {
+            flex-shrink: 0; width: 1.1rem; font-size: 0.7rem; font-weight: 700;
+            color: var(--muted); padding-top: 0.1rem;
+        }
+        .news-tag {
+            flex-shrink: 0; font-size: 0.65rem; font-weight: 700;
+            padding: 0.15rem 0.4rem; border-radius: 3px;
+            background: rgba(255,255,255,0.06); color: var(--muted);
+        }
+        .news-item.impact-high .news-tag {
+            background: rgba(248,113,113,0.15); color: #fca5a5;
+        }
+        .news-item.impact-medium .news-tag {
+            background: rgba(201,162,39,0.12); color: var(--gold-light);
+        }
+        .news-empty {
+            font-size: 0.8rem; color: var(--muted); font-style: italic;
+        }
+        .standings-links {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 560px) { .standings-links { grid-template-columns: 1fr; } }
+        .standings-card {
+            display: block; text-decoration: none; color: inherit;
+            background: rgba(15, 20, 32, 0.72);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px; padding: 1.25rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .standings-card:hover {
+            border-color: rgba(201,162,39,0.45);
+            transform: translateY(-2px);
+        }
+        .standings-card h3 {
+            font-size: 1rem; font-weight: 700; color: var(--gold-light);
+            margin-bottom: 0.35rem;
+        }
+        .standings-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+        .standings-card .arrow { color: var(--gold); font-size: 0.85rem; margin-top: 0.5rem; }
+        .report-header {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
+        }
+        .report-header .section-title { margin-bottom: 0; flex: 1; min-width: 120px; }
+        .report-header .section-title::after { display: none; }
+        .date-picker-wrap {
+            display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+        }
+        .date-picker-wrap label {
+            font-size: 0.7rem; color: var(--muted); white-space: nowrap;
+        }
+        .date-picker {
+            font-family: inherit; font-size: 0.8rem; font-weight: 600;
+            color: var(--gold-light); background: rgba(15, 20, 32, 0.72);
+            border: 1px solid rgba(201,162,39,0.35); border-radius: 4px;
+            padding: 0.4rem 0.65rem; cursor: pointer;
+        }
+        .date-picker:focus { outline: none; border-color: var(--gold); }
+        .report-empty {
+            text-align: center; padding: 2rem 1rem;
+            background: rgba(15, 20, 32, 0.65);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px dashed var(--border);
+            border-radius: 8px; color: var(--muted); font-size: 0.85rem;
+        }
+        .today-hint {
+            font-size: 0.7rem; color: var(--muted); font-weight: 400;
+            letter-spacing: 0; text-transform: none; margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wc-backdrop" aria-hidden="true">
+    <div class="wc-backdrop-photo"></div>
+    <div class="wc-backdrop-scrim"></div>
+    <div class="wc-backdrop-watermark">FIFA WORLD CUP 2026</div>
+    <div class="wc-backdrop-badge">USA · MEXICO · CANADA</div>
+</div>
+<div class="page">
+    <nav class="mock-nav">
+        <a href="briefing_mock.html" class="active">每日简报</a>
+        <a href="standings_teams_mock.html">球队积分榜</a>
+        <a href="standings_shooters_mock.html">射手积分榜</a>
+        <span class="mock-tag">Mock · 无后端</span>
+    </nav>
+
+    <h1>2026 世界杯 · 每日简报</h1>
+    <p class="subtitle">简报日 6月20日 · 数据更新 09:00（Mock 示例）</p>
+
+    <div class="report-header">
+        <div class="section-title" id="reportSectionTitle">战报 · 6月19日</div>
+        <div class="date-picker-wrap">
+            <label for="reportDate">赛果日</label>
+            <select id="reportDate" class="date-picker" aria-label="选择赛果日"></select>
+        </div>
+    </div>
+    <div id="reportArea"></div>
+
+    <div class="section-title" style="margin-top: 2rem;">
+        今日预告 · 6月20日
+        <span class="today-hint">（始终显示最新，不受赛果日影响）</span>
+    </div>
+
+    <div class="card">
+        <div class="today-row">
+            <div>
+                <div class="scoreline" style="font-size: 1rem;">阿根廷 vs 克罗地亚</div>
+                <div class="today-meta">
+                    <span>22:00 北京时间</span>
+                    <span>归属：耗子 vs 老闫</span>
+                </div>
+            </div>
+            <a class="btn-link" href="match_intro_mock.html">进入比赛</a>
+        </div>
+        <div class="key-news">
+            <div class="key-news-title">赛前关键动态</div>
+            <ul class="news-list">
+                <li class="news-item impact-high">
+                    <span class="news-rank">1</span>
+                    <span class="news-tag">伤病·阿根廷</span>
+                    <span>梅西小腿酸胀，训练量减半</span>
+                </li>
+                <li class="news-item impact-medium">
+                    <span class="news-rank">2</span>
+                    <span class="news-tag">阵容·克罗地亚</span>
+                    <span>莫德里奇可能替补待命</span>
+                </li>
+                <li class="news-item impact-medium">
+                    <span class="news-rank">3</span>
+                    <span class="news-tag">不和·阿根廷</span>
+                    <span>媒体关注首发中锋人选争议</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="today-row">
+            <div>
+                <div class="scoreline" style="font-size: 1rem;">葡萄牙 vs 瑞士</div>
+                <div class="today-meta">
+                    <span>03:00 北京时间</span>
+                    <span>归属：庆爷 vs 老王</span>
+                </div>
+            </div>
+            <a class="btn-link" href="match_intro_mock.html">进入比赛</a>
+        </div>
+        <div class="key-news">
+            <div class="key-news-title">赛前关键动态</div>
+            <p class="news-empty">暂无重要赛前动态</p>
+        </div>
+    </div>
+
+    <div class="section-title" style="margin-top: 2rem;">实时积分榜</div>
+    <div class="standings-links">
+        <a class="standings-card" href="standings_teams_mock.html">
+            <h3>球队实时得分榜</h3>
+            <p>5 人归属球队累计积分 · 胜 3 / 平 1 / 负 0</p>
+            <div class="arrow">查看排名 →</div>
+        </a>
+        <a class="standings-card" href="standings_shooters_mock.html">
+            <h3>射手实时得分榜</h3>
+            <p>选秀球员累计得分 · 进球 +1 · 乌龙 +2</p>
+            <div class="arrow">查看排名 →</div>
+        </a>
+    </div>
+</div>
+
+<script>
+var DEFAULT_REPORT_DATE = '2026-06-19';
+
+var HISTORY_REPORTS = {
+    '2026-06-19': {
+        label: '6月19日（昨日）',
+        title: '战报 · 6月19日',
+        matches: [
+            {
+                scoreline: '巴西 2 — 1 摩洛哥',
+                scorersHtml: '<strong>耗子</strong>：维尼修斯 <span class="star">★</span> <span class="badge-goal">+1</span><br><strong>李总</strong>：恩内斯里 <span class="badge-goal">+1</span>'
+            },
+            {
+                scoreline: '德国 1 — 1 日本',
+                scorersHtml: '<strong>庆爷</strong>：维尔茨 <span class="badge-goal">+1</span>'
+            }
+        ]
+    },
+    '2026-06-18': {
+        label: '6月18日',
+        title: '战报 · 6月18日',
+        matches: [
+            {
+                scoreline: '墨西哥 3 — 0 波兰',
+                scorersHtml: '<strong>耗子</strong>：亚历克西斯·贝加 <span class="star">★</span> <span class="badge-goal">+2</span>'
+            },
+            {
+                scoreline: '法国 2 — 0 澳大利亚',
+                scorersHtml: '<strong>耗子</strong>：姆巴佩 <span class="star">★</span> <span class="badge-goal">+1</span><br><strong>耗子</strong>：吉鲁 <span class="badge-goal">+1</span>'
+            }
+        ]
+    },
+    '2026-06-11': {
+        label: '6月11日',
+        title: '战报 · 6月11日',
+        matches: [
+            {
+                scoreline: '墨西哥 2 — 1 南非',
+                scorersHtml: '<strong>耗子</strong>：亚历克西斯·贝加 <span class="star">★</span> <span class="badge-goal">+1</span><br><strong>庆爷</strong>：珀西·塔乌 <span class="badge-goal">+1</span>'
+            }
+        ]
+    },
+    '2026-06-17': {
+        label: '6月17日',
+        title: '战报 · 6月17日',
+        matches: []
+    }
+};
+
+var DATE_ORDER = ['2026-06-19', '2026-06-18', '2026-06-17', '2026-06-11'];
+
+function renderReport(date) {
+    var report = HISTORY_REPORTS[date];
+    if (!report) return;
+
+    document.getElementById('reportSectionTitle').textContent = report.title;
+
+    var area = document.getElementById('reportArea');
+    if (!report.matches.length) {
+        area.innerHTML = '<div class="report-empty">当日无完场比赛</div>';
+        return;
+    }
+
+    area.innerHTML = report.matches.map(function(m) {
+        return '<div class="card">' +
+            '<div class="match-row">' +
+                '<div class="scoreline">' + m.scoreline + '</div>' +
+                '<a class="btn-link" href="match_intro_mock.html">查看详情</a>' +
+            '</div>' +
+            '<div class="scorers">' + m.scorersHtml + '</div>' +
+        '</div>';
+    }).join('');
+}
+
+function initDatePicker() {
+    var select = document.getElementById('reportDate');
+    DATE_ORDER.forEach(function(date) {
+        var opt = document.createElement('option');
+        opt.value = date;
+        opt.textContent = HISTORY_REPORTS[date].label;
+        if (date === DEFAULT_REPORT_DATE) opt.selected = true;
+        select.appendChild(opt);
+    });
+
+    select.addEventListener('change', function() {
+        renderReport(select.value);
+        var url = new URL(window.location.href);
+        url.searchParams.set('report_date', select.value);
+        history.replaceState(null, '', url);
+    });
+}
+
+function initFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var date = params.get('report_date');
+    if (date && HISTORY_REPORTS[date]) {
+        document.getElementById('reportDate').value = date;
+        renderReport(date);
+    } else {
+        renderReport(DEFAULT_REPORT_DATE);
+    }
+}
+
+initDatePicker();
+initFromUrl();
+</script>
+</body>
+</html>

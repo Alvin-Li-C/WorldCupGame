@@ -12,10 +12,51 @@ from game_logic import (
     toggle_auto_draft_for_participant, get_auto_draft_state_for_participant,
     _execute_auto_draft
 )
-from seed_data import seed_database
+from seed_data import seed_database, sync_team_ownership, TEAM_INFO_PATH
+from models import migrate_briefing_tables
+from briefing_data import (
+    load_briefing,
+    load_briefing_enriched,
+    load_history_index,
+    beijing_date_label,
+    kickoff_beijing_label,
+    get_report_for_date,
+    history_dates_payload,
+    get_match_detail,
+    get_owner_map,
+    get_selections_for_display,
+    save_json,
+    LATEST_PATH,
+    HISTORY_PATH,
+)
+from briefing.rebuild_scorers import rebuild_scorers_from_api
+from briefing.scorer_match import add_manual_rule
+from briefing.shooter_standings import (
+    STANDINGS_PATH as SHOOTER_STANDINGS_PATH,
+    load_shooter_standings,
+)
+from briefing.standings import STANDINGS_PATH, compute_team_standings, load_team_standings
+
+PARTICIPANT_COLORS = {
+    '耗子': '#f5c518',
+    '庆爷': '#4ade80',
+    '李总': '#38bdf8',
+    '老闫': '#f87171',
+    '老王': '#c084fc',
+}
 import openpyxl
 
 app = Flask(__name__)
+
+
+@app.template_filter('beijing_date')
+def _filter_beijing_date(iso_date):
+    return beijing_date_label(iso_date)
+
+
+@app.template_filter('kickoff_beijing')
+def _filter_kickoff_beijing(kickoff):
+    return kickoff_beijing_label(kickoff)
 
 
 def get_teams_with_players():
@@ -73,6 +114,135 @@ def teams():
     import os
     teams_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'team_ranking_top500.html')
     return send_file(teams_path)
+
+
+@app.route('/briefing')
+def briefing_page():
+    latest = load_briefing_enriched()
+    hist = history_dates_payload()
+    report_date = request.args.get('report_date') or hist.get('default') or ''
+    report = get_report_for_date(report_date) if report_date else None
+    if not report and latest.get('yesterday'):
+        report = latest['yesterday']
+        report_date = report.get('date', report_date)
+    return render_template(
+        'briefing.html',
+        latest=latest,
+        hist=hist,
+        report_date=report_date,
+        report=report,
+    )
+
+
+@app.route('/match/<int:fixture_id>')
+def match_page(fixture_id):
+    detail = get_match_detail(fixture_id)
+    if not detail:
+        return '比赛未找到', 404
+    return render_template('match_intro.html', m=detail)
+
+
+@app.route('/standings/teams')
+def standings_teams_page():
+    return render_template(
+        'standings_teams.html',
+        standings=load_team_standings(),
+        colors=PARTICIPANT_COLORS,
+    )
+
+
+@app.route('/api/standings/teams')
+def api_standings_teams():
+    return jsonify(load_team_standings())
+
+
+@app.route('/standings/shooters')
+def standings_shooters_page():
+    return render_template(
+        'standings_shooters.html',
+        standings=load_shooter_standings(),
+        colors=PARTICIPANT_COLORS,
+        selections=get_selections_for_display(),
+    )
+
+
+@app.route('/api/standings/shooters')
+def api_standings_shooters():
+    return jsonify(load_shooter_standings())
+
+
+@app.route('/api/standings/shooters/repair', methods=['POST'])
+def api_standings_shooters_repair():
+    token = request.args.get('token') or request.headers.get('X-Import-Token', '')
+    expected = os.environ.get('IMPORT_BRIEFING_TOKEN', '')
+    if not expected or token != expected:
+        return jsonify({'success': False, 'error': 'unauthorized'}), 403
+    data = request.get_json(force=True, silent=True) or {}
+    player_id = data.get('player_id')
+    if not player_id:
+        return jsonify({'success': False, 'error': 'player_id required'}), 400
+    add_manual_rule(
+        player_id=int(player_id),
+        api_scorer_en=data.get('api_scorer_en'),
+        team_api=data.get('team_api'),
+        api_scorer_id=data.get('api_scorer_id'),
+        note=data.get('note', '后台修复'),
+    )
+    result = rebuild_scorers_from_api()
+    return jsonify({'success': True, 'standings': result.get('standings')})
+
+
+@app.route('/api/briefing')
+def api_briefing():
+    data = load_briefing_enriched()
+    if not data:
+        return jsonify({'error': 'no briefing data'}), 404
+    return jsonify(data)
+
+
+@app.route('/api/briefing/history/dates')
+def api_briefing_history_dates():
+    return jsonify(history_dates_payload())
+
+
+@app.route('/api/briefing/history/<date>')
+def api_briefing_history_date(date):
+    report = get_report_for_date(date)
+    if not report:
+        return jsonify({'error': 'not found'}), 404
+    return jsonify(report)
+
+
+@app.route('/api/match/<int:fixture_id>')
+def api_match(fixture_id):
+    detail = get_match_detail(fixture_id)
+    if not detail:
+        return jsonify({'error': 'not found'}), 404
+    return jsonify(detail)
+
+
+@app.route('/api/team-ownership')
+def api_team_ownership():
+    owners = get_owner_map()
+    return jsonify(owners)
+
+
+@app.route('/api/import-briefing', methods=['POST'])
+def api_import_briefing():
+    token = request.args.get('token') or request.headers.get('X-Import-Token', '')
+    expected = os.environ.get('IMPORT_BRIEFING_TOKEN', '')
+    if not expected or token != expected:
+        return jsonify({'success': False, 'error': 'unauthorized'}), 403
+    data = request.get_json(force=True, silent=True) or {}
+    if 'latest' in data:
+        save_json(LATEST_PATH, data['latest'])
+    if 'history_index' in data:
+        save_json(HISTORY_PATH, data['history_index'])
+    if 'standings_teams' in data:
+        save_json(STANDINGS_PATH, data['standings_teams'])
+    if 'standings_shooters' in data:
+        save_json(SHOOTER_STANDINGS_PATH, data['standings_shooters'])
+    return jsonify({'success': True})
 
 
 @app.route('/api/state')
@@ -281,16 +451,28 @@ def api_auto_draft_state(name):
 
 def ensure_db_initialized():
     """Initialize and seed DB on first run, re-seed if name_cn is missing"""
+    migrate_briefing_tables()
     db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'draft.db')
     if not os.path.exists(db_path):
         seed_database()
+        _sync_ownership_if_needed()
         return
-    # Check if any players have empty name_cn, re-seed if so
     db = get_db()
     empty_count = db.execute('SELECT COUNT(*) FROM players WHERE name_cn = ""').fetchone()[0]
+    own_count = db.execute('SELECT COUNT(*) FROM team_ownership').fetchone()[0]
     db.close()
     if empty_count > 0:
         seed_database()
+    if own_count == 0:
+        _sync_ownership_if_needed()
+
+
+def _sync_ownership_if_needed():
+    if os.path.isfile(TEAM_INFO_PATH):
+        try:
+            sync_team_ownership()
+        except (ValueError, FileNotFoundError) as e:
+            print(f'team_ownership sync skipped: {e}')
 
 
 ensure_db_initialized()

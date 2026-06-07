@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比赛介绍 · Mock 预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b12;
+            --surface: rgba(7, 11, 18, 0.22);
+            --surface-2: rgba(7, 11, 18, 0.15);
+            --border: rgba(255, 255, 255, 0.12);
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --text: #f4f4f5;
+            --muted: #d1d5db;
+            --text-shadow: 0 1px 3px rgba(0,0,0,0.85), 0 2px 12px rgba(0,0,0,0.55);
+            --home-accent: #006847;
+            --away-accent: #007749;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Stadium photo backdrop */
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: #070b12;
+            overflow: hidden;
+        }
+        .stadium-bg {
+            position: absolute;
+            inset: -5%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: scale(1.08);
+            transition: opacity 1.2s ease, transform 12s ease-out;
+            will-change: opacity, transform;
+            filter: saturate(1.1) contrast(1.05);
+        }
+        .stadium-bg.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .backdrop-scrim {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(7,11,18,0.35) 0%, rgba(7,11,18,0.02) 50%, rgba(7,11,18,0.25) 100%);
+            pointer-events: none;
+        }
+        .backdrop-vignette {
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.25);
+            pointer-events: none;
+        }
+        .backdrop::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .beam {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 55%;
+            background: linear-gradient(180deg, rgba(201,162,39,0.5), transparent);
+            filter: blur(1px);
+        }
+        .beam::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(201,162,39,0.08), transparent);
+            clip-path: polygon(48% 0, 52% 0, 100% 100%, 0 100%);
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 6rem;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            animation: rise 0.8s ease-out;
+        }
+        .competition {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            text-shadow: var(--text-shadow);
+        }
+        .mock-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.65rem;
+            border-radius: 2px;
+        }
+
+        /* Venue strip */
+        .venue-strip {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: rise 0.8s ease-out 0.1s both;
+            padding: 0.5rem 0;
+        }
+        .venue-strip .stadium {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: var(--text-shadow);
+        }
+        .venue-strip .meta-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .meta-chip {
+            font-size: 0.8rem;
+            color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-shadow: var(--text-shadow);
+        }
+        .meta-chip strong { color: #ffffff; font-weight: 600; }
+        .kickoff-time {
+            margin-top: 1.25rem;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 24px rgba(0,0,0,0.6);
+        }
+        .stage-label {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            text-shadow: var(--text-shadow);
+        }
+
+        /* Unified match board */
+        .match-board {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(7, 11, 18, 0.18);
+            backdrop-filter: blur(6px) saturate(1.15);
+            -webkit-backdrop-filter: blur(6px) saturate(1.15);
+            animation: rise 0.9s ease-out 0.2s both;
+            overflow: hidden;
+        }
+
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .side-panel.home {
+            border-top: 3px solid var(--home-accent);
+        }
+        .side-panel.away {
+            border-top: 3px solid var(--away-accent);
+        }
+
+        .team-head {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1.25rem 1.25rem 0.75rem;
+        }
+        .side-panel.home .team-head {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .flag-wrap {
+            width: 56px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.12);
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .flag-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+        }
+        .pick-star {
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+            text-shadow: 0 0 6px rgba(201,162,39,0.6);
+        }
+        .side-panel.home .pick-star { margin-left: 0; margin-right: 0.25rem; }
+
+        .team-info .name {
+            font-size: clamp(1.1rem, 3vw, 1.45rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        }
+        .team-info .owner {
+            margin-top: 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gold-light);
+            text-transform: uppercase;
+        }
+        .team-info .owner::before { content: '归属 · '; opacity: 0.6; }
+
+        .roster-label {
+            padding: 0 1.25rem 0.5rem;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #e5e7eb;
+        }
+        .side-panel.home .roster-label { text-align: right; }
+
+        .match-spine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0 1rem;
+            border-left: 1px solid rgba(255,255,255,0.08);
+            border-right: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.06);
+            min-width: 88px;
+        }
+        .vs-mark {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            color: #e5e7eb;
+            text-shadow: var(--text-shadow);
+        }
+        .score-block {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            color: #ffffff;
+            text-shadow: var(--text-shadow);
+        }
+        .status-badge {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--muted);
+            background: rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
+        .status-badge.live {
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .roster {
+            padding: 0 0.75rem 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            flex: 1;
+        }
+        .roster-row {
+            display: grid;
+            grid-template-columns: 4.5rem 1fr;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            border: 1px solid transparent;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .side-panel.home .roster-row {
+            grid-template-columns: 1fr 4.5rem;
+            text-align: right;
+        }
+        .side-panel.home .roster-row .person { order: 2; }
+        .side-panel.home .roster-row .player { order: 1; text-align: right; }
+        .side-panel.home .roster-row .player-inner { flex-direction: row-reverse; }
+
+        .roster-row:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+        }
+        .roster-row.filled { border-left: 2px solid var(--gold); }
+        .side-panel.home .roster-row.filled { border-left: none; border-right: 2px solid var(--gold); }
+
+        .person {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: #d1d5db;
+            text-transform: uppercase;
+        }
+        .player-inner {
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+        .player-inner .num {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            font-variant-numeric: tabular-nums;
+            min-width: 2rem;
+        }
+        .player-inner .pname {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.3;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+        }
+        .player.empty {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.15);
+            font-weight: 300;
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(to top, rgba(7,11,18,0.98), rgba(7,11,18,0.85));
+            border-top: 1px solid var(--border);
+        }
+        .nav a {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.65rem 1.25rem;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav a:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+        .nav .primary {
+            border-color: rgba(201, 162, 39, 0.4);
+            color: var(--gold-light);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 720px) {
+            .match-board {
+                grid-template-columns: 1fr;
+            }
+            .match-spine {
+                flex-direction: row;
+                border-left: none;
+                border-right: none;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                padding: 0.75rem 1rem;
+                min-width: unset;
+            }
+            .side-panel.home .team-head { flex-direction: row; text-align: left; }
+            .side-panel.home .roster-label { text-align: left; }
+            .side-panel.home .roster-row {
+                grid-template-columns: 4.5rem 1fr;
+                text-align: left;
+            }
+            .side-panel.home .roster-row .person { order: 0; }
+            .side-panel.home .roster-row .player { order: 0; text-align: left; }
+            .side-panel.home .roster-row .player-inner { flex-direction: row; }
+            .side-panel.home .roster-row.filled { border-right: none; border-left: 2px solid var(--gold); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="backdrop">
+    <div class="stadium-bg visible" id="stadiumBgA" style="background-image:url('../static/stadiums/azteca.jpg')"></div>
+    <div class="stadium-bg" id="stadiumBgB"></div>
+    <div class="backdrop-scrim"></div>
+    <div class="backdrop-vignette"></div>
+    <div class="beam"></div>
+</div>
+
+<div class="page">
+    <div class="top-bar">
+        <div class="competition">FIFA World Cup 2026</div>
+        <div class="mock-tag">Preview</div>
+    </div>
+
+    <div class="venue-strip">
+        <div class="stadium" id="stadiumName">Estadio Azteca · Mexico City</div>
+        <div class="meta-line">
+            <span class="meta-chip">☁ <strong id="weatherText">多云</strong></span>
+            <span class="meta-chip">🌡 <strong id="tempText">24°C</strong></span>
+        </div>
+        <div class="kickoff-time" id="kickoffText">03:00</div>
+        <div class="stage-label" id="metaText">Group A · Matchday 1 · 北京时间 6月12日</div>
+    </div>
+
+    <div class="match-board">
+        <div class="side-panel home">
+            <div class="team-head">
+                <div class="flag-wrap"><img id="homeFlag" src="../static/flags/mx.png" alt="墨西哥"></div>
+                <div class="team-info">
+                    <div class="name" id="homeName">墨西哥</div>
+                    <div class="owner" id="homeOwner">耗子</div>
+                </div>
+            </div>
+            <div class="roster-label">已选射手</div>
+            <div class="roster" id="homeShooters"></div>
+        </div>
+
+        <div class="match-spine">
+            <div class="vs-mark">VS</div>
+            <div class="score-block" id="scoreDisplay" style="display:none;">2 — 1</div>
+            <div class="status-badge" id="statusPill">即将开始</div>
+        </div>
+
+        <div class="side-panel away">
+            <div class="team-head">
+                <div class="flag-wrap"><img id="awayFlag" src="../static/flags/za.png" alt="南非"></div>
+                <div class="team-info">
+                    <div class="name" id="awayName">南非</div>
+                    <div class="owner" id="awayOwner">庆爷</div>
+                </div>
+            </div>
+            <div class="roster-label">已选射手</div>
+            <div class="roster" id="awayShooters"></div>
+        </div>
+    </div>
+</div>
+
+<nav class="nav">
+    <a href="briefing_mock.html">每日简报</a>
+    <a href="briefing_mock.html" class="primary">返回列表</a>
+    <a href="standings_teams_mock.html">球队榜</a>
+    <a href="standings_shooters_mock.html">射手榜</a>
+</nav>
+
+<script>
+var PARTICIPANTS = ['耗子', '庆爷', '李总', '老闫', '老王'];
+var MOCK_HOME = {
+    '耗子': { num: 17, name: '亚历克西斯·贝加', pick: 3 },
+    '庆爷': null,
+    '李总': { num: 4, name: '埃德松·阿尔瓦雷斯', pick: 1 },
+    '老闫': { num: 23, name: '亨利·马丁', pick: 18 },
+    '老王': null
+};
+var MOCK_AWAY = {
+    '耗子': null,
+    '庆爷': { num: 9, name: '珀西·塔乌', pick: 7 },
+    '李总': null,
+    '老闫': { num: 11, name: '马库斯·图拉姆', pick: 12 },
+    '老王': { num: 6, name: '罗纳德·斯泰恩坎普', pick: 25 }
+};
+
+function renderRoster(containerId, data) {
+    document.getElementById(containerId).innerHTML = PARTICIPANTS.map(function(name) {
+        var p = data[name];
+        var star = p && p.pick <= 20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
+        var playerHtml = p
+            ? '<div class="player"><div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div></div>'
+            : '<div class="player empty">—</div>';
+        return '<div class="roster-row' + (p ? ' filled' : '') + '">' +
+            '<div class="person">' + name + '</div>' + playerHtml + '</div>';
+    }).join('');
+}
+
+renderRoster('homeShooters', MOCK_HOME);
+renderRoster('awayShooters', MOCK_AWAY);
+
+var STADIUM_PHOTOS = {
+    azteca: {
+        url: '../static/stadiums/azteca.jpg',
+        position: 'center 55%'
+    },
+    sofi: {
+        url: '../static/stadiums/sofi.jpg',
+        position: 'center 40%'
+    }
+};
+
+var MATCH = {
+    stadiumKey: 'azteca',
+    stadium: 'Estadio Azteca · Mexico City', weather: '多云', temp: '24°C',
+    kickoff: '03:00', meta: 'Group A · Matchday 1 · 北京时间 6月12日',
+    homeFlag: 'mx', homeName: '墨西哥', homeOwner: '耗子',
+    awayFlag: 'za', awayName: '南非', awayOwner: '庆爷',
+    status: '即将开始', statusClass: '', score: null
+};
+
+var bgToggle = false;
+var currentStadiumKey = null;
+
+function setStadiumBackground(key) {
+    var info = STADIUM_PHOTOS[key];
+    if (!info || key === currentStadiumKey) return;
+    currentStadiumKey = key;
+    var layerA = document.getElementById('stadiumBgA');
+    var layerB = document.getElementById('stadiumBgB');
+    var target = bgToggle ? layerB : layerA;
+    var other = bgToggle ? layerA : layerB;
+    target.style.backgroundImage = 'url("' + info.url + '")';
+    target.style.backgroundPosition = info.position;
+    target.classList.add('visible');
+    other.classList.remove('visible');
+    bgToggle = !bgToggle;
+}
+
+function initMatch() {
+    var d = MATCH;
+    setStadiumBackground(d.stadiumKey);
+    document.getElementById('stadiumName').textContent = d.stadium;
+    document.getElementById('weatherText').textContent = d.weather;
+    document.getElementById('tempText').textContent = d.temp;
+    document.getElementById('kickoffText').textContent = d.kickoff;
+    document.getElementById('metaText').textContent = d.meta;
+
+    ['home', 'away'].forEach(function(s) {
+        document.getElementById(s + 'Flag').src = '../static/flags/' + d[s + 'Flag'] + '.png';
+        document.getElementById(s + 'Name').textContent = d[s + 'Name'];
+        document.getElementById(s + 'Owner').textContent = d[s + 'Owner'];
+    });
+
+    var pill = document.getElementById('statusPill');
+    pill.textContent = d.status;
+    pill.className = 'status-badge' + (d.statusClass ? ' ' + d.statusClass : '');
+    pill.style.display = d.score ? 'none' : 'block';
+
+    var score = document.getElementById('scoreDisplay');
+    score.style.display = d.score ? 'block' : 'none';
+    if (d.score) score.textContent = d.score;
+}
+
+initMatch();
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+"""Read-only briefing data for Flask and build scripts."""
+import json
+import os
+import sqlite3
+
+from briefing.time_utils import fixture_beijing_date, today_bj_str, yesterday_bj_str
+from models import DB_PATH, get_db
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+BRIEFING_DIR = os.path.join(ROOT, 'data', 'briefing')
+LATEST_PATH = os.path.join(BRIEFING_DIR, 'latest.json')
+HISTORY_PATH = os.path.join(BRIEFING_DIR, 'history_index.json')
+FIXTURES_PATH = os.path.join(ROOT, 'data', 'fixtures_2026.json')
+
+CATEGORY_LABELS = {
+    'tactics': '战术',
+    'discord': '不和',
+    'form': '状态',
+    'lineup': '阵容',
+    'injury': '伤病',
+    'suspension': '停赛',
+    'other': '其他',
+}
+
+
+def load_json(path, default=None):
+    if not os.path.isfile(path):
+        return default
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
+
+
+def save_json(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def load_briefing():
+    return load_json(LATEST_PATH)
+
+
+def load_history_index():
+    return load_json(HISTORY_PATH, {'updated_at': None, 'dates': [], 'reports': {}})
+
+
+def get_report_for_date(date):
+    idx = load_history_index()
+    return idx.get('reports', {}).get(date)
+
+
+def load_fixtures():
+    data = load_json(FIXTURES_PATH, {'fixtures': []})
+    return data.get('fixtures', [])
+
+
+def fixtures_on_date(fixtures, date_str):
+    return [f for f in fixtures if fixture_beijing_date(f) == date_str]
+
+
+def beijing_date_label(iso_date):
+    """'2026-06-11' -> '6月11日'."""
+    if not iso_date:
+        return '—'
+    parts = iso_date.split('-')
+    if len(parts) != 3:
+        return iso_date
+    return f'{int(parts[1])}月{int(parts[2])}日'
+
+
+def kickoff_beijing_label(kickoff):
+    """'2026-06-11 09:00' -> '6月11日 09:00'."""
+    if not kickoff or ' ' not in kickoff:
+        return kickoff or ''
+    date_part, time_part = kickoff.split(' ', 1)
+    return f'{beijing_date_label(date_part)} {time_part}'
+
+
+def matches_on_beijing_date(matches, date_str):
+    """Keep only matches whose kickoff_beijing falls on date_str (Asia/Shanghai)."""
+    return [
+        m for m in matches
+        if (m.get('kickoff_beijing') or '').startswith(date_str)
+    ]
+
+
+def fixture_dates_sorted(fixtures):
+    return sorted({fixture_beijing_date(f) for f in fixtures if fixture_beijing_date(f)})
+
+
+def resolve_preview_date(fixtures, briefing_date):
+    """Return (preview_date, is_next_matchday) for 今日预告."""
+    if fixtures_on_date(fixtures, briefing_date):
+        return briefing_date, False
+    for d in fixture_dates_sorted(fixtures):
+        if d > briefing_date:
+            return d, True
+    return briefing_date, False
+
+
+def build_preview_match_skeleton(fixture, owner_map):
+    return {
+        'fixture_id': fixture['fixture_id'],
+        'group': fixture.get('group'),
+        'matchday': fixture.get('matchday'),
+        'home_team': fixture['home_team'],
+        'away_team': fixture['away_team'],
+        'kickoff_beijing': fixture['kickoff_beijing'],
+        'status': 'scheduled',
+        'home_owner': owner_map.get(fixture['home_team']) or 'NA',
+        'away_owner': owner_map.get(fixture['away_team']) or 'NA',
+        'key_news': [],
+    }
+
+
+def enrich_today_preview(latest, reference_date=None):
+    """Fill next matchday when today block is empty or stale.
+
+    reference_date: Beijing calendar day for preview resolution. Flask passes
+    today_bj_str() so stale JSON still shows the correct next matchday.
+    """
+    if not latest:
+        return latest
+    fixtures = load_fixtures()
+    briefing_date = reference_date or latest.get('briefing_date') or today_bj_str()
+    preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
+    today = dict(latest.get('today') or {})
+    owner_map = get_owner_map()
+    overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})
+    existing_by_id = {
+        m['fixture_id']: m
+        for m in matches_on_beijing_date(today.get('matches') or [], preview_date)
+    }
+    new_matches = []
+    for f in sorted(fixtures_on_date(fixtures, preview_date), key=lambda x: x.get('kickoff_beijing', '')):
+        skeleton = build_preview_match_skeleton(f, owner_map)
+        existing = existing_by_id.get(f['fixture_id'])
+        m = dict(skeleton)
+        if existing:
+            m.update({k: v for k, v in existing.items() if k in ('key_news', 'status') and v})
+        if not m.get('key_news'):
+            override = overrides.get(str(f['fixture_id']))
+            if override:
+                m['key_news'] = override
+        new_matches.append(m)
+    latest = dict(latest)
+    latest['briefing_date'] = briefing_date
+    latest['today'] = {
+        'date': preview_date,
+        'is_next_matchday': is_next,
+        'match_count': len(new_matches),
+        'matches': matches_on_beijing_date(new_matches, preview_date),
+    }
+    return latest
+
+
+def load_briefing_enriched():
+    """Load latest.json with 无赛日 → 下一比赛日 preview applied."""
+    return enrich_today_preview(load_briefing() or {}, reference_date=today_bj_str())
+
+
+def get_owner_map():
+    """team_name -> participant name or None."""
+    db = get_db()
+    rows = db.execute('''
+        SELECT t.name AS team_name, p.name AS owner
+        FROM team_ownership o
+        JOIN teams t ON t.id = o.team_id
+        JOIN participants p ON p.id = o.participant_id
+    ''').fetchall()
+    db.close()
+    return {r['team_name']: r['owner'] for r in rows}
+
+
+def owner_display(team_name, owner_map=None):
+    if owner_map is None:
+        owner_map = get_owner_map()
+    return owner_map.get(team_name) or 'NA'
+
+
+def get_selections_roster():
+    """5 participants -> selected player info or null."""
+    db = get_db()
+    parts = db.execute('SELECT id, name FROM participants ORDER BY draft_order').fetchall()
+    roster = {}
+    for p in parts:
+        row = db.execute('''
+            SELECT pl.jersey_number, pl.name_cn, pl.name, s.pick_number
+            FROM selections s
+            JOIN players pl ON pl.id = s.player_id
+            WHERE s.participant_id = ?
+            ORDER BY s.round_number DESC, s.pick_number DESC
+            LIMIT 1
+        ''', (p['id'],)).fetchone()
+        if row:
+            roster[p['name']] = {
+                'num': row['jersey_number'],
+                'name': row['name_cn'] or row['name'],
+                'pick_number': row['pick_number'],
+                'top20': row['pick_number'] <= 20,
+            }
+        else:
+            roster[p['name']] = None
+    db.close()
+    return roster
+
+
+def get_selections_for_display(db=None):
+    """Read-only selections for briefing / scorer matching."""
+    close = False
+    if db is None:
+        db = get_db()
+        close = True
+    rows = db.execute('''
+        SELECT p.name AS participant, pl.id AS player_id, pl.name_cn, pl.name,
+               pl.jersey_number, t.name AS team_name, s.pick_number
+        FROM selections s
+        JOIN participants p ON p.id = s.participant_id
+        JOIN players pl ON pl.id = s.player_id
+        JOIN teams t ON t.id = pl.team_id
+    ''').fetchall()
+    if close:
+        db.close()
+    return [dict(r) for r in rows]
+
+
+def open_db_readonly():
+    return sqlite3.connect(f'file:{DB_PATH}?mode=ro', uri=True)
+
+
+def get_roster_for_team(team_name):
+    """Per-participant pick from team_name (or null)."""
+    db = get_db()
+    participants = db.execute('SELECT id, name FROM participants ORDER BY draft_order').fetchall()
+    roster = {}
+    for p in participants:
+        row = db.execute('''
+            SELECT pl.jersey_number, pl.name_cn, pl.name, s.pick_number
+            FROM selections s
+            JOIN players pl ON pl.id = s.player_id
+            JOIN teams t ON t.id = pl.team_id
+            WHERE s.participant_id = ? AND t.name = ?
+        ''', (p['id'], team_name)).fetchone()
+        if row:
+            roster[p['name']] = {
+                'num': row['jersey_number'],
+                'name': row['name_cn'] or row['name'],
+                'pick': row['pick_number'],
+            }
+        else:
+            roster[p['name']] = None
+    db.close()
+    return roster
+
+
+def get_match_detail(fixture_id):
+    fixtures = {f['fixture_id']: f for f in load_fixtures()}
+    fix = fixtures.get(fixture_id)
+    if not fix:
+        return None
+    briefing = load_briefing_enriched()
+    owner_map = get_owner_map()
+
+    match_info = None
+    for block in ('today', 'yesterday'):
+        if block not in briefing:
+            continue
+        for m in briefing.get(block, {}).get('matches', []):
+            if m.get('fixture_id') == fixture_id:
+                match_info = m
+                break
+
+    home_owner = owner_display(fix['home_team'], owner_map)
+    away_owner = owner_display(fix['away_team'], owner_map)
+    photo = fix.get('stadium_photo', 'azteca.jpg')
+    stadium_key = photo.replace('.jpg', '').replace('.jpeg', '')
+    kickoff = fix.get('kickoff_beijing', '')
+    kick_time = kickoff.split(' ')[-1] if kickoff else ''
+    kick_date = kickoff.split(' ')[0] if kickoff else ''
+    meta = f"Group {fix.get('group', '')} · Matchday {fix.get('matchday', '')} · 北京时间 {kick_date}"
+
+    hs = match_info.get('home_score') if match_info else None
+    aw = match_info.get('away_score') if match_info else None
+    status = match_info.get('status', 'scheduled') if match_info else 'scheduled'
+    if hs is not None and aw is not None:
+        status_label = '已结束'
+        score = f'{hs} — {aw}'
+        status_class = 'finished'
+    else:
+        status_label = '即将开始'
+        score = None
+        status_class = ''
+
+    return {
+        'fixture_id': fixture_id,
+        'stadium': fix.get('stadium'),
+        'stadium_key': stadium_key,
+        'stadium_photo': photo,
+        'weather': fix.get('weather', ''),
+        'temp': fix.get('temp', ''),
+        'kickoff': kick_time,
+        'meta': meta,
+        'kickoff_beijing': kickoff,
+        'home_team': fix['home_team'],
+        'away_team': fix['away_team'],
+        'home_flag': fix.get('home_flag', 'xx'),
+        'away_flag': fix.get('away_flag', 'xx'),
+        'home_owner': home_owner,
+        'away_owner': away_owner,
+        'home_score': hs,
+        'away_score': aw,
+        'status': status_label,
+        'status_class': status_class,
+        'score': score,
+        'our_scorers': match_info.get('our_scorers', []) if match_info else [],
+        'key_news': match_info.get('key_news', []) if match_info else [],
+        'home_roster': get_roster_for_team(fix['home_team']),
+        'away_roster': get_roster_for_team(fix['away_team']),
+    }
+
+
+def history_dates_payload():
+    idx = load_history_index()
+    latest = load_briefing() or {}
+    default = (latest.get('yesterday') or {}).get('date')
+    if not default:
+        default = yesterday_bj_str()
+    if not idx.get('dates') and default:
+        return {'dates': [default], 'default': default}
+    dates = idx.get('dates', [])
+    if default and default not in dates:
+        dates = sorted(set(dates) | {default}, reverse=True)
+    return {'dates': dates, 'default': default}

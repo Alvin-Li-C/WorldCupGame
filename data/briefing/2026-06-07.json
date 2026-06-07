@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-06-07T22:00:30+08:00",
+  "timezone": "Asia/Shanghai",
+  "briefing_date": "2026-06-07",
+  "yesterday": {
+    "date": "2026-06-06",
+    "matches": []
+  },
+  "today": {
+    "date": "2026-06-12",
+    "is_next_matchday": true,
+    "match_count": 2,
+    "matches": [
+      {
+        "fixture_id": 1,
+        "group": "A",
+        "matchday": 1,
+        "home_team": "墨西哥",
+        "away_team": "南非",
+        "kickoff_beijing": "2026-06-12 03:00",
+        "status": "scheduled",
+        "home_owner": "李总",
+        "away_owner": "老闫",
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "墨西哥",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯缺阵球星盘点：多名主力无缘本届大赛",
+            "impact": "medium",
+            "impact_score": 13,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
+            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
+          },
+          {
+            "rank": 2,
+            "team": "墨西哥",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "北美主办世界杯：南美球队能否延续全胜纪录",
+            "impact": "low",
+            "impact_score": 6,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
+            "url": "https://www.espn.com/espn/soccer/story/_/id/48951119/can-south-america-maintain-100-record-north-american-world-cups"
+          },
+          {
+            "rank": 3,
+            "team": "墨西哥",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "美国联邦政府推进世界杯安保与赛事筹备",
+            "impact": "low",
+            "impact_score": 6,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 08:12:59 EST",
+            "url": "https://www.espn.com/soccer/story/_/id/48968358/fifa-world-cup-2026-andrew-giuliani-security-white-house"
+          }
+        ]
+      },
+      {
+        "fixture_id": 2,
+        "group": "A",
+        "matchday": 1,
+        "home_team": "韩国",
+        "away_team": "捷克",
+        "kickoff_beijing": "2026-06-12 10:00",
+        "status": "scheduled",
+        "home_owner": "老王",
+        "away_owner": "老王",
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "韩国",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "孙兴慜四届世界杯轨迹与生涯节点重合，最后一舞状态成关键",
+            "impact": "high",
+            "impact_score": 6,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
+            "url": "https://www.espn.com/soccer/story/_/id/48974192/2026-prove-son-heung-min-final-fifa-world-cup-hurrah"
+          },
+          {
+            "rank": 2,
+            "team": "韩国",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯缺阵球星盘点，各队核心战力或受影响",
+            "impact": "medium",
+            "impact_score": 13,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
+            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
+          },
+          {
+            "rank": 3,
+            "team": "韩国",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "德尚离任背景下法国队战意高涨，欧洲强队备战节奏或间接影响韩国对手状态",
+            "impact": "low",
+            "impact_score": 13,
+            "source": "https://www.espn.com/espn/rss/soccer/news",
+            "published_at": "Sun, 7 Jun 2026 09:35:40 EST",
+            "url": "https://www.espn.com/soccer/story/_/id/48988194/dembele-france-end-deschamps-reign-trophy"
+          }
+        ]
+      }
+    ]
+  }
+}
