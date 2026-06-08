@@ -45,9 +45,31 @@ def load_history_index():
     return load_json(HISTORY_PATH, {'updated_at': None, 'dates': [], 'reports': {}})
 
 
+def match_has_results(match):
+    return match.get('home_score') is not None and match.get('away_score') is not None
+
+
+def report_has_results(report):
+    if not report:
+        return False
+    return any(match_has_results(m) for m in (report.get('matches') or []))
+
+
+def list_report_dates(history_index=None):
+    idx = history_index if history_index is not None else load_history_index()
+    dates = []
+    for d, report in (idx.get('reports') or {}).items():
+        if report_has_results(report):
+            dates.append(d)
+    return sorted(dates, reverse=True)
+
+
 def get_report_for_date(date):
     idx = load_history_index()
-    return idx.get('reports', {}).get(date)
+    report = idx.get('reports', {}).get(date)
+    if not report_has_results(report):
+        return None
+    return report
 
 
 def load_fixtures():
@@ -340,13 +362,12 @@ def get_match_detail(fixture_id):
 
 def history_dates_payload():
     idx = load_history_index()
-    latest = load_briefing() or {}
-    default = (latest.get('yesterday') or {}).get('date')
-    if not default:
-        default = yesterday_bj_str()
-    if not idx.get('dates') and default:
-        return {'dates': [default], 'default': default}
-    dates = idx.get('dates', [])
-    if default and default not in dates:
-        dates = sorted(set(dates) | {default}, reverse=True)
-    return {'dates': dates, 'default': default}
+    yesterday = yesterday_bj_str()
+    dates = list_report_dates(idx)
+    if yesterday in dates:
+        default = yesterday
+    elif dates:
+        default = dates[0]
+    else:
+        default = None
+    return {'dates': dates, 'default': default, 'yesterday': yesterday}
