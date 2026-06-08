@@ -121,16 +121,11 @@ def briefing_page():
     latest = load_briefing_enriched()
     hist = history_dates_payload()
     report_date = request.args.get('report_date') or hist.get('default') or ''
-    report = get_report_for_date(report_date) if report_date else None
-    if not report and latest.get('yesterday'):
-        report = latest['yesterday']
-        report_date = report.get('date', report_date)
     return render_template(
         'briefing.html',
         latest=latest,
         hist=hist,
         report_date=report_date,
-        report=report,
     )
 
 
@@ -229,11 +224,16 @@ def api_team_ownership():
 
 @app.route('/api/import-briefing', methods=['POST'])
 def api_import_briefing():
+    from briefing.validate import validate_briefing_payload
+
     token = request.args.get('token') or request.headers.get('X-Import-Token', '')
     expected = os.environ.get('IMPORT_BRIEFING_TOKEN', '')
     if not expected or token != expected:
         return jsonify({'success': False, 'error': 'unauthorized'}), 403
     data = request.get_json(force=True, silent=True) or {}
+    ok, errors = validate_briefing_payload(data)
+    if not ok:
+        return jsonify({'success': False, 'error': 'validation failed', 'details': errors}), 400
     if 'latest' in data:
         save_json(LATEST_PATH, data['latest'])
     if 'history_index' in data:
