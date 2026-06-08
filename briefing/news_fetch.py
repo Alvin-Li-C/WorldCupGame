@@ -1,4 +1,4 @@
-"""RSS / keyword prefilter for match news candidates."""
+"""RSS / domestic feeds / keyword prefilter for match news candidates."""
 import json
 import os
 import re
@@ -9,8 +9,16 @@ import urllib.request
 
 BJ = timezone(timedelta(hours=8))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WC_KEYWORDS = ('world cup', '2026', 'fifa world cup')
-_USER_AGENT = 'WorldCupBriefing/1.0 (+local build script)'
+WC_KEYWORDS = (
+    'world cup', '2026', 'fifa world cup',
+    '世界杯', '世预赛', '美加墨',
+)
+_USER_AGENT = (
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+    'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+)
+_DQD_API = 'https://api.dongqiudi.com/app/tabs/iphone/{tab_id}.json?mark=gif&version=8.0.0'
+_ZHIBO8_FOOTBALL = 'https://news.zhibo8.com/zuqiu/'
 
 CATEGORY_KEYWORDS = {
     'tactics': [
@@ -32,11 +40,15 @@ CATEGORY_KEYWORDS = {
 }
 
 
+def _http_get(url, timeout=30):
+    req = urllib.request.Request(url, headers={'User-Agent': _USER_AGENT})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read().decode('utf-8', errors='replace')
+
+
 def _parse_rss(url, max_items=30):
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': _USER_AGENT})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            tree = ElementTree.parse(resp)
+        tree = ElementTree.fromstring(_http_get(url))
     except Exception:
         return []
     items = []
@@ -53,6 +65,88 @@ def _parse_rss(url, max_items=30):
             'published_at': pub,
         })
     return items
+
+
+def _fetch_dongqiudi(tab_id, label, max_items=30):
+    try:
+        data = json.loads(_http_get(_DQD_API.format(tab_id=tab_id)))
+    except Exception:
+        return []
+    items = []
+    for article in (data.get('articles') or [])[:max_items]:
+        title = (article.get('title') or '').strip()
+        if not title:
+            continue
+        desc = (article.get('description') or article.get('b_description') or '').strip()
+        url = article.get('share') or article.get('url') or article.get('url1')
+        pub = article.get('published_at') or article.get('show_time') or article.get('created_at') or ''
+        items.append({
+            'title': title,
+            'snippet': desc[:300],
+            'source': label or f'懂球帝({tab_id})',
+            'url': url,
+            'published_at': str(pub) if pub else '',
+        })
+    return items
+
+
+def _fetch_zhibo8_football(label='直播8足球', max_items=40):
+    try:
+        html = _http_get(_ZHIBO8_FOOTBALL)
+    except Exception:
+        return []
+    pattern = re.compile(
+        r'href="(?://news\.zhibo8\.com)?(/zuqiu/\d{4}-\d{2}-\d{2}/[^"]+)"[^>]*>([^<]+)</a>',
+        re.I,
+    )
+    items = []
+    seen = set()
+    for path, title in pattern.findall(html):
+        title = title.strip()
+        if not title or len(title) < 6:
+            continue
+        url = f'https://news.zhibo8.com{path}'
+        if url in seen:
+            continue
+        seen.add(url)
+        items.append({
+            'title': title,
+            'snippet': title[:300],
+            'source': label,
+            'url': url,
+            'published_at': '',
+        })
+        if len(items) >= max_items:
+            break
+    return items
+
+
+def collect_news_items(config, max_per_source=30):
+    """Aggregate configured RSS and domestic (懂球帝 / 直播8) feeds."""
+    news_cfg = config.get('news', {})
+    raw = []
+    seen = set()
+
+    def add_items(items):
+        for item in items:
+            key = item.get('url') or item.get('title')
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            raw.append(item)
+
+    for src in news_cfg.get('cn_feeds', []):
+        src_type = src.get('type', '')
+        label = src.get('label', '')
+        if src_type == 'dongqiudi':
+            add_items(_fetch_dongqiudi(src.get('tab_id', 1), label, max_per_source))
+        elif src_type == 'zhibo8':
+            add_items(_fetch_zhibo8_football(label or '直播8足球', max_per_source))
+
+    for url in news_cfg.get('rss_feeds', []):
+        add_items(_parse_rss(url, max_per_source))
+
+    return raw
 
 
 def _english_aliases(team_cn, team_map):
@@ -152,20 +246,12 @@ def prefilter_for_match(
     max_candidates=20,
     team_hints_en=None,
 ):
-    feeds = config.get('news', {}).get('rss_feeds', [])
     impact = config.get('news', {}).get('impact_keywords', {})
     bonus = config.get('news', {}).get('our_pick_bonus', 15)
+    max_per_source = config.get('llm', {}).get('max_candidates_per_match', 20)
     team_map = _load_team_map(config)
     hints = build_team_hints(home_team, away_team, config, team_hints_en)
-    raw = []
-    seen_urls = set()
-    for url in feeds:
-        for item in _parse_rss(url):
-            key = item.get('url') or item.get('title')
-            if key in seen_urls:
-                continue
-            seen_urls.add(key)
-            raw.append(item)
+    raw = collect_news_items(config, max_per_source=max_per_source * 2)
     if not raw:
         return []
 
