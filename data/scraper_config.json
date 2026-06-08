@@ -14,9 +14,12 @@
   },
   "news": {
     "max_per_match": 3,
-    "rss_feeds": [
-      "https://www.espn.com/espn/rss/soccer/news"
+    "cn_feeds": [
+      {"type": "dongqiudi", "tab_id": 1, "label": "懂球帝头条"},
+      {"type": "dongqiudi", "tab_id": 120, "label": "懂球帝国际"},
+      {"type": "zhibo8", "label": "直播8足球"}
     ],
+    "rss_feeds": [],
     "search_api_env": "NEWS_API_KEY",
     "impact_keywords": {
       "tactics": 42,
@@ -29,7 +32,14 @@
       "doubtful": 30,
       "suspended": 38,
       "key player": 28,
-      "slump": 26
+      "slump": 26,
+      "战术": 42,
+      "阵型": 38,
+      "伤病": 40,
+      "停赛": 38,
+      "世界杯": 28,
+      "状态": 26,
+      "首发": 34
     },
     "our_pick_bonus": 15
   },
