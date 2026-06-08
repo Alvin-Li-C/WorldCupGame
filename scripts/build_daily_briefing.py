@@ -11,6 +11,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from briefing.llm_news import select_key_news
+from briefing.validate import upload_summary, validate_briefing_payload
+from briefing_data import report_has_results
 from briefing.match_score import resolve_winner_from_api
 from briefing.scorer_build import build_match_scorers
 from briefing.shooter_standings import save_shooter_standings
@@ -116,16 +118,32 @@ def build_today_matches(fixtures, date_str, owner_map, config, selections):
     return matches_on_beijing_date(matches, date_str)
 
 
+def _finished_matches(matches):
+    return [
+        m for m in (matches or [])
+        if m.get('home_score') is not None and m.get('away_score') is not None
+    ]
+
+
 def upsert_history(yesterday_block):
+    """Only persist days with at least one finished match."""
     idx = load_history_index()
+    if 'reports' not in idx:
+        idx['reports'] = {}
     d = yesterday_block['date']
-    idx['reports'][d] = {
-        'date': d,
-        'match_count': len(yesterday_block.get('matches', [])),
-        'matches': yesterday_block.get('matches', []),
-    }
-    dates = sorted(idx['reports'].keys(), reverse=True)
-    idx['dates'] = dates
+    finished = _finished_matches(yesterday_block.get('matches'))
+    if finished:
+        idx['reports'][d] = {
+            'date': d,
+            'match_count': len(finished),
+            'matches': finished,
+        }
+    elif d in idx['reports']:
+        del idx['reports'][d]
+    idx['dates'] = sorted(
+        [day for day, rep in idx['reports'].items() if report_has_results(rep)],
+        reverse=True,
+    )
     idx['updated_at'] = now_bj().isoformat(timespec='seconds')
     save_json(HISTORY_PATH, idx)
 
@@ -194,6 +212,7 @@ def api_match_to_report(api_match, pair_index, team_map, selections):
         'away_team': away_cn,
         'home_score': hs,
         'away_score': aw,
+        'source': 'football-data',
         'stadium_photo': fix.get('stadium_photo', 'azteca.jpg'),
         'played_date_beijing': beijing_date_from_utc(api_match.get('utcDate')),
         'kickoff_beijing': meta['kickoff_beijing'],
@@ -261,7 +280,6 @@ def build_briefing(mock=False):
             latest['briefing_date'] = briefing_date
             latest['timezone'] = 'Asia/Shanghai'
             latest = enrich_today_preview(latest, reference_date=briefing_date)
-            upsert_history(latest.get('yesterday', {'date': yesterday_date, 'matches': []}))
             save_json(LATEST_PATH, latest)
             return latest
 
@@ -292,7 +310,8 @@ def build_briefing(mock=False):
         },
     }
     save_json(LATEST_PATH, briefing)
-    upsert_history(briefing['yesterday'])
+    if _finished_matches(yesterday_matches):
+        upsert_history(briefing['yesterday'])
     archive = os.path.join(BRIEFING_DIR, f'{briefing_date}.json')
     save_json(archive, briefing)
     save_team_standings()
@@ -300,23 +319,39 @@ def build_briefing(mock=False):
     return briefing
 
 
-def upload_briefing(config):
+def _briefing_upload_payload():
+    from briefing.shooter_standings import STANDINGS_PATH as SHOOTER_STANDINGS_PATH
+    from briefing.standings import STANDINGS_PATH
+
+    return {
+        'latest': load_json(LATEST_PATH),
+        'history_index': load_json(HISTORY_PATH),
+        'standings_teams': load_json(STANDINGS_PATH),
+        'standings_shooters': load_json(SHOOTER_STANDINGS_PATH),
+    }
+
+
+def upload_briefing(config, dry_run=False):
+    payload = _briefing_upload_payload()
+    print(upload_summary(payload))
+    ok, errors = validate_briefing_payload(payload)
+    if not ok:
+        print('Upload rejected — briefing data validation failed:')
+        for err in errors:
+            print(f'  - {err}')
+        sys.exit(1)
+    if dry_run:
+        print('Dry run OK — no data sent to PythonAnywhere')
+        return
     url = config.get('pythonanywhere_url', '').rstrip('/') + '/api/import-briefing'
     token = read_secret('', config.get('import_token_env', 'IMPORT_BRIEFING_TOKEN'))
     if not token:
         print('IMPORT_BRIEFING_TOKEN not set; skip upload')
         return
-    from briefing.shooter_standings import STANDINGS_PATH as SHOOTER_STANDINGS_PATH
-    from briefing.standings import STANDINGS_PATH
-    payload = json.dumps({
-        'latest': load_json(LATEST_PATH),
-        'history_index': load_json(HISTORY_PATH),
-        'standings_teams': load_json(STANDINGS_PATH),
-        'standings_shooters': load_json(SHOOTER_STANDINGS_PATH),
-    }).encode('utf-8')
+    body = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(
         f'{url}?token={token}',
-        data=payload,
+        data=body,
         headers={'Content-Type': 'application/json'},
         method='POST',
     )
@@ -334,8 +369,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mock', action='store_true', help='Refresh timestamps on existing sample JSON')
     parser.add_argument('--upload', action='store_true', help='POST to PythonAnywhere import endpoint')
+    parser.add_argument('--dry-run', action='store_true', help='Validate upload payload without POST')
     parser.add_argument('--push', action='store_true', help='git commit/push briefing JSON (requires user Approve)')
     args = parser.parse_args()
+
+    if args.dry_run and not args.upload:
+        payload = _briefing_upload_payload()
+        print(upload_summary(payload))
+        ok, errors = validate_briefing_payload(payload)
+        if not ok:
+            for err in errors:
+                print(f'  - {err}')
+            sys.exit(1)
+        print('Dry run OK')
+        return
 
     briefing = build_briefing(mock=args.mock)
     y = briefing.get('yesterday', {})
@@ -348,7 +395,7 @@ def main():
     )
 
     if args.upload:
-        upload_briefing(load_config())
+        upload_briefing(load_config(), dry_run=args.dry_run)
     if args.push:
         git_push()
 
