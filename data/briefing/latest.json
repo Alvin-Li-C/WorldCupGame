@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-07T23:55:53+08:00",
+  "generated_at": "2026-06-09T06:24:33+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-07",
+  "briefing_date": "2026-06-09",
   "yesterday": {
-    "date": "2026-06-06",
+    "date": "2026-06-08",
     "matches": []
   },
   "today": {
@@ -25,38 +25,38 @@
           {
             "rank": 1,
             "team": "墨西哥",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "世界杯缺阵球星盘点：多名主力无缘本届大赛",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "巴西裁判桑帕约将执法世界杯揭幕战墨西哥对阵南非",
             "impact": "medium",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
+            "impact_score": 55,
+            "source": "懂球帝头条",
+            "published_at": "2026-06-09 05:40:36",
+            "url": "https://www.dongqiudi.com/article/5913481"
           },
           {
             "rank": 2,
             "team": "墨西哥",
             "category": "other",
             "category_label": "其他",
-            "headline": "北美主办世界杯：南美球队能否延续全胜纪录",
+            "headline": "或是本届世界杯参赛球员中名气最小的一员",
             "impact": "low",
             "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
-            "url": "https://www.espn.com/espn/soccer/story/_/id/48951119/can-south-america-maintain-100-record-north-american-world-cups"
+            "source": "懂球帝国际",
+            "published_at": "2026-06-09 05:33:04",
+            "url": "https://www.dongqiudi.com/article/5913479"
           },
           {
             "rank": 3,
             "team": "墨西哥",
             "category": "other",
             "category_label": "其他",
-            "headline": "美国联邦政府推进世界杯安保与赛事筹备",
+            "headline": "2026世界杯各队阵中曾有夺冠经历的球员人数统计出炉",
             "impact": "low",
             "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 08:12:59 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48968358/fifa-world-cup-2026-andrew-giuliani-security-white-house"
+            "source": "懂球帝头条",
+            "published_at": "2026-06-09 05:57:43",
+            "url": "https://www.dongqiudi.com/article/5913501"
           }
         ]
       },
@@ -74,38 +74,14 @@
           {
             "rank": 1,
             "team": "韩国",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "孙兴慜四届世界杯轨迹与生涯节点重合，最后一舞状态成关键",
-            "impact": "high",
-            "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48974192/2026-prove-son-heung-min-final-fifa-world-cup-hurrah"
-          },
-          {
-            "rank": 2,
-            "team": "韩国",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "世界杯缺阵球星盘点，各队核心战力或受影响",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "埃及裁判阿明-穆罕默德将执法韩国对阵捷克",
             "impact": "medium",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
-          },
-          {
-            "rank": 3,
-            "team": "韩国",
-            "category": "tactics",
-            "category_label": "战术",
-            "headline": "德尚离任背景下法国队战意高涨，欧洲强队备战节奏或间接影响韩国对手状态",
-            "impact": "low",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 09:35:40 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48988194/dembele-france-end-deschamps-reign-trophy"
+            "impact_score": 55,
+            "source": "懂球帝头条",
+            "published_at": "2026-06-09 05:47:11",
+            "url": "https://www.dongqiudi.com/article/5913484"
           }
         ]
       }
