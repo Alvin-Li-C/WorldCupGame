@@ -8,7 +8,14 @@ sys.path.insert(0, ROOT)
 
 from briefing.standings import save_team_standings
 from briefing.shooter_standings import save_shooter_standings
-from briefing_data import HISTORY_PATH, LATEST_PATH, load_json, save_json
+from briefing_data import (
+    HISTORY_PATH,
+    LATEST_PATH,
+    list_report_dates,
+    load_json,
+    report_has_results,
+    save_json,
+)
 
 
 def clean_history_results():
@@ -22,6 +29,10 @@ def clean_history_results():
         ]
         removed += len(before) - len(report['matches'])
         report['match_count'] = len(report['matches'])
+    idx['reports'] = {
+        d: r for d, r in idx.get('reports', {}).items() if report_has_results(r)
+    }
+    idx['dates'] = list_report_dates(idx)
     save_json(HISTORY_PATH, idx)
     return removed
 
