@@ -18,8 +18,18 @@ python scripts\build_daily_briefing.py
 
 可选：
 
-- `--mock` — 刷新示例 JSON 时间戳
-- `--upload` — POST 到 `https://tolerance.pythonanywhere.com/api/import-briefing`（需 `IMPORT_BRIEFING_TOKEN`）
+- `--mock` — 刷新示例 JSON 时间戳（**不写入** history）
+- `--dry-run` — 校验将上传的 JSON，不 POST
+- `--upload` — POST 到 `https://tolerance.pythonanywhere.com/api/import-briefing`（需 `IMPORT_BRIEFING_TOKEN`；含赛果校验，含测试比分会**拒绝上传**）
+
+上传前必跑：
+
+```powershell
+python scripts\check_briefing_data.py
+python scripts\build_daily_briefing.py --dry-run
+```
+
+**禁止**将 inject 脚本产生的比分 commit / upload。开赛前 `history_index` 应无带 `source: football-data` 以外的完赛记录。
 
 密钥文件（勿提交 git）：
 
@@ -68,6 +78,7 @@ cd ~/WorldCupGame && git pull
 ```powershell
 pip install cursor-sdk python-dotenv
 python scripts\smoke_cursor_sdk.py
+python scripts\check_briefing_data.py
 python scripts\build_daily_briefing.py --mock
-python -c "from app import app; print('routes ok')"
+python -c "from app import app; from briefing_data import history_dates_payload; print(history_dates_payload())"
 ```
