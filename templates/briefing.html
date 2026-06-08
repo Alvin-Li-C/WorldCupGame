@@ -243,7 +243,7 @@
 
     <div class="report-header">
         <div class="section-title" id="reportSectionTitle">战报</div>
-        <div class="date-picker-wrap">
+        <div class="date-picker-wrap" id="datePickerWrap">
             <label for="reportDate">赛果日（北京时间）</label>
             <select id="reportDate" class="date-picker" aria-label="选择赛果日"></select>
         </div>
@@ -319,11 +319,12 @@
 <script>
 var DEFAULT_REPORT_DATE = {{ report_date | tojson }};
 var DATE_ORDER = {{ hist.dates | tojson }};
+var HIST_YESTERDAY = {{ hist.yesterday | tojson }};
 
-function fmtDateLabel(iso, isDefault) {
+function fmtDateLabel(iso) {
     var p = iso.split('-');
     var label = parseInt(p[1], 10) + '月' + parseInt(p[2], 10) + '日';
-    if (isDefault && DATE_ORDER[0] === iso) label += '（昨日）';
+    if (iso === HIST_YESTERDAY) label += '（昨日）';
     return label;
 }
 
@@ -364,12 +365,23 @@ function loadReport(date) {
         });
 }
 
+function showNoReportsState() {
+    document.getElementById('datePickerWrap').style.display = 'none';
+    document.getElementById('reportSectionTitle').textContent = '战报';
+    document.getElementById('reportArea').innerHTML =
+        '<div class="report-empty">首场小组赛结束后，可在此按赛果日回看战报</div>';
+}
+
 function initDatePicker() {
+    if (!DATE_ORDER.length) {
+        showNoReportsState();
+        return;
+    }
     var select = document.getElementById('reportDate');
-    DATE_ORDER.forEach(function(date, i) {
+    DATE_ORDER.forEach(function(date) {
         var opt = document.createElement('option');
         opt.value = date;
-        opt.textContent = fmtDateLabel(date, i === 0);
+        opt.textContent = fmtDateLabel(date);
         if (date === DEFAULT_REPORT_DATE) opt.selected = true;
         select.appendChild(opt);
     });
@@ -382,12 +394,13 @@ function initDatePicker() {
 }
 
 function initFromUrl() {
+    if (!DATE_ORDER.length) return;
+    var select = document.getElementById('reportDate');
     var params = new URLSearchParams(window.location.search);
-    var date = params.get('report_date') || DEFAULT_REPORT_DATE;
-    if (DATE_ORDER.indexOf(date) >= 0) {
-        document.getElementById('reportDate').value = date;
-    }
-    loadReport(document.getElementById('reportDate').value);
+    var date = params.get('report_date') || DEFAULT_REPORT_DATE || DATE_ORDER[0];
+    if (DATE_ORDER.indexOf(date) < 0) date = DEFAULT_REPORT_DATE || DATE_ORDER[0];
+    select.value = date;
+    loadReport(date);
 }
 
 initDatePicker();
