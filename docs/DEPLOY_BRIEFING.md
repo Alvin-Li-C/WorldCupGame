@@ -31,6 +31,12 @@ python scripts\build_daily_briefing.py --dry-run
 
 **禁止**将 inject 脚本产生的比分 commit / upload。开赛前 `history_index` 应无带 `source: football-data` 以外的完赛记录。
 
+赛前新闻来源（[`data/scraper_config.json`](data/scraper_config.json)）：
+
+- **懂球帝** API：头条 + 国际
+- **直播8** 足球滚动：`news.zhibo8.com/zuqiu/`
+- 已移除 ESPN RSS（国内访问不稳定）
+
 密钥文件（勿提交 git）：
 
 - `static/basedata/football-data.txt`
