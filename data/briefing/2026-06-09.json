@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T06:24:33+08:00",
+  "generated_at": "2026-06-09T23:41:54+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-09",
   "yesterday": {
@@ -25,38 +25,38 @@
           {
             "rank": 1,
             "team": "墨西哥",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "巴西裁判桑帕约将执法世界杯揭幕战墨西哥对阵南非",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "墨西哥欲借世界杯深走赛事，重振下滑的中北美足球地位",
             "impact": "medium",
-            "impact_score": 55,
-            "source": "懂球帝头条",
-            "published_at": "2026-06-09 05:40:36",
-            "url": "https://www.dongqiudi.com/article/5913481"
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 03 Jun 2026 16:19:37 +0000",
+            "url": "https://www.cbssports.com/betting/news/world-cup-2026-odds-futures-mexico-aiming-to-restore-its-soccer-standing-with-deep-tournament-run/"
           },
           {
             "rank": 2,
             "team": "墨西哥",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "或是本届世界杯参赛球员中名气最小的一员",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯揭幕战倒计时，各队友谊赛最后磨合竞技状态",
             "impact": "low",
-            "impact_score": 6,
-            "source": "懂球帝国际",
-            "published_at": "2026-06-09 05:33:04",
-            "url": "https://www.dongqiudi.com/article/5913479"
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Mon, 08 Jun 2026 16:51:15 +0000",
+            "url": "https://www.cbssports.com/soccer/news/footy-fix-last-international-friendlies-on-hand-as-teams-fine-tune-ahead-of-thursdays-world-cup-kickoff/"
           },
           {
             "rank": 3,
             "team": "墨西哥",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "2026世界杯各队阵中曾有夺冠经历的球员人数统计出炉",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "2026世界杯各队名单数据：年龄结构与联赛分布趋势",
             "impact": "low",
-            "impact_score": 6,
-            "source": "懂球帝头条",
-            "published_at": "2026-06-09 05:57:43",
-            "url": "https://www.dongqiudi.com/article/5913501"
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 02 Jun 2026 23:28:42 +0000",
+            "url": "https://www.cbssports.com/soccer/news/world-cup-2026-squads-by-the-numbers-leagues-oldest-youngest-players-countries/"
           }
         ]
       },
@@ -74,14 +74,38 @@
           {
             "rank": 1,
             "team": "韩国",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯开幕前最后一轮国际热身赛，各队加紧磨合竞技状态",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Mon, 08 Jun 2026 16:51:15 +0000",
+            "url": "https://www.cbssports.com/soccer/news/footy-fix-last-international-friendlies-on-hand-as-teams-fine-tune-ahead-of-thursdays-world-cup-kickoff/"
+          },
+          {
+            "rank": 2,
+            "team": "捷克",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯前热身赛密集进行，参赛队借此调整阵容与临场状态",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 03 Jun 2026 15:34:16 +0000",
+            "url": "https://www.cbssports.com/soccer/news/footy-fix-world-cup-tune-ups-dominate-the-calendar-as-teams-get-set-of-june-11th-kickoff/"
+          },
+          {
+            "rank": 3,
+            "team": "韩国",
             "category": "other",
             "category_label": "其他",
-            "headline": "埃及裁判阿明-穆罕默德将执法韩国对阵捷克",
-            "impact": "medium",
-            "impact_score": 55,
+            "headline": "世界杯倒计时2天，赛会氛围升温",
+            "impact": "low",
+            "impact_score": 33,
             "source": "懂球帝头条",
-            "published_at": "2026-06-09 05:47:11",
-            "url": "https://www.dongqiudi.com/article/5913484"
+            "published_at": "2027-06-09 12:00:00",
+            "url": "https://www.dongqiudi.com/article/5910744"
           }
         ]
       }

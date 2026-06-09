@@ -12,6 +12,8 @@ BRIEFING_DIR = os.path.join(ROOT, 'data', 'briefing')
 LATEST_PATH = os.path.join(BRIEFING_DIR, 'latest.json')
 HISTORY_PATH = os.path.join(BRIEFING_DIR, 'history_index.json')
 FIXTURES_PATH = os.path.join(ROOT, 'data', 'fixtures_2026.json')
+SQUAD_META_PATH = os.path.join(ROOT, 'data', 'team_squad_meta.json')
+TEAM_FORM_PATH = os.path.join(BRIEFING_DIR, 'team_form.json')
 
 CATEGORY_LABELS = {
     'tactics': '战术',
@@ -294,6 +296,16 @@ def get_roster_for_team(team_name):
     return roster
 
 
+def _find_briefing_match(briefing, fixture_id):
+    for block in ('today', 'yesterday'):
+        if block not in briefing:
+            continue
+        for m in briefing.get(block, {}).get('matches', []):
+            if m.get('fixture_id') == fixture_id:
+                return m
+    return None
+
+
 def get_match_detail(fixture_id):
     fixtures = {f['fixture_id']: f for f in load_fixtures()}
     fix = fixtures.get(fixture_id)
@@ -301,15 +313,15 @@ def get_match_detail(fixture_id):
         return None
     briefing = load_briefing_enriched()
     owner_map = get_owner_map()
+    squad_meta = load_json(SQUAD_META_PATH, {})
+    team_form = load_json(TEAM_FORM_PATH, {})
 
-    match_info = None
-    for block in ('today', 'yesterday'):
-        if block not in briefing:
-            continue
-        for m in briefing.get(block, {}).get('matches', []):
-            if m.get('fixture_id') == fixture_id:
-                match_info = m
-                break
+    match_info = _find_briefing_match(briefing, fixture_id)
+    if not match_info:
+        overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})
+        override_news = overrides.get(str(fixture_id))
+        if override_news:
+            match_info = {'key_news': override_news}
 
     home_owner = owner_display(fix['home_team'], owner_map)
     away_owner = owner_display(fix['away_team'], owner_map)
@@ -355,6 +367,14 @@ def get_match_detail(fixture_id):
         'score': score,
         'our_scorers': match_info.get('our_scorers', []) if match_info else [],
         'key_news': match_info.get('key_news', []) if match_info else [],
+        'odds': match_info.get('odds') if match_info else None,
+        'venue_context': fix.get('venue_context'),
+        'home_travel': fix.get('home_travel'),
+        'away_travel': fix.get('away_travel'),
+        'home_meta': squad_meta.get(fix['home_team'], {}),
+        'away_meta': squad_meta.get(fix['away_team'], {}),
+        'home_form': team_form.get(fix['home_team']),
+        'away_form': team_form.get(fix['away_team']),
         'home_roster': get_roster_for_team(fix['home_team']),
         'away_roster': get_roster_for_team(fix['away_team']),
     }

@@ -51,6 +51,14 @@
     },
     "our_pick_bonus": 15
   },
+  "odds": {
+    "api_key_file": "static/basedata/odds-api.txt",
+    "api_key_env": "ODDS_API_KEY",
+    "sport_key": "soccer_fifa_world_cup",
+    "regions": "eu",
+    "markets": "h2h",
+    "odds_format": "decimal"
+  },
   "pythonanywhere_url": "https://tolerance.pythonanywhere.com",
   "import_token_env": "IMPORT_BRIEFING_TOKEN"
 }

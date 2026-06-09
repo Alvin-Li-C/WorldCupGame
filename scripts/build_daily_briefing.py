@@ -17,7 +17,9 @@ from briefing.match_score import resolve_winner_from_api
 from briefing.scorer_build import build_match_scorers
 from briefing.shooter_standings import save_shooter_standings
 from briefing.standings import save_team_standings
+from briefing.form_fetch import save_team_form
 from briefing.news_fetch import prefilter_for_match
+from briefing.odds_fetch import attach_odds_to_matches
 from briefing.secrets import read_secret
 from briefing.time_utils import (
     beijing_date_from_utc,
@@ -303,6 +305,9 @@ def build_briefing(mock=False):
 
     preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
     today_matches = build_today_matches(fixtures, preview_date, owner_map, config, selections)
+    fixtures_by_id = {f['fixture_id']: f for f in fixtures}
+    today_matches = attach_odds_to_matches(today_matches, fixtures_by_id, config)
+    save_team_form(config, team_map)
 
     briefing = {
         'generated_at': now.isoformat(timespec='seconds'),

@@ -42,6 +42,37 @@ python scripts\build_daily_briefing.py --dry-run
 - `static/basedata/football-data.txt`
 - `static/basedata/AIKey.txt`
 - `static/basedata/teamInfo.txt`
+- `static/basedata/odds-api.txt`（The Odds API，每日构建拉取胜平负赔率）
+
+## 比赛介绍页元数据
+
+**一次性脚本**（赛程/大本营变更后重跑）：
+
+```powershell
+python scripts\generate_world_cup_bases.py
+python scripts\enrich_fixture_venue_context.py
+python scripts\fetch_squad_ages.py
+python scripts\build_team_squad_meta.py
+```
+
+`fetch_squad_ages.py` 从 football-data.org 拉取 48 队世界杯名单出生日期（补全 WCQ 无年龄字段的球队）。`build_team_squad_meta.py` 在缺少 `squad_player_ages.json` 时会自动调用。
+
+产出：
+
+| 文件 | 内容 |
+|------|------|
+| `data/stadium_venues.json` | 16 球场海拔/坐标 |
+| `data/team_world_cup_bases.json` | 48 队大本营 |
+| `data/fixtures_2026.json` | 每场 `venue_context`、`home_travel`、`away_travel` |
+| `data/squad_player_ages.json` | 名单球员年龄（football-data.org） |
+| `data/team_squad_meta.json` | 平均年龄、球队结构、教练 |
+
+**每日构建**（`build_daily_briefing.py`）额外写入：
+
+- `latest.json` 每场 `odds`（需 `odds-api.txt`）
+- `data/briefing/team_form.json`（世界杯已完赛球队的近 5 场）
+
+Flask `/match/<id>` 只读上述 JSON，无需 PA 再跑脚本。
 
 ## Windows 任务计划（每日 20:00）
 
