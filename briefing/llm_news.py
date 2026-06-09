@@ -3,6 +3,13 @@ import json
 import re
 
 from briefing_data import CATEGORY_LABELS
+from briefing.news_fetch import (
+    _has_wc_context,
+    _load_team_map,
+    _mentions_other_fixture_nation,
+    _text_has_team,
+    build_team_hints,
+)
 from briefing.secrets import read_secret
 
 CATEGORY_LABEL_MAP = CATEGORY_LABELS
@@ -24,6 +31,9 @@ def build_selection_instruction(home_team, away_team, max_n):
         '5. injury / suspension — 直接削弱本场战力时保留\n'
         '6. other — 仅当以上主题均无可用候选\n'
         '尽量不选：全赛事泛览、48强速览、球衣排名、转会八卦、与两队无关的第三方新闻。\n'
+        '严禁选择：中超/中甲/国内俱乐部联赛、教练采访与两队及世界杯无关的条目；'
+        '标题须出现主队或客队国名（中英文均可）或明确 World Cup / 世界杯语境。\n'
+        '英文候选可保留英文 headline，但 team 字段仍用中文国名。\n'
         '若 our_picks 非空，涉及我方选秀球员的条目可适当优先，但仍须符合上列主题。\n'
         '输出：仅 JSON 数组。字段 rank,team,category,category_label,headline,impact,'
         'impact_score,source,published_at,url。\n'
@@ -33,7 +43,39 @@ def build_selection_instruction(home_team, away_team, max_n):
     )
 
 
-def keyword_top3(candidates, home_team, away_team, max_n=3):
+def is_headline_relevant(headline, home_team, away_team, config, team_hints_en=None):
+    if not headline:
+        return False
+    hints = build_team_hints(home_team, away_team, config, team_hints_en)
+    if _text_has_team(headline, hints):
+        return True
+    if not _has_wc_context(headline):
+        return False
+    team_map = _load_team_map(config)
+    if _mentions_other_fixture_nation(headline, home_team, away_team, team_map):
+        return False
+    return True
+
+
+def filter_relevant_items(items, home_team, away_team, config, team_hints_en=None):
+    return [
+        item for item in items
+        if is_headline_relevant(
+            item.get('headline') or item.get('title') or '',
+            home_team,
+            away_team,
+            config,
+            team_hints_en,
+        )
+    ]
+
+
+def keyword_top3(candidates, home_team, away_team, max_n=3, config=None, team_hints_en=None):
+    if config:
+        candidates = [
+            c for c in candidates
+            if is_headline_relevant(c.get('title', ''), home_team, away_team, config, team_hints_en)
+        ]
     out = []
     for i, c in enumerate(candidates[:max_n], 1):
         cat = c.get('category', 'other')
@@ -61,7 +103,15 @@ def _parse_llm_json(text):
     return json.loads(text)
 
 
-def select_key_news(home_team, away_team, candidates, config, our_picks=None, retry_once=True):
+def select_key_news(
+    home_team,
+    away_team,
+    candidates,
+    config,
+    our_picks=None,
+    retry_once=True,
+    team_hints_en=None,
+):
     max_n = config.get('news', {}).get('max_per_match', 3)
     if not candidates:
         return []
@@ -69,7 +119,9 @@ def select_key_news(home_team, away_team, candidates, config, our_picks=None, re
     llm_cfg = config.get('llm', {})
     api_key = read_secret(llm_cfg.get('api_key_file', ''), llm_cfg.get('api_key_env'))
     if not api_key:
-        return keyword_top3(candidates, home_team, away_team, max_n)
+        return keyword_top3(
+            candidates, home_team, away_team, max_n, config, team_hints_en,
+        )
 
     prompt = json.dumps({
         'home_team': home_team,
@@ -100,9 +152,13 @@ def select_key_news(home_team, away_team, candidates, config, our_picks=None, re
             for item in items:
                 cat = item.get('category', 'other')
                 item['category_label'] = item.get('category_label') or CATEGORY_LABEL_MAP.get(cat, '其他')
-            return items[:max_n]
+            items = filter_relevant_items(items, home_team, away_team, config, team_hints_en)
+            if items:
+                return items[:max_n]
         except Exception:
             if attempt == 0 and retry_once:
                 continue
             break
-    return keyword_top3(candidates, home_team, away_team, max_n)
+    return keyword_top3(
+        candidates, home_team, away_team, max_n, config, team_hints_en,
+    )

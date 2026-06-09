@@ -33,9 +33,9 @@ python scripts\build_daily_briefing.py --dry-run
 
 赛前新闻来源（[`data/scraper_config.json`](data/scraper_config.json)）：
 
-- **懂球帝** API：头条 + 国际
-- **直播8** 足球滚动：`news.zhibo8.com/zuqiu/`
-- 已移除 ESPN RSS（国内访问不稳定）
+- **国内**：懂球帝 API（头条 + 国际）、直播8 足球滚动
+- **国际 RSS**（`intl_feeds`）：ESPN、CBS Soccer、Sky News；BBC / Guardian 在可访问时自动并入（失败则跳过）
+- **队名搜索**：Google News RSS（中/英队名 + 世界杯），可选关闭 `team_search_rss`
 
 密钥文件（勿提交 git）：
 

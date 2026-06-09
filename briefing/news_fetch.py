@@ -2,6 +2,7 @@
 import json
 import os
 import re
+import urllib.parse
 from datetime import datetime, timedelta, timezone
 from xml.etree import ElementTree
 
@@ -10,8 +11,12 @@ import urllib.request
 BJ = timezone(timedelta(hours=8))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WC_KEYWORDS = (
-    'world cup', '2026', 'fifa world cup',
-    '世界杯', '世预赛', '美加墨',
+    'world cup', 'fifa world cup',
+    '世界杯', '美加墨',
+)
+DOMESTIC_LEAGUE_MARKERS = (
+    '中超', '中甲', '中乙', '足协杯', '中国之星', 'CFA',
+    '英超', '西甲', '德甲', '意甲', '法甲', '欧冠',
 )
 _USER_AGENT = (
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
@@ -46,9 +51,9 @@ def _http_get(url, timeout=30):
         return resp.read().decode('utf-8', errors='replace')
 
 
-def _parse_rss(url, max_items=30):
+def _parse_rss(url, max_items=30, label=None, timeout=30):
     try:
-        tree = ElementTree.fromstring(_http_get(url))
+        tree = ElementTree.fromstring(_http_get(url, timeout=timeout))
     except Exception:
         return []
     items = []
@@ -60,7 +65,7 @@ def _parse_rss(url, max_items=30):
         items.append({
             'title': title,
             'snippet': re.sub(r'<[^>]+>', '', desc)[:300],
-            'source': url,
+            'source': label or url,
             'url': link or None,
             'published_at': pub,
         })
@@ -121,8 +126,55 @@ def _fetch_zhibo8_football(label='直播8足球', max_items=40):
     return items
 
 
+def _fetch_google_news_rss(query, label, max_items=8):
+    try:
+        url = 'https://news.google.com/rss/search?' + urllib.parse.urlencode({
+            'q': query,
+            'hl': 'zh-CN',
+            'gl': 'CN',
+            'ceid': 'CN:zh-Hans',
+        })
+        items = _parse_rss(url, max_items)
+        for item in items:
+            item['source'] = label
+        return items
+    except Exception:
+        return []
+
+
+def _team_search_news(home_team, away_team, config, max_per_team=8, team_hints_en=None):
+    if not config.get('news', {}).get('team_search_rss', True):
+        return []
+    team_map = _load_team_map(config)
+    out = []
+    queries = []
+    for team_cn in (home_team, away_team):
+        if not team_cn:
+            continue
+        queries.append((f'{team_cn} 世界杯', f'搜索:{team_cn}'))
+        for alias in _english_aliases(team_cn, team_map):
+            queries.append((f'{alias} World Cup 2026', f'搜索:{alias}'))
+    if team_hints_en:
+        for name in team_hints_en:
+            if name and not any(name in q[0] for q in queries):
+                queries.append((f'{name} World Cup 2026', f'搜索:{name}'))
+    for query, label in queries:
+        out.extend(_fetch_google_news_rss(query, label, max_per_team))
+    return out
+
+
+def _iter_rss_feeds(news_cfg):
+    for key in ('intl_feeds', 'rss_feeds'):
+        for entry in news_cfg.get(key, []):
+            if isinstance(entry, str):
+                yield entry, None, 30
+            elif isinstance(entry, dict) and entry.get('url'):
+                timeout = entry.get('timeout', 8 if entry.get('optional') else 30)
+                yield entry['url'], entry.get('label'), timeout
+
+
 def collect_news_items(config, max_per_source=30):
-    """Aggregate configured RSS and domestic (懂球帝 / 直播8) feeds."""
+    """Aggregate domestic (懂球帝 / 直播8) and international RSS feeds."""
     news_cfg = config.get('news', {})
     raw = []
     seen = set()
@@ -135,6 +187,9 @@ def collect_news_items(config, max_per_source=30):
             seen.add(key)
             raw.append(item)
 
+    for url, label, timeout in _iter_rss_feeds(news_cfg):
+        add_items(_parse_rss(url, max_per_source, label, timeout=timeout))
+
     for src in news_cfg.get('cn_feeds', []):
         src_type = src.get('type', '')
         label = src.get('label', '')
@@ -142,9 +197,6 @@ def collect_news_items(config, max_per_source=30):
             add_items(_fetch_dongqiudi(src.get('tab_id', 1), label, max_per_source))
         elif src_type == 'zhibo8':
             add_items(_fetch_zhibo8_football(label or '直播8足球', max_per_source))
-
-    for url in news_cfg.get('rss_feeds', []):
-        add_items(_parse_rss(url, max_per_source))
 
     return raw
 
@@ -167,6 +219,74 @@ def _load_team_map(config):
             with open(full, encoding='utf-8') as f:
                 return json.load(f)
     return config.get('team_name_map') or {}
+
+
+def _text_has_team(text, team_hints):
+    lower = text.lower()
+    for team in team_hints:
+        if not team:
+            continue
+        if team in text or team.lower() in lower:
+            return True
+    return False
+
+
+def _has_wc_context(text):
+    lower = text.lower()
+    if any(kw in text for kw in ('世界杯', '美加墨')):
+        return True
+    return 'world cup' in lower or 'fifa world cup' in lower
+
+
+def _is_domestic_noise(text, team_hit):
+    if team_hit:
+        return False
+    return any(m in text for m in DOMESTIC_LEAGUE_MARKERS)
+
+
+def _english_nation_in_text(text, name):
+    if len(name) < 3:
+        return False
+    pattern = re.compile(r'(?<![A-Za-z])' + re.escape(name) + r'(?![A-Za-z])', re.I)
+    return bool(pattern.search(text))
+
+
+def _mentions_other_fixture_nation(text, home_team, away_team, team_map):
+    nations = sorted({cn for cn in (team_map or {}).values() if cn}, key=len, reverse=True)
+    for cn in nations:
+        if cn in (home_team, away_team):
+            continue
+        if len(cn) < 2:
+            continue
+        if cn in text:
+            return True
+    fixture_en = set()
+    for cn in (home_team, away_team):
+        fixture_en.update(_english_aliases(cn, team_map))
+    lower = text.lower()
+    for en, cn in (team_map or {}).items():
+        if cn in (home_team, away_team) or en in fixture_en:
+            continue
+        if _english_nation_in_text(lower, en):
+            return True
+    return False
+
+
+def relevance_tier(text, team_hints, home_team=None, away_team=None, team_map=None):
+    """0=drop, 1=generic WC, 2=mentions a fixture nation."""
+    team_hit = _text_has_team(text, team_hints)
+    if _is_domestic_noise(text, team_hit):
+        return 0
+    if team_hit:
+        return 2
+    if _has_wc_context(text):
+        if (
+            team_map and home_team and away_team
+            and _mentions_other_fixture_nation(text, home_team, away_team, team_map)
+        ):
+            return 0
+        return 1
+    return 0
 
 
 def build_team_hints(home_team, away_team, config, team_hints_en=None):
@@ -192,11 +312,25 @@ def build_team_hints(home_team, away_team, config, team_hints_en=None):
     return out
 
 
-def score_candidate(text, team_hints, impact_keywords, our_picks=None, our_pick_bonus=15):
+def score_candidate(
+    text,
+    team_hints,
+    impact_keywords,
+    our_picks=None,
+    our_pick_bonus=15,
+    home_team=None,
+    away_team=None,
+    team_map=None,
+):
+    tier = relevance_tier(text, team_hints, home_team, away_team, team_map)
+    if tier == 0:
+        return 0, 'other'
+
     lower = text.lower()
-    score = 0
+    score = tier * 25
     category = 'other'
     best_cat_score = 0
+    team_hit = tier >= 2
     for cat, words in CATEGORY_KEYWORDS.items():
         for w in words:
             if w.lower() in lower or w in text:
@@ -204,25 +338,17 @@ def score_candidate(text, team_hints, impact_keywords, our_picks=None, our_pick_
                 if s > best_cat_score:
                     best_cat_score = s
                     category = cat
-                score += 5
-    team_hit = False
-    for team in team_hints:
-        if not team:
-            continue
-        if team in text or team.lower() in lower:
-            score += 20
-            team_hit = True
+                if team_hit:
+                    score += 5
     if our_picks:
         for pick in our_picks:
             if pick and pick in text:
                 score += our_pick_bonus
-    if any(kw in lower for kw in WC_KEYWORDS):
+    if _has_wc_context(text):
         if team_hit:
             score += 15
-        elif score > 0:
-            score += 8
         else:
-            score += 6
+            score += 8
     return score, category
 
 
@@ -235,7 +361,7 @@ def _team_hint_for_blob(blob, home_team, away_team, team_map):
         for alias in _english_aliases(cn, team_map):
             if alias.lower() in lower:
                 return cn
-    return home_team
+    return None
 
 
 def prefilter_for_match(
@@ -252,16 +378,33 @@ def prefilter_for_match(
     team_map = _load_team_map(config)
     hints = build_team_hints(home_team, away_team, config, team_hints_en)
     raw = collect_news_items(config, max_per_source=max_per_source * 2)
+    seen = {item.get('url') or item.get('title') for item in raw}
+    for item in _team_search_news(home_team, away_team, config, team_hints_en=team_hints_en):
+        key = item.get('url') or item.get('title')
+        if key and key not in seen:
+            seen.add(key)
+            raw.append(item)
     if not raw:
         return []
 
     scored = []
     for c in raw:
         blob = f"{c['title']} {c['snippet']}"
-        s, cat = score_candidate(blob, hints, impact, our_picks, bonus)
+        tier = relevance_tier(blob, hints, home_team, away_team, team_map)
+        if tier == 0:
+            continue
+        s, cat = score_candidate(
+            blob, hints, impact, our_picks, bonus, home_team, away_team, team_map,
+        )
         if s <= 0:
             continue
         team_hint = _team_hint_for_blob(blob, home_team, away_team, team_map)
-        scored.append({**c, 'impact_score': s, 'category': cat, 'team_hint': team_hint})
-    scored.sort(key=lambda x: -x['impact_score'])
+        scored.append({
+            **c,
+            'impact_score': s,
+            'category': cat,
+            'team_hint': team_hint,
+            'relevance_tier': tier,
+        })
+    scored.sort(key=lambda x: (-x['relevance_tier'], -x['impact_score']))
     return scored[:max_candidates]

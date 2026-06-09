@@ -102,7 +102,14 @@ def build_today_matches(fixtures, date_str, owner_map, config, selections):
         if key in overrides:
             key_news = overrides[key]
         else:
-            key_news = select_key_news(home, away, candidates, config, picks)
+            key_news = select_key_news(
+                home,
+                away,
+                candidates,
+                config,
+                picks,
+                team_hints_en=[f.get('home_team_api'), f.get('away_team_api')],
+            )
         matches.append({
             'fixture_id': f['fixture_id'],
             'group': f.get('group'),
