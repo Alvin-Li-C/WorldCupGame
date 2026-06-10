@@ -28,6 +28,9 @@ from briefing_data import (
     save_json,
     LATEST_PATH,
     HISTORY_PATH,
+    FIXTURES_PATH,
+    SQUAD_META_PATH,
+    TEAM_FORM_PATH,
 )
 from briefing.rebuild_scorers import rebuild_scorers_from_api
 from briefing.scorer_match import add_manual_rule
@@ -242,6 +245,12 @@ def api_import_briefing():
         save_json(STANDINGS_PATH, data['standings_teams'])
     if 'standings_shooters' in data:
         save_json(SHOOTER_STANDINGS_PATH, data['standings_shooters'])
+    if 'team_squad_meta' in data:
+        save_json(SQUAD_META_PATH, data['team_squad_meta'])
+    if 'team_form' in data:
+        save_json(TEAM_FORM_PATH, data['team_form'])
+    if 'fixtures_2026' in data:
+        save_json(FIXTURES_PATH, data['fixtures_2026'])
     return jsonify({'success': True})
 
 

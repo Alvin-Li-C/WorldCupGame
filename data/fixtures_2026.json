@@ -22,7 +22,30 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "主场作战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "墨西哥城大本营",
+        "rest_days": null
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1200,
+        "q1_km": 0,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1
+      }
     },
     {
       "fixture_id": 2,
@@ -42,7 +65,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2500,
+        "q1_km": 0,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "堪萨斯城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1
+      }
     },
     {
       "fixture_id": 3,
@@ -62,7 +109,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3500,
+        "q1_km": 0,
+        "q2_km": 3500,
+        "base_label": "多伦多大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 4,
@@ -82,7 +153,30 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "主场作战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": null
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 5,
@@ -102,7 +196,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 6,
@@ -122,7 +240,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3700,
+        "q1_km": 0,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 7,
@@ -142,7 +284,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3700,
+        "q1_km": 0,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 8,
@@ -162,7 +328,30 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "主场作战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": null
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2000,
+        "q1_km": 0,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 9,
@@ -182,7 +371,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3200,
+        "q1_km": 0,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 10,
@@ -202,7 +415,30 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1600,
+        "q1_km": 0,
+        "q2_km": 1600,
+        "base_label": "西雅图大本营",
+        "rest_days": null
+      }
     },
     {
       "fixture_id": 11,
@@ -222,7 +458,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1200,
+        "q1_km": 0,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1
+      }
     },
     {
       "fixture_id": 12,
@@ -242,7 +502,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 13,
@@ -262,7 +546,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3100,
+        "q1_km": 0,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 14,
@@ -282,7 +590,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3200,
+        "q1_km": 0,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1200,
+        "q1_km": 0,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1
+      }
     },
     {
       "fixture_id": 15,
@@ -302,7 +634,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 16,
@@ -322,7 +678,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2500,
+        "q1_km": 0,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 4000,
+        "q1_km": 0,
+        "q2_km": 4000,
+        "base_label": "温哥华大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1
+      }
     },
     {
       "fixture_id": 17,
@@ -342,7 +722,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3700,
+        "q1_km": 0,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 18,
@@ -362,7 +766,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 1200,
+        "q1_km": 0,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3700,
+        "q1_km": 0,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 19,
@@ -382,7 +810,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 20,
@@ -402,7 +854,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3900,
+        "q1_km": 0,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 21,
@@ -422,7 +898,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 22,
@@ -442,7 +942,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 4200,
+        "q1_km": 0,
+        "q2_km": 4200,
+        "base_label": "波士顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2000,
+        "q1_km": 0,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 23,
@@ -462,7 +986,31 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3100,
+        "q1_km": 0,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3
+      }
     },
     {
       "fixture_id": 24,
@@ -482,7 +1030,31 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "西雅图大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2
+      }
     },
     {
       "fixture_id": 25,
@@ -502,7 +1074,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "堪萨斯城大本营",
+        "rest_days": 7
+      },
+      "away_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 7
+      }
     },
     {
       "fixture_id": 26,
@@ -522,7 +1116,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 27,
@@ -542,7 +1158,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7000km · 往返大本营",
+        "distance_km": 7000,
+        "q1_km": 3500,
+        "q2_km": 3500,
+        "base_label": "多伦多大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 28,
@@ -562,7 +1200,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "墨西哥城大本营",
+        "rest_days": 7
+      },
+      "away_travel": {
+        "label": "远征 5000km · 往返大本营",
+        "distance_km": 5000,
+        "q1_km": 2500,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 7
+      }
     },
     {
       "fixture_id": 29,
@@ -582,7 +1242,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 7
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 30,
@@ -602,7 +1284,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 31,
@@ -622,7 +1326,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 32,
@@ -642,7 +1368,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4000km · 往返大本营",
+        "distance_km": 4000,
+        "q1_km": 2000,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 7
+      }
     },
     {
       "fixture_id": 33,
@@ -662,7 +1410,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 34,
@@ -682,7 +1452,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 6400km · 往返大本营",
+        "distance_km": 6400,
+        "q1_km": 3200,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 35,
@@ -702,7 +1494,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 36,
@@ -722,7 +1536,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 3200km · 往返大本营",
+        "distance_km": 3200,
+        "q1_km": 1600,
+        "q2_km": 1600,
+        "base_label": "西雅图大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 37,
@@ -742,7 +1578,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3100,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 38,
@@ -762,7 +1620,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 6400km · 往返大本营",
+        "distance_km": 6400,
+        "q1_km": 3200,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 5000km · 往返大本营",
+        "distance_km": 5000,
+        "q1_km": 2500,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 39,
@@ -782,7 +1662,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 40,
@@ -802,7 +1704,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 8000km · 往返大本营",
+        "distance_km": 8000,
+        "q1_km": 4000,
+        "q2_km": 4000,
+        "base_label": "温哥华大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 41,
@@ -822,7 +1746,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 42,
@@ -842,7 +1788,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 43,
@@ -862,7 +1830,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 44,
@@ -882,7 +1872,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 45,
@@ -902,7 +1914,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "西雅图大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 46,
@@ -922,7 +1956,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 8400km · 往返大本营",
+        "distance_km": 8400,
+        "q1_km": 4200,
+        "q2_km": 4200,
+        "base_label": "波士顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3100,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 47,
@@ -942,7 +1998,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4000km · 往返大本营",
+        "distance_km": 4000,
+        "q1_km": 2000,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 48,
@@ -962,7 +2040,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 49,
@@ -982,7 +2082,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 7000km · 往返大本营",
+        "distance_km": 7000,
+        "q1_km": 3500,
+        "q2_km": 3500,
+        "base_label": "多伦多大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 50,
@@ -1002,7 +2124,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 51,
@@ -1022,7 +2166,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 52,
@@ -1042,7 +2208,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 53,
@@ -1062,7 +2250,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "堪萨斯城大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "墨西哥城大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 54,
@@ -1082,7 +2292,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "远征 5000km · 往返大本营",
+        "distance_km": 5000,
+        "q1_km": 2500,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 55,
@@ -1102,7 +2334,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 6400km · 往返大本营",
+        "distance_km": 6400,
+        "q1_km": 3200,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 56,
@@ -1122,7 +2376,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 57,
@@ -1142,7 +2418,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 58,
@@ -1162,7 +2460,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 3200km · 往返大本营",
+        "distance_km": 3200,
+        "q1_km": 1600,
+        "q2_km": 1600,
+        "base_label": "西雅图大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 59,
@@ -1182,7 +2502,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4000km · 往返大本营",
+        "distance_km": 4000,
+        "q1_km": 2000,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 60,
@@ -1202,7 +2544,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 6
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 6
+      }
     },
     {
       "fixture_id": 61,
@@ -1222,7 +2586,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 7400km · 往返大本营",
+        "distance_km": 7400,
+        "q1_km": 3700,
+        "q2_km": 3700,
+        "base_label": "波士顿大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 62,
@@ -1242,7 +2628,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 63,
@@ -1262,7 +2670,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3100,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 64,
@@ -1282,7 +2712,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 65,
@@ -1302,7 +2754,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 8000km · 往返大本营",
+        "distance_km": 8000,
+        "q1_km": 4000,
+        "q2_km": 4000,
+        "base_label": "温哥华大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 6400km · 往返大本营",
+        "distance_km": 6400,
+        "q1_km": 3200,
+        "q2_km": 3200,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 66,
@@ -1322,7 +2796,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 5000km · 往返大本营",
+        "distance_km": 5000,
+        "q1_km": 2500,
+        "q2_km": 2500,
+        "base_label": "洛杉矶大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 67,
@@ -1342,7 +2838,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 8400km · 往返大本营",
+        "distance_km": 8400,
+        "q1_km": 4200,
+        "q2_km": 4200,
+        "base_label": "波士顿大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 68,
@@ -1362,7 +2880,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4000km · 往返大本营",
+        "distance_km": 4000,
+        "q1_km": 2000,
+        "q2_km": 2000,
+        "base_label": "达拉斯大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3100,
+        "q2_km": 3100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 69,
@@ -1382,7 +2922,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
+        "base_label": "迈阿密大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 70,
@@ -1402,7 +2964,29 @@
       "stadium": "Estadio Azteca · Mexico City",
       "stadium_photo": "azteca.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "azteca",
+        "altitude_m": 2240,
+        "altitude_tier": "extreme",
+        "altitude_label": "高原球场"
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "亚特兰大大本营",
+        "rest_days": 4
+      },
+      "away_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "西雅图大本营",
+        "rest_days": 4
+      }
     },
     {
       "fixture_id": 71,
@@ -1422,7 +3006,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 7600km · 往返大本营",
+        "distance_km": 7600,
+        "q1_km": 3800,
+        "q2_km": 3800,
+        "base_label": "迈阿密大本营",
+        "rest_days": 5
+      }
     },
     {
       "fixture_id": 72,
@@ -1442,7 +3048,29 @@
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
-      "temp": "—"
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "远征 4400km · 往返大本营",
+        "distance_km": 4400,
+        "q1_km": 2200,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": 5
+      },
+      "away_travel": {
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
+        "base_label": "费城大本营",
+        "rest_days": 5
+      }
     }
   ]
 }

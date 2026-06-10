@@ -1,0 +1,1346 @@
+{
+  "墨西哥": {
+    "avg_age": 27.5,
+    "squad_structure": {
+      "squad_size": 23,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 47.8
+      },
+      "mid": {
+        "count": 5,
+        "pct": 21.7
+      },
+      "low": {
+        "count": 7,
+        "pct": 30.4
+      }
+    },
+    "coach_name_cn": "哈维尔·阿吉雷",
+    "coach_tenure_years": 3.0,
+    "built_at": "2026-06-10"
+  },
+  "捷克": {
+    "avg_age": 27.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "mid": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "low": {
+        "count": 5,
+        "pct": 19.2
+      }
+    },
+    "coach_name_cn": "米罗斯拉夫·库贝克",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "南非": {
+    "avg_age": 26.3,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 13,
+        "pct": 50.0
+      }
+    },
+    "coach_name_cn": "雨果·布罗西",
+    "coach_tenure_years": 2.5,
+    "built_at": "2026-06-10"
+  },
+  "韩国": {
+    "avg_age": 27.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "low": {
+        "count": 7,
+        "pct": 26.9
+      }
+    },
+    "coach_name_cn": "洪明甫",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "加拿大": {
+    "avg_age": 26.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 12,
+        "pct": 46.2
+      },
+      "mid": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "杰西·马什",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "波黑": {
+    "avg_age": 25.9,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "mid": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "low": {
+        "count": 26,
+        "pct": 100.0
+      }
+    },
+    "coach_name_cn": "塞尔盖·巴巴雷茨",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "卡塔尔": {
+    "avg_age": 28.8,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 12,
+        "pct": 46.2
+      },
+      "mid": {
+        "count": 3,
+        "pct": 11.5
+      },
+      "low": {
+        "count": 11,
+        "pct": 42.3
+      }
+    },
+    "coach_name_cn": "胡伦·洛佩特吉",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "瑞士": {
+    "avg_age": 27.8,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 12,
+        "pct": 46.2
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 5,
+        "pct": 19.2
+      }
+    },
+    "coach_name_cn": "穆拉特·雅金",
+    "coach_tenure_years": 4.0,
+    "built_at": "2026-06-10"
+  },
+  "巴西": {
+    "avg_age": 28.7,
+    "squad_structure": {
+      "squad_size": 25,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 12,
+        "pct": 48.0
+      },
+      "mid": {
+        "count": 7,
+        "pct": 28.0
+      },
+      "low": {
+        "count": 6,
+        "pct": 24.0
+      }
+    },
+    "coach_name_cn": "多里瓦尔·儒尼奥尔",
+    "coach_tenure_years": 1.5,
+    "built_at": "2026-06-10"
+  },
+  "海地": {
+    "avg_age": 27.1,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "mid": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "low": {
+        "count": 17,
+        "pct": 65.4
+      }
+    },
+    "coach_name_cn": "塞巴斯蒂安·米涅",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "摩洛哥": {
+    "avg_age": 25.9,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "mid": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "low": {
+        "count": 12,
+        "pct": 46.2
+      }
+    },
+    "coach_name_cn": "穆罕默德·瓦赫比",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "苏格兰": {
+    "avg_age": 29.1,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "low": {
+        "count": 7,
+        "pct": 26.9
+      }
+    },
+    "coach_name_cn": "史蒂夫·克拉克",
+    "coach_tenure_years": 7.0,
+    "built_at": "2026-06-10"
+  },
+  "美国": {
+    "avg_age": 26.4,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 14,
+        "pct": 53.8
+      },
+      "mid": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "low": {
+        "count": 2,
+        "pct": 7.7
+      }
+    },
+    "coach_name_cn": "毛里西奥·波切蒂诺",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "澳大利亚": {
+    "avg_age": 26.9,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "mid": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "low": {
+        "count": 15,
+        "pct": 57.7
+      }
+    },
+    "coach_name_cn": "托尼·波波维奇",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "巴拉圭": {
+    "avg_age": 28.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 11,
+        "pct": 42.3
+      }
+    },
+    "coach_name_cn": "古斯塔沃·阿尔法罗",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "土耳其": {
+    "avg_age": 27.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 6,
+        "pct": 23.1
+      },
+      "low": {
+        "count": 9,
+        "pct": 34.6
+      }
+    },
+    "coach_name_cn": "温琴佐·蒙特拉",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "库拉索": {
+    "avg_age": 27.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 15,
+        "pct": 57.7
+      }
+    },
+    "coach_name_cn": "迪克·艾德沃卡特",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "厄瓜多尔": {
+    "avg_age": 25.6,
+    "squad_structure": {
+      "squad_size": 23,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 43.5
+      },
+      "mid": {
+        "count": 5,
+        "pct": 21.7
+      },
+      "low": {
+        "count": 8,
+        "pct": 34.8
+      }
+    },
+    "coach_name_cn": "塞巴斯蒂安·贝卡切切",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "德国": {
+    "avg_age": 27.6,
+    "squad_structure": {
+      "squad_size": 25,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 40.0
+      },
+      "mid": {
+        "count": 5,
+        "pct": 20.0
+      },
+      "low": {
+        "count": 10,
+        "pct": 40.0
+      }
+    },
+    "coach_name_cn": "尤利安·纳格尔斯曼",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "科特迪瓦": {
+    "avg_age": 25.3,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "mid": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "low": {
+        "count": 9,
+        "pct": 34.6
+      }
+    },
+    "coach_name_cn": "埃默斯·法埃",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "荷兰": {
+    "avg_age": 27.3,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "mid": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "low": {
+        "count": 5,
+        "pct": 19.2
+      }
+    },
+    "coach_name_cn": "罗纳德·科曼",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "日本": {
+    "avg_age": 27.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "low": {
+        "count": 5,
+        "pct": 19.2
+      }
+    },
+    "coach_name_cn": "森保一",
+    "coach_tenure_years": 6.0,
+    "built_at": "2026-06-10"
+  },
+  "瑞典": {
+    "avg_age": 27.0,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "结构均衡",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "mid": {
+        "count": 13,
+        "pct": 50.0
+      },
+      "low": {
+        "count": 8,
+        "pct": 30.8
+      }
+    },
+    "coach_name_cn": "格雷厄姆·波特",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "突尼斯": {
+    "avg_age": 26.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 15,
+        "pct": 57.7
+      }
+    },
+    "coach_name_cn": "萨布里·拉穆奇",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "比利时": {
+    "avg_age": 27.1,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 8,
+        "pct": 30.8
+      }
+    },
+    "coach_name_cn": "鲁迪·加西亚",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "埃及": {
+    "avg_age": 28.7,
+    "squad_structure": {
+      "squad_size": 27,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 7,
+        "pct": 25.9
+      },
+      "mid": {
+        "count": 4,
+        "pct": 14.8
+      },
+      "low": {
+        "count": 16,
+        "pct": 59.3
+      }
+    },
+    "coach_name_cn": "霍萨姆·哈桑",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "伊朗": {
+    "avg_age": 29.8,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 6,
+        "pct": 23.1
+      },
+      "mid": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "low": {
+        "count": 16,
+        "pct": 61.5
+      }
+    },
+    "coach_name_cn": "阿米尔·加莱诺埃伊",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "新西兰": {
+    "avg_age": 27.6,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "达伦·巴兹利",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "佛得角": {
+    "avg_age": 29.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 3,
+        "pct": 11.5
+      },
+      "mid": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "low": {
+        "count": 13,
+        "pct": 50.0
+      }
+    },
+    "coach_name_cn": "布比斯塔",
+    "coach_tenure_years": 3.0,
+    "built_at": "2026-06-10"
+  },
+  "沙特": {
+    "avg_age": 28.0,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "乔治奥斯·多尼斯",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "西班牙": {
+    "avg_age": 26.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "mid": {
+        "count": 12,
+        "pct": 46.2
+      },
+      "low": {
+        "count": 4,
+        "pct": 15.4
+      }
+    },
+    "coach_name_cn": "路易斯·德拉富恩特",
+    "coach_tenure_years": 3.0,
+    "built_at": "2026-06-10"
+  },
+  "乌拉圭": {
+    "avg_age": 28.2,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 13,
+        "pct": 50.0
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 4,
+        "pct": 15.4
+      }
+    },
+    "coach_name_cn": "马塞洛·贝尔萨",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "法国": {
+    "avg_age": 26.6,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 13,
+        "pct": 50.0
+      },
+      "mid": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "low": {
+        "count": 8,
+        "pct": 30.8
+      }
+    },
+    "coach_name_cn": "迪迪埃·德尚",
+    "coach_tenure_years": 12.5,
+    "built_at": "2026-06-10"
+  },
+  "挪威": {
+    "avg_age": 26.3,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 10,
+        "pct": 38.5
+      }
+    },
+    "coach_name_cn": "施托尔·索尔巴肯",
+    "coach_tenure_years": 3.0,
+    "built_at": "2026-06-10"
+  },
+  "塞内加尔": {
+    "avg_age": 27.3,
+    "squad_structure": {
+      "squad_size": 28,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 39.3
+      },
+      "mid": {
+        "count": 8,
+        "pct": 28.6
+      },
+      "low": {
+        "count": 9,
+        "pct": 32.1
+      }
+    },
+    "coach_name_cn": "帕佩·蒂亚乌",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "伊拉克": {
+    "avg_age": 26.7,
+    "squad_structure": {
+      "squad_size": 24,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 8,
+        "pct": 33.3
+      },
+      "mid": {
+        "count": 9,
+        "pct": 37.5
+      },
+      "low": {
+        "count": 7,
+        "pct": 29.2
+      }
+    },
+    "coach_name_cn": "格雷厄姆·阿诺德",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "阿尔及利亚": {
+    "avg_age": 26.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 10,
+        "pct": 38.5
+      }
+    },
+    "coach_name_cn": "弗拉迪米尔·彼得科维奇",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "阿根廷": {
+    "avg_age": 28.6,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老班底为主",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 15,
+        "pct": 57.7
+      },
+      "mid": {
+        "count": 4,
+        "pct": 15.4
+      },
+      "low": {
+        "count": 7,
+        "pct": 26.9
+      }
+    },
+    "coach_name_cn": "利昂内尔·斯卡洛尼",
+    "coach_tenure_years": 7.0,
+    "built_at": "2026-06-10"
+  },
+  "奥地利": {
+    "avg_age": 28.1,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老班底为主",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 16,
+        "pct": 61.5
+      },
+      "mid": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "low": {
+        "count": 5,
+        "pct": 19.2
+      }
+    },
+    "coach_name_cn": "拉尔夫·朗尼克",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "约旦": {
+    "avg_age": 28.0,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "mid": {
+        "count": 7,
+        "pct": 26.9
+      },
+      "low": {
+        "count": 10,
+        "pct": 38.5
+      }
+    },
+    "coach_name_cn": "贾迈勒·色拉米",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "哥伦比亚": {
+    "avg_age": 29.6,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 14,
+        "pct": 53.8
+      },
+      "mid": {
+        "count": 6,
+        "pct": 23.1
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "内斯托·洛伦索",
+    "coach_tenure_years": 3.0,
+    "built_at": "2026-06-10"
+  },
+  "刚果（金）": {
+    "avg_age": 28.5,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "mid": {
+        "count": 10,
+        "pct": 38.5
+      },
+      "low": {
+        "count": 8,
+        "pct": 30.8
+      }
+    },
+    "coach_name_cn": "塞巴斯蒂安·德萨布雷",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "葡萄牙": {
+    "avg_age": 27.5,
+    "squad_structure": {
+      "squad_size": 27,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 14,
+        "pct": 51.9
+      },
+      "mid": {
+        "count": 8,
+        "pct": 29.6
+      },
+      "low": {
+        "count": 5,
+        "pct": 18.5
+      }
+    },
+    "coach_name_cn": "罗伯托·马丁内斯",
+    "coach_tenure_years": 2.0,
+    "built_at": "2026-06-10"
+  },
+  "乌兹别克斯坦": {
+    "avg_age": 27.9,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 14,
+        "pct": 53.8
+      },
+      "mid": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "low": {
+        "count": 7,
+        "pct": 26.9
+      }
+    },
+    "coach_name_cn": "法比奥·卡纳瓦罗",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "克罗地亚": {
+    "avg_age": 27.9,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 11,
+        "pct": 42.3
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "兹拉特科·达利奇",
+    "coach_tenure_years": 8.0,
+    "built_at": "2026-06-10"
+  },
+  "英格兰": {
+    "avg_age": 26.6,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "老少搭配",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "mid": {
+        "count": 9,
+        "pct": 34.6
+      },
+      "low": {
+        "count": 9,
+        "pct": 34.6
+      }
+    },
+    "coach_name_cn": "托马斯·图赫尔",
+    "coach_tenure_years": 0.5,
+    "built_at": "2026-06-10"
+  },
+  "加纳": {
+    "avg_age": 26.4,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "青春化",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 5,
+        "pct": 19.2
+      },
+      "mid": {
+        "count": 8,
+        "pct": 30.8
+      },
+      "low": {
+        "count": 13,
+        "pct": 50.0
+      }
+    },
+    "coach_name_cn": "卡洛斯·奎罗斯",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  },
+  "巴拿马": {
+    "avg_age": 30.0,
+    "squad_structure": {
+      "squad_size": 26,
+      "structure_source": "national_caps",
+      "structure_label": "经验阵容",
+      "tier_labels": {
+        "high": "多(≥30场)",
+        "mid": "中(10-29场)",
+        "low": "少(<10场)"
+      },
+      "high": {
+        "count": 14,
+        "pct": 53.8
+      },
+      "mid": {
+        "count": 6,
+        "pct": 23.1
+      },
+      "low": {
+        "count": 6,
+        "pct": 23.1
+      }
+    },
+    "coach_name_cn": "托马斯·克里斯蒂安森",
+    "coach_tenure_years": 1.0,
+    "built_at": "2026-06-10"
+  }
+}

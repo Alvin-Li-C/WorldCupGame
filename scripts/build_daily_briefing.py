@@ -264,6 +264,7 @@ def build_yesterday_placeholder(fixtures, date_str):
 
 
 def build_briefing(mock=False):
+    print('build: loading config and fixtures...', flush=True)
     config = load_config()
     fixtures = load_fixtures()
     owner_map = get_owner_map()
@@ -299,6 +300,7 @@ def build_briefing(mock=False):
         config.get('api_token_file', 'static/basedata/football-data.txt'),
         config.get('api_token_env', 'FOOTBALL_DATA_TOKEN'),
     )
+    print('build: fetching WC matches from football-data...', flush=True)
     api_matches = fetch_wc_matches(token, season=2026)
     yesterday_matches = build_yesterday_from_api(
         api_matches, yesterday_date, fixtures, selections, team_map,
@@ -307,10 +309,13 @@ def build_briefing(mock=False):
         yesterday_matches = build_yesterday_placeholder(fixtures, yesterday_date)
 
     preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
+    print(f'build: fetching news for preview {preview_date}...', flush=True)
     today_matches = build_today_matches(fixtures, preview_date, owner_map, config, selections)
+    print(f'build: {len(today_matches)} preview matches, attaching odds...', flush=True)
     fixtures_by_id = {f['fixture_id']: f for f in fixtures}
     today_matches = attach_odds_to_matches(today_matches, fixtures_by_id, config)
     save_match_odds(today_matches)
+    print('build: refreshing team form cache...', flush=True)
     save_team_form(config, team_map)
 
     briefing = {
@@ -338,13 +343,28 @@ def build_briefing(mock=False):
 def _briefing_upload_payload():
     from briefing.shooter_standings import STANDINGS_PATH as SHOOTER_STANDINGS_PATH
     from briefing.standings import STANDINGS_PATH
+    from briefing_data import FIXTURES_PATH, SQUAD_META_PATH, TEAM_FORM_PATH
 
-    return {
+    payload = {
         'latest': load_json(LATEST_PATH),
         'history_index': load_json(HISTORY_PATH),
         'standings_teams': load_json(STANDINGS_PATH),
         'standings_shooters': load_json(SHOOTER_STANDINGS_PATH),
+        'team_squad_meta': load_json(SQUAD_META_PATH, {}),
+        'team_form': load_json(TEAM_FORM_PATH, {}),
+        'fixtures_2026': load_json(FIXTURES_PATH, {}),
     }
+    extras = []
+    if payload['team_squad_meta']:
+        extras.append(f"squad_meta={len(payload['team_squad_meta'])} teams")
+    if payload['team_form']:
+        extras.append(f"team_form={len(payload['team_form'])} teams")
+    fx = payload['fixtures_2026'].get('fixtures') if isinstance(payload['fixtures_2026'], dict) else None
+    if fx:
+        extras.append(f"fixtures={len(fx)}")
+    if extras:
+        print('upload extras: ' + ', '.join(extras), flush=True)
+    return payload
 
 
 def upload_briefing(config, dry_run=False):
@@ -400,6 +420,7 @@ def main():
         print('Dry run OK')
         return
 
+    print('Starting daily briefing build...', flush=True)
     briefing = build_briefing(mock=args.mock)
     y = briefing.get('yesterday', {})
     t = briefing.get('today', {})

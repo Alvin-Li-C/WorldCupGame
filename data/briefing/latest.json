@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-10T06:44:05+08:00",
+  "generated_at": "2026-06-11T07:22:32+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-10",
+  "briefing_date": "2026-06-11",
   "yesterday": {
-    "date": "2026-06-08",
+    "date": "2026-06-10",
     "matches": []
   },
   "today": {
@@ -25,38 +25,38 @@
           {
             "rank": 1,
             "team": "墨西哥",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "墨西哥欲借世界杯深走赛事，重振下滑的中北美足球地位",
-            "impact": "medium",
-            "impact_score": 65,
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "墨西哥vs南非揭幕战：预计首发、观赛指南与赛前预测",
+            "impact": "high",
+            "impact_score": 70,
             "source": "CBS Soccer",
-            "published_at": "Wed, 03 Jun 2026 16:19:37 +0000",
-            "url": "https://www.cbssports.com/betting/news/world-cup-2026-odds-futures-mexico-aiming-to-restore-its-soccer-standing-with-deep-tournament-run/"
+            "published_at": "Wed, 10 Jun 2026 13:57:22 +0000",
+            "url": "https://www.cbssports.com/soccer/news/mexico-vs-south-africa-preview-live-stream-how-to-watch-world-cup-predictions-odds-lineups/"
           },
           {
             "rank": 2,
             "team": "墨西哥",
             "category": "form",
             "category_label": "状态",
-            "headline": "世界杯揭幕战倒计时，各队友谊赛最后磨合竞技状态",
-            "impact": "low",
-            "impact_score": 33,
+            "headline": "墨西哥中北美地位略有下滑，揭幕战欲借世界杯正名",
+            "impact": "medium",
+            "impact_score": 65,
             "source": "CBS Soccer",
-            "published_at": "Mon, 08 Jun 2026 16:51:15 +0000",
-            "url": "https://www.cbssports.com/soccer/news/footy-fix-last-international-friendlies-on-hand-as-teams-fine-tune-ahead-of-thursdays-world-cup-kickoff/"
+            "published_at": "Tue, 09 Jun 2026 19:17:23 +0000",
+            "url": "https://www.cbssports.com/betting/news/world-cup-2026-odds-futures-mexico-looking-to-restore-soccer-standing-with-deep-tournament-run/"
           },
           {
             "rank": 3,
             "team": "墨西哥",
-            "category": "lineup",
-            "category_label": "阵容",
-            "headline": "2026世界杯各队名单数据：年龄结构与联赛分布趋势",
-            "impact": "low",
-            "impact_score": 33,
+            "category": "other",
+            "category_label": "其他",
+            "headline": "墨西哥vs南非：专家赔率分析与揭幕战最佳投注方向",
+            "impact": "medium",
+            "impact_score": 65,
             "source": "CBS Soccer",
-            "published_at": "Tue, 02 Jun 2026 23:28:42 +0000",
-            "url": "https://www.cbssports.com/soccer/news/world-cup-2026-squads-by-the-numbers-leagues-oldest-youngest-players-countries/"
+            "published_at": "Wed, 10 Jun 2026 16:18:26 +0000",
+            "url": "https://www.cbssports.com/soccer/news/mexico-south-africa-odds-prediction-time-2026-world-cup-picks-best-bets/"
           }
         ],
         "odds": {
@@ -86,6 +86,18 @@
           {
             "rank": 1,
             "team": "韩国",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "韩国vs捷克前瞻：预计首发、赔率与赛果预测",
+            "impact": "high",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 10 Jun 2026 14:32:15 +0000",
+            "url": "https://www.cbssports.com/soccer/news/south-korea-vs-czechia-preview-live-stream-how-to-watch-fifa-world-cup-predictions-odds-and-lineups/"
+          },
+          {
+            "rank": 2,
+            "team": "韩国",
             "category": "form",
             "category_label": "状态",
             "headline": "世界杯开幕前最后一轮国际热身赛，各队加紧磨合竞技状态",
@@ -96,28 +108,16 @@
             "url": "https://www.cbssports.com/soccer/news/footy-fix-last-international-friendlies-on-hand-as-teams-fine-tune-ahead-of-thursdays-world-cup-kickoff/"
           },
           {
-            "rank": 2,
-            "team": "捷克",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "世界杯前热身赛密集进行，参赛队借此调整阵容与临场状态",
-            "impact": "medium",
-            "impact_score": 33,
-            "source": "CBS Soccer",
-            "published_at": "Wed, 03 Jun 2026 15:34:16 +0000",
-            "url": "https://www.cbssports.com/soccer/news/footy-fix-world-cup-tune-ups-dominate-the-calendar-as-teams-get-set-of-june-11th-kickoff/"
-          },
-          {
             "rank": 3,
-            "team": "韩国",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "世界杯倒计时2天，赛会氛围升温",
+            "team": "捷克",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "世界杯定位球时代：FIFA末段规则调整或影响角球与任意球战术部署",
             "impact": "low",
             "impact_score": 33,
-            "source": "懂球帝头条",
-            "published_at": "2027-06-09 12:00:00",
-            "url": "https://www.dongqiudi.com/article/5910744"
+            "source": "CBS Soccer",
+            "published_at": "Wed, 10 Jun 2026 16:17:56 +0000",
+            "url": "https://www.cbssports.com/soccer/news/world-cups-set-piece-corner-kicks-fifa-rule-change/"
           }
         ],
         "odds": {
