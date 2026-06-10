@@ -162,7 +162,7 @@ def enrich_today_preview(latest, reference_date=None):
         existing = existing_by_id.get(f['fixture_id'])
         m = dict(skeleton)
         if existing:
-            m.update({k: v for k, v in existing.items() if k in ('key_news', 'status') and v})
+            m.update({k: v for k, v in existing.items() if k in ('key_news', 'status', 'odds') and v})
         if not m.get('key_news'):
             override = overrides.get(str(f['fixture_id']))
             if override:
@@ -296,6 +296,11 @@ def get_roster_for_team(team_name):
     return roster
 
 
+def _resolve_match_odds(fixture_id, inline_odds=None):
+    from briefing.odds_fetch import resolve_odds_for_fixture
+    return resolve_odds_for_fixture(fixture_id, inline_odds)
+
+
 def _find_briefing_match(briefing, fixture_id):
     for block in ('today', 'yesterday'):
         if block not in briefing:
@@ -367,7 +372,7 @@ def get_match_detail(fixture_id):
         'score': score,
         'our_scorers': match_info.get('our_scorers', []) if match_info else [],
         'key_news': match_info.get('key_news', []) if match_info else [],
-        'odds': match_info.get('odds') if match_info else None,
+        'odds': _resolve_match_odds(fixture_id, match_info.get('odds') if match_info else None),
         'venue_context': fix.get('venue_context'),
         'home_travel': fix.get('home_travel'),
         'away_travel': fix.get('away_travel'),

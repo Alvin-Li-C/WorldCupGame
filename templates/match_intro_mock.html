@@ -169,6 +169,7 @@
             text-shadow: var(--text-shadow);
         }
         .meta-chip strong { color: #ffffff; font-weight: 600; }
+        .meta-chip.altitude strong { color: #fcd34d; }
         .kickoff-time {
             margin-top: 1.25rem;
             font-size: clamp(2rem, 6vw, 3rem);
@@ -187,6 +188,207 @@
             text-transform: uppercase;
             text-shadow: var(--text-shadow);
         }
+
+        /* Odds strip */
+        .odds-strip {
+            margin-top: 1.25rem;
+            display: inline-flex;
+            align-items: stretch;
+            gap: 0;
+            border: 1px solid rgba(201, 162, 39, 0.35);
+            background: rgba(7, 11, 18, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .odds-cell {
+            padding: 0.55rem 1rem;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            min-width: 5.5rem;
+        }
+        .odds-cell:last-child { border-right: none; }
+        .odds-cell .label {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+        .odds-cell .price {
+            font-size: 1rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            color: #fff;
+        }
+        .odds-cell .prob {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-top: 0.15rem;
+        }
+        .odds-cell.home .label { color: #86efac; }
+        .odds-cell.draw .price { color: #d1d5db; }
+        .odds-updated {
+            margin-top: 0.45rem;
+            font-size: 0.58rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.06em;
+        }
+
+        /* Team betting meta */
+        .team-betting {
+            padding: 0 1.25rem 0.65rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .side-panel.home .team-betting { align-items: flex-end; text-align: right; }
+        .squad-structure, .team-stats, .coach-line, .travel-line, .wcq-style-line, .recent-form {
+            font-size: 0.72rem;
+            line-height: 1.45;
+            color: #e5e7eb;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .squad-structure .struct-head {
+            font-size: 0.68rem;
+            margin-bottom: 0.35rem;
+        }
+        .squad-structure .struct-label {
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+        .squad-structure .dim { color: var(--muted); font-weight: 500; }
+        .struct-bar {
+            display: flex;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 220px;
+            margin-bottom: 0.35rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .side-panel.home .struct-bar { margin-left: auto; }
+        .struct-seg.high { background: rgba(201, 162, 39, 0.85); }
+        .struct-seg.mid { background: rgba(255, 255, 255, 0.35); }
+        .struct-seg.low { background: rgba(96, 165, 250, 0.55); }
+        .struct-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 0.65rem;
+            font-size: 0.62rem;
+            color: var(--muted);
+        }
+        .side-panel.home .struct-legend { justify-content: flex-end; }
+        .struct-legend .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 1px;
+            margin-right: 0.2rem;
+            vertical-align: middle;
+        }
+        .struct-legend .dot.high { background: rgba(201, 162, 39, 0.85); }
+        .struct-legend .dot.mid { background: rgba(255, 255, 255, 0.35); }
+        .struct-legend .dot.low { background: rgba(96, 165, 250, 0.55); }
+        .team-stats .dim, .coach-line .dim, .travel-line .dim, .wcq-style-line .dim { color: var(--muted); font-weight: 500; }
+        .wcq-style-line .wcq-muted { color: var(--muted); font-size: 0.68rem; }
+        .wcq-style {
+            font-weight: 700;
+            padding: 0.05rem 0.35rem;
+            border-radius: 2px;
+            margin-left: 0.2rem;
+        }
+        .wcq-style.attack { color: #fcd34d; background: rgba(251, 191, 36, 0.15); }
+        .wcq-style.defense { color: #93c5fd; background: rgba(59, 130, 246, 0.15); }
+        .wcq-style.balanced { color: #d1d5db; background: rgba(255, 255, 255, 0.08); }
+        .coach-line .coach-name { color: var(--gold-light); font-weight: 600; }
+        .travel-line .travel-label { color: #e5e7eb; font-weight: 500; }
+        .travel-line.extreme .travel-label { color: #fcd34d; }
+        .form-chips {
+            display: inline-flex;
+            gap: 0.2rem;
+            vertical-align: middle;
+        }
+        .side-panel.home .form-chips { flex-direction: row-reverse; }
+        .form-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.15rem;
+            height: 1.15rem;
+            font-size: 0.58rem;
+            font-weight: 800;
+            border-radius: 2px;
+            letter-spacing: 0;
+        }
+        .form-chip.W { background: rgba(34, 197, 94, 0.25); color: #86efac; }
+        .form-chip.D { background: rgba(255,255,255,0.1); color: #d1d5db; }
+        .form-chip.L { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .form-goals {
+            margin-left: 0.35rem;
+            font-size: 0.68rem;
+            color: var(--muted);
+        }
+        .side-panel.home .form-goals { margin-left: 0; margin-right: 0.35rem; }
+
+        /* Pre-match intel */
+        .match-intel {
+            margin-top: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(7, 11, 18, 0.35);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 1rem 1.25rem;
+            animation: rise 0.9s ease-out 0.3s both;
+        }
+        .intel-title {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        .intel-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .intel-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            color: var(--text);
+        }
+        .intel-rank {
+            flex-shrink: 0;
+            width: 1.1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--muted);
+            padding-top: 0.1rem;
+        }
+        .intel-tag {
+            flex-shrink: 0;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.06);
+            color: var(--muted);
+        }
+        .intel-item.impact-high .intel-tag {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+        }
+        .intel-item.impact-medium .intel-tag {
+            background: rgba(201, 162, 39, 0.12);
+            color: var(--gold-light);
+        }
+        .intel-empty { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
         /* Unified match board */
         .match-board {
@@ -353,6 +555,7 @@
         }
         .roster-row.filled { border-left: 2px solid var(--gold); }
         .side-panel.home .roster-row.filled { border-left: none; border-right: 2px solid var(--gold); }
+        .player.multi .player-inner + .player-inner { margin-top: 0.35rem; }
 
         .person {
             font-size: 0.68rem;
@@ -364,14 +567,6 @@
         .player-inner {
             display: flex;
             align-items: baseline;
-            gap: 0.6rem;
-        }
-        .player-inner .num {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--gold-light);
-            font-variant-numeric: tabular-nums;
-            min-width: 2rem;
         }
         .player-inner .pname {
             font-size: 0.82rem;
@@ -446,6 +641,11 @@
             .side-panel.home .roster-row .player { order: 0; text-align: left; }
             .side-panel.home .roster-row .player-inner { flex-direction: row; }
             .side-panel.home .roster-row.filled { border-right: none; border-left: 2px solid var(--gold); }
+            .odds-strip { flex-wrap: wrap; justify-content: center; }
+            .odds-cell { min-width: 4.8rem; padding: 0.5rem 0.65rem; }
+            .side-panel.home .team-betting { align-items: flex-start; text-align: left; }
+            .side-panel.home .form-chips { flex-direction: row; }
+            .side-panel.home .form-goals { margin-right: 0; margin-left: 0.35rem; }
         }
     </style>
 </head>
@@ -470,9 +670,11 @@
         <div class="meta-line">
             <span class="meta-chip">☁ <strong id="weatherText">多云</strong></span>
             <span class="meta-chip">🌡 <strong id="tempText">24°C</strong></span>
+            <span class="meta-chip altitude" id="altitudeChip" style="display:none;">⛰ <strong id="altitudeText"></strong></span>
         </div>
         <div class="kickoff-time" id="kickoffText">03:00</div>
         <div class="stage-label" id="metaText">Group A · Matchday 1 · 北京时间 6月12日</div>
+        <div id="oddsArea"></div>
     </div>
 
     <div class="match-board">
@@ -481,9 +683,10 @@
                 <div class="flag-wrap"><img id="homeFlag" src="../static/flags/mx.png" alt="墨西哥"></div>
                 <div class="team-info">
                     <div class="name" id="homeName">墨西哥</div>
-                    <div class="owner" id="homeOwner">耗子</div>
+                    <div class="owner" id="homeOwner">李总</div>
                 </div>
             </div>
+            <div class="team-betting" id="homeBetting"></div>
             <div class="roster-label">已选射手</div>
             <div class="roster" id="homeShooters"></div>
         </div>
@@ -499,13 +702,16 @@
                 <div class="flag-wrap"><img id="awayFlag" src="../static/flags/za.png" alt="南非"></div>
                 <div class="team-info">
                     <div class="name" id="awayName">南非</div>
-                    <div class="owner" id="awayOwner">庆爷</div>
+                    <div class="owner" id="awayOwner">老闫</div>
                 </div>
             </div>
+            <div class="team-betting" id="awayBetting"></div>
             <div class="roster-label">已选射手</div>
             <div class="roster" id="awayShooters"></div>
         </div>
     </div>
+
+    <div class="match-intel" id="matchIntel"></div>
 </div>
 
 <nav class="nav">
@@ -518,34 +724,253 @@
 <script>
 var PARTICIPANTS = ['耗子', '庆爷', '李总', '老闫', '老王'];
 var MOCK_HOME = {
-    '耗子': { num: 17, name: '亚历克西斯·贝加', pick: 3 },
+    '耗子': { num: 18, name: '阿曼多·冈萨雷斯', top20: true },
     '庆爷': null,
-    '李总': { num: 4, name: '埃德松·阿尔瓦雷斯', pick: 1 },
-    '老闫': { num: 23, name: '亨利·马丁', pick: 18 },
+    '李总': [
+        { num: 17, name: '亚历克西斯·贝加', top20: true },
+        { num: 26, name: '罗伯托·阿尔瓦拉多', top20: false }
+    ],
+    '老闫': null,
     '老王': null
 };
 var MOCK_AWAY = {
-    '耗子': null,
-    '庆爷': { num: 9, name: '珀西·塔乌', pick: 7 },
+    '耗子': { num: 5, name: '库利索·穆达乌', top20: false },
+    '庆爷': { num: 17, name: '塔伦特·姆巴塔', top20: false },
     '李总': null,
-    '老闫': { num: 11, name: '马库斯·图拉姆', pick: 12 },
-    '老王': { num: 6, name: '罗纳德·斯泰恩坎普', pick: 25 }
+    '老闫': null,
+    '老王': null
 };
+
+var MOCK_ODDS = {
+    home: 1.85,
+    draw: 3.40,
+    away: 4.20,
+    implied_prob: { home_pct: 48.2, draw_pct: 26.3, away_pct: 25.5 },
+    updated_at: '2026-06-09 12:00'
+};
+
+var MOCK_VENUE_CONTEXT = {
+    altitude_m: 2240,
+    altitude_tier: 'extreme',
+    altitude_label: '高原球场'
+};
+
+var MOCK_HOME_META = {
+    avg_age: 27.3,
+    squad_structure: {
+        squad_size: 26,
+        structure_label: '老班底为主',
+        high: { count: 14, pct: 53.8 },
+        mid: { count: 8, pct: 30.8 },
+        low: { count: 4, pct: 15.4 }
+    },
+    coach_name_cn: '哈维尔·阿吉雷',
+    coach_tenure_years: 3.0
+};
+var MOCK_AWAY_META = {
+    avg_age: 26.1,
+    squad_structure: {
+        squad_size: 26,
+        structure_label: '老少搭配',
+        high: { count: 9, pct: 34.6 },
+        mid: { count: 10, pct: 38.5 },
+        low: { count: 7, pct: 26.9 }
+    },
+    coach_name_cn: '雨果·布罗西',
+    coach_tenure_years: 2.5
+};
+
+var MOCK_HOME_TRAVEL = { label: '主场作战', distance_km: 0, timezone_delta_h: 0 };
+var MOCK_AWAY_TRAVEL = {
+    label: '赛会首战',
+    distance_km: 1200,
+    q1_km: 0,
+    q2_km: 1200,
+    base_label: '休斯顿大本营',
+    timezone_delta_h: -1
+};
+
+var MOCK_HOME_FORM = {
+    last5: 'WWDLL', goals_for: 7, goals_against: 4,
+    wcq: { host_exempt: true, style_label: '主办国免预选赛' }
+};
+var MOCK_AWAY_FORM = {
+    last5: 'DLWWD', goals_for: 5, goals_against: 3,
+    wcq: { matches: 10, goals_for: 12, goals_against: 8, gf_per_game: 1.2, ga_per_game: 0.8, ratio: 1.5, style: 'attack', style_label: '进攻型' }
+};
+
+var MOCK_KEY_NEWS = [
+    {
+        rank: 1, team: '墨西哥', category: 'injury', category_label: '伤病',
+        headline: '希门尼斯大腿肌肉轻微拉伤，小组赛首战出战成疑',
+        impact: 'high'
+    },
+    {
+        rank: 2, team: '南非', category: 'suspension', category_label: '停赛',
+        headline: '主力中卫上一场友谊赛两黄变一红，揭幕战停赛',
+        impact: 'high'
+    },
+    {
+        rank: 3, team: '墨西哥', category: 'lineup', category_label: '阵容',
+        headline: '主帅暗示可能变阵三中卫，加强边路防守',
+        impact: 'medium'
+    }
+];
 
 function renderRoster(containerId, data) {
     document.getElementById(containerId).innerHTML = PARTICIPANTS.map(function(name) {
-        var p = data[name];
-        var star = p && p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
-        var playerHtml = p
-            ? '<div class="player"><div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div></div>'
-            : '<div class="player empty">—</div>';
-        return '<div class="roster-row' + (p ? ' filled' : '') + '">' +
+        var raw = data[name];
+        var list = !raw ? [] : (Array.isArray(raw) ? raw : [raw]);
+        var playerHtml;
+        if (!list.length) {
+            playerHtml = '<div class="player empty">—</div>';
+        } else {
+            var multi = list.length > 1 ? ' multi' : '';
+            playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
+                var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
+                return '<div class="player-inner"><span class="pname">' + p.name + star + '</span></div>';
+            }).join('') + '</div>';
+        }
+        return '<div class="roster-row' + (list.length ? ' filled' : '') + '">' +
             '<div class="person">' + name + '</div>' + playerHtml + '</div>';
     }).join('');
 }
 
+function renderOdds(homeName, awayName, odds) {
+    var el = document.getElementById('oddsArea');
+    if (!odds) {
+        el.innerHTML = '<div class="odds-updated">赔率待更新</div>';
+        return;
+    }
+    var p = odds.implied_prob || {};
+    el.innerHTML =
+        '<div class="odds-strip">' +
+            '<div class="odds-cell home"><div class="label">' + homeName + '</div>' +
+            '<div class="price">' + odds.home.toFixed(2) + '</div>' +
+            '<div class="prob">' + (p.home_pct || '—') + '%</div></div>' +
+            '<div class="odds-cell draw"><div class="label">平</div>' +
+            '<div class="price">' + odds.draw.toFixed(2) + '</div>' +
+            '<div class="prob">' + (p.draw_pct || '—') + '%</div></div>' +
+            '<div class="odds-cell away"><div class="label">' + awayName + '</div>' +
+            '<div class="price">' + odds.away.toFixed(2) + '</div>' +
+            '<div class="prob">' + (p.away_pct || '—') + '%</div></div>' +
+        '</div>' +
+        '<div class="odds-updated">赔率更新 · ' + (odds.updated_at || '') + ' 北京时间</div>';
+}
+
+function renderFormChips(last5) {
+    if (!last5) return '';
+    return last5.split('').map(function(c) {
+        return '<span class="form-chip ' + c + '">' + c + '</span>';
+    }).join('');
+}
+
+function renderWcqStyle(wcq) {
+    if (!wcq) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">暂无预选赛数据</span></div>';
+    }
+    if (wcq.host_exempt) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">' + (wcq.style_label || '主办国免预选赛') + '</span></div>';
+    }
+    if (!wcq.matches) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">暂无预选赛数据</span></div>';
+    }
+    var styleCls = wcq.style || 'balanced';
+    return '<div class="wcq-style-line"><span class="dim">预选赛</span> ' +
+        '进 ' + wcq.goals_for + ' 失 ' + wcq.goals_against +
+        ' · 场均 ' + wcq.gf_per_game + '/' + wcq.ga_per_game +
+        ' · <span class="wcq-muted">(' + wcq.matches + '场)</span> ' +
+        '<span class="wcq-style ' + styleCls + '">' + (wcq.style_label || '—') + '</span></div>';
+}
+
+function renderStructureBar(structure) {
+    if (!structure || !structure.high) return '';
+    var h = structure.high, m = structure.mid, l = structure.low;
+    var tiers = structure.tier_labels || {};
+    var legend = [
+        { key: 'high', label: tiers.high || '高', seg: h },
+        { key: 'mid', label: tiers.mid || '中', seg: m },
+        { key: 'low', label: tiers.low || '低', seg: l }
+    ];
+    return '<div class="squad-structure">' +
+        '<div class="struct-head"><span class="dim">球队结构</span> · <span class="struct-label">' + (structure.structure_label || '—') + '</span></div>' +
+        '<div class="struct-bar">' +
+            '<div class="struct-seg high" style="width:' + h.pct + '%" title="多 ' + h.count + '人"></div>' +
+            '<div class="struct-seg mid" style="width:' + m.pct + '%" title="中 ' + m.count + '人"></div>' +
+            '<div class="struct-seg low" style="width:' + l.pct + '%" title="少 ' + l.count + '人"></div>' +
+        '</div>' +
+        '<div class="struct-legend">' + legend.map(function(x) {
+            return '<span><span class="dot ' + x.key + '"></span>' + x.label + ' ' + x.seg.count + '·' + Math.round(x.seg.pct) + '%</span>';
+        }).join('') + '</div></div>';
+}
+
+function formatTravel(travel) {
+    if (!travel || !travel.label) return '—';
+    var parts = [travel.label];
+    if (travel.distance_km > 0) {
+        parts.push('约 ' + travel.distance_km.toLocaleString() + 'km');
+    }
+    if (travel.timezone_delta_h && travel.timezone_delta_h !== 0) {
+        var sign = travel.timezone_delta_h > 0 ? '+' : '';
+        parts.push('时差 ' + sign + travel.timezone_delta_h + 'h');
+    }
+    return parts.join(' · ');
+}
+
+function renderTeamBetting(containerId, meta, form, travel) {
+    var el = document.getElementById(containerId);
+    var structure = renderStructureBar(meta.squad_structure);
+    var stats = '<div class="team-stats"><span class="dim">平均年龄</span> ' +
+        (meta.avg_age != null ? meta.avg_age + ' 岁' : '—') + '</div>';
+    var coach = '<div class="coach-line">' +
+        '<span class="dim">主教练</span> <span class="coach-name">' + (meta.coach_name_cn || '—') + '</span>' +
+        (meta.coach_tenure_years != null ? ' · <span class="dim">执教</span> ' + meta.coach_tenure_years + ' 年' : '') +
+        '</div>';
+    var travelCls = travel && travel.distance_km >= 10000 ? ' travel-line extreme' : ' travel-line';
+    var travelHtml = '<div class="' + travelCls.trim() + '"><span class="dim">旅途</span> <span class="travel-label">' + formatTravel(travel) + '</span></div>';
+    var wcqHtml = renderWcqStyle(form.wcq);
+    var formHtml = '<div class="recent-form">' +
+        '<span class="dim">近5场</span> <span class="form-chips">' + renderFormChips(form.last5) + '</span>' +
+        (form.last5 ? '<span class="form-goals">进 ' + form.goals_for + ' 失 ' + form.goals_against + '</span>' : ' <span class="form-goals">暂无近绩</span>') +
+        '</div>';
+    el.innerHTML = structure + stats + coach + travelHtml + wcqHtml + formHtml;
+}
+
+function renderVenueAltitude(venue) {
+    var chip = document.getElementById('altitudeChip');
+    var text = document.getElementById('altitudeText');
+    if (!venue || !venue.altitude_m || venue.altitude_tier === 'normal') {
+        chip.style.display = 'none';
+        return;
+    }
+    var label = venue.altitude_label ? ' · ' + venue.altitude_label : '';
+    text.textContent = '海拔 ' + venue.altitude_m.toLocaleString() + 'm' + label;
+    chip.style.display = '';
+}
+
+function renderIntel(news) {
+    var el = document.getElementById('matchIntel');
+    if (!news || !news.length) {
+        el.innerHTML = '<div class="intel-title">赛前关键动态</div><p class="intel-empty">暂无重要赛前动态</p>';
+        return;
+    }
+    el.innerHTML = '<div class="intel-title">赛前关键动态</div><ul class="intel-list">' +
+        news.map(function(n) {
+            var impact = n.impact === 'high' ? 'impact-high' : (n.impact === 'medium' ? 'impact-medium' : '');
+            return '<li class="intel-item ' + impact + '">' +
+                '<span class="intel-rank">' + n.rank + '</span>' +
+                '<span class="intel-tag">' + n.category_label + '·' + n.team + '</span>' +
+                '<span>' + n.headline + '</span></li>';
+        }).join('') + '</ul>';
+}
+
 renderRoster('homeShooters', MOCK_HOME);
 renderRoster('awayShooters', MOCK_AWAY);
+renderVenueAltitude(MOCK_VENUE_CONTEXT);
+renderOdds('墨西哥', '南非', MOCK_ODDS);
+renderTeamBetting('homeBetting', MOCK_HOME_META, MOCK_HOME_FORM, MOCK_HOME_TRAVEL);
+renderTeamBetting('awayBetting', MOCK_AWAY_META, MOCK_AWAY_FORM, MOCK_AWAY_TRAVEL);
+renderIntel(MOCK_KEY_NEWS);
 
 var STADIUM_PHOTOS = {
     azteca: {
@@ -562,8 +987,8 @@ var MATCH = {
     stadiumKey: 'azteca',
     stadium: 'Estadio Azteca · Mexico City', weather: '多云', temp: '24°C',
     kickoff: '03:00', meta: 'Group A · Matchday 1 · 北京时间 6月12日',
-    homeFlag: 'mx', homeName: '墨西哥', homeOwner: '耗子',
-    awayFlag: 'za', awayName: '南非', awayOwner: '庆爷',
+    homeFlag: 'mx', homeName: '墨西哥', homeOwner: '李总',
+    awayFlag: 'za', awayName: '南非', awayOwner: '老闫',
     status: '即将开始', statusClass: '', score: null
 };
 

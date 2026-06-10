@@ -245,7 +245,7 @@
             gap: 0.35rem;
         }
         .side-panel.home .team-betting { align-items: flex-end; text-align: right; }
-        .squad-structure, .team-stats, .coach-line, .travel-line, .recent-form {
+        .squad-structure, .team-stats, .coach-line, .travel-line, .wcq-style-line, .recent-form {
             font-size: 0.72rem;
             line-height: 1.45;
             color: #e5e7eb;
@@ -287,7 +287,17 @@
         .struct-legend .dot.high { background: rgba(201, 162, 39, 0.85); }
         .struct-legend .dot.mid { background: rgba(255, 255, 255, 0.35); }
         .struct-legend .dot.low { background: rgba(96, 165, 250, 0.55); }
-        .team-stats .dim, .coach-line .dim, .travel-line .dim { color: var(--muted); font-weight: 500; }
+        .team-stats .dim, .coach-line .dim, .travel-line .dim, .wcq-style-line .dim { color: var(--muted); font-weight: 500; }
+        .wcq-style-line .wcq-muted { color: var(--muted); font-size: 0.68rem; }
+        .wcq-style {
+            font-weight: 700;
+            padding: 0.05rem 0.35rem;
+            border-radius: 2px;
+            margin-left: 0.2rem;
+        }
+        .wcq-style.attack { color: #fcd34d; background: rgba(251, 191, 36, 0.15); }
+        .wcq-style.defense { color: #93c5fd; background: rgba(59, 130, 246, 0.15); }
+        .wcq-style.balanced { color: #d1d5db; background: rgba(255, 255, 255, 0.08); }
         .coach-line .coach-name { color: var(--gold-light); font-weight: 600; }
         .travel-line .travel-label { color: #e5e7eb; font-weight: 500; }
         .travel-line.extreme .travel-label { color: #fcd34d; }
@@ -533,14 +543,6 @@
         .player-inner {
             display: flex;
             align-items: baseline;
-            gap: 0.6rem;
-        }
-        .player-inner .num {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--gold-light);
-            font-variant-numeric: tabular-nums;
-            min-width: 2rem;
         }
         .player-inner .pname {
             font-size: 0.82rem;
@@ -708,7 +710,7 @@ function renderRoster(containerId, data) {
             var multi = list.length > 1 ? ' multi' : '';
             playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
                 var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
-                return '<div class="player-inner"><span class="num">' + p.num + '</span><span class="pname">' + p.name + star + '</span></div>';
+                return '<div class="player-inner"><span class="pname">' + p.name + star + '</span></div>';
             }).join('') + '</div>';
         }
         return '<div class="roster-row' + (list.length ? ' filled' : '') + '">' +
@@ -728,7 +730,10 @@ var MATCH_KEY_NEWS = {{ m.key_news | tojson }};
 
 function renderOdds(homeName, awayName, odds) {
     var el = document.getElementById('oddsArea');
-    if (!odds) { el.innerHTML = ''; return; }
+    if (!odds) {
+        el.innerHTML = '<div class="odds-updated">赔率待更新</div>';
+        return;
+    }
     var p = odds.implied_prob || {};
     el.innerHTML =
         '<div class="odds-strip">' +
@@ -750,6 +755,24 @@ function renderFormChips(last5) {
     return last5.split('').map(function(c) {
         return '<span class="form-chip ' + c + '">' + c + '</span>';
     }).join('');
+}
+
+function renderWcqStyle(wcq) {
+    if (!wcq) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">暂无预选赛数据</span></div>';
+    }
+    if (wcq.host_exempt) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">' + (wcq.style_label || '主办国免预选赛') + '</span></div>';
+    }
+    if (!wcq.matches) {
+        return '<div class="wcq-style-line"><span class="dim">预选赛</span> <span class="wcq-muted">暂无预选赛数据</span></div>';
+    }
+    var styleCls = wcq.style || 'balanced';
+    return '<div class="wcq-style-line"><span class="dim">预选赛</span> ' +
+        '进 ' + wcq.goals_for + ' 失 ' + wcq.goals_against +
+        ' · 场均 ' + wcq.gf_per_game + '/' + wcq.ga_per_game +
+        ' · <span class="wcq-muted">(' + wcq.matches + '场)</span> ' +
+        '<span class="wcq-style ' + styleCls + '">' + (wcq.style_label || '—') + '</span></div>';
 }
 
 function renderStructureBar(structure) {
@@ -799,11 +822,12 @@ function renderTeamBetting(containerId, meta, form, travel) {
         '</div>';
     var travelCls = travel && travel.distance_km >= 10000 ? ' travel-line extreme' : ' travel-line';
     var travelHtml = '<div class="' + travelCls.trim() + '"><span class="dim">旅途</span> <span class="travel-label">' + formatTravel(travel) + '</span></div>';
+    var wcqHtml = renderWcqStyle(form.wcq);
     var formHtml = '<div class="recent-form">' +
         '<span class="dim">近5场</span> <span class="form-chips">' + renderFormChips(form.last5) + '</span>' +
         (form.last5 ? '<span class="form-goals">进 ' + form.goals_for + ' 失 ' + form.goals_against + '</span>' : ' <span class="form-goals">暂无近绩</span>') +
         '</div>';
-    el.innerHTML = structure + stats + coach + travelHtml + formHtml;
+    el.innerHTML = structure + stats + coach + travelHtml + wcqHtml + formHtml;
 }
 
 function renderVenueAltitude(venue) {

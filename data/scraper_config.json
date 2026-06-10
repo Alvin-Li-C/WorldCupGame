@@ -52,12 +52,15 @@
     "our_pick_bonus": 15
   },
   "odds": {
-    "api_key_file": "static/basedata/odds-api.txt",
-    "api_key_env": "ODDS_API_KEY",
-    "sport_key": "soccer_fifa_world_cup",
-    "regions": "eu",
-    "markets": "h2h",
-    "odds_format": "decimal"
+    "provider": "betexplorer",
+    "fixtures_url": "https://www.betexplorer.com/football/world/world-cup-2026/fixtures/",
+    "timeout": 30
+  },
+  "coach": {
+    "dongqiudi_tabs": [1, 120, 3, 56],
+    "dongqiudi_pages": 5,
+    "football_data_delay_s": 6,
+    "skip_football_data": false
   },
   "pythonanywhere_url": "https://tolerance.pythonanywhere.com",
   "import_token_env": "IMPORT_BRIEFING_TOKEN"

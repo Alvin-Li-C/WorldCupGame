@@ -1,0 +1,29 @@
+{
+  "note": "Fallback odds when BetExplorer scrape returns no rows. Replace after daily build.",
+  "fixtures": {
+    "1": {
+      "home": 1.85,
+      "draw": 3.40,
+      "away": 4.20,
+      "implied_prob": {
+        "home_pct": 48.2,
+        "draw_pct": 26.3,
+        "away_pct": 25.5
+      },
+      "updated_at": "2026-06-09 12:00",
+      "source": "seed"
+    },
+    "2": {
+      "home": 2.45,
+      "draw": 3.20,
+      "away": 2.90,
+      "implied_prob": {
+        "home_pct": 38.0,
+        "draw_pct": 29.1,
+        "away_pct": 32.1
+      },
+      "updated_at": "2026-06-09 12:00",
+      "source": "seed"
+    }
+  }
+}

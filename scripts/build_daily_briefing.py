@@ -19,7 +19,7 @@ from briefing.shooter_standings import save_shooter_standings
 from briefing.standings import save_team_standings
 from briefing.form_fetch import save_team_form
 from briefing.news_fetch import prefilter_for_match
-from briefing.odds_fetch import attach_odds_to_matches
+from briefing.odds_fetch import attach_odds_to_matches, merge_odds_into_matches, save_match_odds
 from briefing.secrets import read_secret
 from briefing.time_utils import (
     beijing_date_from_utc,
@@ -289,6 +289,9 @@ def build_briefing(mock=False):
             latest['briefing_date'] = briefing_date
             latest['timezone'] = 'Asia/Shanghai'
             latest = enrich_today_preview(latest, reference_date=briefing_date)
+            today = latest.get('today') or {}
+            today['matches'] = merge_odds_into_matches(today.get('matches') or [])
+            latest['today'] = today
             save_json(LATEST_PATH, latest)
             return latest
 
@@ -307,6 +310,7 @@ def build_briefing(mock=False):
     today_matches = build_today_matches(fixtures, preview_date, owner_map, config, selections)
     fixtures_by_id = {f['fixture_id']: f for f in fixtures}
     today_matches = attach_odds_to_matches(today_matches, fixtures_by_id, config)
+    save_match_odds(today_matches)
     save_team_form(config, team_map)
 
     briefing = {

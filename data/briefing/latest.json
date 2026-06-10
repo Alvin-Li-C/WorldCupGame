@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T00:00:49+08:00",
+  "generated_at": "2026-06-10T06:44:05+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-10",
   "yesterday": {
@@ -58,7 +58,19 @@
             "published_at": "Tue, 02 Jun 2026 23:28:42 +0000",
             "url": "https://www.cbssports.com/soccer/news/world-cup-2026-squads-by-the-numbers-leagues-oldest-youngest-players-countries/"
           }
-        ]
+        ],
+        "odds": {
+          "home": 1.85,
+          "draw": 3.4,
+          "away": 4.2,
+          "implied_prob": {
+            "home_pct": 48.2,
+            "draw_pct": 26.3,
+            "away_pct": 25.5
+          },
+          "updated_at": "2026-06-09 12:00",
+          "source": "seed"
+        }
       },
       {
         "fixture_id": 2,
@@ -107,7 +119,19 @@
             "published_at": "2027-06-09 12:00:00",
             "url": "https://www.dongqiudi.com/article/5910744"
           }
-        ]
+        ],
+        "odds": {
+          "home": 2.45,
+          "draw": 3.2,
+          "away": 2.9,
+          "implied_prob": {
+            "home_pct": 38.0,
+            "draw_pct": 29.1,
+            "away_pct": 32.1
+          },
+          "updated_at": "2026-06-09 12:00",
+          "source": "seed"
+        }
       }
     ]
   }

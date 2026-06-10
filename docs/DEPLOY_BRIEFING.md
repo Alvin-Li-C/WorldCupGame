@@ -42,7 +42,6 @@ python scripts\build_daily_briefing.py --dry-run
 - `static/basedata/football-data.txt`
 - `static/basedata/AIKey.txt`
 - `static/basedata/teamInfo.txt`
-- `static/basedata/odds-api.txt`（The Odds API，每日构建拉取胜平负赔率）
 
 ## 比赛介绍页元数据
 
@@ -52,10 +51,15 @@ python scripts\build_daily_briefing.py --dry-run
 python scripts\generate_world_cup_bases.py
 python scripts\enrich_fixture_venue_context.py
 python scripts\fetch_squad_ages.py
+python scripts\fetch_national_caps.py
+python scripts\fetch_coaches_dongqiudi.py
 python scripts\build_team_squad_meta.py
 ```
 
-`fetch_squad_ages.py` 从 football-data.org 拉取 48 队世界杯名单出生日期（补全 WCQ 无年龄字段的球队）。`build_team_squad_meta.py` 在缺少 `squad_player_ages.json` 时会自动调用。
+- `fetch_squad_ages.py`：从 **football-data.org** 拉取名单出生日期 → `squad_player_ages.json`，用于**平均年龄**。
+- `fetch_national_caps.py`：从 **Transfermarkt 开放数据集** 匹配 `wc_squads.json` 26 人名单的**国脚生涯出场** → `squad_national_caps.json`，用于**球队结构**（多≥30 / 中10–29 / 少&lt;10 场）。
+- `fetch_coaches_dongqiudi.py`：教练中文名（懂球帝 + `coach_team_defaults.json`）。
+- `build_team_squad_meta.py` 合并上述三项；缺文件时会自动调用对应 fetch 脚本。
 
 产出：
 
@@ -65,14 +69,25 @@ python scripts\build_team_squad_meta.py
 | `data/team_world_cup_bases.json` | 48 队大本营 |
 | `data/fixtures_2026.json` | 每场 `venue_context`、`home_travel`、`away_travel` |
 | `data/squad_player_ages.json` | 名单球员年龄（football-data.org） |
+| `data/squad_national_caps.json` | 名单球员国脚生涯出场（Transfermarkt） |
+| `data/coach_world_cup.json` | 48 队主教练中文名、任期 |
+| `data/coach_team_defaults.json` | 教练中文名兜底（懂球帝/API 无数据时） |
 | `data/team_squad_meta.json` | 平均年龄、球队结构、教练 |
 
 **每日构建**（`build_daily_briefing.py`）额外写入：
 
-- `latest.json` 每场 `odds`（需 `odds-api.txt`）
-- `data/briefing/team_form.json`（世界杯已完赛球队的近 5 场）
+- `latest.json` 每场 `odds`（BetExplorer 免费抓取，失败时用 `match_odds_seed.json` 兜底）
+- `data/briefing/match_odds.json`（赔率缓存，按 `fixture_id`）
+- `data/briefing/team_form.json`（近 5 场战绩 + 预选赛进失球风格；ESPN `fifa.worldq.*` 赛程，场均进/失球比 ≥1.3 进攻型、≤0.8 防守型；主办国显示「主办国免预选赛」）
 
 Flask `/match/<id>` 只读上述 JSON，无需 PA 再跑脚本。
+
+### 赔率（免费，无需 API Key）
+
+- 数据源：[BetExplorer 世界杯赛程页](https://www.betexplorer.com/football/world/world-cup-2026/fixtures/) 公开 1X2 欧赔
+- 配置：[`data/scraper_config.json`](data/scraper_config.json) → `odds.fixtures_url`
+- 抓取失败或页面暂无该场次时，使用 [`data/briefing/match_odds_seed.json`](data/briefing/match_odds_seed.json) 兜底
+- **不写入** `instance/draft.db`，构建前后 `selections` 条数应一致
 
 ## Windows 任务计划（每日 20:00）
 
