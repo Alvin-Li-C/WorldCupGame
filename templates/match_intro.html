@@ -830,6 +830,9 @@ function formatTravel(travel) {
         var sign = travel.timezone_delta_h > 0 ? '+' : '';
         parts.push('时差 ' + sign + travel.timezone_delta_h + 'h');
     }
+    if (travel.cumulative_km != null && travel.cumulative_km > 0) {
+        parts.push('累计约 ' + travel.cumulative_km.toLocaleString() + 'km');
+    }
     return parts.join(' · ');
 }
 

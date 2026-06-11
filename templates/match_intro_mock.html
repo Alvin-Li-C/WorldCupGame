@@ -811,7 +811,8 @@ var MOCK_AWAY_TRAVEL = {
     q1_km: 0,
     q2_km: 1200,
     base_label: '休斯顿大本营',
-    timezone_delta_h: -1
+    timezone_delta_h: -1,
+    cumulative_km: 1200
 };
 
 var MOCK_HOME_FORM = {
@@ -937,6 +938,9 @@ function formatTravel(travel) {
     if (travel.timezone_delta_h && travel.timezone_delta_h !== 0) {
         var sign = travel.timezone_delta_h > 0 ? '+' : '';
         parts.push('时差 ' + sign + travel.timezone_delta_h + 'h');
+    }
+    if (travel.cumulative_km != null && travel.cumulative_km > 0) {
+        parts.push('累计约 ' + travel.cumulative_km.toLocaleString() + 'km');
     }
     return parts.join(' · ');
 }

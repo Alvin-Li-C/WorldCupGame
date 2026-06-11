@@ -35,7 +35,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "墨西哥城大本营",
-        "rest_days": null
+        "rest_days": null,
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "赛会首战",
@@ -44,7 +45,8 @@
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -1
+        "timezone_delta_h": -1,
+        "cumulative_km": 1200
       }
     },
     {
@@ -79,7 +81,8 @@
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
         "rest_days": null,
-        "timezone_delta_h": 1
+        "timezone_delta_h": 1,
+        "cumulative_km": 2500
       },
       "away_travel": {
         "label": "赛会首战",
@@ -88,7 +91,8 @@
         "q2_km": 2200,
         "base_label": "堪萨斯城大本营",
         "rest_days": null,
-        "timezone_delta_h": -1
+        "timezone_delta_h": -1,
+        "cumulative_km": 2200
       }
     },
     {
@@ -123,7 +127,8 @@
         "q2_km": 3500,
         "base_label": "多伦多大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3500
       },
       "away_travel": {
         "label": "赛会首战",
@@ -132,7 +137,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       }
     },
     {
@@ -166,7 +172,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": null
+        "rest_days": null,
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "赛会首战",
@@ -175,7 +182,8 @@
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
       }
     },
     {
@@ -210,7 +218,8 @@
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -219,7 +228,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       }
     },
     {
@@ -254,7 +264,8 @@
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -263,7 +274,8 @@
         "q2_km": 3700,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3700
       }
     },
     {
@@ -298,7 +310,8 @@
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -307,7 +320,8 @@
         "q2_km": 3700,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3700
       }
     },
     {
@@ -341,7 +355,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": null
+        "rest_days": null,
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "赛会首战",
@@ -350,7 +365,8 @@
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2000
       }
     },
     {
@@ -385,7 +401,8 @@
         "q2_km": 3200,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -394,7 +411,8 @@
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2100
       }
     },
     {
@@ -429,7 +447,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       },
       "away_travel": {
         "label": "赛会首战",
@@ -437,7 +456,8 @@
         "q1_km": 0,
         "q2_km": 1600,
         "base_label": "西雅图大本营",
-        "rest_days": null
+        "rest_days": null,
+        "cumulative_km": 1600
       }
     },
     {
@@ -472,7 +492,8 @@
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -481,7 +502,8 @@
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -1
+        "timezone_delta_h": -1,
+        "cumulative_km": 1200
       }
     },
     {
@@ -516,7 +538,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       },
       "away_travel": {
         "label": "赛会首战",
@@ -525,7 +548,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       }
     },
     {
@@ -560,7 +584,8 @@
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -569,7 +594,8 @@
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
       }
     },
     {
@@ -604,7 +630,8 @@
         "q2_km": 3200,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -613,7 +640,8 @@
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -1
+        "timezone_delta_h": -1,
+        "cumulative_km": 1200
       }
     },
     {
@@ -648,7 +676,8 @@
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -657,7 +686,8 @@
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
       }
     },
     {
@@ -692,7 +722,8 @@
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
         "rest_days": null,
-        "timezone_delta_h": 1
+        "timezone_delta_h": 1,
+        "cumulative_km": 2500
       },
       "away_travel": {
         "label": "赛会首战",
@@ -701,7 +732,8 @@
         "q2_km": 4000,
         "base_label": "温哥华大本营",
         "rest_days": null,
-        "timezone_delta_h": 1
+        "timezone_delta_h": 1,
+        "cumulative_km": 4000
       }
     },
     {
@@ -736,7 +768,8 @@
         "q2_km": 3700,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3700
       },
       "away_travel": {
         "label": "赛会首战",
@@ -745,7 +778,8 @@
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       }
     },
     {
@@ -780,7 +814,8 @@
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -1
+        "timezone_delta_h": -1,
+        "cumulative_km": 1200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -789,7 +824,8 @@
         "q2_km": 3700,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 3700
       }
     },
     {
@@ -824,7 +860,8 @@
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
       },
       "away_travel": {
         "label": "赛会首战",
@@ -833,7 +870,8 @@
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       }
     },
     {
@@ -868,7 +906,8 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3900
       },
       "away_travel": {
         "label": "赛会首战",
@@ -877,7 +916,8 @@
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       }
     },
     {
@@ -912,7 +952,8 @@
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -921,7 +962,8 @@
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2200
       }
     },
     {
@@ -956,7 +998,8 @@
         "q2_km": 4200,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 4200
       },
       "away_travel": {
         "label": "赛会首战",
@@ -965,7 +1008,8 @@
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2000
       }
     },
     {
@@ -1000,7 +1044,8 @@
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -1009,7 +1054,8 @@
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
       }
     },
     {
@@ -1044,7 +1090,8 @@
         "q2_km": 3800,
         "base_label": "西雅图大本营",
         "rest_days": null,
-        "timezone_delta_h": 1
+        "timezone_delta_h": 1,
+        "cumulative_km": 3800
       },
       "away_travel": {
         "label": "赛会首战",
@@ -1053,7 +1100,8 @@
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2
+        "timezone_delta_h": -2,
+        "cumulative_km": 2100
       }
     },
     {
@@ -1087,7 +1135,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "堪萨斯城大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 6600
       },
       "away_travel": {
         "label": "远征 2400km",
@@ -1095,7 +1144,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 3600
       }
     },
     {
@@ -1129,7 +1179,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 11700
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -1137,7 +1188,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11700
       }
     },
     {
@@ -1171,7 +1223,8 @@
         "q1_km": 3500,
         "q2_km": 3500,
         "base_label": "多伦多大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 10500
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -1179,7 +1232,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 6600
       }
     },
     {
@@ -1213,7 +1267,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "墨西哥城大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "远征 5000km · 往返大本营",
@@ -1221,7 +1276,8 @@
         "q1_km": 2500,
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 7500
       }
     },
     {
@@ -1255,7 +1311,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "赛会首战",
@@ -1263,7 +1320,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 0
       }
     },
     {
@@ -1297,7 +1355,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11100
       },
       "away_travel": {
         "label": "远征 7400km · 往返大本营",
@@ -1305,7 +1364,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11100
       }
     },
     {
@@ -1339,7 +1399,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6300
       },
       "away_travel": {
         "label": "远征 4200km · 往返大本营",
@@ -1347,7 +1408,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6300
       }
     },
     {
@@ -1381,7 +1443,8 @@
         "q1_km": 2000,
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6000
       },
       "away_travel": {
         "label": "远征 7600km · 往返大本营",
@@ -1389,7 +1452,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 7
+        "rest_days": 7,
+        "cumulative_km": 11400
       }
     },
     {
@@ -1423,7 +1487,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11700
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -1431,7 +1496,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11700
       }
     },
     {
@@ -1465,7 +1531,8 @@
         "q1_km": 3200,
         "q2_km": 3200,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 9600
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -1473,7 +1540,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       }
     },
     {
@@ -1507,7 +1575,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 3600
       },
       "away_travel": {
         "label": "远征 4200km · 往返大本营",
@@ -1515,7 +1584,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6300
       }
     },
     {
@@ -1549,7 +1619,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11700
       },
       "away_travel": {
         "label": "远征 3200km · 往返大本营",
@@ -1557,7 +1628,8 @@
         "q1_km": 1600,
         "q2_km": 1600,
         "base_label": "西雅图大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 4800
       }
     },
     {
@@ -1591,7 +1663,8 @@
         "q1_km": 3100,
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 9300
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -1599,7 +1672,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       }
     },
     {
@@ -1633,7 +1707,8 @@
         "q1_km": 3200,
         "q2_km": 3200,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 9600
       },
       "away_travel": {
         "label": "远征 5000km · 往返大本营",
@@ -1641,7 +1716,8 @@
         "q1_km": 2500,
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 7500
       }
     },
     {
@@ -1675,7 +1751,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11400
       },
       "away_travel": {
         "label": "远征 7600km · 往返大本营",
@@ -1683,7 +1760,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11400
       }
     },
     {
@@ -1717,7 +1795,8 @@
         "q1_km": 4000,
         "q2_km": 4000,
         "base_label": "温哥华大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 12000
       },
       "away_travel": {
         "label": "远征 2400km",
@@ -1725,7 +1804,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 3600
       }
     },
     {
@@ -1759,7 +1839,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11400
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -1767,7 +1848,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11700
       }
     },
     {
@@ -1801,7 +1883,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11100
       },
       "away_travel": {
         "label": "远征 2400km",
@@ -1809,7 +1892,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 3600
       }
     },
     {
@@ -1843,7 +1927,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11100
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -1851,7 +1936,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       }
     },
     {
@@ -1885,7 +1971,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -1893,7 +1980,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       }
     },
     {
@@ -1927,7 +2015,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6300
       },
       "away_travel": {
         "label": "远征 7600km · 往返大本营",
@@ -1935,7 +2024,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "西雅图大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11400
       }
     },
     {
@@ -1969,7 +2059,8 @@
         "q1_km": 4200,
         "q2_km": 4200,
         "base_label": "波士顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 12600
       },
       "away_travel": {
         "label": "远征 6200km · 往返大本营",
@@ -1977,7 +2068,8 @@
         "q1_km": 3100,
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 9300
       }
     },
     {
@@ -2011,7 +2103,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11400
       },
       "away_travel": {
         "label": "远征 4000km · 往返大本营",
@@ -2019,7 +2112,8 @@
         "q1_km": 2000,
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6000
       }
     },
     {
@@ -2053,7 +2147,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6300
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -2061,7 +2156,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6600
       }
     },
     {
@@ -2095,7 +2191,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 19500
       },
       "away_travel": {
         "label": "远征 7000km · 往返大本营",
@@ -2103,7 +2200,8 @@
         "q1_km": 3500,
         "q2_km": 3500,
         "base_label": "多伦多大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 17500
       }
     },
     {
@@ -2137,7 +2235,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 19500
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -2145,7 +2244,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11000
       }
     },
     {
@@ -2179,7 +2279,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 18500
       },
       "away_travel": {
         "label": "远征 4200km · 往返大本营",
@@ -2187,7 +2288,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 10500
       }
     },
     {
@@ -2221,7 +2323,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 18500
       },
       "away_travel": {
         "label": "远征 4200km · 往返大本营",
@@ -2229,7 +2332,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 10500
       }
     },
     {
@@ -2263,7 +2367,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "堪萨斯城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 11000
       },
       "away_travel": {
         "label": "赛会首战",
@@ -2271,7 +2376,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "墨西哥城大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 0
       }
     },
     {
@@ -2305,7 +2411,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 6000
       },
       "away_travel": {
         "label": "远征 5000km · 往返大本营",
@@ -2313,7 +2420,8 @@
         "q1_km": 2500,
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 12500
       }
     },
     {
@@ -2347,7 +2455,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 6000
       },
       "away_travel": {
         "label": "远征 6400km · 往返大本营",
@@ -2355,7 +2464,8 @@
         "q1_km": 3200,
         "q2_km": 3200,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 16000
       }
     },
     {
@@ -2389,7 +2499,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 10500
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -2397,7 +2508,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 11000
       }
     },
     {
@@ -2431,7 +2543,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19500
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -2439,7 +2552,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19500
       }
     },
     {
@@ -2473,7 +2587,8 @@
         "q1_km": 1600,
         "q2_km": 1600,
         "base_label": "西雅图大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 8000
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -2481,7 +2596,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19500
       }
     },
     {
@@ -2515,7 +2631,8 @@
         "q1_km": 2000,
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 10000
       },
       "away_travel": {
         "label": "赛会首战",
@@ -2523,7 +2640,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 0
       }
     },
     {
@@ -2557,7 +2675,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 19000
       },
       "away_travel": {
         "label": "赛会首战",
@@ -2565,7 +2684,8 @@
         "q1_km": 0,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
-        "rest_days": 6
+        "rest_days": 6,
+        "cumulative_km": 0
       }
     },
     {
@@ -2599,7 +2719,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 18500
       },
       "away_travel": {
         "label": "远征 7400km · 往返大本营",
@@ -2607,7 +2728,8 @@
         "q1_km": 3700,
         "q2_km": 3700,
         "base_label": "波士顿大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 18500
       }
     },
     {
@@ -2641,7 +2763,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 11000
       },
       "away_travel": {
         "label": "远征 2400km",
@@ -2649,7 +2772,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 6000
       }
     },
     {
@@ -2683,7 +2807,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19000
       },
       "away_travel": {
         "label": "远征 6200km · 往返大本营",
@@ -2691,7 +2816,8 @@
         "q1_km": 3100,
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 15500
       }
     },
     {
@@ -2725,7 +2851,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19000
       },
       "away_travel": {
         "label": "远征 4400km · 往返大本营",
@@ -2733,7 +2860,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 11000
       }
     },
     {
@@ -2767,7 +2895,8 @@
         "q1_km": 4000,
         "q2_km": 4000,
         "base_label": "温哥华大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 20000
       },
       "away_travel": {
         "label": "远征 6400km · 往返大本营",
@@ -2775,7 +2904,8 @@
         "q1_km": 3200,
         "q2_km": 3200,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 16000
       }
     },
     {
@@ -2809,7 +2939,8 @@
         "q1_km": 1200,
         "q2_km": 1200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 6000
       },
       "away_travel": {
         "label": "远征 5000km · 往返大本营",
@@ -2817,7 +2948,8 @@
         "q1_km": 2500,
         "q2_km": 2500,
         "base_label": "洛杉矶大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 12500
       }
     },
     {
@@ -2851,7 +2983,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 19000
       },
       "away_travel": {
         "label": "远征 8400km · 往返大本营",
@@ -2859,7 +2992,8 @@
         "q1_km": 4200,
         "q2_km": 4200,
         "base_label": "波士顿大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 21000
       }
     },
     {
@@ -2893,7 +3027,8 @@
         "q1_km": 2000,
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 10000
       },
       "away_travel": {
         "label": "远征 6200km · 往返大本营",
@@ -2901,7 +3036,8 @@
         "q1_km": 3100,
         "q2_km": 3100,
         "base_label": "亚特兰大大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 15500
       }
     },
     {
@@ -2935,7 +3071,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 10500
       },
       "away_travel": {
         "label": "远征 4200km · 往返大本营",
@@ -2943,7 +3080,8 @@
         "q1_km": 2100,
         "q2_km": 2100,
         "base_label": "迈阿密大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 10500
       }
     },
     {
@@ -2977,7 +3115,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "亚特兰大大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 11000
       },
       "away_travel": {
         "label": "远征 7600km · 往返大本营",
@@ -2985,7 +3124,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "西雅图大本营",
-        "rest_days": 4
+        "rest_days": 4,
+        "cumulative_km": 19000
       }
     },
     {
@@ -3019,7 +3159,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 11000
       },
       "away_travel": {
         "label": "远征 7600km · 往返大本营",
@@ -3027,7 +3168,8 @@
         "q1_km": 3800,
         "q2_km": 3800,
         "base_label": "迈阿密大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19000
       }
     },
     {
@@ -3061,7 +3203,8 @@
         "q1_km": 2200,
         "q2_km": 2200,
         "base_label": "休斯顿大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 11000
       },
       "away_travel": {
         "label": "远征 7800km · 往返大本营",
@@ -3069,7 +3212,8 @@
         "q1_km": 3900,
         "q2_km": 3900,
         "base_label": "费城大本营",
-        "rest_days": 5
+        "rest_days": 5,
+        "cumulative_km": 19500
       }
     }
   ]
