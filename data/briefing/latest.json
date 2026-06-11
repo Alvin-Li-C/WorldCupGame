@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-07T23:55:53+08:00",
+  "generated_at": "2026-06-11T20:21:30+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-07",
+  "briefing_date": "2026-06-11",
   "yesterday": {
-    "date": "2026-06-06",
+    "date": "2026-06-10",
     "matches": []
   },
   "today": {
@@ -25,40 +25,52 @@
           {
             "rank": 1,
             "team": "墨西哥",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "世界杯缺阵球星盘点：多名主力无缘本届大赛",
-            "impact": "medium",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "墨西哥vs南非开幕战前瞻：预计首发、预测与赔率",
+            "impact": "high",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 10 Jun 2026 13:57:22 +0000",
+            "url": "https://www.cbssports.com/soccer/news/mexico-vs-south-africa-preview-live-stream-how-to-watch-world-cup-predictions-odds-lineups/"
           },
           {
             "rank": 2,
-            "team": "墨西哥",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "北美主办世界杯：南美球队能否延续全胜纪录",
-            "impact": "low",
-            "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
-            "url": "https://www.espn.com/espn/soccer/story/_/id/48951119/can-south-america-maintain-100-record-north-american-world-cups"
+            "team": "南非",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "南非全队与球迷渴望复刻2010世界杯开幕战激情",
+            "impact": "medium",
+            "impact_score": 50,
+            "source": "懂球帝头条",
+            "published_at": "2028-06-10 20:00:00",
+            "url": "https://www.dongqiudi.com/article/5907920"
           },
           {
             "rank": 3,
             "team": "墨西哥",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "美国联邦政府推进世界杯安保与赛事筹备",
-            "impact": "low",
-            "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 08:12:59 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48968358/fifa-world-cup-2026-andrew-giuliani-security-white-house"
+            "category": "form",
+            "category_label": "状态",
+            "headline": "墨西哥vs南非开幕战赔率与竞技状态预判",
+            "impact": "medium",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Thu, 11 Jun 2026 11:00:45 +0000",
+            "url": "https://www.cbssports.com/soccer/news/mexico-vs-south-africa-odds-picks-prediction-betting-preview-start-time-for-2026-world-cup-opener/"
           }
-        ]
+        ],
+        "odds": {
+          "home": 1.85,
+          "draw": 3.4,
+          "away": 4.2,
+          "implied_prob": {
+            "home_pct": 48.2,
+            "draw_pct": 26.3,
+            "away_pct": 25.5
+          },
+          "updated_at": "2026-06-09 12:00",
+          "source": "seed"
+        }
       },
       {
         "fixture_id": 2,
@@ -74,40 +86,52 @@
           {
             "rank": 1,
             "team": "韩国",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "孙兴慜四届世界杯轨迹与生涯节点重合，最后一舞状态成关键",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "韩国vs捷克前瞻：预计首发、赔率与赛果预测",
             "impact": "high",
-            "impact_score": 6,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 01:27:42 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48974192/2026-prove-son-heung-min-final-fifa-world-cup-hurrah"
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 10 Jun 2026 14:32:15 +0000",
+            "url": "https://www.cbssports.com/soccer/news/south-korea-vs-czechia-preview-live-stream-how-to-watch-fifa-world-cup-predictions-odds-and-lineups/"
           },
           {
             "rank": 2,
-            "team": "韩国",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "世界杯缺阵球星盘点，各队核心战力或受影响",
-            "impact": "medium",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 04:28:21 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48967433/world-cup-missing-players-palmer-alexander-arnold-foden-estevao-camavinga"
+            "team": "捷克",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "世界杯定位球时代：FIFA末段规则调整或影响角球与任意球战术部署",
+            "impact": "low",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Wed, 10 Jun 2026 16:17:56 +0000",
+            "url": "https://www.cbssports.com/soccer/news/world-cups-set-piece-corner-kicks-fifa-rule-change/"
           },
           {
             "rank": 3,
-            "team": "韩国",
-            "category": "tactics",
-            "category_label": "战术",
-            "headline": "德尚离任背景下法国队战意高涨，欧洲强队备战节奏或间接影响韩国对手状态",
-            "impact": "low",
-            "impact_score": 13,
-            "source": "https://www.espn.com/espn/rss/soccer/news",
-            "published_at": "Sun, 7 Jun 2026 09:35:40 EST",
-            "url": "https://www.espn.com/soccer/story/_/id/48988194/dembele-france-end-deschamps-reign-trophy"
+            "team": "捷克",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "希克入选周四世界杯任意时间进球热门选项，捷克锋线状态受关注",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Thu, 11 Jun 2026 11:30:42 +0000",
+            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-patrik-schick-among-thursdays-best-bets/"
           }
-        ]
+        ],
+        "odds": {
+          "home": 2.45,
+          "draw": 3.2,
+          "away": 2.9,
+          "implied_prob": {
+            "home_pct": 38.0,
+            "draw_pct": 29.1,
+            "away_pct": 32.1
+          },
+          "updated_at": "2026-06-09 12:00",
+          "source": "seed"
+        }
       }
     ]
   }

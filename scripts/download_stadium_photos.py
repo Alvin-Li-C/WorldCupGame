@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Download 16 WC 2026 stadium photos (ArchDaily.cn / images.adsttc.com,国内可访问)."""
+import argparse
+import io
 import os
 import shutil
 import sys
@@ -7,55 +9,88 @@ import time
 import urllib.error
 import urllib.request
 
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, 'static', 'stadiums')
 
-# Source: https://www.archdaily.cn/cn/993991/... (medium_jpg per venue, article order)
+# Source: https://www.archdaily.cn/cn/993991/... — use large_jpg (~2000px), not medium_jpg (~528px)
 STADIUM_URLS = {
-    'lumen.jpg': 'https://images.adsttc.com/media/images/639e/6ee3/f733/b401/701f/3b18/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_3.jpg?1671327480',
-    'levis.jpg': 'https://images.adsttc.com/media/images/639e/6f86/a452/0802/91ad/4fdf/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_4.jpg?1671327641',
-    'sofi.jpg': 'https://images.adsttc.com/media/images/639e/6ffb/f733/b401/701f/3b27/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_5.jpg?1671327746',
-    'arrowhead.jpg': 'https://images.adsttc.com/media/images/639e/70aa/a452/0802/91ad/4ff5/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_6.jpg?1671327933',
-    'att.jpg': 'https://images.adsttc.com/media/images/639e/765b/f733/b401/701f/3b31/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_8.jpg?1671329394',
-    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/639e/76c6/f733/b401/701f/3b3a/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329490',
-    'nrg.jpg': 'https://images.adsttc.com/media/images/639e/774c/f733/b401/701f/3b42/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329630',
-    'gillette.jpg': 'https://images.adsttc.com/media/images/639e/77a7/f733/b401/701f/3b47/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_10.jpg?1671329723',
-    'lincoln.jpg': 'https://images.adsttc.com/media/images/639e/7811/a452/0802/91ad/5010/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_11.jpg?1671329827',
-    'hardrock.jpg': 'https://images.adsttc.com/media/images/639e/787f/a452/0802/91ad/5015/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_12.jpg?1671329940',
-    'metlife.jpg': 'https://images.adsttc.com/media/images/639e/78d7/a452/0802/91ad/501d/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_13.jpg?1671330024',
-    'akron.jpg': 'https://images.adsttc.com/media/images/639e/794e/f733/b401/701f/3b58/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_14.jpg?1671330147',
-    'bbva.jpg': 'https://images.adsttc.com/media/images/639e/797e/a452/0802/91ad/5025/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_15.jpg?1671330178',
-    'azteca.jpg': 'https://images.adsttc.com/media/images/639e/7a13/a452/0802/91ad/502e/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330343',
-    'bcplace.jpg': 'https://images.adsttc.com/media/images/639e/7a9a/a452/0802/91ad/5039/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330477',
-    'bmo.jpg': 'https://images.adsttc.com/media/images/639e/7c2b/a452/0802/91ad/503a/medium_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_17.jpg?1671330869',
+    'lumen.jpg': 'https://images.adsttc.com/media/images/639e/6ee3/f733/b401/701f/3b18/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_3.jpg?1671327480',
+    'levis.jpg': 'https://images.adsttc.com/media/images/639e/6f86/a452/0802/91ad/4fdf/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_4.jpg?1671327641',
+    'sofi.jpg': 'https://images.adsttc.com/media/images/639e/6ffb/f733/b401/701f/3b27/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_5.jpg?1671327746',
+    'arrowhead.jpg': 'https://images.adsttc.com/media/images/639e/70aa/a452/0802/91ad/4ff5/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_6.jpg?1671327933',
+    'att.jpg': 'https://images.adsttc.com/media/images/639e/765b/f733/b401/701f/3b31/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_8.jpg?1671329394',
+    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/639e/76c6/f733/b401/701f/3b3a/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329490',
+    'nrg.jpg': 'https://images.adsttc.com/media/images/639e/774c/f733/b401/701f/3b42/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329630',
+    'gillette.jpg': 'https://images.adsttc.com/media/images/639e/77a7/f733/b401/701f/3b47/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_10.jpg?1671329723',
+    'lincoln.jpg': 'https://images.adsttc.com/media/images/639e/7811/a452/0802/91ad/5010/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_11.jpg?1671329827',
+    'hardrock.jpg': 'https://images.adsttc.com/media/images/639e/787f/a452/0802/91ad/5015/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_12.jpg?1671329940',
+    'metlife.jpg': 'https://images.adsttc.com/media/images/639e/78d7/a452/0802/91ad/501d/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_13.jpg?1671330024',
+    'akron.jpg': 'https://images.adsttc.com/media/images/639e/794e/f733/b401/701f/3b58/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_14.jpg?1671330147',
+    'bbva.jpg': 'https://images.adsttc.com/media/images/639e/797e/a452/0802/91ad/5025/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_15.jpg?1671330178',
+    'azteca.jpg': 'https://images.adsttc.com/media/images/639e/7a13/a452/0802/91ad/502e/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330343',
+    'bcplace.jpg': 'https://images.adsttc.com/media/images/639e/7a9a/a452/0802/91ad/5039/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330477',
+    'bmo.jpg': 'https://images.adsttc.com/media/images/639e/7c2b/a452/0802/91ad/503a/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_17.jpg?1671330869',
 }
 
-MIN_BYTES = 8000
+# ArchDaily large_jpg is only ~1000px for some venues (Wikimedia blocked from CN).
+MIN_WIDTH_BY_FILE = {
+    'bbva.jpg': 900,
+}
+
+MIN_BYTES = 120_000
+MIN_WIDTH = 1600
 
 
-def download(name, url, retries=3):
+def image_width(path):
+    if not Image or not os.path.isfile(path):
+        return 0
+    try:
+        with Image.open(path) as im:
+            return im.size[0]
+    except OSError:
+        return 0
+
+
+def min_width_for(name):
+    return MIN_WIDTH_BY_FILE.get(name, MIN_WIDTH)
+
+
+def download(name, url, force=False, retries=3):
     dest = os.path.join(OUT_DIR, name)
-    if os.path.isfile(dest) and os.path.getsize(dest) >= MIN_BYTES:
-        print(f'SKIP {name} (exists)')
+    need_w = min_width_for(name)
+    width = image_width(dest)
+    if not force and os.path.isfile(dest) and os.path.getsize(dest) >= MIN_BYTES and width >= need_w:
+        print(f'SKIP {name} ({width}px, already HD)')
         return True
+    referer = 'https://commons.wikimedia.org/' if 'wikimedia.org' in url else 'https://www.archdaily.cn/'
     req = urllib.request.Request(
         url,
         headers={
-            'User-Agent': 'Mozilla/5.0 WorldCupGame/1.0',
-            'Referer': 'https://www.archdaily.cn/',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 WorldCupGame/1.0',
+            'Referer': referer,
         },
     )
     for attempt in range(1, retries + 1):
         try:
-            with urllib.request.urlopen(req, timeout=90) as resp:
+            with urllib.request.urlopen(req, timeout=120) as resp:
                 data = resp.read()
             if len(data) < MIN_BYTES:
                 raise ValueError(f'too small ({len(data)} bytes)')
+            if Image:
+                w, h = Image.open(io.BytesIO(data)).size
+                if w < min_width_for(name):
+                    raise ValueError(f'width too low ({w}x{h}, need {min_width_for(name)})')
             tmp = dest + '.part'
             with open(tmp, 'wb') as f:
                 f.write(data)
             os.replace(tmp, dest)
-            print(f'OK {name} ({len(data) // 1024} KB)')
+            dim = f'{w}x{h}' if Image else '?'
+            print(f'OK {name} ({len(data) // 1024} KB, {dim})')
             return True
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError) as e:
             print(f'RETRY {name} {attempt}/{retries}: {e}')
@@ -64,9 +99,13 @@ def download(name, url, retries=3):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Download WC 2026 stadium backdrop photos')
+    parser.add_argument('--force', action='store_true', help='Re-download even if file looks HD')
+    args = parser.parse_args()
+
     os.makedirs(OUT_DIR, exist_ok=True)
-    ok = sum(1 for n, u in STADIUM_URLS.items() if download(n, u))
-    print(f'Done: {ok}/{len(STADIUM_URLS)} (source: ArchDaily.cn)')
+    ok = sum(1 for n, u in STADIUM_URLS.items() if download(n, u, force=args.force))
+    print(f'Done: {ok}/{len(STADIUM_URLS)} (ArchDaily large_jpg)')
     if ok < len(STADIUM_URLS):
         fallback = os.path.join(OUT_DIR, 'sofi.jpg')
         for name in STADIUM_URLS:
