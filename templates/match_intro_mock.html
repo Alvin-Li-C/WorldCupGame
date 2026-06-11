@@ -388,6 +388,13 @@
             background: rgba(201, 162, 39, 0.12);
             color: var(--gold-light);
         }
+        .intel-link {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: rgba(201, 162, 39, 0.5);
+            text-underline-offset: 2px;
+        }
+        .intel-link:hover { color: var(--gold-light); text-decoration-color: var(--gold-light); }
         .intel-empty { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
         /* Unified match board */
@@ -589,20 +596,26 @@
             right: 0;
             z-index: 10;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 1.25rem;
+            align-items: stretch;
+            gap: 0.65rem;
+            padding: 0.85rem 1rem;
             background: linear-gradient(to top, rgba(7,11,18,0.98), rgba(7,11,18,0.85));
             border-top: 1px solid var(--border);
         }
         .nav a {
+            flex: 1 1 auto;
+            min-width: 5.25rem;
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.06em;
-            padding: 0.65rem 1.25rem;
+            padding: 0.65rem 1rem;
             border: 1px solid var(--border);
             color: var(--muted);
             text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -646,6 +659,17 @@
             .side-panel.home .team-betting { align-items: flex-start; text-align: left; }
             .side-panel.home .form-chips { flex-direction: row; }
             .side-panel.home .form-goals { margin-right: 0; margin-left: 0.35rem; }
+            .nav {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.55rem;
+                padding: 0.75rem 0.85rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+            }
+            .nav a {
+                min-width: 0;
+                padding: 0.6rem 0.45rem;
+                font-size: 0.68rem;
+            }
         }
     </style>
 </head>
@@ -957,10 +981,13 @@ function renderIntel(news) {
     el.innerHTML = '<div class="intel-title">赛前关键动态</div><ul class="intel-list">' +
         news.map(function(n) {
             var impact = n.impact === 'high' ? 'impact-high' : (n.impact === 'medium' ? 'impact-medium' : '');
+            var title = n.url
+                ? '<a class="intel-link" href="' + n.url + '" target="_blank" rel="noopener noreferrer">' + n.headline + '</a>'
+                : '<span>' + n.headline + '</span>';
             return '<li class="intel-item ' + impact + '">' +
                 '<span class="intel-rank">' + n.rank + '</span>' +
                 '<span class="intel-tag">' + n.category_label + '·' + n.team + '</span>' +
-                '<span>' + n.headline + '</span></li>';
+                title + '</li>';
         }).join('') + '</ul>';
 }
 
