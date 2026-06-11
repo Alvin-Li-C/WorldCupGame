@@ -19,13 +19,17 @@ OUT_DIR = os.path.join(ROOT, 'static', 'stadiums')
 
 # Source: https://www.archdaily.cn/cn/993991/... — use large_jpg (~2000px), not medium_jpg (~528px)
 STADIUM_URLS = {
-    'lumen.jpg': 'https://images.adsttc.com/media/images/639e/6ee3/f733/b401/701f/3b18/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_3.jpg?1671327480',
+    # Interior bowl (Levi's Stadium gallery — open-air NFL horseshoe, similar sightlines)
+    'lumen.jpg': 'https://images.adsttc.com/media/images/56c3/ac9f/e58e/ced9/6100/01b8/large_jpg/LS-02_2283A6.jpg?1455664265',
     'levis.jpg': 'https://images.adsttc.com/media/images/639e/6f86/a452/0802/91ad/4fdf/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_4.jpg?1671327641',
     'sofi.jpg': 'https://images.adsttc.com/media/images/639e/6ffb/f733/b401/701f/3b27/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_5.jpg?1671327746',
-    'arrowhead.jpg': 'https://images.adsttc.com/media/images/639e/70aa/a452/0802/91ad/4ff5/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_6.jpg?1671327933',
+    # Seating bowl close-up (Levi's Stadium gallery)
+    'arrowhead.jpg': 'https://images.adsttc.com/media/images/56c3/ac19/e58e/ced9/6100/01b5/large_jpg/LS-01_6006A2.jpg?1455664137',
     'att.jpg': 'https://images.adsttc.com/media/images/639e/765b/f733/b401/701f/3b31/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_8.jpg?1671329394',
-    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/639e/76c6/f733/b401/701f/3b3a/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329490',
-    'nrg.jpg': 'https://images.adsttc.com/media/images/639e/774c/f733/b401/701f/3b42/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_9.jpg?1671329630',
+    # Atlanta United at Mercedes-Benz Stadium (HOK gallery)
+    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/5a0e/f022/b22e/386e/1800/01e7/large_jpg/ATLUTDvsOC_Pre_KD_091617_0043.jpg?1510928400',
+    # Houston soccer bowl interior (BBVA Compass / Populous gallery — same city)
+    'nrg.jpg': 'https://images.adsttc.com/media/images/522f/47ea/e8e4/4e33/3b00/00ad/large_jpg/HOUTXSOC_0018_Lyons.jpg?1378830294',
     'gillette.jpg': 'https://images.adsttc.com/media/images/639e/77a7/f733/b401/701f/3b47/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_10.jpg?1671329723',
     'lincoln.jpg': 'https://images.adsttc.com/media/images/639e/7811/a452/0802/91ad/5010/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_11.jpg?1671329827',
     'hardrock.jpg': 'https://images.adsttc.com/media/images/639e/787f/a452/0802/91ad/5015/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_12.jpg?1671329940',
@@ -33,8 +37,10 @@ STADIUM_URLS = {
     'akron.jpg': 'https://images.adsttc.com/media/images/639e/794e/f733/b401/701f/3b58/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_14.jpg?1671330147',
     'bbva.jpg': 'https://images.adsttc.com/media/images/639e/797e/a452/0802/91ad/5025/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_15.jpg?1671330178',
     'azteca.jpg': 'https://images.adsttc.com/media/images/639e/7a13/a452/0802/91ad/502e/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330343',
-    'bcplace.jpg': 'https://images.adsttc.com/media/images/639e/7a9a/a452/0802/91ad/5039/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_16.jpg?1671330477',
-    'bmo.jpg': 'https://images.adsttc.com/media/images/639e/7c2b/a452/0802/91ad/503a/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_17.jpg?1671330869',
+    # Covered bowl interior (U.S. Bank Stadium gallery — similar enclosed match-day feel)
+    'bcplace.jpg': 'https://images.adsttc.com/media/images/56f8/6d52/e58e/ce8d/2000/010a/large_jpg/Interior_from_East.jpg?1459121470',
+    # Soccer bowl close-up (BBVA Compass gallery — Toronto BMO is soccer-specific)
+    'bmo.jpg': 'https://images.adsttc.com/media/images/522f/477d/e8e4/4e33/3b00/00a9/large_jpg/HOUTXSOC_0029_Lyons.jpg?1378830183',
 }
 
 # ArchDaily large_jpg is only ~1000px for some venues (Wikimedia blocked from CN).
