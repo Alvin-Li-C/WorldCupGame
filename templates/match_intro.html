@@ -516,21 +516,28 @@
             flex: 1;
         }
         .roster-row {
-            display: grid;
-            grid-template-columns: 4.5rem 1fr;
+            display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.4rem;
             padding: 0.65rem 0.85rem;
             border: 1px solid transparent;
             transition: border-color 0.2s, background 0.2s;
         }
+        .player { min-width: 0; flex: 0 1 auto; }
         .side-panel.home .roster-row {
-            grid-template-columns: 1fr 4.5rem;
+            justify-content: flex-end;
             text-align: right;
         }
         .side-panel.home .roster-row .person { order: 2; }
         .side-panel.home .roster-row .player { order: 1; text-align: right; }
-        .side-panel.home .roster-row .player-inner { flex-direction: row-reverse; }
+        .side-panel.home .roster-row .player-inner { flex-direction: row-reverse; justify-content: flex-end; }
+        .side-panel.away .roster-row {
+            justify-content: flex-start;
+        }
+        .side-panel.away .roster-row .person { order: 2; }
+        .side-panel.away .roster-row .player { order: 1; text-align: left; }
+        .side-panel.away .roster-row.filled { border-left: none; border-right: 2px solid var(--gold); }
+        .side-panel.away .roster-label { text-align: right; }
 
         .roster-row:hover {
             border-color: rgba(255,255,255,0.1);
@@ -541,6 +548,8 @@
         .player.multi .player-inner + .player-inner { margin-top: 0.35rem; }
 
         .person {
+            flex: 0 0 auto;
+            white-space: nowrap;
             font-size: 0.68rem;
             font-weight: 600;
             letter-spacing: 0.06em;
@@ -622,14 +631,20 @@
             }
             .side-panel.home .team-head { flex-direction: row; text-align: left; }
             .side-panel.home .roster-label { text-align: left; }
-            .side-panel.home .roster-row {
-                grid-template-columns: 4.5rem 1fr;
+            .side-panel.home .roster-row,
+            .side-panel.away .roster-row {
+                justify-content: flex-start;
                 text-align: left;
             }
-            .side-panel.home .roster-row .person { order: 0; }
-            .side-panel.home .roster-row .player { order: 0; text-align: left; }
-            .side-panel.home .roster-row .player-inner { flex-direction: row; }
-            .side-panel.home .roster-row.filled { border-right: none; border-left: 2px solid var(--gold); }
+            .side-panel.home .roster-row .person,
+            .side-panel.away .roster-row .person { order: 0; }
+            .side-panel.home .roster-row .player,
+            .side-panel.away .roster-row .player { order: 0; text-align: left; }
+            .side-panel.home .roster-row .player-inner,
+            .side-panel.away .roster-row .player-inner { flex-direction: row; justify-content: flex-start; }
+            .side-panel.home .roster-row.filled,
+            .side-panel.away .roster-row.filled { border-right: none; border-left: 2px solid var(--gold); }
+            .side-panel.away .roster-label { text-align: left; }
             .odds-strip { flex-wrap: wrap; justify-content: center; }
             .odds-cell { min-width: 4.8rem; padding: 0.5rem 0.65rem; }
             .nav {
