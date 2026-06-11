@@ -117,6 +117,39 @@ class TestScorerMatch(unittest.TestCase):
         )
         self.assertEqual(events, [])
 
+    def test_mexico_espn_fallback_scorers(self):
+        import json
+        import os
+        from briefing.espn_goals import parse_espn_goal_events
+
+        sample = os.path.join(ROOT, 'data', 'espn_mex_sa.json')
+        with open(sample, encoding='utf-8') as f:
+            summary = json.load(f)
+        team_map = {'Mexico': '墨西哥', 'South Africa': '南非'}
+        events = parse_espn_goal_events(
+            summary, team_map, lambda en, m: m.get(en), 'Mexico', 'South Africa',
+        )
+        self.assertEqual(len(events), 2)
+        sels = [
+            {'player_id': 21, 'name': 'Julian Quinones', 'name_cn': '胡利安·基尼奥内斯',
+             'team_name': '墨西哥', 'participant': '老王', 'jersey_number': 21},
+            {'player_id': 22, 'name': 'Raul Jimenez', 'name_cn': '劳尔·希门尼斯',
+             'team_name': '墨西哥', 'participant': '李总', 'jersey_number': 22},
+        ]
+        api_match = {
+            'homeTeam': {'name': 'Mexico'},
+            'awayTeam': {'name': 'South Africa'},
+            'goals': None,
+            'score': {'fullTime': {'home': 2, 'away': 0}},
+            'utcDate': '2026-06-11T19:00:00Z',
+        }
+        block = build_match_scorers(
+            api_match, '墨西哥', '南非', team_map, sels, lambda en, m: m.get(en),
+        )
+        self.assertEqual(len(block['our_scorers']), 2)
+        ids = {r['player_id'] for r in block['our_scorers']}
+        self.assertEqual(ids, {21, 22})
+
 
 if __name__ == '__main__':
     unittest.main()

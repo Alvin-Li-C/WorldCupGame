@@ -1,5 +1,7 @@
 """Extract scoring events from football-data API matches."""
 
+from briefing.espn_goals import fetch_espn_scoring_events
+
 GOAL_TYPES = frozenset({'REGULAR', 'PENALTY', 'OWN'})
 
 
@@ -34,7 +36,14 @@ def extract_scoring_events(api_match, team_map, api_team_to_cn):
             'type': gtype,
             'minute': g.get('minute'),
         })
-    return events
+    if events:
+        return events
+    ft = (api_match.get('score') or {}).get('fullTime') or {}
+    if ft.get('home') is None or ft.get('away') is None:
+        return []
+    return fetch_espn_scoring_events(
+        home_en, away_en, api_match.get('utcDate'), team_map, api_team_to_cn,
+    )
 
 
 def event_points(event: dict) -> tuple[int, int]:

@@ -268,7 +268,9 @@ def get_selections_for_display(db=None):
 
 
 def open_db_readonly():
-    return sqlite3.connect(f'file:{DB_PATH}?mode=ro', uri=True)
+    conn = sqlite3.connect(f'file:{DB_PATH}?mode=ro', uri=True)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
 def get_roster_for_team(team_name):

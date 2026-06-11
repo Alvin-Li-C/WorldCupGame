@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T07:06:00+08:00",
+  "generated_at": "2026-06-12T07:17:12+08:00",
   "empty": true,
   "rules": {
     "goal": 1,
@@ -171,6 +171,37 @@
       "rank": 10
     }
   ],
-  "unmatched_count": 0,
-  "unmatched": []
+  "unmatched_count": 2,
+  "unmatched": [
+    {
+      "fixture_id": 1,
+      "kickoff_beijing": "2026-06-12 03:00",
+      "home_team": "墨西哥",
+      "away_team": "南非",
+      "scorer_en": "Julián Quiñones",
+      "scorer_api_id": "233075",
+      "team_en": "Mexico",
+      "team_cn": "墨西哥",
+      "type": "REGULAR",
+      "minute": 9,
+      "would_points": 1,
+      "reason": "no_name_match",
+      "reason_label": "英文名未匹配"
+    },
+    {
+      "fixture_id": 1,
+      "kickoff_beijing": "2026-06-12 03:00",
+      "home_team": "墨西哥",
+      "away_team": "南非",
+      "scorer_en": "Raúl Jiménez",
+      "scorer_api_id": "167060",
+      "team_en": "Mexico",
+      "team_cn": "墨西哥",
+      "type": "REGULAR",
+      "minute": 67,
+      "would_points": 1,
+      "reason": "no_name_match",
+      "reason_label": "英文名未匹配"
+    }
+  ]
 }

@@ -1,122 +1,4 @@
 {
-  "佛得角": {
-    "last5": "DDLDW",
-    "goals_for": 7,
-    "goals_against": 6,
-    "updated_at": "2026-05-31",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "巴拉圭": {
-    "last5": "LWWLW",
-    "goals_for": 9,
-    "goals_against": 5,
-    "updated_at": "2026-06-05",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "阿尔及利亚": {
-    "last5": "WWWDW",
-    "goals_for": 13,
-    "goals_against": 1,
-    "updated_at": "2026-06-03",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "海地": {
-    "last5": "WLDWL",
-    "goals_for": 9,
-    "goals_against": 4,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 10,
-      "goals_for": 20,
-      "goals_against": 13,
-      "gf_per_game": 2.0,
-      "ga_per_game": 1.3,
-      "ratio": 1.54,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "乌兹别克斯坦": {
-    "last5": "DWDLL",
-    "goals_for": 6,
-    "goals_against": 7,
-    "updated_at": "2026-06-08",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "巴西": {
-    "last5": "DLWWW",
-    "goals_for": 12,
-    "goals_against": 6,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "挪威": {
-    "last5": "DLDWD",
-    "goals_for": 6,
-    "goals_against": 5,
-    "updated_at": "2026-06-07",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 8,
-      "goals_for": 37,
-      "goals_against": 5,
-      "gf_per_game": 4.62,
-      "ga_per_game": 0.62,
-      "ratio": 7.45,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "日本": {
-    "last5": "WWWWW",
-    "goals_for": 8,
-    "goals_against": 0,
-    "updated_at": "2026-05-31",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "新西兰": {
-    "last5": "LLWLL",
-    "goals_for": 4,
-    "goals_against": 10,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 5,
-      "goals_for": 29,
-      "goals_against": 1,
-      "gf_per_game": 5.8,
-      "ga_per_game": 0.2,
-      "ratio": 29.0,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "加拿大": {
-    "last5": "WDDWD",
-    "goals_for": 6,
-    "goals_against": 3,
-    "updated_at": "2026-06-05",
-    "source": "espn-api",
-    "wcq": {
-      "host_exempt": true,
-      "style_label": "主办国免预选赛"
-    }
-  },
-  "伊朗": {
-    "last5": "DLWDW",
-    "goals_for": 8,
-    "goals_against": 2,
-    "updated_at": "2026-06-04",
-    "source": "espn-api",
-    "wcq": null
-  },
   "荷兰": {
     "last5": "WWDLW",
     "goals_for": 9,
@@ -134,21 +16,38 @@
       "style_label": "进攻型"
     }
   },
-  "乌拉圭": {
-    "last5": "WDLDD",
+  "卡塔尔": {
+    "last5": "DLLLD",
     "goals_for": 4,
-    "goals_against": 7,
-    "updated_at": "2026-03-31",
+    "goals_against": 9,
+    "updated_at": "2026-06-06",
     "source": "espn-api",
     "wcq": null
   },
-  "加纳": {
-    "last5": "LLLLD",
-    "goals_for": 3,
-    "goals_against": 11,
-    "updated_at": "2026-06-02",
+  "塞内加尔": {
+    "last5": "LWWWL",
+    "goals_for": 15,
+    "goals_against": 6,
+    "updated_at": "2026-05-31",
     "source": "espn-api",
     "wcq": null
+  },
+  "瑞士": {
+    "last5": "WLDWD",
+    "goals_for": 12,
+    "goals_against": 6,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 6,
+      "goals_for": 14,
+      "goals_against": 2,
+      "gf_per_game": 2.33,
+      "ga_per_game": 0.33,
+      "ratio": 7.06,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
   },
   "波黑": {
     "last5": "DDDDD",
@@ -163,6 +62,156 @@
       "gf_per_game": 1.9,
       "ga_per_game": 0.9,
       "ratio": 2.11,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "乌兹别克斯坦": {
+    "last5": "DWDLL",
+    "goals_for": 6,
+    "goals_against": 7,
+    "updated_at": "2026-06-08",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "加纳": {
+    "last5": "LLLLD",
+    "goals_for": 3,
+    "goals_against": 11,
+    "updated_at": "2026-06-02",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "苏格兰": {
+    "last5": "WLLWW",
+    "goals_for": 12,
+    "goals_against": 3,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 6,
+      "goals_for": 13,
+      "goals_against": 7,
+      "gf_per_game": 2.17,
+      "ga_per_game": 1.17,
+      "ratio": 1.85,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "瑞典": {
+    "last5": "WWWLD",
+    "goals_for": 14,
+    "goals_against": 9,
+    "updated_at": "2026-06-04",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 8,
+      "goals_for": 10,
+      "goals_against": 15,
+      "gf_per_game": 1.25,
+      "ga_per_game": 1.88,
+      "ratio": 0.66,
+      "style": "defense",
+      "style_label": "防守型"
+    }
+  },
+  "沙特": {
+    "last5": "LLLLW",
+    "goals_for": 5,
+    "goals_against": 10,
+    "updated_at": "2026-06-05",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "南非": {
+    "last5": "L",
+    "goals_for": 0,
+    "goals_against": 2,
+    "updated_at": "2026-06-12",
+    "source": "football-data-wc"
+  },
+  "英格兰": {
+    "last5": "LWDLW",
+    "goals_for": 6,
+    "goals_against": 5,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 8,
+      "goals_for": 22,
+      "goals_against": 0,
+      "gf_per_game": 2.75,
+      "ga_per_game": 0.0,
+      "ratio": 2.75,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "科特迪瓦": {
+    "last5": "LWWWW",
+    "goals_for": 9,
+    "goals_against": 2,
+    "updated_at": "2026-06-04",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "墨西哥": {
+    "last5": "W",
+    "goals_for": 2,
+    "goals_against": 0,
+    "updated_at": "2026-06-12",
+    "source": "football-data-wc"
+  },
+  "美国": {
+    "last5": "WLLWL",
+    "goals_for": 11,
+    "goals_against": 12,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "host_exempt": true,
+      "style_label": "主办国免预选赛"
+    }
+  },
+  "约旦": {
+    "last5": "DDDLL",
+    "goals_for": 5,
+    "goals_against": 10,
+    "updated_at": "2026-06-07",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "奥地利": {
+    "last5": "WDWWW",
+    "goals_for": 10,
+    "goals_against": 2,
+    "updated_at": "2026-06-01",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 8,
+      "goals_for": 22,
+      "goals_against": 4,
+      "gf_per_game": 2.75,
+      "ga_per_game": 0.5,
+      "ratio": 5.5,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "克罗地亚": {
+    "last5": "WWLLW",
+    "goals_for": 8,
+    "goals_against": 9,
+    "updated_at": "2026-06-07",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 8,
+      "goals_for": 26,
+      "goals_against": 4,
+      "gf_per_game": 3.25,
+      "ga_per_game": 0.5,
+      "ratio": 6.5,
       "style": "attack",
       "style_label": "进攻型"
     }
@@ -184,39 +233,54 @@
       "style_label": "进攻型"
     }
   },
-  "英格兰": {
-    "last5": "LWDLW",
+  "日本": {
+    "last5": "WWWWW",
+    "goals_for": 8,
+    "goals_against": 0,
+    "updated_at": "2026-05-31",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "刚果（金）": {
+    "last5": "WLWDL",
     "goals_for": 6,
-    "goals_against": 5,
-    "updated_at": "2026-06-06",
+    "goals_against": 3,
+    "updated_at": "2026-06-09",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "捷克": {
+    "last5": "WDDWW",
+    "goals_for": 15,
+    "goals_against": 6,
+    "updated_at": "2026-06-05",
     "source": "espn-api",
     "wcq": {
-      "matches": 8,
+      "matches": 10,
       "goals_for": 22,
-      "goals_against": 0,
-      "gf_per_game": 2.75,
-      "ga_per_game": 0.0,
-      "ratio": 2.75,
+      "goals_against": 12,
+      "gf_per_game": 2.2,
+      "ga_per_game": 1.2,
+      "ratio": 1.83,
       "style": "attack",
       "style_label": "进攻型"
     }
   },
-  "苏格兰": {
-    "last5": "WLLWW",
-    "goals_for": 12,
-    "goals_against": 3,
-    "updated_at": "2026-06-06",
+  "阿根廷": {
+    "last5": "WWWWW",
+    "goals_for": 17,
+    "goals_against": 1,
+    "updated_at": "2026-06-07",
     "source": "espn-api",
-    "wcq": {
-      "matches": 6,
-      "goals_for": 13,
-      "goals_against": 7,
-      "gf_per_game": 2.17,
-      "ga_per_game": 1.17,
-      "ratio": 1.85,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
+    "wcq": null
+  },
+  "伊朗": {
+    "last5": "DLWDW",
+    "goals_for": 8,
+    "goals_against": 2,
+    "updated_at": "2026-06-04",
+    "source": "espn-api",
+    "wcq": null
   },
   "库拉索": {
     "last5": "LLLLW",
@@ -235,11 +299,19 @@
       "style_label": "进攻型"
     }
   },
-  "哥伦比亚": {
-    "last5": "WLLWW",
-    "goals_for": 10,
-    "goals_against": 6,
-    "updated_at": "2026-06-07",
+  "埃及": {
+    "last5": "WWDWL",
+    "goals_for": 8,
+    "goals_against": 3,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "巴拉圭": {
+    "last5": "LWWLW",
+    "goals_for": 9,
+    "goals_against": 5,
+    "updated_at": "2026-06-05",
     "source": "espn-api",
     "wcq": null
   },
@@ -250,6 +322,23 @@
     "updated_at": "2026-06-07",
     "source": "espn-api",
     "wcq": null
+  },
+  "巴拿马": {
+    "last5": "DWLWD",
+    "goals_for": 10,
+    "goals_against": 11,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 10,
+      "goals_for": 19,
+      "goals_against": 5,
+      "gf_per_game": 1.9,
+      "ga_per_game": 0.5,
+      "ratio": 3.8,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
   },
   "土耳其": {
     "last5": "DWWWW",
@@ -268,29 +357,79 @@
       "style_label": "进攻型"
     }
   },
-  "约旦": {
-    "last5": "DDDLL",
-    "goals_for": 5,
-    "goals_against": 10,
-    "updated_at": "2026-06-07",
+  "阿尔及利亚": {
+    "last5": "WWWDW",
+    "goals_for": 13,
+    "goals_against": 1,
+    "updated_at": "2026-06-03",
     "source": "espn-api",
     "wcq": null
   },
-  "瑞典": {
-    "last5": "WWWLD",
-    "goals_for": 14,
-    "goals_against": 9,
-    "updated_at": "2026-06-04",
+  "比利时": {
+    "last5": "WWDWW",
+    "goals_for": 20,
+    "goals_against": 3,
+    "updated_at": "2026-06-06",
     "source": "espn-api",
     "wcq": {
       "matches": 8,
-      "goals_for": 10,
-      "goals_against": 15,
-      "gf_per_game": 1.25,
-      "ga_per_game": 1.88,
-      "ratio": 0.66,
-      "style": "defense",
-      "style_label": "防守型"
+      "goals_for": 29,
+      "goals_against": 7,
+      "gf_per_game": 3.62,
+      "ga_per_game": 0.88,
+      "ratio": 4.11,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "新西兰": {
+    "last5": "LLWLL",
+    "goals_for": 4,
+    "goals_against": 10,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 5,
+      "goals_for": 29,
+      "goals_against": 1,
+      "gf_per_game": 5.8,
+      "ga_per_game": 0.2,
+      "ratio": 29.0,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "巴西": {
+    "last5": "DLWWW",
+    "goals_for": 12,
+    "goals_against": 6,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "突尼斯": {
+    "last5": "WWDLL",
+    "goals_for": 3,
+    "goals_against": 7,
+    "updated_at": "2026-06-06",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "法国": {
+    "last5": "WWWLW",
+    "goals_for": 12,
+    "goals_against": 6,
+    "updated_at": "2026-06-08",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 6,
+      "goals_for": 16,
+      "goals_against": 4,
+      "gf_per_game": 2.67,
+      "ga_per_game": 0.67,
+      "ratio": 3.99,
+      "style": "attack",
+      "style_label": "进攻型"
     }
   },
   "澳大利亚": {
@@ -301,11 +440,55 @@
     "source": "espn-api",
     "wcq": null
   },
-  "塞内加尔": {
-    "last5": "LWWWL",
-    "goals_for": 15,
+  "西班牙": {
+    "last5": "DWDDW",
+    "goals_for": 9,
+    "goals_against": 4,
+    "updated_at": "2026-06-09",
+    "source": "espn-api",
+    "wcq": {
+      "matches": 6,
+      "goals_for": 21,
+      "goals_against": 2,
+      "gf_per_game": 3.5,
+      "ga_per_game": 0.33,
+      "ratio": 10.61,
+      "style": "attack",
+      "style_label": "进攻型"
+    }
+  },
+  "乌拉圭": {
+    "last5": "WDLDD",
+    "goals_for": 4,
+    "goals_against": 7,
+    "updated_at": "2026-03-31",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "加拿大": {
+    "last5": "WDDWD",
+    "goals_for": 6,
+    "goals_against": 3,
+    "updated_at": "2026-06-05",
+    "source": "espn-api",
+    "wcq": {
+      "host_exempt": true,
+      "style_label": "主办国免预选赛"
+    }
+  },
+  "佛得角": {
+    "last5": "DDLDW",
+    "goals_for": 7,
     "goals_against": 6,
     "updated_at": "2026-05-31",
+    "source": "espn-api",
+    "wcq": null
+  },
+  "摩洛哥": {
+    "last5": "DWWWD",
+    "goals_for": 13,
+    "goals_against": 3,
+    "updated_at": "2026-06-07",
     "source": "espn-api",
     "wcq": null
   },
@@ -327,130 +510,22 @@
       "source": "seed"
     }
   },
-  "奥地利": {
-    "last5": "WDWWW",
-    "goals_for": 10,
-    "goals_against": 2,
-    "updated_at": "2026-06-01",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 8,
-      "goals_for": 22,
-      "goals_against": 4,
-      "gf_per_game": 2.75,
-      "ga_per_game": 0.5,
-      "ratio": 5.5,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "捷克": {
-    "last5": "WDDWW",
-    "goals_for": 15,
-    "goals_against": 6,
-    "updated_at": "2026-06-05",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 10,
-      "goals_for": 22,
-      "goals_against": 12,
-      "gf_per_game": 2.2,
-      "ga_per_game": 1.2,
-      "ratio": 1.83,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "巴拿马": {
-    "last5": "DWLWD",
-    "goals_for": 10,
-    "goals_against": 11,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 10,
-      "goals_for": 19,
-      "goals_against": 5,
-      "gf_per_game": 1.9,
-      "ga_per_game": 0.5,
-      "ratio": 3.8,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "西班牙": {
-    "last5": "DWDDW",
+  "海地": {
+    "last5": "WLDWL",
     "goals_for": 9,
     "goals_against": 4,
-    "updated_at": "2026-06-09",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 6,
-      "goals_for": 21,
-      "goals_against": 2,
-      "gf_per_game": 3.5,
-      "ga_per_game": 0.33,
-      "ratio": 10.61,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "埃及": {
-    "last5": "WWDWL",
-    "goals_for": 8,
-    "goals_against": 3,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "比利时": {
-    "last5": "WWDWW",
-    "goals_for": 20,
-    "goals_against": 3,
     "updated_at": "2026-06-06",
     "source": "espn-api",
     "wcq": {
-      "matches": 8,
-      "goals_for": 29,
-      "goals_against": 7,
-      "gf_per_game": 3.62,
-      "ga_per_game": 0.88,
-      "ratio": 4.11,
+      "matches": 10,
+      "goals_for": 20,
+      "goals_against": 13,
+      "gf_per_game": 2.0,
+      "ga_per_game": 1.3,
+      "ratio": 1.54,
       "style": "attack",
       "style_label": "进攻型"
     }
-  },
-  "瑞士": {
-    "last5": "WLDWD",
-    "goals_for": 12,
-    "goals_against": 6,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 6,
-      "goals_for": 14,
-      "goals_against": 2,
-      "gf_per_game": 2.33,
-      "ga_per_game": 0.33,
-      "ratio": 7.06,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "突尼斯": {
-    "last5": "WWDLL",
-    "goals_for": 3,
-    "goals_against": 7,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "南非": {
-    "last5": "L",
-    "goals_for": 0,
-    "goals_against": 2,
-    "updated_at": "2026-06-12",
-    "source": "football-data-wc"
   },
   "韩国": {
     "last5": "WLLWW",
@@ -477,104 +552,29 @@
       "style_label": "进攻型"
     }
   },
-  "科特迪瓦": {
-    "last5": "LWWWW",
-    "goals_for": 9,
-    "goals_against": 2,
-    "updated_at": "2026-06-04",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "法国": {
-    "last5": "WWWLW",
-    "goals_for": 12,
-    "goals_against": 6,
-    "updated_at": "2026-06-08",
-    "source": "espn-api",
-    "wcq": {
-      "matches": 6,
-      "goals_for": 16,
-      "goals_against": 4,
-      "gf_per_game": 2.67,
-      "ga_per_game": 0.67,
-      "ratio": 3.99,
-      "style": "attack",
-      "style_label": "进攻型"
-    }
-  },
-  "卡塔尔": {
-    "last5": "DLLLD",
-    "goals_for": 4,
-    "goals_against": 9,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "摩洛哥": {
-    "last5": "DWWWD",
-    "goals_for": 13,
-    "goals_against": 3,
-    "updated_at": "2026-06-07",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "刚果（金）": {
-    "last5": "WLWDL",
+  "挪威": {
+    "last5": "DLDWD",
     "goals_for": 6,
-    "goals_against": 3,
-    "updated_at": "2026-06-09",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "阿根廷": {
-    "last5": "WWWWW",
-    "goals_for": 17,
-    "goals_against": 1,
-    "updated_at": "2026-06-07",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "沙特": {
-    "last5": "LLLLW",
-    "goals_for": 5,
-    "goals_against": 10,
-    "updated_at": "2026-06-05",
-    "source": "espn-api",
-    "wcq": null
-  },
-  "美国": {
-    "last5": "WLLWL",
-    "goals_for": 11,
-    "goals_against": 12,
-    "updated_at": "2026-06-06",
-    "source": "espn-api",
-    "wcq": {
-      "host_exempt": true,
-      "style_label": "主办国免预选赛"
-    }
-  },
-  "墨西哥": {
-    "last5": "W",
-    "goals_for": 2,
-    "goals_against": 0,
-    "updated_at": "2026-06-12",
-    "source": "football-data-wc"
-  },
-  "克罗地亚": {
-    "last5": "WWLLW",
-    "goals_for": 8,
-    "goals_against": 9,
+    "goals_against": 5,
     "updated_at": "2026-06-07",
     "source": "espn-api",
     "wcq": {
       "matches": 8,
-      "goals_for": 26,
-      "goals_against": 4,
-      "gf_per_game": 3.25,
-      "ga_per_game": 0.5,
-      "ratio": 6.5,
+      "goals_for": 37,
+      "goals_against": 5,
+      "gf_per_game": 4.62,
+      "ga_per_game": 0.62,
+      "ratio": 7.45,
       "style": "attack",
       "style_label": "进攻型"
     }
+  },
+  "哥伦比亚": {
+    "last5": "WLLWW",
+    "goals_for": 10,
+    "goals_against": 6,
+    "updated_at": "2026-06-07",
+    "source": "espn-api",
+    "wcq": null
   }
 }

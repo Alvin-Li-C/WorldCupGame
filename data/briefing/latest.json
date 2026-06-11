@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T07:05:53+08:00",
+  "generated_at": "2026-06-12T07:17:04+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-12",
   "yesterday": {
@@ -62,7 +62,38 @@
         "home_score": 2,
         "away_score": 0,
         "our_scorers": [],
-        "unmatched_scorers": [],
+        "unmatched_scorers": [
+          {
+            "fixture_id": 1,
+            "kickoff_beijing": "2026-06-12 03:00",
+            "home_team": "墨西哥",
+            "away_team": "南非",
+            "scorer_en": "Julián Quiñones",
+            "scorer_api_id": "233075",
+            "team_en": "Mexico",
+            "team_cn": "墨西哥",
+            "type": "REGULAR",
+            "minute": 9,
+            "would_points": 1,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          },
+          {
+            "fixture_id": 1,
+            "kickoff_beijing": "2026-06-12 03:00",
+            "home_team": "墨西哥",
+            "away_team": "南非",
+            "scorer_en": "Raúl Jiménez",
+            "scorer_api_id": "167060",
+            "team_en": "Mexico",
+            "team_cn": "墨西哥",
+            "type": "REGULAR",
+            "minute": 67,
+            "would_points": 1,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          }
+        ],
         "played_date_beijing": "2026-06-12",
         "source": "football-data",
         "winner_team": "墨西哥",
