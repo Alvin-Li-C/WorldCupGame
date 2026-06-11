@@ -162,7 +162,12 @@ def enrich_today_preview(latest, reference_date=None):
         existing = existing_by_id.get(f['fixture_id'])
         m = dict(skeleton)
         if existing:
-            m.update({k: v for k, v in existing.items() if k in ('key_news', 'status', 'odds') and v})
+            keep = (
+                'key_news', 'status', 'odds',
+                'home_score', 'away_score', 'our_scorers', 'unmatched_scorers',
+                'winner_team', 'played_date_beijing', 'source', 'stage',
+            )
+            m.update({k: v for k, v in existing.items() if k in keep and v is not None})
         if not m.get('key_news'):
             override = overrides.get(str(f['fixture_id']))
             if override:

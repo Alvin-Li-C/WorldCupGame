@@ -143,21 +143,23 @@ def _finished_matches(matches):
     ]
 
 
-def upsert_history(yesterday_block):
-    """Only persist days with at least one finished match."""
+def upsert_history_reports(finished_rows):
+    """Persist finished matches grouped by played_date_beijing (kickoff calendar day)."""
     idx = load_history_index()
     if 'reports' not in idx:
         idx['reports'] = {}
-    d = yesterday_block['date']
-    finished = _finished_matches(yesterday_block.get('matches'))
-    if finished:
+    by_date = {}
+    for row in finished_rows:
+        d = row.get('played_date_beijing') or (row.get('kickoff_beijing') or '').split(' ', 1)[0]
+        if not d:
+            continue
+        by_date.setdefault(d, []).append(row)
+    for d, matches in by_date.items():
         idx['reports'][d] = {
             'date': d,
-            'match_count': len(finished),
-            'matches': finished,
+            'match_count': len(matches),
+            'matches': matches,
         }
-    elif d in idx['reports']:
-        del idx['reports'][d]
     idx['dates'] = sorted(
         [day for day, rep in idx['reports'].items() if report_has_results(rep)],
         reverse=True,
@@ -246,7 +248,7 @@ def api_match_to_report(api_match, pair_index, team_map, selections):
     return row
 
 
-def build_yesterday_from_api(api_matches, date_str, fixtures, selections, team_map):
+def build_finished_from_api(api_matches, date_str, fixtures, selections, team_map):
     pair_index = fixture_pair_index(fixtures)
     reports = []
     for m in api_matches_on_beijing_date(api_matches, date_str):
@@ -254,6 +256,40 @@ def build_yesterday_from_api(api_matches, date_str, fixtures, selections, team_m
         if row:
             reports.append(row)
     return reports
+
+
+def collect_finished_results(api_matches, date_strings, fixtures, selections, team_map):
+    """Dedupe finished API rows across one or more Beijing calendar days."""
+    by_id = {}
+    for date_str in date_strings:
+        for row in build_finished_from_api(api_matches, date_str, fixtures, selections, team_map):
+            by_id[row['fixture_id']] = row
+    return list(by_id.values())
+
+
+def merge_finished_into_preview(preview_matches, finished_rows):
+    """Attach scores to preview rows when API reports FINISHED on the same fixture."""
+    by_id = {r['fixture_id']: r for r in finished_rows}
+    merged = []
+    for m in preview_matches:
+        row = dict(m)
+        fr = by_id.get(row.get('fixture_id'))
+        if fr:
+            row.update({
+                'home_score': fr['home_score'],
+                'away_score': fr['away_score'],
+                'status': 'finished',
+                'our_scorers': fr.get('our_scorers') or [],
+                'unmatched_scorers': fr.get('unmatched_scorers') or [],
+                'played_date_beijing': fr.get('played_date_beijing'),
+                'source': fr.get('source', 'football-data'),
+            })
+            if fr.get('winner_team'):
+                row['winner_team'] = fr['winner_team']
+            if fr.get('stage'):
+                row['stage'] = fr['stage']
+        merged.append(row)
+    return merged
 
 
 def build_yesterday_placeholder(fixtures, date_str):
@@ -312,11 +348,25 @@ def build_briefing(mock=False, skip_news=False):
     )
     print('build: fetching WC matches from football-data...', flush=True)
     api_matches = fetch_wc_matches(token, season=2026)
-    yesterday_matches = build_yesterday_from_api(
-        api_matches, yesterday_date, fixtures, selections, team_map,
+    # Include briefing_date: early-morning kickoffs (e.g. 03:00 BJ) belong to "today", not calendar yesterday.
+    finished_rows = collect_finished_results(
+        api_matches,
+        [yesterday_date, briefing_date],
+        fixtures,
+        selections,
+        team_map,
     )
-    if not yesterday_matches:
-        yesterday_matches = build_yesterday_placeholder(fixtures, yesterday_date)
+    if finished_rows:
+        by_day = {}
+        for row in finished_rows:
+            d = row.get('played_date_beijing') or ''
+            by_day[d] = by_day.get(d, 0) + 1
+        summary = ', '.join(f'{d} {n}' for d, n in sorted(by_day.items()))
+        print(f'build: API finished matches — {summary}', flush=True)
+    else:
+        print('build: API finished matches — none', flush=True)
+
+    yesterday_matches = build_yesterday_placeholder(fixtures, yesterday_date)
 
     preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
     prior_today_matches = (prior_latest.get('today') or {}).get('matches') or []
@@ -333,6 +383,7 @@ def build_briefing(mock=False, skip_news=False):
         skip_news=skip_news,
         prior_matches=prior_today_matches,
     )
+    today_matches = merge_finished_into_preview(today_matches, finished_rows)
     print(f'build: {len(today_matches)} preview matches, attaching odds...', flush=True)
     fixtures_by_id = {f['fixture_id']: f for f in fixtures}
     today_matches = attach_odds_to_matches(today_matches, fixtures_by_id, config)
@@ -353,8 +404,8 @@ def build_briefing(mock=False, skip_news=False):
         },
     }
     save_json(LATEST_PATH, briefing)
-    if _finished_matches(yesterday_matches):
-        upsert_history(briefing['yesterday'])
+    if finished_rows:
+        upsert_history_reports(finished_rows)
     archive = os.path.join(BRIEFING_DIR, f'{briefing_date}.json')
     save_json(archive, briefing)
     save_team_standings()

@@ -1,5 +1,28 @@
 {
-  "updated_at": "2026-06-08T20:45:38+08:00",
-  "dates": [],
-  "reports": {}
+  "updated_at": "2026-06-12T07:06:00+08:00",
+  "dates": [
+    "2026-06-12"
+  ],
+  "reports": {
+    "2026-06-12": {
+      "date": "2026-06-12",
+      "match_count": 1,
+      "matches": [
+        {
+          "fixture_id": 1,
+          "home_team": "墨西哥",
+          "away_team": "南非",
+          "home_score": 2,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "azteca.jpg",
+          "played_date_beijing": "2026-06-12",
+          "kickoff_beijing": "2026-06-12 03:00",
+          "our_scorers": [],
+          "unmatched_scorers": [],
+          "winner_team": "墨西哥"
+        }
+      ]
+    }
+  }
 }

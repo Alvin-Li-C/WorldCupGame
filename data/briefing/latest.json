@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-06-11T20:21:30+08:00",
+  "generated_at": "2026-06-12T07:05:53+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-11",
+  "briefing_date": "2026-06-12",
   "yesterday": {
-    "date": "2026-06-10",
+    "date": "2026-06-11",
     "matches": []
   },
   "today": {
     "date": "2026-06-12",
-    "is_next_matchday": true,
+    "is_next_matchday": false,
     "match_count": 2,
     "matches": [
       {
@@ -18,7 +18,7 @@
         "home_team": "墨西哥",
         "away_team": "南非",
         "kickoff_beijing": "2026-06-12 03:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "李总",
         "away_owner": "老闫",
         "key_news": [
@@ -27,38 +27,45 @@
             "team": "墨西哥",
             "category": "lineup",
             "category_label": "阵容",
-            "headline": "墨西哥vs南非开幕战前瞻：预计首发、预测与赔率",
+            "headline": "墨西哥vs南非揭幕战：预计首发、阵容与观赛信息",
             "impact": "high",
             "impact_score": 70,
             "source": "CBS Soccer",
-            "published_at": "Wed, 10 Jun 2026 13:57:22 +0000",
+            "published_at": "Thu, 11 Jun 2026 19:00:14 +0000",
             "url": "https://www.cbssports.com/soccer/news/mexico-vs-south-africa-preview-live-stream-how-to-watch-world-cup-predictions-odds-lineups/"
           },
           {
             "rank": 2,
-            "team": "南非",
+            "team": "墨西哥",
             "category": "form",
             "category_label": "状态",
-            "headline": "南非全队与球迷渴望复刻2010世界杯开幕战激情",
-            "impact": "medium",
-            "impact_score": 50,
-            "source": "懂球帝头条",
-            "published_at": "2028-06-10 20:00:00",
-            "url": "https://www.dongqiudi.com/article/5907920"
+            "headline": "阿吉雷麾下墨西哥队赛前状态火热，揭幕战欲强势开局",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Thu, 11 Jun 2026 13:10:32 +0000",
+            "url": "https://www.cbssports.com/soccer/news/fifa-world-cup-2026-mexico-what-to-watch/"
           },
           {
             "rank": 3,
             "team": "墨西哥",
             "category": "form",
             "category_label": "状态",
-            "headline": "墨西哥vs南非开幕战赔率与竞技状态预判",
+            "headline": "墨西哥vs南非揭幕战：赔率、预测与赛前走势分析",
             "impact": "medium",
             "impact_score": 70,
             "source": "CBS Soccer",
-            "published_at": "Thu, 11 Jun 2026 11:00:45 +0000",
+            "published_at": "Thu, 11 Jun 2026 19:00:18 +0000",
             "url": "https://www.cbssports.com/soccer/news/mexico-vs-south-africa-odds-picks-prediction-betting-preview-start-time-for-2026-world-cup-opener/"
           }
         ],
+        "home_score": 2,
+        "away_score": 0,
+        "our_scorers": [],
+        "unmatched_scorers": [],
+        "played_date_beijing": "2026-06-12",
+        "source": "football-data",
+        "winner_team": "墨西哥",
         "odds": {
           "home": 1.85,
           "draw": 3.4,
@@ -86,9 +93,21 @@
           {
             "rank": 1,
             "team": "韩国",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "韩国VS捷克赛前情报：裁判风格与双方核心数据对比",
+            "impact": "high",
+            "impact_score": 55,
+            "source": "懂球帝头条",
+            "published_at": "2030-06-11 03:31:37",
+            "url": "https://www.dongqiudi.com/article/5924024"
+          },
+          {
+            "rank": 2,
+            "team": "韩国",
             "category": "lineup",
             "category_label": "阵容",
-            "headline": "韩国vs捷克前瞻：预计首发、赔率与赛果预测",
+            "headline": "韩国vs捷克：预计首发、预测分析与赔率",
             "impact": "high",
             "impact_score": 70,
             "source": "CBS Soccer",
@@ -96,28 +115,16 @@
             "url": "https://www.cbssports.com/soccer/news/south-korea-vs-czechia-preview-live-stream-how-to-watch-fifa-world-cup-predictions-odds-and-lineups/"
           },
           {
-            "rank": 2,
-            "team": "捷克",
-            "category": "tactics",
-            "category_label": "战术",
-            "headline": "世界杯定位球时代：FIFA末段规则调整或影响角球与任意球战术部署",
-            "impact": "low",
-            "impact_score": 33,
-            "source": "CBS Soccer",
-            "published_at": "Wed, 10 Jun 2026 16:17:56 +0000",
-            "url": "https://www.cbssports.com/soccer/news/world-cups-set-piece-corner-kicks-fifa-rule-change/"
-          },
-          {
             "rank": 3,
-            "team": "捷克",
+            "team": "韩国",
             "category": "form",
             "category_label": "状态",
-            "headline": "希克入选周四世界杯任意时间进球热门选项，捷克锋线状态受关注",
+            "headline": "韩国队世界杯7胜中6场击败欧足联球队",
             "impact": "medium",
-            "impact_score": 33,
-            "source": "CBS Soccer",
-            "published_at": "Thu, 11 Jun 2026 11:30:42 +0000",
-            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-patrik-schick-among-thursdays-best-bets/"
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2026-06-12 06:37:25",
+            "url": "https://www.dongqiudi.com/article/5924373"
           }
         ],
         "odds": {
