@@ -9,6 +9,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from briefing.secrets import read_secret
+from briefing.fixture_stadiums import apply_stadium_to_fixture, apply_stadiums_to_fixtures, load_assignments
+from briefing.venue_travel import enrich_fixtures
 from briefing.stadium_assets import resolve_stadium_label, resolve_stadium_photo
 from briefing.time_utils import beijing_date_from_utc, beijing_datetime_str
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -89,7 +91,7 @@ def api_match_to_fixture(api_match, fixture_id, team_map):
     else:
         stadium, stadium_photo = stadium_for_group(group)
 
-    return {
+    row = {
         'fixture_id': fixture_id,
         'api_match_id': api_match.get('id'),
         'stage': stage,
@@ -108,7 +110,10 @@ def api_match_to_fixture(api_match, fixture_id, team_map):
         'stadium_photo': stadium_photo,
         'weather': '—',
         'temp': '—',
-    }, None
+    }
+    assignments = load_assignments()
+    row = apply_stadium_to_fixture(row, assignments)
+    return row, None
 
 
 def main():
@@ -146,11 +151,15 @@ def main():
             if 'unmapped' in e:
                 print(' ', e)
 
+    fixtures, _ = apply_stadiums_to_fixtures(fixtures)
+    fixtures = enrich_fixtures(fixtures)
+
     out = {
         'competition': 'FIFA World Cup 2026',
         'timezone': 'Asia/Shanghai',
         'source': 'football-data.org',
         'synced_from': 'GET /v4/competitions/WC/matches?season=2026',
+        'stadium_assignments': 'data/fixture_stadium_assignments.json',
         'fixtures': fixtures,
     }
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)

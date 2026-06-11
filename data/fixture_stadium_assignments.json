@@ -1,0 +1,1448 @@
+{
+  "source": "FIFA World Cup 2026 group stage (draw Dec 2025)",
+  "note": "Keyed by home|away CN team names; 72 group matches.",
+  "by_match": {
+    "墨西哥|南非": {
+      "official_match_no": 1,
+      "home_team": "墨西哥",
+      "away_team": "南非",
+      "home_team_api": "Mexico",
+      "away_team_api": "South Africa",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    "韩国|捷克": {
+      "official_match_no": 2,
+      "home_team": "韩国",
+      "away_team": "捷克",
+      "home_team_api": "Korea Republic",
+      "away_team_api": "Czechia",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    "加拿大|波黑": {
+      "official_match_no": 3,
+      "home_team": "加拿大",
+      "away_team": "波黑",
+      "home_team_api": "Canada",
+      "away_team_api": "Bosnia-Herzegovina",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    "美国|巴拉圭": {
+      "official_match_no": 4,
+      "home_team": "美国",
+      "away_team": "巴拉圭",
+      "home_team_api": "United States",
+      "away_team_api": "Paraguay",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    "海地|苏格兰": {
+      "official_match_no": 5,
+      "home_team": "海地",
+      "away_team": "苏格兰",
+      "home_team_api": "Haiti",
+      "away_team_api": "Scotland",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    "澳大利亚|土耳其": {
+      "official_match_no": 6,
+      "home_team": "澳大利亚",
+      "away_team": "土耳其",
+      "home_team_api": "Australia",
+      "away_team_api": "Turkey",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    "巴西|摩洛哥": {
+      "official_match_no": 7,
+      "home_team": "巴西",
+      "away_team": "摩洛哥",
+      "home_team_api": "Brazil",
+      "away_team_api": "Morocco",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    "卡塔尔|瑞士": {
+      "official_match_no": 8,
+      "home_team": "卡塔尔",
+      "away_team": "瑞士",
+      "home_team_api": "Qatar",
+      "away_team_api": "Switzerland",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    "科特迪瓦|厄瓜多尔": {
+      "official_match_no": 9,
+      "home_team": "科特迪瓦",
+      "away_team": "厄瓜多尔",
+      "home_team_api": "Ivory Coast",
+      "away_team_api": "Ecuador",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    "德国|库拉索": {
+      "official_match_no": 10,
+      "home_team": "德国",
+      "away_team": "库拉索",
+      "home_team_api": "Germany",
+      "away_team_api": "Curaçao",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    "荷兰|日本": {
+      "official_match_no": 11,
+      "home_team": "荷兰",
+      "away_team": "日本",
+      "home_team_api": "Netherlands",
+      "away_team_api": "Japan",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    "瑞典|突尼斯": {
+      "official_match_no": 12,
+      "home_team": "瑞典",
+      "away_team": "突尼斯",
+      "home_team_api": "Sweden",
+      "away_team_api": "Tunisia",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    "沙特|乌拉圭": {
+      "official_match_no": 13,
+      "home_team": "沙特",
+      "away_team": "乌拉圭",
+      "home_team_api": "Saudi Arabia",
+      "away_team_api": "Uruguay",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    "西班牙|佛得角": {
+      "official_match_no": 14,
+      "home_team": "西班牙",
+      "away_team": "佛得角",
+      "home_team_api": "Spain",
+      "away_team_api": "Cape Verde Islands",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    "伊朗|新西兰": {
+      "official_match_no": 15,
+      "home_team": "伊朗",
+      "away_team": "新西兰",
+      "home_team_api": "Iran",
+      "away_team_api": "New Zealand",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    "比利时|埃及": {
+      "official_match_no": 16,
+      "home_team": "比利时",
+      "away_team": "埃及",
+      "home_team_api": "Belgium",
+      "away_team_api": "Egypt",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    "法国|塞内加尔": {
+      "official_match_no": 17,
+      "home_team": "法国",
+      "away_team": "塞内加尔",
+      "home_team_api": "France",
+      "away_team_api": "Senegal",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    "伊拉克|挪威": {
+      "official_match_no": 18,
+      "home_team": "伊拉克",
+      "away_team": "挪威",
+      "home_team_api": "Iraq",
+      "away_team_api": "Norway",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    "阿根廷|阿尔及利亚": {
+      "official_match_no": 19,
+      "home_team": "阿根廷",
+      "away_team": "阿尔及利亚",
+      "home_team_api": "Argentina",
+      "away_team_api": "Algeria",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    "奥地利|约旦": {
+      "official_match_no": 20,
+      "home_team": "奥地利",
+      "away_team": "约旦",
+      "home_team_api": "Austria",
+      "away_team_api": "Jordan",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    "加纳|巴拿马": {
+      "official_match_no": 21,
+      "home_team": "加纳",
+      "away_team": "巴拿马",
+      "home_team_api": "Ghana",
+      "away_team_api": "Panama",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    "英格兰|克罗地亚": {
+      "official_match_no": 22,
+      "home_team": "英格兰",
+      "away_team": "克罗地亚",
+      "home_team_api": "England",
+      "away_team_api": "Croatia",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    "葡萄牙|刚果（金）": {
+      "official_match_no": 23,
+      "home_team": "葡萄牙",
+      "away_team": "刚果（金）",
+      "home_team_api": "Portugal",
+      "away_team_api": "Congo DR",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    "乌兹别克斯坦|哥伦比亚": {
+      "official_match_no": 24,
+      "home_team": "乌兹别克斯坦",
+      "away_team": "哥伦比亚",
+      "home_team_api": "Uzbekistan",
+      "away_team_api": "Colombia",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    "捷克|南非": {
+      "official_match_no": 25,
+      "home_team": "捷克",
+      "away_team": "南非",
+      "home_team_api": "Czechia",
+      "away_team_api": "South Africa",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    "瑞士|波黑": {
+      "official_match_no": 26,
+      "home_team": "瑞士",
+      "away_team": "波黑",
+      "home_team_api": "Switzerland",
+      "away_team_api": "Bosnia-Herzegovina",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    "加拿大|卡塔尔": {
+      "official_match_no": 27,
+      "home_team": "加拿大",
+      "away_team": "卡塔尔",
+      "home_team_api": "Canada",
+      "away_team_api": "Qatar",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    "墨西哥|韩国": {
+      "official_match_no": 28,
+      "home_team": "墨西哥",
+      "away_team": "韩国",
+      "home_team_api": "Mexico",
+      "away_team_api": "Korea Republic",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    "巴西|海地": {
+      "official_match_no": 29,
+      "home_team": "巴西",
+      "away_team": "海地",
+      "home_team_api": "Brazil",
+      "away_team_api": "Haiti",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    "苏格兰|摩洛哥": {
+      "official_match_no": 30,
+      "home_team": "苏格兰",
+      "away_team": "摩洛哥",
+      "home_team_api": "Scotland",
+      "away_team_api": "Morocco",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    "土耳其|巴拉圭": {
+      "official_match_no": 31,
+      "home_team": "土耳其",
+      "away_team": "巴拉圭",
+      "home_team_api": "Turkey",
+      "away_team_api": "Paraguay",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    "美国|澳大利亚": {
+      "official_match_no": 32,
+      "home_team": "美国",
+      "away_team": "澳大利亚",
+      "home_team_api": "United States",
+      "away_team_api": "Australia",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    "德国|科特迪瓦": {
+      "official_match_no": 33,
+      "home_team": "德国",
+      "away_team": "科特迪瓦",
+      "home_team_api": "Germany",
+      "away_team_api": "Ivory Coast",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    "厄瓜多尔|库拉索": {
+      "official_match_no": 34,
+      "home_team": "厄瓜多尔",
+      "away_team": "库拉索",
+      "home_team_api": "Ecuador",
+      "away_team_api": "Curaçao",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    "荷兰|瑞典": {
+      "official_match_no": 35,
+      "home_team": "荷兰",
+      "away_team": "瑞典",
+      "home_team_api": "Netherlands",
+      "away_team_api": "Sweden",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    "突尼斯|日本": {
+      "official_match_no": 36,
+      "home_team": "突尼斯",
+      "away_team": "日本",
+      "home_team_api": "Tunisia",
+      "away_team_api": "Japan",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    "乌拉圭|佛得角": {
+      "official_match_no": 37,
+      "home_team": "乌拉圭",
+      "away_team": "佛得角",
+      "home_team_api": "Uruguay",
+      "away_team_api": "Cape Verde Islands",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    "西班牙|沙特": {
+      "official_match_no": 38,
+      "home_team": "西班牙",
+      "away_team": "沙特",
+      "home_team_api": "Spain",
+      "away_team_api": "Saudi Arabia",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    "比利时|伊朗": {
+      "official_match_no": 39,
+      "home_team": "比利时",
+      "away_team": "伊朗",
+      "home_team_api": "Belgium",
+      "away_team_api": "Iran",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    "新西兰|埃及": {
+      "official_match_no": 40,
+      "home_team": "新西兰",
+      "away_team": "埃及",
+      "home_team_api": "New Zealand",
+      "away_team_api": "Egypt",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    "挪威|塞内加尔": {
+      "official_match_no": 41,
+      "home_team": "挪威",
+      "away_team": "塞内加尔",
+      "home_team_api": "Norway",
+      "away_team_api": "Senegal",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    "法国|伊拉克": {
+      "official_match_no": 42,
+      "home_team": "法国",
+      "away_team": "伊拉克",
+      "home_team_api": "France",
+      "away_team_api": "Iraq",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    "阿根廷|奥地利": {
+      "official_match_no": 43,
+      "home_team": "阿根廷",
+      "away_team": "奥地利",
+      "home_team_api": "Argentina",
+      "away_team_api": "Austria",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    "约旦|阿尔及利亚": {
+      "official_match_no": 44,
+      "home_team": "约旦",
+      "away_team": "阿尔及利亚",
+      "home_team_api": "Jordan",
+      "away_team_api": "Algeria",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    "英格兰|加纳": {
+      "official_match_no": 45,
+      "home_team": "英格兰",
+      "away_team": "加纳",
+      "home_team_api": "England",
+      "away_team_api": "Ghana",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    "巴拿马|克罗地亚": {
+      "official_match_no": 46,
+      "home_team": "巴拿马",
+      "away_team": "克罗地亚",
+      "home_team_api": "Panama",
+      "away_team_api": "Croatia",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    "葡萄牙|乌兹别克斯坦": {
+      "official_match_no": 47,
+      "home_team": "葡萄牙",
+      "away_team": "乌兹别克斯坦",
+      "home_team_api": "Portugal",
+      "away_team_api": "Uzbekistan",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    "哥伦比亚|刚果（金）": {
+      "official_match_no": 48,
+      "home_team": "哥伦比亚",
+      "away_team": "刚果（金）",
+      "home_team_api": "Colombia",
+      "away_team_api": "Congo DR",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    "苏格兰|巴西": {
+      "official_match_no": 49,
+      "home_team": "苏格兰",
+      "away_team": "巴西",
+      "home_team_api": "Scotland",
+      "away_team_api": "Brazil",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    "摩洛哥|海地": {
+      "official_match_no": 50,
+      "home_team": "摩洛哥",
+      "away_team": "海地",
+      "home_team_api": "Morocco",
+      "away_team_api": "Haiti",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    "瑞士|加拿大": {
+      "official_match_no": 51,
+      "home_team": "瑞士",
+      "away_team": "加拿大",
+      "home_team_api": "Switzerland",
+      "away_team_api": "Canada",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    "波黑|卡塔尔": {
+      "official_match_no": 52,
+      "home_team": "波黑",
+      "away_team": "卡塔尔",
+      "home_team_api": "Bosnia-Herzegovina",
+      "away_team_api": "Qatar",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    "捷克|墨西哥": {
+      "official_match_no": 53,
+      "home_team": "捷克",
+      "away_team": "墨西哥",
+      "home_team_api": "Czechia",
+      "away_team_api": "Mexico",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    "南非|韩国": {
+      "official_match_no": 54,
+      "home_team": "南非",
+      "away_team": "韩国",
+      "home_team_api": "South Africa",
+      "away_team_api": "Korea Republic",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    "库拉索|科特迪瓦": {
+      "official_match_no": 55,
+      "home_team": "库拉索",
+      "away_team": "科特迪瓦",
+      "home_team_api": "Curaçao",
+      "away_team_api": "Ivory Coast",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    "厄瓜多尔|德国": {
+      "official_match_no": 56,
+      "home_team": "厄瓜多尔",
+      "away_team": "德国",
+      "home_team_api": "Ecuador",
+      "away_team_api": "Germany",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    "日本|瑞典": {
+      "official_match_no": 57,
+      "home_team": "日本",
+      "away_team": "瑞典",
+      "home_team_api": "Japan",
+      "away_team_api": "Sweden",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    "突尼斯|荷兰": {
+      "official_match_no": 58,
+      "home_team": "突尼斯",
+      "away_team": "荷兰",
+      "home_team_api": "Tunisia",
+      "away_team_api": "Netherlands",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    "土耳其|美国": {
+      "official_match_no": 59,
+      "home_team": "土耳其",
+      "away_team": "美国",
+      "home_team_api": "Turkey",
+      "away_team_api": "United States",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    "巴拉圭|澳大利亚": {
+      "official_match_no": 60,
+      "home_team": "巴拉圭",
+      "away_team": "澳大利亚",
+      "home_team_api": "Paraguay",
+      "away_team_api": "Australia",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    "挪威|法国": {
+      "official_match_no": 61,
+      "home_team": "挪威",
+      "away_team": "法国",
+      "home_team_api": "Norway",
+      "away_team_api": "France",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    "塞内加尔|伊拉克": {
+      "official_match_no": 62,
+      "home_team": "塞内加尔",
+      "away_team": "伊拉克",
+      "home_team_api": "Senegal",
+      "away_team_api": "Iraq",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    "埃及|伊朗": {
+      "official_match_no": 63,
+      "home_team": "埃及",
+      "away_team": "伊朗",
+      "home_team_api": "Egypt",
+      "away_team_api": "Iran",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    "新西兰|比利时": {
+      "official_match_no": 64,
+      "home_team": "新西兰",
+      "away_team": "比利时",
+      "home_team_api": "New Zealand",
+      "away_team_api": "Belgium",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    "佛得角|沙特": {
+      "official_match_no": 65,
+      "home_team": "佛得角",
+      "away_team": "沙特",
+      "home_team_api": "Cape Verde Islands",
+      "away_team_api": "Saudi Arabia",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    "乌拉圭|西班牙": {
+      "official_match_no": 66,
+      "home_team": "乌拉圭",
+      "away_team": "西班牙",
+      "home_team_api": "Uruguay",
+      "away_team_api": "Spain",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    "巴拿马|英格兰": {
+      "official_match_no": 67,
+      "home_team": "巴拿马",
+      "away_team": "英格兰",
+      "home_team_api": "Panama",
+      "away_team_api": "England",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    "克罗地亚|加纳": {
+      "official_match_no": 68,
+      "home_team": "克罗地亚",
+      "away_team": "加纳",
+      "home_team_api": "Croatia",
+      "away_team_api": "Ghana",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    "阿尔及利亚|奥地利": {
+      "official_match_no": 69,
+      "home_team": "阿尔及利亚",
+      "away_team": "奥地利",
+      "home_team_api": "Algeria",
+      "away_team_api": "Austria",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    "约旦|阿根廷": {
+      "official_match_no": 70,
+      "home_team": "约旦",
+      "away_team": "阿根廷",
+      "home_team_api": "Jordan",
+      "away_team_api": "Argentina",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    "哥伦比亚|葡萄牙": {
+      "official_match_no": 71,
+      "home_team": "哥伦比亚",
+      "away_team": "葡萄牙",
+      "home_team_api": "Colombia",
+      "away_team_api": "Portugal",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    "刚果（金）|乌兹别克斯坦": {
+      "official_match_no": 72,
+      "home_team": "刚果（金）",
+      "away_team": "乌兹别克斯坦",
+      "home_team_api": "Congo DR",
+      "away_team_api": "Uzbekistan",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    }
+  },
+  "rows": [
+    {
+      "official_match_no": 1,
+      "home_team": "墨西哥",
+      "away_team": "南非",
+      "home_team_api": "Mexico",
+      "away_team_api": "South Africa",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    {
+      "official_match_no": 2,
+      "home_team": "韩国",
+      "away_team": "捷克",
+      "home_team_api": "Korea Republic",
+      "away_team_api": "Czechia",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    {
+      "official_match_no": 3,
+      "home_team": "加拿大",
+      "away_team": "波黑",
+      "home_team_api": "Canada",
+      "away_team_api": "Bosnia-Herzegovina",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    {
+      "official_match_no": 4,
+      "home_team": "美国",
+      "away_team": "巴拉圭",
+      "home_team_api": "United States",
+      "away_team_api": "Paraguay",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    {
+      "official_match_no": 5,
+      "home_team": "海地",
+      "away_team": "苏格兰",
+      "home_team_api": "Haiti",
+      "away_team_api": "Scotland",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    {
+      "official_match_no": 6,
+      "home_team": "澳大利亚",
+      "away_team": "土耳其",
+      "home_team_api": "Australia",
+      "away_team_api": "Turkey",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    {
+      "official_match_no": 7,
+      "home_team": "巴西",
+      "away_team": "摩洛哥",
+      "home_team_api": "Brazil",
+      "away_team_api": "Morocco",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    {
+      "official_match_no": 8,
+      "home_team": "卡塔尔",
+      "away_team": "瑞士",
+      "home_team_api": "Qatar",
+      "away_team_api": "Switzerland",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    {
+      "official_match_no": 9,
+      "home_team": "科特迪瓦",
+      "away_team": "厄瓜多尔",
+      "home_team_api": "Ivory Coast",
+      "away_team_api": "Ecuador",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    {
+      "official_match_no": 10,
+      "home_team": "德国",
+      "away_team": "库拉索",
+      "home_team_api": "Germany",
+      "away_team_api": "Curaçao",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    {
+      "official_match_no": 11,
+      "home_team": "荷兰",
+      "away_team": "日本",
+      "home_team_api": "Netherlands",
+      "away_team_api": "Japan",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    {
+      "official_match_no": 12,
+      "home_team": "瑞典",
+      "away_team": "突尼斯",
+      "home_team_api": "Sweden",
+      "away_team_api": "Tunisia",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    {
+      "official_match_no": 13,
+      "home_team": "沙特",
+      "away_team": "乌拉圭",
+      "home_team_api": "Saudi Arabia",
+      "away_team_api": "Uruguay",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    {
+      "official_match_no": 14,
+      "home_team": "西班牙",
+      "away_team": "佛得角",
+      "home_team_api": "Spain",
+      "away_team_api": "Cape Verde Islands",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    {
+      "official_match_no": 15,
+      "home_team": "伊朗",
+      "away_team": "新西兰",
+      "home_team_api": "Iran",
+      "away_team_api": "New Zealand",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    {
+      "official_match_no": 16,
+      "home_team": "比利时",
+      "away_team": "埃及",
+      "home_team_api": "Belgium",
+      "away_team_api": "Egypt",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    {
+      "official_match_no": 17,
+      "home_team": "法国",
+      "away_team": "塞内加尔",
+      "home_team_api": "France",
+      "away_team_api": "Senegal",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    {
+      "official_match_no": 18,
+      "home_team": "伊拉克",
+      "away_team": "挪威",
+      "home_team_api": "Iraq",
+      "away_team_api": "Norway",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    {
+      "official_match_no": 19,
+      "home_team": "阿根廷",
+      "away_team": "阿尔及利亚",
+      "home_team_api": "Argentina",
+      "away_team_api": "Algeria",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    {
+      "official_match_no": 20,
+      "home_team": "奥地利",
+      "away_team": "约旦",
+      "home_team_api": "Austria",
+      "away_team_api": "Jordan",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    {
+      "official_match_no": 21,
+      "home_team": "加纳",
+      "away_team": "巴拿马",
+      "home_team_api": "Ghana",
+      "away_team_api": "Panama",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    {
+      "official_match_no": 22,
+      "home_team": "英格兰",
+      "away_team": "克罗地亚",
+      "home_team_api": "England",
+      "away_team_api": "Croatia",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    {
+      "official_match_no": 23,
+      "home_team": "葡萄牙",
+      "away_team": "刚果（金）",
+      "home_team_api": "Portugal",
+      "away_team_api": "Congo DR",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    {
+      "official_match_no": 24,
+      "home_team": "乌兹别克斯坦",
+      "away_team": "哥伦比亚",
+      "home_team_api": "Uzbekistan",
+      "away_team_api": "Colombia",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    {
+      "official_match_no": 25,
+      "home_team": "捷克",
+      "away_team": "南非",
+      "home_team_api": "Czechia",
+      "away_team_api": "South Africa",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    {
+      "official_match_no": 26,
+      "home_team": "瑞士",
+      "away_team": "波黑",
+      "home_team_api": "Switzerland",
+      "away_team_api": "Bosnia-Herzegovina",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    {
+      "official_match_no": 27,
+      "home_team": "加拿大",
+      "away_team": "卡塔尔",
+      "home_team_api": "Canada",
+      "away_team_api": "Qatar",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    {
+      "official_match_no": 28,
+      "home_team": "墨西哥",
+      "away_team": "韩国",
+      "home_team_api": "Mexico",
+      "away_team_api": "Korea Republic",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    {
+      "official_match_no": 29,
+      "home_team": "巴西",
+      "away_team": "海地",
+      "home_team_api": "Brazil",
+      "away_team_api": "Haiti",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    {
+      "official_match_no": 30,
+      "home_team": "苏格兰",
+      "away_team": "摩洛哥",
+      "home_team_api": "Scotland",
+      "away_team_api": "Morocco",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    {
+      "official_match_no": 31,
+      "home_team": "土耳其",
+      "away_team": "巴拉圭",
+      "home_team_api": "Turkey",
+      "away_team_api": "Paraguay",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    {
+      "official_match_no": 32,
+      "home_team": "美国",
+      "away_team": "澳大利亚",
+      "home_team_api": "United States",
+      "away_team_api": "Australia",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    {
+      "official_match_no": 33,
+      "home_team": "德国",
+      "away_team": "科特迪瓦",
+      "home_team_api": "Germany",
+      "away_team_api": "Ivory Coast",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    {
+      "official_match_no": 34,
+      "home_team": "厄瓜多尔",
+      "away_team": "库拉索",
+      "home_team_api": "Ecuador",
+      "away_team_api": "Curaçao",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    {
+      "official_match_no": 35,
+      "home_team": "荷兰",
+      "away_team": "瑞典",
+      "home_team_api": "Netherlands",
+      "away_team_api": "Sweden",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    {
+      "official_match_no": 36,
+      "home_team": "突尼斯",
+      "away_team": "日本",
+      "home_team_api": "Tunisia",
+      "away_team_api": "Japan",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    {
+      "official_match_no": 37,
+      "home_team": "乌拉圭",
+      "away_team": "佛得角",
+      "home_team_api": "Uruguay",
+      "away_team_api": "Cape Verde Islands",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    {
+      "official_match_no": 38,
+      "home_team": "西班牙",
+      "away_team": "沙特",
+      "home_team_api": "Spain",
+      "away_team_api": "Saudi Arabia",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    {
+      "official_match_no": 39,
+      "home_team": "比利时",
+      "away_team": "伊朗",
+      "home_team_api": "Belgium",
+      "away_team_api": "Iran",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    {
+      "official_match_no": 40,
+      "home_team": "新西兰",
+      "away_team": "埃及",
+      "home_team_api": "New Zealand",
+      "away_team_api": "Egypt",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    {
+      "official_match_no": 41,
+      "home_team": "挪威",
+      "away_team": "塞内加尔",
+      "home_team_api": "Norway",
+      "away_team_api": "Senegal",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    {
+      "official_match_no": 42,
+      "home_team": "法国",
+      "away_team": "伊拉克",
+      "home_team_api": "France",
+      "away_team_api": "Iraq",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    {
+      "official_match_no": 43,
+      "home_team": "阿根廷",
+      "away_team": "奥地利",
+      "home_team_api": "Argentina",
+      "away_team_api": "Austria",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    {
+      "official_match_no": 44,
+      "home_team": "约旦",
+      "away_team": "阿尔及利亚",
+      "home_team_api": "Jordan",
+      "away_team_api": "Algeria",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    {
+      "official_match_no": 45,
+      "home_team": "英格兰",
+      "away_team": "加纳",
+      "home_team_api": "England",
+      "away_team_api": "Ghana",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    {
+      "official_match_no": 46,
+      "home_team": "巴拿马",
+      "away_team": "克罗地亚",
+      "home_team_api": "Panama",
+      "away_team_api": "Croatia",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    {
+      "official_match_no": 47,
+      "home_team": "葡萄牙",
+      "away_team": "乌兹别克斯坦",
+      "home_team_api": "Portugal",
+      "away_team_api": "Uzbekistan",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    {
+      "official_match_no": 48,
+      "home_team": "哥伦比亚",
+      "away_team": "刚果（金）",
+      "home_team_api": "Colombia",
+      "away_team_api": "Congo DR",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    {
+      "official_match_no": 49,
+      "home_team": "苏格兰",
+      "away_team": "巴西",
+      "home_team_api": "Scotland",
+      "away_team_api": "Brazil",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    {
+      "official_match_no": 50,
+      "home_team": "摩洛哥",
+      "away_team": "海地",
+      "home_team_api": "Morocco",
+      "away_team_api": "Haiti",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    },
+    {
+      "official_match_no": 51,
+      "home_team": "瑞士",
+      "away_team": "加拿大",
+      "home_team_api": "Switzerland",
+      "away_team_api": "Canada",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    {
+      "official_match_no": 52,
+      "home_team": "波黑",
+      "away_team": "卡塔尔",
+      "home_team_api": "Bosnia-Herzegovina",
+      "away_team_api": "Qatar",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    {
+      "official_match_no": 53,
+      "home_team": "捷克",
+      "away_team": "墨西哥",
+      "home_team_api": "Czechia",
+      "away_team_api": "Mexico",
+      "stadium_key": "azteca",
+      "stadium": "Estadio Azteca · Mexico City",
+      "stadium_photo": "azteca.jpg"
+    },
+    {
+      "official_match_no": 54,
+      "home_team": "南非",
+      "away_team": "韩国",
+      "home_team_api": "South Africa",
+      "away_team_api": "Korea Republic",
+      "stadium_key": "bbva",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg"
+    },
+    {
+      "official_match_no": 55,
+      "home_team": "库拉索",
+      "away_team": "科特迪瓦",
+      "home_team_api": "Curaçao",
+      "away_team_api": "Ivory Coast",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    {
+      "official_match_no": 56,
+      "home_team": "厄瓜多尔",
+      "away_team": "德国",
+      "home_team_api": "Ecuador",
+      "away_team_api": "Germany",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    {
+      "official_match_no": 57,
+      "home_team": "日本",
+      "away_team": "瑞典",
+      "home_team_api": "Japan",
+      "away_team_api": "Sweden",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    {
+      "official_match_no": 58,
+      "home_team": "突尼斯",
+      "away_team": "荷兰",
+      "home_team_api": "Tunisia",
+      "away_team_api": "Netherlands",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    {
+      "official_match_no": 59,
+      "home_team": "土耳其",
+      "away_team": "美国",
+      "home_team_api": "Turkey",
+      "away_team_api": "United States",
+      "stadium_key": "sofi",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg"
+    },
+    {
+      "official_match_no": 60,
+      "home_team": "巴拉圭",
+      "away_team": "澳大利亚",
+      "home_team_api": "Paraguay",
+      "away_team_api": "Australia",
+      "stadium_key": "levis",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg"
+    },
+    {
+      "official_match_no": 61,
+      "home_team": "挪威",
+      "away_team": "法国",
+      "home_team_api": "Norway",
+      "away_team_api": "France",
+      "stadium_key": "gillette",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg"
+    },
+    {
+      "official_match_no": 62,
+      "home_team": "塞内加尔",
+      "away_team": "伊拉克",
+      "home_team_api": "Senegal",
+      "away_team_api": "Iraq",
+      "stadium_key": "bmo",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg"
+    },
+    {
+      "official_match_no": 63,
+      "home_team": "埃及",
+      "away_team": "伊朗",
+      "home_team_api": "Egypt",
+      "away_team_api": "Iran",
+      "stadium_key": "lumen",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg"
+    },
+    {
+      "official_match_no": 64,
+      "home_team": "新西兰",
+      "away_team": "比利时",
+      "home_team_api": "New Zealand",
+      "away_team_api": "Belgium",
+      "stadium_key": "bcplace",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg"
+    },
+    {
+      "official_match_no": 65,
+      "home_team": "佛得角",
+      "away_team": "沙特",
+      "home_team_api": "Cape Verde Islands",
+      "away_team_api": "Saudi Arabia",
+      "stadium_key": "nrg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg"
+    },
+    {
+      "official_match_no": 66,
+      "home_team": "乌拉圭",
+      "away_team": "西班牙",
+      "home_team_api": "Uruguay",
+      "away_team_api": "Spain",
+      "stadium_key": "akron",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg"
+    },
+    {
+      "official_match_no": 67,
+      "home_team": "巴拿马",
+      "away_team": "英格兰",
+      "home_team_api": "Panama",
+      "away_team_api": "England",
+      "stadium_key": "metlife",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg"
+    },
+    {
+      "official_match_no": 68,
+      "home_team": "克罗地亚",
+      "away_team": "加纳",
+      "home_team_api": "Croatia",
+      "away_team_api": "Ghana",
+      "stadium_key": "lincoln",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg"
+    },
+    {
+      "official_match_no": 69,
+      "home_team": "阿尔及利亚",
+      "away_team": "奥地利",
+      "home_team_api": "Algeria",
+      "away_team_api": "Austria",
+      "stadium_key": "arrowhead",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg"
+    },
+    {
+      "official_match_no": 70,
+      "home_team": "约旦",
+      "away_team": "阿根廷",
+      "home_team_api": "Jordan",
+      "away_team_api": "Argentina",
+      "stadium_key": "att",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg"
+    },
+    {
+      "official_match_no": 71,
+      "home_team": "哥伦比亚",
+      "away_team": "葡萄牙",
+      "home_team_api": "Colombia",
+      "away_team_api": "Portugal",
+      "stadium_key": "hardrock",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg"
+    },
+    {
+      "official_match_no": 72,
+      "home_team": "刚果（金）",
+      "away_team": "乌兹别克斯坦",
+      "home_team_api": "Congo DR",
+      "away_team_api": "Uzbekistan",
+      "stadium_key": "mercedes_atlanta",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg"
+    }
+  ]
+}

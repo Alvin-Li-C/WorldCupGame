@@ -64,25 +64,25 @@
       "kickoff_beijing": "2026-06-12 10:00",
       "played_date": "2026-06-12",
       "utc_date": "2026-06-12T02:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "akron",
+        "altitude_m": 1560,
+        "altitude_tier": "high",
+        "altitude_label": "亚高原"
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 2500,
+        "distance_km": 2100,
         "q1_km": 0,
-        "q2_km": 2500,
+        "q2_km": 2100,
         "base_label": "洛杉矶大本营",
         "rest_days": null,
         "timezone_delta_h": 1,
-        "cumulative_km": 2500
+        "cumulative_km": 2100
       },
       "away_travel": {
         "label": "赛会首战",
@@ -110,35 +110,33 @@
       "kickoff_beijing": "2026-06-13 03:00",
       "played_date": "2026-06-13",
       "utc_date": "2026-06-12T19:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bmo",
+        "altitude_m": 90,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3500,
+        "label": "主场作战",
+        "distance_km": 0,
         "q1_km": 0,
-        "q2_km": 3500,
+        "q2_km": 0,
         "base_label": "多伦多大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3500
+        "cumulative_km": 0
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3900,
+        "distance_km": 500,
         "q1_km": 0,
-        "q2_km": 3900,
+        "q2_km": 500,
         "base_label": "费城大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3900
+        "cumulative_km": 500
       }
     },
     {
@@ -201,35 +199,35 @@
       "kickoff_beijing": "2026-06-14 03:00",
       "played_date": "2026-06-14",
       "utc_date": "2026-06-13T19:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "levis",
+        "altitude_m": 7,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 2200,
+        "distance_km": 2600,
         "q1_km": 0,
-        "q2_km": 2200,
+        "q2_km": 2600,
         "base_label": "休斯顿大本营",
         "rest_days": null,
         "timezone_delta_h": -2,
-        "cumulative_km": 2200
+        "cumulative_km": 2600
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3900,
+        "distance_km": 4000,
         "q1_km": 0,
-        "q2_km": 3900,
+        "q2_km": 4000,
         "base_label": "费城大本营",
         "rest_days": null,
         "timezone_delta_h": -3,
-        "cumulative_km": 3900
+        "cumulative_km": 4000
       }
     },
     {
@@ -247,35 +245,33 @@
       "kickoff_beijing": "2026-06-14 06:00",
       "played_date": "2026-06-14",
       "utc_date": "2026-06-13T22:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "metlife",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 2100,
+        "distance_km": 1800,
         "q1_km": 0,
-        "q2_km": 2100,
+        "q2_km": 1800,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2100
+        "cumulative_km": 1800
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3700,
+        "distance_km": 300,
         "q1_km": 0,
-        "q2_km": 3700,
+        "q2_km": 300,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3700
+        "cumulative_km": 300
       }
     },
     {
@@ -293,35 +289,33 @@
       "kickoff_beijing": "2026-06-14 09:00",
       "played_date": "2026-06-14",
       "utc_date": "2026-06-14T01:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "gillette",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 2100,
+        "distance_km": 2000,
         "q1_km": 0,
-        "q2_km": 2100,
+        "q2_km": 2000,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2100
+        "cumulative_km": 2000
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3700,
+        "distance_km": 0,
         "q1_km": 0,
-        "q2_km": 3700,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3700
+        "cumulative_km": 0
       }
     },
     {
@@ -339,6 +333,369 @@
       "kickoff_beijing": "2026-06-14 12:00",
       "played_date": "2026-06-14",
       "utc_date": "2026-06-14T04:00:00Z",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "bcplace",
+        "altitude_m": 4,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 1700,
+        "q1_km": 0,
+        "q2_km": 1700,
+        "base_label": "洛杉矶大本营",
+        "rest_days": null,
+        "cumulative_km": 1700
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2800,
+        "q1_km": 0,
+        "q2_km": 2800,
+        "base_label": "达拉斯大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2,
+        "cumulative_km": 2800
+      }
+    },
+    {
+      "fixture_id": 9,
+      "api_match_id": 537351,
+      "stage": "group",
+      "group": "E",
+      "matchday": 1,
+      "home_team": "德国",
+      "away_team": "库拉索",
+      "home_team_api": "Germany",
+      "away_team_api": "Curaçao",
+      "home_flag": "de",
+      "away_flag": "cw",
+      "kickoff_beijing": "2026-06-15 01:00",
+      "played_date": "2026-06-15",
+      "utc_date": "2026-06-14T17:00:00Z",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "nrg",
+        "altitude_m": 15,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1,
+        "cumulative_km": 2200
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1600,
+        "q1_km": 0,
+        "q2_km": 1600,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1,
+        "cumulative_km": 1600
+      }
+    },
+    {
+      "fixture_id": 10,
+      "api_match_id": 537357,
+      "stage": "group",
+      "group": "F",
+      "matchday": 1,
+      "home_team": "荷兰",
+      "away_team": "日本",
+      "home_team_api": "Netherlands",
+      "away_team_api": "Japan",
+      "home_flag": "nl",
+      "away_flag": "jp",
+      "kickoff_beijing": "2026-06-15 04:00",
+      "played_date": "2026-06-15",
+      "utc_date": "2026-06-14T20:00:00Z",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "att",
+        "altitude_m": 180,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2100,
+        "q1_km": 0,
+        "q2_km": 2100,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -1,
+        "cumulative_km": 2100
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2700,
+        "q1_km": 0,
+        "q2_km": 2700,
+        "base_label": "西雅图大本营",
+        "rest_days": null,
+        "timezone_delta_h": 2,
+        "cumulative_km": 2700
+      }
+    },
+    {
+      "fixture_id": 11,
+      "api_match_id": 537352,
+      "stage": "group",
+      "group": "E",
+      "matchday": 1,
+      "home_team": "科特迪瓦",
+      "away_team": "厄瓜多尔",
+      "home_team_api": "Ivory Coast",
+      "away_team_api": "Ecuador",
+      "home_flag": "ci",
+      "away_flag": "ec",
+      "kickoff_beijing": "2026-06-15 07:00",
+      "played_date": "2026-06-15",
+      "utc_date": "2026-06-14T23:00:00Z",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "lincoln",
+        "altitude_m": 12,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 1100,
+        "q1_km": 0,
+        "q2_km": 1100,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "cumulative_km": 1100
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2200,
+        "q1_km": 0,
+        "q2_km": 2200,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1,
+        "cumulative_km": 2200
+      }
+    },
+    {
+      "fixture_id": 12,
+      "api_match_id": 537358,
+      "stage": "group",
+      "group": "F",
+      "matchday": 1,
+      "home_team": "瑞典",
+      "away_team": "突尼斯",
+      "home_team_api": "Sweden",
+      "away_team_api": "Tunisia",
+      "home_flag": "se",
+      "away_flag": "tn",
+      "kickoff_beijing": "2026-06-15 10:00",
+      "played_date": "2026-06-15",
+      "utc_date": "2026-06-15T02:00:00Z",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "bbva",
+        "altitude_m": 540,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 2800,
+        "q1_km": 0,
+        "q2_km": 2800,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2,
+        "cumulative_km": 2800
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 2800,
+        "q1_km": 0,
+        "q2_km": 2800,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2,
+        "cumulative_km": 2800
+      }
+    },
+    {
+      "fixture_id": 13,
+      "api_match_id": 537369,
+      "stage": "group",
+      "group": "H",
+      "matchday": 1,
+      "home_team": "西班牙",
+      "away_team": "佛得角",
+      "home_team_api": "Spain",
+      "away_team_api": "Cape Verde Islands",
+      "home_flag": "es",
+      "away_flag": "cv",
+      "kickoff_beijing": "2026-06-16 00:00",
+      "played_date": "2026-06-16",
+      "utc_date": "2026-06-15T16:00:00Z",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "mercedes_atlanta",
+        "altitude_m": 320,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "主场作战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "亚特兰大大本营",
+        "rest_days": null,
+        "cumulative_km": 0
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1000,
+        "q1_km": 0,
+        "q2_km": 1000,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "cumulative_km": 1000
+      }
+    },
+    {
+      "fixture_id": 14,
+      "api_match_id": 537363,
+      "stage": "group",
+      "group": "G",
+      "matchday": 1,
+      "home_team": "比利时",
+      "away_team": "埃及",
+      "home_team_api": "Belgium",
+      "away_team_api": "Egypt",
+      "home_flag": "be",
+      "away_flag": "eg",
+      "kickoff_beijing": "2026-06-16 03:00",
+      "played_date": "2026-06-16",
+      "utc_date": "2026-06-15T19:00:00Z",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "lumen",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 3800,
+        "q1_km": 0,
+        "q2_km": 3800,
+        "base_label": "费城大本营",
+        "rest_days": null,
+        "timezone_delta_h": -3,
+        "cumulative_km": 3800
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 3000,
+        "q1_km": 0,
+        "q2_km": 3000,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": -2,
+        "cumulative_km": 3000
+      }
+    },
+    {
+      "fixture_id": 15,
+      "api_match_id": 537370,
+      "stage": "group",
+      "group": "H",
+      "matchday": 1,
+      "home_team": "沙特",
+      "away_team": "乌拉圭",
+      "home_team_api": "Saudi Arabia",
+      "away_team_api": "Uruguay",
+      "home_flag": "sa",
+      "away_flag": "uy",
+      "kickoff_beijing": "2026-06-16 06:00",
+      "played_date": "2026-06-16",
+      "utc_date": "2026-06-15T22:00:00Z",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg",
+      "weather": "—",
+      "temp": "—",
+      "venue_context": {
+        "stadium_key": "hardrock",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
+      },
+      "home_travel": {
+        "label": "赛会首战",
+        "distance_km": 1500,
+        "q1_km": 0,
+        "q2_km": 1500,
+        "base_label": "休斯顿大本营",
+        "rest_days": null,
+        "timezone_delta_h": 1,
+        "cumulative_km": 1500
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
+        "base_label": "迈阿密大本营",
+        "rest_days": null,
+        "cumulative_km": 0
+      }
+    },
+    {
+      "fixture_id": 16,
+      "api_match_id": 537364,
+      "stage": "group",
+      "group": "G",
+      "matchday": 1,
+      "home_team": "伊朗",
+      "away_team": "新西兰",
+      "home_team_api": "Iran",
+      "away_team_api": "New Zealand",
+      "home_flag": "ir",
+      "away_flag": "nz",
+      "kickoff_beijing": "2026-06-16 09:00",
+      "played_date": "2026-06-16",
+      "utc_date": "2026-06-16T01:00:00Z",
       "stadium": "SoFi Stadium · Los Angeles",
       "stadium_photo": "sofi.jpg",
       "weather": "—",
@@ -360,380 +717,12 @@
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2000,
+        "distance_km": 1700,
         "q1_km": 0,
-        "q2_km": 2000,
-        "base_label": "达拉斯大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2000
-      }
-    },
-    {
-      "fixture_id": 9,
-      "api_match_id": 537351,
-      "stage": "group",
-      "group": "E",
-      "matchday": 1,
-      "home_team": "德国",
-      "away_team": "库拉索",
-      "home_team_api": "Germany",
-      "away_team_api": "Curaçao",
-      "home_flag": "de",
-      "away_flag": "cw",
-      "kickoff_beijing": "2026-06-15 01:00",
-      "played_date": "2026-06-15",
-      "utc_date": "2026-06-14T17:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3200,
-        "q1_km": 0,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3200
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 2100,
-        "q1_km": 0,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2100
-      }
-    },
-    {
-      "fixture_id": 10,
-      "api_match_id": 537357,
-      "stage": "group",
-      "group": "F",
-      "matchday": 1,
-      "home_team": "荷兰",
-      "away_team": "日本",
-      "home_team_api": "Netherlands",
-      "away_team_api": "Japan",
-      "home_flag": "nl",
-      "away_flag": "jp",
-      "kickoff_beijing": "2026-06-15 04:00",
-      "played_date": "2026-06-15",
-      "utc_date": "2026-06-14T20:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
-        "altitude_tier": "normal",
-        "altitude_label": null
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3900,
-        "q1_km": 0,
-        "q2_km": 3900,
-        "base_label": "费城大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3900
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 1600,
-        "q1_km": 0,
-        "q2_km": 1600,
-        "base_label": "西雅图大本营",
-        "rest_days": null,
-        "cumulative_km": 1600
-      }
-    },
-    {
-      "fixture_id": 11,
-      "api_match_id": 537352,
-      "stage": "group",
-      "group": "E",
-      "matchday": 1,
-      "home_team": "科特迪瓦",
-      "away_team": "厄瓜多尔",
-      "home_team_api": "Ivory Coast",
-      "away_team_api": "Ecuador",
-      "home_flag": "ci",
-      "away_flag": "ec",
-      "kickoff_beijing": "2026-06-15 07:00",
-      "played_date": "2026-06-15",
-      "utc_date": "2026-06-14T23:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2200,
-        "q1_km": 0,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2200
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 1200,
-        "q1_km": 0,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": null,
-        "timezone_delta_h": -1,
-        "cumulative_km": 1200
-      }
-    },
-    {
-      "fixture_id": 12,
-      "api_match_id": 537358,
-      "stage": "group",
-      "group": "F",
-      "matchday": 1,
-      "home_team": "瑞典",
-      "away_team": "突尼斯",
-      "home_team_api": "Sweden",
-      "away_team_api": "Tunisia",
-      "home_flag": "se",
-      "away_flag": "tn",
-      "kickoff_beijing": "2026-06-15 10:00",
-      "played_date": "2026-06-15",
-      "utc_date": "2026-06-15T02:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
-        "altitude_tier": "normal",
-        "altitude_label": null
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3900,
-        "q1_km": 0,
-        "q2_km": 3900,
-        "base_label": "费城大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3900
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 3900,
-        "q1_km": 0,
-        "q2_km": 3900,
-        "base_label": "费城大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3900
-      }
-    },
-    {
-      "fixture_id": 13,
-      "api_match_id": 537369,
-      "stage": "group",
-      "group": "H",
-      "matchday": 1,
-      "home_team": "西班牙",
-      "away_team": "佛得角",
-      "home_team_api": "Spain",
-      "away_team_api": "Cape Verde Islands",
-      "home_flag": "es",
-      "away_flag": "cv",
-      "kickoff_beijing": "2026-06-16 00:00",
-      "played_date": "2026-06-16",
-      "utc_date": "2026-06-15T16:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
-        "altitude_tier": "normal",
-        "altitude_label": null
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3100,
-        "q1_km": 0,
-        "q2_km": 3100,
-        "base_label": "亚特兰大大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3100
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 3800,
-        "q1_km": 0,
-        "q2_km": 3800,
-        "base_label": "迈阿密大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3800
-      }
-    },
-    {
-      "fixture_id": 14,
-      "api_match_id": 537363,
-      "stage": "group",
-      "group": "G",
-      "matchday": 1,
-      "home_team": "比利时",
-      "away_team": "埃及",
-      "home_team_api": "Belgium",
-      "away_team_api": "Egypt",
-      "home_flag": "be",
-      "away_flag": "eg",
-      "kickoff_beijing": "2026-06-16 03:00",
-      "played_date": "2026-06-16",
-      "utc_date": "2026-06-15T19:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3200,
-        "q1_km": 0,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3200
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 1200,
-        "q1_km": 0,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": null,
-        "timezone_delta_h": -1,
-        "cumulative_km": 1200
-      }
-    },
-    {
-      "fixture_id": 15,
-      "api_match_id": 537370,
-      "stage": "group",
-      "group": "H",
-      "matchday": 1,
-      "home_team": "沙特",
-      "away_team": "乌拉圭",
-      "home_team_api": "Saudi Arabia",
-      "away_team_api": "Uruguay",
-      "home_flag": "sa",
-      "away_flag": "uy",
-      "kickoff_beijing": "2026-06-16 06:00",
-      "played_date": "2026-06-16",
-      "utc_date": "2026-06-15T22:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
-        "altitude_tier": "normal",
-        "altitude_label": null
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2200,
-        "q1_km": 0,
-        "q2_km": 2200,
-        "base_label": "休斯顿大本营",
-        "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2200
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 3800,
-        "q1_km": 0,
-        "q2_km": 3800,
-        "base_label": "迈阿密大本营",
-        "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3800
-      }
-    },
-    {
-      "fixture_id": 16,
-      "api_match_id": 537364,
-      "stage": "group",
-      "group": "G",
-      "matchday": 1,
-      "home_team": "伊朗",
-      "away_team": "新西兰",
-      "home_team_api": "Iran",
-      "away_team_api": "New Zealand",
-      "home_flag": "ir",
-      "away_flag": "nz",
-      "kickoff_beijing": "2026-06-16 09:00",
-      "played_date": "2026-06-16",
-      "utc_date": "2026-06-16T01:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
-      "weather": "—",
-      "temp": "—",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
-      "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2500,
-        "q1_km": 0,
-        "q2_km": 2500,
-        "base_label": "洛杉矶大本营",
-        "rest_days": null,
-        "timezone_delta_h": 1,
-        "cumulative_km": 2500
-      },
-      "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 4000,
-        "q1_km": 0,
-        "q2_km": 4000,
+        "q2_km": 1700,
         "base_label": "温哥华大本营",
         "rest_days": null,
-        "timezone_delta_h": 1,
-        "cumulative_km": 4000
+        "cumulative_km": 1700
       }
     },
     {
@@ -751,35 +740,33 @@
       "kickoff_beijing": "2026-06-17 03:00",
       "played_date": "2026-06-17",
       "utc_date": "2026-06-16T19:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "metlife",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 3700,
+        "distance_km": 300,
         "q1_km": 0,
-        "q2_km": 3700,
+        "q2_km": 300,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3700
+        "cumulative_km": 300
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2200,
+        "distance_km": 1200,
         "q1_km": 0,
-        "q2_km": 2200,
+        "q2_km": 1200,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2200
+        "cumulative_km": 1200
       }
     },
     {
@@ -797,35 +784,34 @@
       "kickoff_beijing": "2026-06-17 06:00",
       "played_date": "2026-06-17",
       "utc_date": "2026-06-16T22:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "gillette",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 1200,
+        "distance_km": 2600,
         "q1_km": 0,
-        "q2_km": 1200,
+        "q2_km": 2600,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -1,
-        "cumulative_km": 1200
+        "timezone_delta_h": 1,
+        "cumulative_km": 2600
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3700,
+        "distance_km": 0,
         "q1_km": 0,
-        "q2_km": 3700,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 3700
+        "cumulative_km": 0
       }
     },
     {
@@ -843,35 +829,34 @@
       "kickoff_beijing": "2026-06-17 09:00",
       "played_date": "2026-06-17",
       "utc_date": "2026-06-17T01:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "arrowhead",
+        "altitude_m": 270,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 3800,
+        "distance_km": 2000,
         "q1_km": 0,
-        "q2_km": 3800,
+        "q2_km": 2000,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3800
+        "timezone_delta_h": -1,
+        "cumulative_km": 2000
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2200,
+        "distance_km": 1000,
         "q1_km": 0,
-        "q2_km": 2200,
+        "q2_km": 1000,
         "base_label": "休斯顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2200
+        "cumulative_km": 1000
       }
     },
     {
@@ -889,35 +874,35 @@
       "kickoff_beijing": "2026-06-17 12:00",
       "played_date": "2026-06-17",
       "utc_date": "2026-06-17T04:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "levis",
+        "altitude_m": 7,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 3900,
+        "distance_km": 4000,
         "q1_km": 0,
-        "q2_km": 3900,
+        "q2_km": 4000,
         "base_label": "费城大本营",
         "rest_days": null,
         "timezone_delta_h": -3,
-        "cumulative_km": 3900
+        "cumulative_km": 4000
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2200,
+        "distance_km": 2600,
         "q1_km": 0,
-        "q2_km": 2200,
+        "q2_km": 2600,
         "base_label": "休斯顿大本营",
         "rest_days": null,
         "timezone_delta_h": -2,
-        "cumulative_km": 2200
+        "cumulative_km": 2600
       }
     },
     {
@@ -935,35 +920,35 @@
       "kickoff_beijing": "2026-06-18 01:00",
       "played_date": "2026-06-18",
       "utc_date": "2026-06-17T17:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "nrg",
+        "altitude_m": 15,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 2100,
+        "distance_km": 1600,
         "q1_km": 0,
-        "q2_km": 2100,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2100
+        "timezone_delta_h": -1,
+        "cumulative_km": 1600
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2200,
+        "distance_km": 1100,
         "q1_km": 0,
-        "q2_km": 2200,
+        "q2_km": 1100,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2200
+        "timezone_delta_h": -1,
+        "cumulative_km": 1100
       }
     },
     {
@@ -981,35 +966,34 @@
       "kickoff_beijing": "2026-06-18 04:00",
       "played_date": "2026-06-18",
       "utc_date": "2026-06-17T20:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "att",
+        "altitude_m": 180,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 4200,
+        "distance_km": 2500,
         "q1_km": 0,
-        "q2_km": 4200,
+        "q2_km": 2500,
         "base_label": "波士顿大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 4200
+        "timezone_delta_h": -1,
+        "cumulative_km": 2500
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 2000,
+        "distance_km": 0,
         "q1_km": 0,
-        "q2_km": 2000,
+        "q2_km": 0,
         "base_label": "达拉斯大本营",
         "rest_days": null,
-        "timezone_delta_h": -2,
-        "cumulative_km": 2000
+        "cumulative_km": 0
       }
     },
     {
@@ -1027,35 +1011,33 @@
       "kickoff_beijing": "2026-06-18 07:00",
       "played_date": "2026-06-18",
       "utc_date": "2026-06-17T23:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bmo",
+        "altitude_m": 90,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 3100,
+        "distance_km": 1200,
         "q1_km": 0,
-        "q2_km": 3100,
+        "q2_km": 1200,
         "base_label": "亚特兰大大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3100
+        "cumulative_km": 1200
       },
       "away_travel": {
         "label": "赛会首战",
-        "distance_km": 3800,
+        "distance_km": 2000,
         "q1_km": 0,
-        "q2_km": 3800,
+        "q2_km": 2000,
         "base_label": "迈阿密大本营",
         "rest_days": null,
-        "timezone_delta_h": -3,
-        "cumulative_km": 3800
+        "cumulative_km": 2000
       }
     },
     {
@@ -1119,33 +1101,35 @@
       "kickoff_beijing": "2026-06-19 00:00",
       "played_date": "2026-06-19",
       "utc_date": "2026-06-18T16:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "mercedes_atlanta",
+        "altitude_m": 320,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
+        "label": "远征 3300km",
+        "distance_km": 3300,
         "q1_km": 2200,
-        "q2_km": 2200,
+        "q2_km": 1100,
         "base_label": "堪萨斯城大本营",
         "rest_days": 7,
-        "cumulative_km": 6600
+        "timezone_delta_h": 2,
+        "cumulative_km": 5500
       },
       "away_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
+        "label": "远征 2300km",
+        "distance_km": 2300,
         "q1_km": 1200,
-        "q2_km": 1200,
+        "q2_km": 1100,
         "base_label": "休斯顿大本营",
         "rest_days": 7,
-        "cumulative_km": 3600
+        "timezone_delta_h": 2,
+        "cumulative_km": 3500
       }
     },
     {
@@ -1174,22 +1158,23 @@
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
+        "label": "远征 7900km · 往返大本营",
+        "distance_km": 7900,
+        "q1_km": 4000,
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 11700
+        "cumulative_km": 11900
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
+        "label": "远征 4400km",
+        "distance_km": 4400,
+        "q1_km": 500,
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 11700
+        "timezone_delta_h": -3,
+        "cumulative_km": 4900
       }
     },
     {
@@ -1207,33 +1192,34 @@
       "kickoff_beijing": "2026-06-19 06:00",
       "played_date": "2026-06-19",
       "utc_date": "2026-06-18T22:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bcplace",
+        "altitude_m": 4,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7000km · 往返大本营",
-        "distance_km": 7000,
-        "q1_km": 3500,
-        "q2_km": 3500,
+        "label": "赛会首战",
+        "distance_km": 3400,
+        "q1_km": 0,
+        "q2_km": 3400,
         "base_label": "多伦多大本营",
         "rest_days": 6,
-        "cumulative_km": 10500
+        "timezone_delta_h": -3,
+        "cumulative_km": 3400
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 5800km · 往返大本营",
+        "distance_km": 5800,
+        "q1_km": 2600,
+        "q2_km": 3200,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 6600
+        "cumulative_km": 8400
       }
     },
     {
@@ -1251,33 +1237,33 @@
       "kickoff_beijing": "2026-06-19 09:00",
       "played_date": "2026-06-19",
       "utc_date": "2026-06-19T01:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "akron",
+        "altitude_m": 1560,
+        "altitude_tier": "high",
+        "altitude_label": "亚高原"
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 0,
+        "distance_km": 500,
         "q1_km": 0,
-        "q2_km": 0,
+        "q2_km": 500,
         "base_label": "墨西哥城大本营",
         "rest_days": 7,
-        "cumulative_km": 0
+        "cumulative_km": 500
       },
       "away_travel": {
-        "label": "远征 5000km · 往返大本营",
-        "distance_km": 5000,
-        "q1_km": 2500,
-        "q2_km": 2500,
+        "label": "远征 4200km · 往返大本营",
+        "distance_km": 4200,
+        "q1_km": 2100,
+        "q2_km": 2100,
         "base_label": "洛杉矶大本营",
         "rest_days": 7,
-        "cumulative_km": 7500
+        "cumulative_km": 6300
       }
     },
     {
@@ -1295,33 +1281,33 @@
       "kickoff_beijing": "2026-06-20 03:00",
       "played_date": "2026-06-20",
       "utc_date": "2026-06-19T19:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "lumen",
+        "altitude_m": 50,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "赛会首战",
-        "distance_km": 0,
+        "distance_km": 1500,
         "q1_km": 0,
-        "q2_km": 0,
+        "q2_km": 1500,
         "base_label": "洛杉矶大本营",
         "rest_days": 7,
-        "cumulative_km": 0
+        "cumulative_km": 1500
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 0,
-        "q1_km": 0,
-        "q2_km": 0,
+        "label": "远征 3200km · 往返大本营",
+        "distance_km": 3200,
+        "q1_km": 1700,
+        "q2_km": 1500,
         "base_label": "洛杉矶大本营",
         "rest_days": 6,
-        "cumulative_km": 0
+        "cumulative_km": 4900
       }
     },
     {
@@ -1339,33 +1325,33 @@
       "kickoff_beijing": "2026-06-20 06:00",
       "played_date": "2026-06-20",
       "utc_date": "2026-06-19T22:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "gillette",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": 6,
-        "cumulative_km": 11100
+        "cumulative_km": 0
       },
       "away_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "短途 300km",
+        "distance_km": 300,
+        "q1_km": 300,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": 6,
-        "cumulative_km": 11100
+        "cumulative_km": 600
       }
     },
     {
@@ -1383,33 +1369,33 @@
       "kickoff_beijing": "2026-06-20 08:30",
       "played_date": "2026-06-20",
       "utc_date": "2026-06-20T00:30:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "lincoln",
+        "altitude_m": 12,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 3400km · 往返大本营",
+        "distance_km": 3400,
+        "q1_km": 1800,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 6300
+        "cumulative_km": 5200
       },
       "away_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 3600km · 往返大本营",
+        "distance_km": 3600,
+        "q1_km": 2000,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 6300
+        "cumulative_km": 5600
       }
     },
     {
@@ -1427,33 +1413,33 @@
       "kickoff_beijing": "2026-06-20 11:00",
       "played_date": "2026-06-20",
       "utc_date": "2026-06-20T03:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "levis",
+        "altitude_m": 7,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4000km · 往返大本营",
-        "distance_km": 4000,
-        "q1_km": 2000,
-        "q2_km": 2000,
+        "label": "远征 5100km · 往返大本营",
+        "distance_km": 5100,
+        "q1_km": 2800,
+        "q2_km": 2300,
         "base_label": "达拉斯大本营",
         "rest_days": 6,
-        "cumulative_km": 6000
+        "cumulative_km": 7900
       },
       "away_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
+        "label": "远征 7900km · 往返大本营",
+        "distance_km": 7900,
         "q1_km": 3800,
-        "q2_km": 3800,
+        "q2_km": 4100,
         "base_label": "迈阿密大本营",
         "rest_days": 7,
-        "cumulative_km": 11400
+        "cumulative_km": 11700
       }
     },
     {
@@ -1471,33 +1457,34 @@
       "kickoff_beijing": "2026-06-21 01:00",
       "played_date": "2026-06-21",
       "utc_date": "2026-06-20T17:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "nrg",
+        "altitude_m": 15,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 4300km · 往返大本营",
+        "distance_km": 4300,
+        "q1_km": 2100,
+        "q2_km": 2200,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 11700
+        "cumulative_km": 6400
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 5000km · 往返大本营",
+        "distance_km": 5000,
+        "q1_km": 2800,
+        "q2_km": 2200,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 11700
+        "timezone_delta_h": 1,
+        "cumulative_km": 7800
       }
     },
     {
@@ -1515,33 +1502,34 @@
       "kickoff_beijing": "2026-06-21 04:00",
       "played_date": "2026-06-21",
       "utc_date": "2026-06-20T20:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "bmo",
+        "altitude_m": 90,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 6400km · 往返大本营",
-        "distance_km": 6400,
-        "q1_km": 3200,
-        "q2_km": 3200,
+        "label": "远征 2700km",
+        "distance_km": 2700,
+        "q1_km": 2200,
+        "q2_km": 500,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 9600
+        "timezone_delta_h": 1,
+        "cumulative_km": 4900
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 2300km",
+        "distance_km": 2300,
+        "q1_km": 1100,
+        "q2_km": 1200,
         "base_label": "亚特兰大大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "cumulative_km": 3400
       }
     },
     {
@@ -1559,33 +1547,34 @@
       "kickoff_beijing": "2026-06-21 08:00",
       "played_date": "2026-06-21",
       "utc_date": "2026-06-21T00:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "arrowhead",
+        "altitude_m": 270,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 3200km",
+        "distance_km": 3200,
+        "q1_km": 2200,
+        "q2_km": 1000,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 3600
+        "timezone_delta_h": -1,
+        "cumulative_km": 5400
       },
       "away_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 3600km · 往返大本营",
+        "distance_km": 3600,
+        "q1_km": 1600,
+        "q2_km": 2000,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 6300
+        "cumulative_km": 5200
       }
     },
     {
@@ -1603,33 +1592,34 @@
       "kickoff_beijing": "2026-06-21 12:00",
       "played_date": "2026-06-21",
       "utc_date": "2026-06-21T04:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bbva",
+        "altitude_m": 540,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 5600km · 往返大本营",
+        "distance_km": 5600,
+        "q1_km": 2800,
+        "q2_km": 2800,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 11700
+        "cumulative_km": 8400
       },
       "away_travel": {
-        "label": "远征 3200km · 往返大本营",
-        "distance_km": 3200,
-        "q1_km": 1600,
-        "q2_km": 1600,
+        "label": "远征 5800km · 往返大本营",
+        "distance_km": 5800,
+        "q1_km": 2700,
+        "q2_km": 3100,
         "base_label": "西雅图大本营",
         "rest_days": 6,
-        "cumulative_km": 4800
+        "timezone_delta_h": -1,
+        "cumulative_km": 8500
       }
     },
     {
@@ -1647,33 +1637,33 @@
       "kickoff_beijing": "2026-06-22 00:00",
       "played_date": "2026-06-22",
       "utc_date": "2026-06-21T16:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "mercedes_atlanta",
+        "altitude_m": 320,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 6200km · 往返大本营",
-        "distance_km": 6200,
-        "q1_km": 3100,
-        "q2_km": 3100,
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
         "base_label": "亚特兰大大本营",
         "rest_days": 6,
-        "cumulative_km": 9300
+        "cumulative_km": 0
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 2600km",
+        "distance_km": 2600,
+        "q1_km": 1500,
+        "q2_km": 1100,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "cumulative_km": 4100
       }
     },
     {
@@ -1691,33 +1681,33 @@
       "kickoff_beijing": "2026-06-22 03:00",
       "played_date": "2026-06-22",
       "utc_date": "2026-06-21T19:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "SoFi Stadium · Los Angeles",
+      "stadium_photo": "sofi.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "sofi",
+        "altitude_m": 35,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 6400km · 往返大本营",
-        "distance_km": 6400,
-        "q1_km": 3200,
-        "q2_km": 3200,
+        "label": "远征 7700km · 往返大本营",
+        "distance_km": 7700,
+        "q1_km": 3800,
+        "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 9600
+        "cumulative_km": 11500
       },
       "away_travel": {
-        "label": "远征 5000km · 往返大本营",
-        "distance_km": 5000,
-        "q1_km": 2500,
-        "q2_km": 2500,
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
         "base_label": "洛杉矶大本营",
         "rest_days": 6,
-        "cumulative_km": 7500
+        "cumulative_km": 0
       }
     },
     {
@@ -1735,33 +1725,33 @@
       "kickoff_beijing": "2026-06-22 06:00",
       "played_date": "2026-06-22",
       "utc_date": "2026-06-21T22:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "hardrock",
+        "altitude_m": 3,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 11400
+        "cumulative_km": 0
       },
       "away_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 1000km",
+        "distance_km": 1000,
+        "q1_km": 1000,
+        "q2_km": 0,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 11400
+        "cumulative_km": 2000
       }
     },
     {
@@ -1779,33 +1769,33 @@
       "kickoff_beijing": "2026-06-22 09:00",
       "played_date": "2026-06-22",
       "utc_date": "2026-06-22T01:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "bcplace",
+        "altitude_m": 4,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 8000km · 往返大本营",
-        "distance_km": 8000,
-        "q1_km": 4000,
-        "q2_km": 4000,
+        "label": "远征 1700km",
+        "distance_km": 1700,
+        "q1_km": 1700,
+        "q2_km": 0,
         "base_label": "温哥华大本营",
         "rest_days": 6,
-        "cumulative_km": 12000
+        "cumulative_km": 3400
       },
       "away_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3000,
+        "q2_km": 3200,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 3600
+        "cumulative_km": 9200
       }
     },
     {
@@ -1823,33 +1813,34 @@
       "kickoff_beijing": "2026-06-23 01:00",
       "played_date": "2026-06-23",
       "utc_date": "2026-06-22T17:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "att",
+        "altitude_m": 180,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 3800km · 往返大本营",
+        "distance_km": 3800,
+        "q1_km": 2000,
+        "q2_km": 1800,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 11400
+        "cumulative_km": 5800
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 6100km · 往返大本营",
+        "distance_km": 6100,
+        "q1_km": 4000,
+        "q2_km": 2100,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 11700
+        "timezone_delta_h": 2,
+        "cumulative_km": 10100
       }
     },
     {
@@ -1867,33 +1858,33 @@
       "kickoff_beijing": "2026-06-23 05:00",
       "played_date": "2026-06-23",
       "utc_date": "2026-06-22T21:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "lincoln",
+        "altitude_m": 12,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "远征 700km",
+        "distance_km": 700,
+        "q1_km": 300,
+        "q2_km": 400,
         "base_label": "波士顿大本营",
         "rest_days": 6,
-        "cumulative_km": 11100
+        "cumulative_km": 1000
       },
       "away_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 4800km · 往返大本营",
+        "distance_km": 4800,
+        "q1_km": 2600,
+        "q2_km": 2200,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 3600
+        "cumulative_km": 7400
       }
     },
     {
@@ -1911,33 +1902,33 @@
       "kickoff_beijing": "2026-06-23 08:00",
       "played_date": "2026-06-23",
       "utc_date": "2026-06-23T00:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "metlife",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "赛会首战",
+        "distance_km": 300,
+        "q1_km": 0,
+        "q2_km": 300,
         "base_label": "波士顿大本营",
         "rest_days": 6,
-        "cumulative_km": 11100
+        "cumulative_km": 300
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 1200,
+        "q2_km": 1200,
         "base_label": "亚特兰大大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "cumulative_km": 3600
       }
     },
     {
@@ -1955,33 +1946,34 @@
       "kickoff_beijing": "2026-06-23 11:00",
       "played_date": "2026-06-23",
       "utc_date": "2026-06-23T03:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "levis",
+        "altitude_m": 7,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 5200km · 往返大本营",
+        "distance_km": 5200,
+        "q1_km": 2600,
+        "q2_km": 2600,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "cumulative_km": 7800
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 3600km",
+        "distance_km": 3600,
+        "q1_km": 1000,
+        "q2_km": 2600,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "timezone_delta_h": -2,
+        "cumulative_km": 4600
       }
     },
     {
@@ -1999,33 +1991,34 @@
       "kickoff_beijing": "2026-06-24 01:00",
       "played_date": "2026-06-24",
       "utc_date": "2026-06-23T17:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "nrg",
+        "altitude_m": 15,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 3200km · 往返大本营",
+        "distance_km": 3200,
+        "q1_km": 1600,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 6300
+        "cumulative_km": 4800
       },
       "away_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
+        "label": "远征 6800km · 往返大本营",
+        "distance_km": 6800,
         "q1_km": 3800,
-        "q2_km": 3800,
+        "q2_km": 3000,
         "base_label": "西雅图大本营",
         "rest_days": 6,
-        "cumulative_km": 11400
+        "timezone_delta_h": 1,
+        "cumulative_km": 10600
       }
     },
     {
@@ -2043,33 +2036,34 @@
       "kickoff_beijing": "2026-06-24 04:00",
       "played_date": "2026-06-24",
       "utc_date": "2026-06-23T20:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "gillette",
+        "altitude_m": 50,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 8400km · 往返大本营",
-        "distance_km": 8400,
-        "q1_km": 4200,
-        "q2_km": 4200,
+        "label": "远征 2500km",
+        "distance_km": 2500,
+        "q1_km": 2500,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": 6,
-        "cumulative_km": 12600
+        "timezone_delta_h": 1,
+        "cumulative_km": 5000
       },
       "away_travel": {
-        "label": "远征 6200km · 往返大本营",
-        "distance_km": 6200,
-        "q1_km": 3100,
-        "q2_km": 3100,
+        "label": "远征 2700km",
+        "distance_km": 2700,
+        "q1_km": 1200,
+        "q2_km": 1500,
         "base_label": "亚特兰大大本营",
         "rest_days": 6,
-        "cumulative_km": 9300
+        "cumulative_km": 3900
       }
     },
     {
@@ -2087,33 +2081,34 @@
       "kickoff_beijing": "2026-06-24 07:00",
       "played_date": "2026-06-24",
       "utc_date": "2026-06-23T23:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bmo",
+        "altitude_m": 90,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
-        "base_label": "迈阿密大本营",
-        "rest_days": 6,
-        "cumulative_km": 11400
-      },
-      "away_travel": {
         "label": "远征 4000km · 往返大本营",
         "distance_km": 4000,
         "q1_km": 2000,
         "q2_km": 2000,
-        "base_label": "达拉斯大本营",
+        "base_label": "迈阿密大本营",
         "rest_days": 6,
         "cumulative_km": 6000
+      },
+      "away_travel": {
+        "label": "赛会首战",
+        "distance_km": 1900,
+        "q1_km": 0,
+        "q2_km": 1900,
+        "base_label": "达拉斯大本营",
+        "rest_days": 6,
+        "timezone_delta_h": 1,
+        "cumulative_km": 1900
       }
     },
     {
@@ -2131,33 +2126,34 @@
       "kickoff_beijing": "2026-06-24 10:00",
       "played_date": "2026-06-24",
       "utc_date": "2026-06-24T02:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "akron",
+        "altitude_m": 1560,
+        "altitude_tier": "high",
+        "altitude_label": "亚高原"
       },
       "home_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
+        "label": "远征 4500km · 往返大本营",
+        "distance_km": 4500,
         "q1_km": 2100,
-        "q2_km": 2100,
+        "q2_km": 2400,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 6300
+        "cumulative_km": 6600
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 3500km",
+        "distance_km": 3500,
+        "q1_km": 1100,
+        "q2_km": 2400,
         "base_label": "亚特兰大大本营",
         "rest_days": 6,
-        "cumulative_km": 6600
+        "timezone_delta_h": -1,
+        "cumulative_km": 4600
       }
     },
     {
@@ -2175,13 +2171,13 @@
       "kickoff_beijing": "2026-06-25 03:00",
       "played_date": "2026-06-25",
       "utc_date": "2026-06-24T19:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "bcplace",
+        "altitude_m": 4,
         "altitude_tier": "normal",
         "altitude_label": null
       },
@@ -2192,16 +2188,16 @@
         "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 19500
+        "cumulative_km": 19700
       },
       "away_travel": {
-        "label": "远征 7000km · 往返大本营",
-        "distance_km": 7000,
-        "q1_km": 3500,
-        "q2_km": 3500,
+        "label": "远征 6800km · 往返大本营",
+        "distance_km": 6800,
+        "q1_km": 3400,
+        "q2_km": 3400,
         "base_label": "多伦多大本营",
         "rest_days": 6,
-        "cumulative_km": 17500
+        "cumulative_km": 10200
       }
     },
     {
@@ -2219,33 +2215,33 @@
       "kickoff_beijing": "2026-06-25 03:00",
       "played_date": "2026-06-25",
       "utc_date": "2026-06-24T19:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "lumen",
+        "altitude_m": 50,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
+        "label": "远征 7700km · 往返大本营",
+        "distance_km": 7700,
         "q1_km": 3900,
-        "q2_km": 3900,
+        "q2_km": 3800,
         "base_label": "费城大本营",
         "rest_days": 6,
-        "cumulative_km": 19500
+        "cumulative_km": 12600
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3200,
+        "q2_km": 3000,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 11000
+        "cumulative_km": 14600
       }
     },
     {
@@ -2263,33 +2259,33 @@
       "kickoff_beijing": "2026-06-25 06:00",
       "played_date": "2026-06-25",
       "utc_date": "2026-06-24T22:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "mercedes_atlanta",
+        "altitude_m": 320,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "赛会首战",
+        "distance_km": 1500,
+        "q1_km": 0,
+        "q2_km": 1500,
         "base_label": "波士顿大本营",
         "rest_days": 5,
-        "cumulative_km": 18500
+        "cumulative_km": 2100
       },
       "away_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 2600km",
+        "distance_km": 2600,
+        "q1_km": 1600,
+        "q2_km": 1000,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 10500
+        "cumulative_km": 8200
       }
     },
     {
@@ -2307,33 +2303,33 @@
       "kickoff_beijing": "2026-06-25 06:00",
       "played_date": "2026-06-25",
       "utc_date": "2026-06-24T22:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "hardrock",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "赛会首战",
+        "distance_km": 2000,
+        "q1_km": 0,
+        "q2_km": 2000,
         "base_label": "波士顿大本营",
         "rest_days": 5,
-        "cumulative_km": 18500
+        "cumulative_km": 2000
       },
       "away_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 1600km",
+        "distance_km": 1600,
+        "q1_km": 1600,
+        "q2_km": 0,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 10500
+        "cumulative_km": 6800
       }
     },
     {
@@ -2362,22 +2358,23 @@
         "altitude_label": "高原球场"
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
+        "label": "远征 3300km",
+        "distance_km": 3300,
+        "q1_km": 1100,
         "q2_km": 2200,
         "base_label": "堪萨斯城大本营",
         "rest_days": 6,
-        "cumulative_km": 11000
+        "timezone_delta_h": -2,
+        "cumulative_km": 8800
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 0,
-        "q1_km": 0,
+        "label": "远征 500km",
+        "distance_km": 500,
+        "q1_km": 500,
         "q2_km": 0,
         "base_label": "墨西哥城大本营",
         "rest_days": 6,
-        "cumulative_km": 0
+        "cumulative_km": 1000
       }
     },
     {
@@ -2395,33 +2392,34 @@
       "kickoff_beijing": "2026-06-25 09:00",
       "played_date": "2026-06-25",
       "utc_date": "2026-06-25T01:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Estadio BBVA · Monterrey",
+      "stadium_photo": "bbva.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "bbva",
+        "altitude_m": 540,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 1800km",
+        "distance_km": 1800,
+        "q1_km": 1100,
+        "q2_km": 700,
         "base_label": "休斯顿大本营",
         "rest_days": 6,
-        "cumulative_km": 6000
+        "timezone_delta_h": -2,
+        "cumulative_km": 5300
       },
       "away_travel": {
-        "label": "远征 5000km · 往返大本营",
-        "distance_km": 5000,
-        "q1_km": 2500,
-        "q2_km": 2500,
+        "label": "远征 4100km · 往返大本营",
+        "distance_km": 4100,
+        "q1_km": 2100,
+        "q2_km": 2000,
         "base_label": "洛杉矶大本营",
         "rest_days": 6,
-        "cumulative_km": 12500
+        "cumulative_km": 10400
       }
     },
     {
@@ -2439,33 +2437,34 @@
       "kickoff_beijing": "2026-06-26 04:00",
       "played_date": "2026-06-26",
       "utc_date": "2026-06-25T20:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "metlife",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 3300km",
+        "distance_km": 3300,
+        "q1_km": 1000,
+        "q2_km": 2300,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 6000
+        "timezone_delta_h": 1,
+        "cumulative_km": 8700
       },
       "away_travel": {
-        "label": "远征 6400km · 往返大本营",
-        "distance_km": 6400,
-        "q1_km": 3200,
-        "q2_km": 3200,
+        "label": "远征 600km",
+        "distance_km": 600,
+        "q1_km": 500,
+        "q2_km": 100,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 16000
+        "cumulative_km": 5500
       }
     },
     {
@@ -2483,33 +2482,34 @@
       "kickoff_beijing": "2026-06-26 04:00",
       "played_date": "2026-06-26",
       "utc_date": "2026-06-25T20:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "lincoln",
+        "altitude_m": 12,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 3600km · 往返大本营",
+        "distance_km": 3600,
+        "q1_km": 2000,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 10500
+        "timezone_delta_h": 1,
+        "cumulative_km": 8800
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 2300km",
+        "distance_km": 2300,
+        "q1_km": 1200,
+        "q2_km": 1100,
         "base_label": "亚特兰大大本营",
         "rest_days": 5,
-        "cumulative_km": 11000
+        "cumulative_km": 5700
       }
     },
     {
@@ -2527,33 +2527,34 @@
       "kickoff_beijing": "2026-06-26 07:00",
       "played_date": "2026-06-26",
       "utc_date": "2026-06-25T23:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "arrowhead",
+        "altitude_m": 270,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 4500km · 往返大本营",
+        "distance_km": 4500,
+        "q1_km": 2800,
+        "q2_km": 1700,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 19500
+        "timezone_delta_h": 1,
+        "cumulative_km": 12900
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 3900km · 往返大本营",
+        "distance_km": 3900,
+        "q1_km": 2200,
+        "q2_km": 1700,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 19500
+        "cumulative_km": 10300
       }
     },
     {
@@ -2571,33 +2572,34 @@
       "kickoff_beijing": "2026-06-26 07:00",
       "played_date": "2026-06-26",
       "utc_date": "2026-06-25T23:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "att",
+        "altitude_m": 180,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 3200km · 往返大本营",
-        "distance_km": 3200,
-        "q1_km": 1600,
-        "q2_km": 1600,
+        "label": "远征 5800km · 往返大本营",
+        "distance_km": 5800,
+        "q1_km": 3100,
+        "q2_km": 2700,
         "base_label": "西雅图大本营",
         "rest_days": 5,
-        "cumulative_km": 8000
+        "timezone_delta_h": 1,
+        "cumulative_km": 14300
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 4300km · 往返大本营",
+        "distance_km": 4300,
+        "q1_km": 2200,
+        "q2_km": 2100,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 19500
+        "cumulative_km": 12100
       }
     },
     {
@@ -2626,22 +2628,22 @@
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4000km · 往返大本营",
-        "distance_km": 4000,
-        "q1_km": 2000,
+        "label": "远征 4300km · 往返大本营",
+        "distance_km": 4300,
+        "q1_km": 2300,
         "q2_km": 2000,
         "base_label": "达拉斯大本营",
         "rest_days": 6,
-        "cumulative_km": 10000
+        "cumulative_km": 12200
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 0,
-        "q1_km": 0,
+        "label": "远征 1500km",
+        "distance_km": 1500,
+        "q1_km": 1500,
         "q2_km": 0,
         "base_label": "洛杉矶大本营",
         "rest_days": 6,
-        "cumulative_km": 0
+        "cumulative_km": 3000
       }
     },
     {
@@ -2659,33 +2661,33 @@
       "kickoff_beijing": "2026-06-26 10:00",
       "played_date": "2026-06-26",
       "utc_date": "2026-06-26T02:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Levi's Stadium · Santa Clara",
+      "stadium_photo": "levis.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "levis",
+        "altitude_m": 7,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 8200km · 往返大本营",
+        "distance_km": 8200,
+        "q1_km": 4100,
+        "q2_km": 4100,
         "base_label": "迈阿密大本营",
         "rest_days": 6,
-        "cumulative_km": 19000
+        "cumulative_km": 19900
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 0,
-        "q1_km": 0,
-        "q2_km": 0,
+        "label": "远征 2000km",
+        "distance_km": 2000,
+        "q1_km": 1500,
+        "q2_km": 500,
         "base_label": "洛杉矶大本营",
         "rest_days": 6,
-        "cumulative_km": 0
+        "cumulative_km": 6900
       }
     },
     {
@@ -2703,33 +2705,33 @@
       "kickoff_beijing": "2026-06-27 03:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-26T19:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Gillette Stadium · Foxborough",
+      "stadium_photo": "gillette.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "gillette",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "短途 300km",
+        "distance_km": 300,
+        "q1_km": 300,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": 4,
-        "cumulative_km": 18500
+        "cumulative_km": 600
       },
       "away_travel": {
-        "label": "远征 7400km · 往返大本营",
-        "distance_km": 7400,
-        "q1_km": 3700,
-        "q2_km": 3700,
+        "label": "短途 400km",
+        "distance_km": 400,
+        "q1_km": 400,
+        "q2_km": 0,
         "base_label": "波士顿大本营",
         "rest_days": 4,
-        "cumulative_km": 18500
+        "cumulative_km": 1400
       }
     },
     {
@@ -2747,33 +2749,33 @@
       "kickoff_beijing": "2026-06-27 03:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-26T19:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "BMO Field · Toronto",
+      "stadium_photo": "bmo.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "bmo",
+        "altitude_m": 90,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 4,
-        "cumulative_km": 11000
-      },
-      "away_travel": {
         "label": "远征 2400km",
         "distance_km": 2400,
         "q1_km": 1200,
         "q2_km": 1200,
-        "base_label": "休斯顿大本营",
+        "base_label": "亚特兰大大本营",
         "rest_days": 4,
         "cumulative_km": 6000
+      },
+      "away_travel": {
+        "label": "远征 4300km · 往返大本营",
+        "distance_km": 4300,
+        "q1_km": 2200,
+        "q2_km": 2100,
+        "base_label": "休斯顿大本营",
+        "rest_days": 4,
+        "cumulative_km": 11700
       }
     },
     {
@@ -2791,33 +2793,35 @@
       "kickoff_beijing": "2026-06-27 08:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-27T00:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Estadio Akron · Guadalajara",
+      "stadium_photo": "akron.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
-        "altitude_tier": "normal",
-        "altitude_label": null
+        "stadium_key": "akron",
+        "altitude_m": 1560,
+        "altitude_tier": "high",
+        "altitude_label": "亚高原"
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "赛会首战",
+        "distance_km": 2400,
+        "q1_km": 0,
+        "q2_km": 2400,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 19000
+        "timezone_delta_h": -2,
+        "cumulative_km": 2400
       },
       "away_travel": {
-        "label": "远征 6200km · 往返大本营",
-        "distance_km": 6200,
-        "q1_km": 3100,
-        "q2_km": 3100,
+        "label": "赛会首战",
+        "distance_km": 2400,
+        "q1_km": 0,
+        "q2_km": 2400,
         "base_label": "亚特兰大大本营",
         "rest_days": 5,
-        "cumulative_km": 15500
+        "timezone_delta_h": -2,
+        "cumulative_km": 2400
       }
     },
     {
@@ -2835,33 +2839,35 @@
       "kickoff_beijing": "2026-06-27 08:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-27T00:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "NRG Stadium · Houston",
+      "stadium_photo": "nrg.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "nrg",
+        "altitude_m": 15,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "赛会首战",
+        "distance_km": 1600,
+        "q1_km": 0,
+        "q2_km": 1600,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 19000
+        "timezone_delta_h": -1,
+        "cumulative_km": 3600
       },
       "away_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 1100km",
+        "distance_km": 1100,
+        "q1_km": 1100,
+        "q2_km": 0,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 11000
+        "timezone_delta_h": -1,
+        "cumulative_km": 5200
       }
     },
     {
@@ -2879,33 +2885,33 @@
       "kickoff_beijing": "2026-06-27 11:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-27T03:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "BC Place · Vancouver",
+      "stadium_photo": "bcplace.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "bcplace",
+        "altitude_m": 4,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 8000km · 往返大本营",
-        "distance_km": 8000,
-        "q1_km": 4000,
-        "q2_km": 4000,
+        "label": "赛会首战",
+        "distance_km": 0,
+        "q1_km": 0,
+        "q2_km": 0,
         "base_label": "温哥华大本营",
         "rest_days": 5,
-        "cumulative_km": 20000
+        "cumulative_km": 3400
       },
       "away_travel": {
-        "label": "远征 6400km · 往返大本营",
-        "distance_km": 6400,
-        "q1_km": 3200,
-        "q2_km": 3200,
+        "label": "远征 7800km · 往返大本营",
+        "distance_km": 7800,
+        "q1_km": 3900,
+        "q2_km": 3900,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 16000
+        "cumulative_km": 19300
       }
     },
     {
@@ -2923,33 +2929,33 @@
       "kickoff_beijing": "2026-06-27 11:00",
       "played_date": "2026-06-27",
       "utc_date": "2026-06-27T03:00:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Lumen Field · Seattle",
+      "stadium_photo": "lumen.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "lumen",
+        "altitude_m": 50,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 2400km",
-        "distance_km": 2400,
-        "q1_km": 1200,
-        "q2_km": 1200,
+        "label": "远征 6200km · 往返大本营",
+        "distance_km": 6200,
+        "q1_km": 3200,
+        "q2_km": 3000,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 6000
+        "cumulative_km": 15400
       },
       "away_travel": {
-        "label": "远征 5000km · 往返大本营",
-        "distance_km": 5000,
-        "q1_km": 2500,
-        "q2_km": 2500,
+        "label": "赛会首战",
+        "distance_km": 1500,
+        "q1_km": 0,
+        "q2_km": 1500,
         "base_label": "洛杉矶大本营",
         "rest_days": 5,
-        "cumulative_km": 12500
+        "cumulative_km": 1500
       }
     },
     {
@@ -2967,33 +2973,33 @@
       "kickoff_beijing": "2026-06-28 05:00",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-27T21:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "MetLife Stadium · East Rutherford",
+      "stadium_photo": "metlife.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "metlife",
+        "altitude_m": 3,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 3800km · 往返大本营",
+        "distance_km": 3800,
+        "q1_km": 2000,
+        "q2_km": 1800,
         "base_label": "迈阿密大本营",
         "rest_days": 4,
-        "cumulative_km": 19000
+        "cumulative_km": 9800
       },
       "away_travel": {
-        "label": "远征 8400km · 往返大本营",
-        "distance_km": 8400,
-        "q1_km": 4200,
-        "q2_km": 4200,
+        "label": "赛会首战",
+        "distance_km": 300,
+        "q1_km": 0,
+        "q2_km": 300,
         "base_label": "波士顿大本营",
         "rest_days": 4,
-        "cumulative_km": 21000
+        "cumulative_km": 5300
       }
     },
     {
@@ -3011,33 +3017,33 @@
       "kickoff_beijing": "2026-06-28 05:00",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-27T21:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Lincoln Financial Field · Philadelphia",
+      "stadium_photo": "lincoln.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "lincoln",
+        "altitude_m": 12,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
         "label": "远征 4000km · 往返大本营",
         "distance_km": 4000,
-        "q1_km": 2000,
-        "q2_km": 2000,
+        "q1_km": 1900,
+        "q2_km": 2100,
         "base_label": "达拉斯大本营",
         "rest_days": 4,
-        "cumulative_km": 10000
+        "cumulative_km": 5900
       },
       "away_travel": {
-        "label": "远征 6200km · 往返大本营",
-        "distance_km": 6200,
-        "q1_km": 3100,
-        "q2_km": 3100,
+        "label": "远征 2600km",
+        "distance_km": 2600,
+        "q1_km": 1500,
+        "q2_km": 1100,
         "base_label": "亚特兰大大本营",
         "rest_days": 4,
-        "cumulative_km": 15500
+        "cumulative_km": 6500
       }
     },
     {
@@ -3055,33 +3061,35 @@
       "kickoff_beijing": "2026-06-28 07:30",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-27T23:30:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Hard Rock Stadium · Miami",
+      "stadium_photo": "hardrock.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "hardrock",
+        "altitude_m": 3,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 2400,
+        "q2_km": 0,
         "base_label": "迈阿密大本营",
         "rest_days": 4,
-        "cumulative_km": 10500
+        "timezone_delta_h": 2,
+        "cumulative_km": 9000
       },
       "away_travel": {
-        "label": "远征 4200km · 往返大本营",
-        "distance_km": 4200,
-        "q1_km": 2100,
-        "q2_km": 2100,
+        "label": "远征 1600km",
+        "distance_km": 1600,
+        "q1_km": 1600,
+        "q2_km": 0,
         "base_label": "迈阿密大本营",
         "rest_days": 4,
-        "cumulative_km": 10500
+        "timezone_delta_h": 1,
+        "cumulative_km": 6400
       }
     },
     {
@@ -3099,33 +3107,35 @@
       "kickoff_beijing": "2026-06-28 07:30",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-27T23:30:00Z",
-      "stadium": "Estadio Azteca · Mexico City",
-      "stadium_photo": "azteca.jpg",
+      "stadium": "Mercedes-Benz Stadium · Atlanta",
+      "stadium_photo": "mercedes_atlanta.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
+        "stadium_key": "mercedes_atlanta",
+        "altitude_m": 320,
+        "altitude_tier": "normal",
+        "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 2400km",
+        "distance_km": 2400,
+        "q1_km": 2400,
+        "q2_km": 0,
         "base_label": "亚特兰大大本营",
         "rest_days": 4,
-        "cumulative_km": 11000
+        "timezone_delta_h": 2,
+        "cumulative_km": 7000
       },
       "away_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 6500km · 往返大本营",
+        "distance_km": 6500,
+        "q1_km": 3000,
+        "q2_km": 3500,
         "base_label": "西雅图大本营",
         "rest_days": 4,
-        "cumulative_km": 19000
+        "timezone_delta_h": 1,
+        "cumulative_km": 17100
       }
     },
     {
@@ -3143,33 +3153,34 @@
       "kickoff_beijing": "2026-06-28 10:00",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-28T02:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "AT&T Stadium · Arlington",
+      "stadium_photo": "att.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "att",
+        "altitude_m": 180,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 3000km",
+        "distance_km": 3000,
+        "q1_km": 2600,
+        "q2_km": 400,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 11000
+        "timezone_delta_h": 2,
+        "cumulative_km": 10800
       },
       "away_travel": {
-        "label": "远征 7600km · 往返大本营",
-        "distance_km": 7600,
-        "q1_km": 3800,
-        "q2_km": 3800,
+        "label": "远征 3600km · 往返大本营",
+        "distance_km": 3600,
+        "q1_km": 1800,
+        "q2_km": 1800,
         "base_label": "迈阿密大本营",
         "rest_days": 5,
-        "cumulative_km": 19000
+        "cumulative_km": 9400
       }
     },
     {
@@ -3187,34 +3198,36 @@
       "kickoff_beijing": "2026-06-28 10:00",
       "played_date": "2026-06-28",
       "utc_date": "2026-06-28T02:00:00Z",
-      "stadium": "SoFi Stadium · Los Angeles",
-      "stadium_photo": "sofi.jpg",
+      "stadium": "Arrowhead Stadium · Kansas City",
+      "stadium_photo": "arrowhead.jpg",
       "weather": "—",
       "temp": "—",
       "venue_context": {
-        "stadium_key": "sofi",
-        "altitude_m": 35,
+        "stadium_key": "arrowhead",
+        "altitude_m": 270,
         "altitude_tier": "normal",
         "altitude_label": null
       },
       "home_travel": {
-        "label": "远征 4400km · 往返大本营",
-        "distance_km": 4400,
-        "q1_km": 2200,
-        "q2_km": 2200,
+        "label": "远征 3600km",
+        "distance_km": 3600,
+        "q1_km": 2600,
+        "q2_km": 1000,
         "base_label": "休斯顿大本营",
         "rest_days": 5,
-        "cumulative_km": 11000
+        "timezone_delta_h": 2,
+        "cumulative_km": 8200
       },
       "away_travel": {
-        "label": "远征 7800km · 往返大本营",
-        "distance_km": 7800,
-        "q1_km": 3900,
-        "q2_km": 3900,
+        "label": "远征 3800km · 往返大本营",
+        "distance_km": 3800,
+        "q1_km": 2100,
+        "q2_km": 1700,
         "base_label": "费城大本营",
         "rest_days": 5,
-        "cumulative_km": 19500
+        "cumulative_km": 13900
       }
     }
-  ]
+  ],
+  "stadium_assignments": "data/fixture_stadium_assignments.json"
 }
