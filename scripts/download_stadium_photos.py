@@ -19,15 +19,15 @@ OUT_DIR = os.path.join(ROOT, 'static', 'stadiums')
 
 # Source: https://www.archdaily.cn/cn/993991/... — use large_jpg (~2000px), not medium_jpg (~528px)
 STADIUM_URLS = {
-    # Interior bowl (Levi's Stadium gallery — open-air NFL horseshoe, similar sightlines)
-    'lumen.jpg': 'https://images.adsttc.com/media/images/56c3/ac9f/e58e/ced9/6100/01b8/large_jpg/LS-02_2283A6.jpg?1455664265',
+    # Lumen Field · Seattle (ArchDaily 2026 WC list, © Kirk Wester)
+    'lumen.jpg': 'https://images.adsttc.com/media/images/639e/6ee3/f733/b401/701f/3b18/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_3.jpg?1671327480',
     'levis.jpg': 'https://images.adsttc.com/media/images/639e/6f86/a452/0802/91ad/4fdf/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_4.jpg?1671327641',
     'sofi.jpg': 'https://images.adsttc.com/media/images/639e/6ffb/f733/b401/701f/3b27/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_5.jpg?1671327746',
     # Seating bowl close-up (Levi's Stadium gallery)
     'arrowhead.jpg': 'https://images.adsttc.com/media/images/56c3/ac19/e58e/ced9/6100/01b5/large_jpg/LS-01_6006A2.jpg?1455664137',
     'att.jpg': 'https://images.adsttc.com/media/images/639e/765b/f733/b401/701f/3b31/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_8.jpg?1671329394',
-    # Atlanta United at Mercedes-Benz Stadium (HOK gallery)
-    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/5a0e/f022/b22e/386e/1800/01e7/large_jpg/ATLUTDvsOC_Pre_KD_091617_0043.jpg?1510928400',
+    # Mercedes-Benz Stadium · Atlanta interior bowl (HOK / ArchDaily gallery)
+    'mercedes_atlanta.jpg': 'https://images.adsttc.com/media/images/5a0e/f16f/b22e/382f/e000/00ed/large_jpg/Falcon-133.jpg?1510928732',
     # Houston soccer bowl interior (BBVA Compass / Populous gallery — same city)
     'nrg.jpg': 'https://images.adsttc.com/media/images/522f/47ea/e8e4/4e33/3b00/00ad/large_jpg/HOUTXSOC_0018_Lyons.jpg?1378830294',
     'gillette.jpg': 'https://images.adsttc.com/media/images/639e/77a7/f733/b401/701f/3b47/large_jpg/explore-the-full-list-of-football-stadiums-for-the-2026-fifa-world-cup-in-united-states-mexico-and-canada_10.jpg?1671329723',
