@@ -83,35 +83,44 @@ def attach_owners(matches, owner_map):
     return matches
 
 
-def build_today_matches(fixtures, date_str, owner_map, config, selections):
+def build_today_matches(fixtures, date_str, owner_map, config, selections, skip_news=False, prior_matches=None):
+    prior_by_id = {
+        m['fixture_id']: m for m in (prior_matches or []) if m.get('fixture_id') is not None
+    }
     today_fix = sorted(
         fixtures_on_date(fixtures, date_str),
         key=lambda x: x.get('kickoff_beijing', ''),
     )
+    overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})
     matches = []
     for f in today_fix:
         home, away = f['home_team'], f['away_team']
         picks = [s['name_cn'] for s in selections if s['team_name'] in (home, away)]
-        candidates = prefilter_for_match(
-            home,
-            away,
-            config,
-            picks,
-            team_hints_en=[f.get('home_team_api'), f.get('away_team_api')],
-        )
-        overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})
         key = f"{f['fixture_id']}"
-        if key in overrides:
-            key_news = overrides[key]
+        if skip_news:
+            if key in overrides:
+                key_news = overrides[key]
+            else:
+                key_news = (prior_by_id.get(f['fixture_id']) or {}).get('key_news') or []
         else:
-            key_news = select_key_news(
+            candidates = prefilter_for_match(
                 home,
                 away,
-                candidates,
                 config,
                 picks,
                 team_hints_en=[f.get('home_team_api'), f.get('away_team_api')],
             )
+            if key in overrides:
+                key_news = overrides[key]
+            else:
+                key_news = select_key_news(
+                    home,
+                    away,
+                    candidates,
+                    config,
+                    picks,
+                    team_hints_en=[f.get('home_team_api'), f.get('away_team_api')],
+                )
         matches.append({
             'fixture_id': f['fixture_id'],
             'group': f.get('group'),
@@ -263,12 +272,13 @@ def build_yesterday_placeholder(fixtures, date_str):
     return rows
 
 
-def build_briefing(mock=False):
+def build_briefing(mock=False, skip_news=False):
     print('build: loading config and fixtures...', flush=True)
     config = load_config()
     fixtures = load_fixtures()
     owner_map = get_owner_map()
     team_map = load_team_name_map(config)
+    prior_latest = load_json(LATEST_PATH, {}) if skip_news else {}
 
     try:
         conn = open_db_readonly()
@@ -309,8 +319,20 @@ def build_briefing(mock=False):
         yesterday_matches = build_yesterday_placeholder(fixtures, yesterday_date)
 
     preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
-    print(f'build: fetching news for preview {preview_date}...', flush=True)
-    today_matches = build_today_matches(fixtures, preview_date, owner_map, config, selections)
+    prior_today_matches = (prior_latest.get('today') or {}).get('matches') or []
+    if skip_news:
+        print(f'build: skip news — refreshing scores; preview {preview_date} reuses cached key_news...', flush=True)
+    else:
+        print(f'build: fetching news for preview {preview_date}...', flush=True)
+    today_matches = build_today_matches(
+        fixtures,
+        preview_date,
+        owner_map,
+        config,
+        selections,
+        skip_news=skip_news,
+        prior_matches=prior_today_matches,
+    )
     print(f'build: {len(today_matches)} preview matches, attaching odds...', flush=True)
     fixtures_by_id = {f['fixture_id']: f for f in fixtures}
     today_matches = attach_odds_to_matches(today_matches, fixtures_by_id, config)
@@ -404,6 +426,11 @@ def git_push():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mock', action='store_true', help='Refresh timestamps on existing sample JSON')
+    parser.add_argument(
+        '--skip-news',
+        action='store_true',
+        help='Skip news search/LLM; refresh match results and standings (reuse cached key_news)',
+    )
     parser.add_argument('--upload', action='store_true', help='POST to PythonAnywhere import endpoint')
     parser.add_argument('--dry-run', action='store_true', help='Validate upload payload without POST')
     parser.add_argument('--push', action='store_true', help='git commit/push briefing JSON (requires user Approve)')
@@ -421,7 +448,7 @@ def main():
         return
 
     print('Starting daily briefing build...', flush=True)
-    briefing = build_briefing(mock=args.mock)
+    briefing = build_briefing(mock=args.mock, skip_news=args.skip_news)
     y = briefing.get('yesterday', {})
     t = briefing.get('today', {})
     print(
