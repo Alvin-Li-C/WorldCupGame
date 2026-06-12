@@ -2,12 +2,19 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
+import unicodedata
 import urllib.error
 import urllib.request
+from datetime import datetime, timedelta
 
 from briefing.espn_teams import ESPN_TEAM_CN
+
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_TEAM_MAP_PATH = os.path.join(_ROOT, 'data', 'team_name_map.json')
+_alias_cache: dict[int, dict[str, str]] = {}
 
 _SITE = 'https://site.api.espn.com/apis/site/v2/sports/soccer'
 _USER_AGENT = 'Mozilla/5.0 (compatible; WorldCupGame/1.0)'
@@ -39,24 +46,85 @@ def _team_names_match(a: str | None, b: str | None) -> bool:
     return a.strip().lower() == b.strip().lower()
 
 
+def _ascii_fold(name: str) -> str:
+    return unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode().lower().strip()
+
+
+def _load_team_map() -> dict:
+    try:
+        with open(_TEAM_MAP_PATH, encoding='utf-8') as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _espn_lookup_aliases(team_map: dict | None = None) -> dict[str, str]:
+    """Map football-data / API English names to ESPN scoreboard displayName."""
+    tm = team_map if team_map is not None else _load_team_map()
+    key = id(tm)
+    if key in _alias_cache:
+        return _alias_cache[key]
+    cn_to_espn = {cn: en for en, cn in ESPN_TEAM_CN.items()}
+    aliases: dict[str, str] = {}
+    for api_en, cn in tm.items():
+        espn_en = cn_to_espn.get(cn)
+        if espn_en:
+            aliases[api_en] = espn_en
+    for espn_en in ESPN_TEAM_CN:
+        aliases.setdefault(espn_en, espn_en)
+    _alias_cache[key] = aliases
+    return aliases
+
+
+def espn_lookup_name(name: str | None, team_map: dict | None = None) -> str | None:
+    """Normalize a team name to ESPN scoreboard displayName."""
+    if not name:
+        return None
+    aliases = _espn_lookup_aliases(team_map)
+    if name in aliases:
+        return aliases[name]
+    folded = _ascii_fold(name)
+    for src, dst in aliases.items():
+        if _ascii_fold(src) == folded:
+            return dst
+    return name
+
+
+def teams_equivalent(a: str | None, b: str | None, team_map: dict | None = None) -> bool:
+    if not a or not b:
+        return False
+    if _team_names_match(a, b):
+        return True
+    return espn_lookup_name(a, team_map) == espn_lookup_name(b, team_map)
+
+
 def _espn_date_param(utc_date: str | None) -> str | None:
     if not utc_date or len(utc_date) < 10:
         return None
     return utc_date[:10].replace('-', '')
 
 
-def find_espn_event_id(home_en: str, away_en: str, utc_date: str | None) -> str | None:
-    """Resolve ESPN event id from fifa.world scoreboard on match UTC date."""
-    dates = _espn_date_param(utc_date)
-    if not dates:
-        return None
-    url = f'{_SITE}/fifa.world/scoreboard?dates={dates}'
+def _espn_date_candidates(utc_date: str | None) -> list[str]:
+    """ESPN scoreboard dates may differ from football-data UTC calendar day."""
+    primary = _espn_date_param(utc_date)
+    if not primary:
+        return []
     try:
-        data = _fetch_json(url, retries=2, pause=1.0)
-    except RuntimeError:
-        return None
-    if not data:
-        return None
+        base = datetime.strptime(utc_date[:10], '%Y-%m-%d')
+    except ValueError:
+        return [primary]
+    out = []
+    for delta in (0, -1, 1):
+        out.append((base + timedelta(days=delta)).strftime('%Y%m%d'))
+    return out
+
+
+def _match_event_on_scoreboard(
+    data: dict,
+    home_en: str,
+    away_en: str,
+    team_map: dict | None,
+) -> str | None:
     for event in data.get('events') or []:
         comp = (event.get('competitions') or [{}])[0]
         home_name = away_name = None
@@ -67,9 +135,30 @@ def find_espn_event_id(home_en: str, away_en: str, utc_date: str | None) -> str 
                 home_name = name
             elif c.get('homeAway') == 'away':
                 away_name = name
-        if _team_names_match(home_name, home_en) and _team_names_match(away_name, away_en):
+        if teams_equivalent(home_name, home_en, team_map) and teams_equivalent(away_name, away_en, team_map):
             eid = event.get('id')
             return str(eid) if eid is not None else None
+    return None
+
+
+def find_espn_event_id(
+    home_en: str,
+    away_en: str,
+    utc_date: str | None,
+    team_map: dict | None = None,
+) -> str | None:
+    """Resolve ESPN event id from fifa.world scoreboard on match UTC date."""
+    for dates in _espn_date_candidates(utc_date):
+        url = f'{_SITE}/fifa.world/scoreboard?dates={dates}'
+        try:
+            data = _fetch_json(url, retries=2, pause=1.0)
+        except RuntimeError:
+            continue
+        if not data:
+            continue
+        eid = _match_event_on_scoreboard(data, home_en, away_en, team_map)
+        if eid:
+            return eid
     return None
 
 
@@ -119,9 +208,9 @@ def _team_cn(team_en: str | None, home_en: str, away_en: str, home_cn: str | Non
     cn = api_team_to_cn(team_en, team_map)
     if cn:
         return cn
-    if team_en and _team_names_match(team_en, home_en):
+    if team_en and teams_equivalent(team_en, home_en, team_map):
         return home_cn
-    if team_en and _team_names_match(team_en, away_en):
+    if team_en and teams_equivalent(team_en, away_en, team_map):
         return away_cn
     if team_en:
         return ESPN_TEAM_CN.get(team_en)
@@ -136,8 +225,16 @@ def parse_espn_goal_events(
     away_en: str,
 ) -> list[dict]:
     """Return goal events in the same shape as extract_scoring_events."""
-    home_cn = api_team_to_cn(home_en, team_map) or ESPN_TEAM_CN.get(home_en)
-    away_cn = api_team_to_cn(away_en, team_map) or ESPN_TEAM_CN.get(away_en)
+    home_cn = (
+        api_team_to_cn(home_en, team_map)
+        or ESPN_TEAM_CN.get(espn_lookup_name(home_en, team_map) or '')
+        or ESPN_TEAM_CN.get(home_en)
+    )
+    away_cn = (
+        api_team_to_cn(away_en, team_map)
+        or ESPN_TEAM_CN.get(espn_lookup_name(away_en, team_map) or '')
+        or ESPN_TEAM_CN.get(away_en)
+    )
     events = []
     seen_ids: set[str] = set()
 
@@ -190,7 +287,7 @@ def fetch_espn_scoring_events(
     event_id: str | int | None = None,
 ) -> list[dict]:
     """Look up ESPN event and return parsed goal events (empty list on failure)."""
-    eid = event_id or find_espn_event_id(home_en, away_en, utc_date)
+    eid = event_id or find_espn_event_id(home_en, away_en, utc_date, team_map)
     if not eid:
         return []
     summary = fetch_espn_summary(eid)

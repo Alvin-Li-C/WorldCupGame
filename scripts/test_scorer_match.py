@@ -150,6 +150,45 @@ class TestScorerMatch(unittest.TestCase):
         ids = {r['player_id'] for r in block['our_scorers']}
         self.assertEqual(ids, {21, 22})
 
+    def test_korean_name_order_espn_to_db(self):
+        sels = [
+            {'player_id': 201, 'name': 'In-Beom Hwang', 'name_cn': '黄仁范',
+             'team_name': '韩国', 'participant': '老王', 'jersey_number': 22},
+            {'player_id': 202, 'name': 'Hyeon-Gyu Oh', 'name_cn': '吴贤揆',
+             'team_name': '韩国', 'participant': '李总', 'jersey_number': 25},
+        ]
+        for espn_name, pid in [('Hwang In-Beom', 201), ('Oh Hyeon-Gyu', 202)]:
+            sel, reason = match_scorer_to_selection(
+                {'scorer_en': espn_name, 'team_cn': '韩国', 'team_en': 'South Korea', 'type': 'REGULAR'},
+                sels,
+            )
+            self.assertEqual(reason, '', msg=espn_name)
+            self.assertEqual(sel['player_id'], pid, msg=espn_name)
+
+    def test_espn_team_alias_south_korea_czechia(self):
+        from briefing.espn_goals import espn_lookup_name, teams_equivalent
+
+        team_map = {'South Korea': '韩国', 'Czechia': '捷克'}
+        self.assertEqual(espn_lookup_name('South Korea', team_map), 'Korea Republic')
+        self.assertEqual(espn_lookup_name('Czechia', team_map), 'Czech Republic')
+        self.assertTrue(teams_equivalent('South Korea', 'Korea Republic', team_map))
+        self.assertTrue(teams_equivalent('Czechia', 'Czech Republic', team_map))
+
+    def test_korea_czech_espn_fallback_events(self):
+        from briefing.espn_goals import fetch_espn_scoring_events
+
+        team_map = {'South Korea': '韩国', 'Czechia': '捷克'}
+        events = fetch_espn_scoring_events(
+            'South Korea',
+            'Czechia',
+            '2026-06-12T02:00:00Z',
+            team_map,
+            lambda en, m: m.get(en),
+        )
+        self.assertGreaterEqual(len(events), 2, msg='expected goals from ESPN for Korea vs Czechia')
+        teams = {e.get('team_cn') for e in events}
+        self.assertIn('韩国', teams)
+
 
 if __name__ == '__main__':
     unittest.main()

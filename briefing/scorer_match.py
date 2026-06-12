@@ -30,6 +30,20 @@ def normalize_player_name(name: str) -> str:
     return text
 
 
+def _name_order_variants(norm: str) -> list[str]:
+    """ESPN often uses family-given order; draft DB uses given-family (Western)."""
+    parts = norm.split()
+    if len(parts) < 2:
+        return []
+    variants = []
+    if len(parts) == 2:
+        variants.append(f'{parts[1]} {parts[0]}')
+    else:
+        variants.append(' '.join(parts[1:] + [parts[0]]))
+        variants.append(' '.join([parts[-1]] + parts[:-1]))
+    return variants
+
+
 def _load_json(path, default):
     if not os.path.isfile(path):
         return default
@@ -143,10 +157,13 @@ def match_scorer_to_selection(event: dict, selections: list[dict]) -> tuple[dict
         return None, 'not_drafted'
 
     aliases = load_aliases()
+    norm = normalize_player_name(scorer_en)
     names_to_try = [scorer_en]
-    alias_target = aliases.get(normalize_player_name(scorer_en))
+    alias_target = aliases.get(norm)
     if alias_target:
         names_to_try.append(alias_target)
+    for variant in _name_order_variants(norm):
+        names_to_try.append(variant)
 
     for name in names_to_try:
         sel = _match_by_english(name, team_cn, selections)

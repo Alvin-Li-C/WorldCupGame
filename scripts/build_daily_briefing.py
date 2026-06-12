@@ -368,7 +368,8 @@ def build_briefing(mock=False, skip_news=False):
 
     yesterday_matches = build_yesterday_placeholder(fixtures, yesterday_date)
 
-    preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
+    finished_ids = {r['fixture_id'] for r in finished_rows}
+    preview_date, is_next = resolve_preview_date(fixtures, briefing_date, finished_ids)
     prior_today_matches = (prior_latest.get('today') or {}).get('matches') or []
     if skip_news:
         print(f'build: skip news — refreshing scores; preview {preview_date} reuses cached key_news...', flush=True)

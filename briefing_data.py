@@ -113,10 +113,43 @@ def fixture_dates_sorted(fixtures):
     return sorted({fixture_beijing_date(f) for f in fixtures if fixture_beijing_date(f)})
 
 
-def resolve_preview_date(fixtures, briefing_date):
+def finished_fixture_ids_for_date(
+    date_str,
+    history_index=None,
+    extra_matches=None,
+):
+    """Fixture ids with final scores on a Beijing calendar day."""
+    ids = set()
+    idx = history_index if history_index is not None else load_history_index()
+    report = (idx.get('reports') or {}).get(date_str) or {}
+    for m in report.get('matches') or []:
+        if match_has_results(m):
+            ids.add(m['fixture_id'])
+    for m in extra_matches or []:
+        kickoff = m.get('kickoff_beijing') or ''
+        if not kickoff.startswith(date_str):
+            continue
+        if match_has_results(m) or m.get('status') == 'finished':
+            fid = m.get('fixture_id')
+            if fid is not None:
+                ids.add(fid)
+    return ids
+
+
+def all_fixtures_finished_on_date(fixtures, date_str, finished_fixture_ids):
+    day = fixtures_on_date(fixtures, date_str)
+    if not day:
+        return False
+    expected = {f['fixture_id'] for f in day}
+    return expected.issubset(set(finished_fixture_ids or ()))
+
+
+def resolve_preview_date(fixtures, briefing_date, finished_fixture_ids=None):
     """Return (preview_date, is_next_matchday) for 今日预告."""
+    finished_fixture_ids = set(finished_fixture_ids or ())
     if fixtures_on_date(fixtures, briefing_date):
-        return briefing_date, False
+        if not all_fixtures_finished_on_date(fixtures, briefing_date, finished_fixture_ids):
+            return briefing_date, False
     for d in fixture_dates_sorted(fixtures):
         if d > briefing_date:
             return d, True
@@ -148,7 +181,12 @@ def enrich_today_preview(latest, reference_date=None):
         return latest
     fixtures = load_fixtures()
     briefing_date = reference_date or latest.get('briefing_date') or today_bj_str()
-    preview_date, is_next = resolve_preview_date(fixtures, briefing_date)
+    today_block = latest.get('today') or {}
+    finished_ids = finished_fixture_ids_for_date(
+        briefing_date,
+        extra_matches=today_block.get('matches') or [],
+    )
+    preview_date, is_next = resolve_preview_date(fixtures, briefing_date, finished_ids)
     today = dict(latest.get('today') or {})
     owner_map = get_owner_map()
     overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})

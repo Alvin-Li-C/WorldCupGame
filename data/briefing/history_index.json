@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-06-12T07:17:12+08:00",
+  "updated_at": "2026-06-12T20:22:03+08:00",
   "dates": [
     "2026-06-12"
   ],
   "reports": {
     "2026-06-12": {
       "date": "2026-06-12",
-      "match_count": 1,
+      "match_count": 2,
       "matches": [
         {
           "fixture_id": 1,
@@ -18,40 +18,90 @@
           "stadium_photo": "azteca.jpg",
           "played_date_beijing": "2026-06-12",
           "kickoff_beijing": "2026-06-12 03:00",
-          "our_scorers": [],
-          "unmatched_scorers": [
+          "our_scorers": [
             {
-              "fixture_id": 1,
-              "kickoff_beijing": "2026-06-12 03:00",
-              "home_team": "墨西哥",
-              "away_team": "南非",
-              "scorer_en": "Julián Quiñones",
-              "scorer_api_id": "233075",
-              "team_en": "Mexico",
-              "team_cn": "墨西哥",
-              "type": "REGULAR",
-              "minute": 9,
-              "would_points": 1,
-              "reason": "no_name_match",
-              "reason_label": "英文名未匹配"
+              "player_id": 22,
+              "participant": "老闫",
+              "player_name_cn": "劳尔·希门尼斯",
+              "player_name_en": "Raul Jimenez",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
             },
             {
-              "fixture_id": 1,
-              "kickoff_beijing": "2026-06-12 03:00",
-              "home_team": "墨西哥",
-              "away_team": "南非",
-              "scorer_en": "Raúl Jiménez",
-              "scorer_api_id": "167060",
-              "team_en": "Mexico",
-              "team_cn": "墨西哥",
-              "type": "REGULAR",
-              "minute": 67,
-              "would_points": 1,
-              "reason": "no_name_match",
-              "reason_label": "英文名未匹配"
+              "player_id": 21,
+              "participant": "李总",
+              "player_name_cn": "胡利安·基尼奥内斯",
+              "player_name_en": "Julian Quinones",
+              "jersey_number": 21,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
             }
           ],
+          "unmatched_scorers": [],
           "winner_team": "墨西哥"
+        },
+        {
+          "fixture_id": 2,
+          "home_team": "韩国",
+          "away_team": "捷克",
+          "home_score": 2,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "akron.jpg",
+          "played_date_beijing": "2026-06-12",
+          "kickoff_beijing": "2026-06-12 10:00",
+          "our_scorers": [
+            {
+              "player_id": 103,
+              "participant": "老闫",
+              "player_name_cn": "吴贤揆",
+              "player_name_en": "Hyeon-Gyu Oh",
+              "jersey_number": 25,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 36,
+              "participant": "老王",
+              "player_name_cn": "拉吉斯拉夫·克雷伊奇",
+              "player_name_en": "Ladislav Krejci",
+              "jersey_number": 10,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 100,
+              "participant": "老王",
+              "player_name_cn": "黄仁范",
+              "player_name_en": "In-Beom Hwang",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "韩国"
         }
       ]
     }
