@@ -2,6 +2,8 @@
 from datetime import datetime, timedelta, timezone
 
 BJ = timezone(timedelta(hours=8))
+# After last kickoff + buffer, treat matchday as done for preview roll (90'+ stoppage).
+MATCHDAY_COMPLETE_BUFFER = timedelta(hours=2, minutes=45)
 
 
 def now_bj():
@@ -47,3 +49,35 @@ def fixture_beijing_date(fixture):
     if ko:
         return ko.split(' ')[0]
     return fixture.get('played_date', '')
+
+
+def parse_kickoff_beijing(kickoff: str):
+    """Parse 'YYYY-MM-DD HH:MM' as timezone-aware Beijing datetime."""
+    if not kickoff or ' ' not in kickoff:
+        return None
+    try:
+        return datetime.strptime(kickoff, '%Y-%m-%d %H:%M').replace(tzinfo=BJ)
+    except ValueError:
+        return None
+
+
+def last_kickoff_on_date(fixtures, date_str):
+    """Latest kickoff_beijing on a Beijing calendar day."""
+    last = None
+    for f in fixtures:
+        ko = f.get('kickoff_beijing') or ''
+        if not ko.startswith(date_str):
+            continue
+        dt = parse_kickoff_beijing(ko)
+        if dt and (last is None or dt > last):
+            last = dt
+    return last
+
+
+def matchday_likely_complete(fixtures, date_str, now=None, buffer=MATCHDAY_COMPLETE_BUFFER):
+    """True when the last kickoff of the day is far enough in the past (BJ time)."""
+    now = now or now_bj()
+    last = last_kickoff_on_date(fixtures, date_str)
+    if not last:
+        return False
+    return now >= last + buffer

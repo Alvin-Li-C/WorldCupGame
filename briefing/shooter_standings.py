@@ -184,4 +184,10 @@ def save_shooter_standings(data=None):
 
 
 def load_shooter_standings():
-    return compute_shooter_standings()
+    try:
+        return compute_shooter_standings()
+    except Exception:
+        cached = load_json(STANDINGS_PATH)
+        if cached:
+            return cached
+        raise

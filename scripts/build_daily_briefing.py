@@ -459,14 +459,26 @@ def upload_briefing(config, dry_run=False):
         print('IMPORT_BRIEFING_TOKEN not set; skip upload')
         return
     body = json.dumps(payload).encode('utf-8')
+    print(f'Uploading {len(body)} bytes to {url} ...', flush=True)
     req = urllib.request.Request(
         f'{url}?token={token}',
         data=body,
         headers={'Content-Type': 'application/json'},
         method='POST',
     )
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        print(resp.read().decode())
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            print(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode(errors='replace')[:2000]
+        print(f'Upload failed: HTTP {e.code} {e.reason}', file=sys.stderr)
+        if err_body.strip():
+            print(err_body, file=sys.stderr)
+        print(
+            'Hint: if PA returns 500 on all pages, open Web → Error log / Reload on PythonAnywhere.',
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
 
 def git_push():

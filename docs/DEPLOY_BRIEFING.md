@@ -125,6 +125,26 @@ cd ~/WorldCupGame && git pull
 
 `IMPORT_BRIEFING_TOKEN` 在 PA Web 环境变量中配置，与 PC 上传时一致。
 
+### PA 整站 500 / 上传 HTTP 500
+
+若本机 `--upload` 报 `HTTP 500`，且浏览器打开 `/briefing` 也是 500，说明 **PA 上 Flask 未正常启动**，不是 JSON 校验失败。
+
+1. PA 控制台 → **Web** → **Reload**（或 Disable 再 Enable）
+2. **Web** → **Error log** / **Server log**，查看最后几行 Traceback
+3. Bash：
+   ```bash
+   cd ~/WorldCupGame
+   git pull
+   python3.10 -c "from app import app; print('ok')"
+   ```
+4. 若 `database is locked`：Web **Disable** → 删 `instance/draft.db-wal` / `-shm`（如有）→ 用备份 `.backup` 重建 → Enable → Reload
+5. 应用能 `print('ok')` 后，本机再跑：
+   ```powershell
+   python scripts\build_daily_briefing.py --skip-news --upload
+   ```
+
+**临时绕过 Web 挂掉**：PA **Files** 手动上传 `data/briefing/latest.json`、`history_index.json`、`standings_*.json` 到同路径（Web 恢复后生效）。
+
 ## 冒烟测试
 
 ```powershell

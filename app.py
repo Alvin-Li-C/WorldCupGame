@@ -459,21 +459,29 @@ def api_auto_draft_state(name):
 # ========== Init ==========
 
 def ensure_db_initialized():
-    """Initialize and seed DB on first run, re-seed if name_cn is missing"""
-    migrate_briefing_tables()
+    """Initialize and seed DB on first run, re-seed if name_cn is missing."""
+    import sys
+    try:
+        migrate_briefing_tables()
+    except Exception as e:
+        print(f'ensure_db: migrate_briefing_tables skipped: {e}', file=sys.stderr)
+
     db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'draft.db')
-    if not os.path.exists(db_path):
-        seed_database()
-        _sync_ownership_if_needed()
-        return
-    db = get_db()
-    empty_count = db.execute('SELECT COUNT(*) FROM players WHERE name_cn = ""').fetchone()[0]
-    own_count = db.execute('SELECT COUNT(*) FROM team_ownership').fetchone()[0]
-    db.close()
-    if empty_count > 0:
-        seed_database()
-    if own_count != 40:
-        _sync_ownership_if_needed()
+    try:
+        if not os.path.exists(db_path):
+            seed_database()
+            _sync_ownership_if_needed()
+            return
+        db = get_db()
+        empty_count = db.execute('SELECT COUNT(*) FROM players WHERE name_cn = ""').fetchone()[0]
+        own_count = db.execute('SELECT COUNT(*) FROM team_ownership').fetchone()[0]
+        db.close()
+        if empty_count > 0:
+            seed_database()
+        if own_count != 40:
+            _sync_ownership_if_needed()
+    except Exception as e:
+        print(f'ensure_db: init check skipped (briefing may still work): {e}', file=sys.stderr)
 
 
 def _sync_ownership_if_needed():

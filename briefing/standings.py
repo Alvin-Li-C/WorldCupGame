@@ -13,6 +13,7 @@ from briefing_data import (
     load_briefing,
     load_fixtures,
     load_history_index,
+    load_json,
     save_json,
 )
 
@@ -295,4 +296,10 @@ def save_team_standings(data=None):
 
 
 def load_team_standings():
-    return compute_team_standings()
+    try:
+        return compute_team_standings()
+    except Exception:
+        cached = load_json(STANDINGS_PATH)
+        if cached:
+            return cached
+        raise
