@@ -10,7 +10,9 @@ from datetime import datetime, timezone, timedelta
 
 from briefing.time_utils import BJ
 from briefing_data import (
+    all_report_finished_fixture_ids,
     all_fixtures_finished_on_date,
+    enrich_today_preview,
     history_dates_payload,
     list_report_dates,
     match_has_results,
@@ -39,6 +41,48 @@ class TestHistoryDates(unittest.TestCase):
         payload = history_dates_payload()
         self.assertIn('yesterday', payload)
         self.assertIsInstance(payload['dates'], list)
+
+    def test_history_dates_payload_default_is_most_recent(self):
+        idx = {
+            'reports': {
+                '2026-06-12': {'matches': [{'fixture_id': 1, 'home_score': 2, 'away_score': 0}]},
+                '2026-06-14': {'matches': [{'fixture_id': 5, 'home_score': 1, 'away_score': 1}]},
+            }
+        }
+        dates = list_report_dates(idx)
+        self.assertEqual(dates, ['2026-06-14', '2026-06-12'])
+        self.assertEqual(dates[0], '2026-06-14')
+
+    def test_all_report_finished_fixture_ids(self):
+        idx = {
+            'reports': {
+                '2026-06-12': {'matches': [
+                    {'fixture_id': 1, 'home_score': 2, 'away_score': 0},
+                    {'fixture_id': 2, 'home_score': None, 'away_score': None},
+                ]},
+            }
+        }
+        self.assertEqual(all_report_finished_fixture_ids(idx), {1})
+
+    def test_enrich_today_preview_excludes_finished(self):
+        latest = {
+            'briefing_date': '2026-06-14',
+            'today': {
+                'date': '2026-06-14',
+                'matches': [
+                    {
+                        'fixture_id': 5,
+                        'kickoff_beijing': '2026-06-14 03:00',
+                        'home_score': 1,
+                        'away_score': 1,
+                        'status': 'finished',
+                    },
+                ],
+            },
+        }
+        enriched = enrich_today_preview(latest, reference_date='2026-06-14')
+        ids = [m['fixture_id'] for m in enriched['today']['matches']]
+        self.assertNotIn(5, ids)
 
     def test_resolve_preview_date_rolls_after_all_finished(self):
         fixtures = [

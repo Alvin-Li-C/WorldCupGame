@@ -72,6 +72,17 @@ def list_report_dates(history_index=None):
     return sorted(dates, reverse=True)
 
 
+def all_report_finished_fixture_ids(history_index=None):
+    """Fixture ids with final scores in any history report."""
+    idx = history_index if history_index is not None else load_history_index()
+    ids = set()
+    for report in (idx.get('reports') or {}).values():
+        for m in report.get('matches') or []:
+            if match_has_results(m):
+                ids.add(m['fixture_id'])
+    return ids
+
+
 def get_report_for_date(date):
     idx = load_history_index()
     report = idx.get('reports', {}).get(date)
@@ -220,6 +231,11 @@ def enrich_today_preview(latest, reference_date=None):
             if override:
                 m['key_news'] = override
         new_matches.append(m)
+    finished_ids = all_report_finished_fixture_ids()
+    new_matches = [
+        m for m in new_matches
+        if m['fixture_id'] not in finished_ids and not match_has_results(m)
+    ]
     latest = dict(latest)
     latest['briefing_date'] = briefing_date
     latest['today'] = {
@@ -444,10 +460,5 @@ def history_dates_payload():
     idx = load_history_index()
     yesterday = yesterday_bj_str()
     dates = list_report_dates(idx)
-    if yesterday in dates:
-        default = yesterday
-    elif dates:
-        default = dates[0]
-    else:
-        default = None
+    default = dates[0] if dates else None
     return {'dates': dates, 'default': default, 'yesterday': yesterday}
