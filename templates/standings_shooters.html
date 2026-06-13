@@ -152,6 +152,14 @@
             background: rgba(255,255,255,0.06);
         }
         .player-name { font-weight: 600; }
+        .player-name-en {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-top: 0.15rem;
+            line-height: 1.25;
+        }
         .pick-no {
             font-size: 0.72rem; font-weight: 600; color: var(--muted);
             margin-left: 0.35rem;
@@ -318,6 +326,12 @@ function pickLabel(p) {
     return '<span class="pick-no">#' + p.pick + '</span>';
 }
 
+function enNameLine(p) {
+    var en = p.name_en || '';
+    if (!en || en === p.name) return '';
+    return '<span class="player-name-en">' + en + '</span>';
+}
+
 function renderTotals() {
     var grid = document.getElementById('totalsGrid');
     if (!grid) return;
@@ -346,7 +360,7 @@ function renderTable() {
         return '<tr class="' + topClass + '">' +
             '<td class="num rank-cell">' + p.rank + '</td>' +
             '<td><span class="participant-badge" style="border-left:3px solid ' + color + '">' + p.participant + '</span></td>' +
-            '<td class="player-name">' + p.name + pickLabel(p) + star + '</td>' +
+            '<td class="player-name">' + p.name + pickLabel(p) + star + enNameLine(p) + '</td>' +
             '<td>' + p.team + '</td>' +
             '<td class="num">' + p.goals + '</td>' +
             '<td class="num og-cell">' + (p.own_goals || '—') + '</td>' +

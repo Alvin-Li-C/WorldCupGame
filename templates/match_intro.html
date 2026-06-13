@@ -567,6 +567,15 @@
             line-height: 1.3;
             text-shadow: 0 1px 6px rgba(0,0,0,0.5);
         }
+        .player-inner .name-en {
+            display: block;
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-top: 0.12rem;
+            line-height: 1.2;
+            text-shadow: none;
+        }
         .pick-no {
             font-size: 0.68rem;
             font-weight: 600;
@@ -756,7 +765,11 @@ function renderRoster(containerId, data) {
             playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
                 var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
                 var pick = (p.pick != null && p.pick !== '') ? '<span class="pick-no">#' + p.pick + '</span>' : '';
-                return '<div class="player-inner"><span class="pname">' + p.name + pick + star + '</span></div>';
+                var en = (p.name_en && p.name_en !== p.name)
+                    ? '<span class="name-en">' + p.name_en + '</span>' : '';
+                return '<div class="player-inner"><span class="pname">' +
+                    '<span class="name-cn">' + p.name + pick + star + '</span>' + en +
+                    '</span></div>';
             }).join('') + '</div>';
         }
         return '<div class="roster-row' + (list.length ? ' filled' : '') + '">' +

@@ -339,6 +339,7 @@ def get_roster_for_team(team_name):
                 {
                     'num': row['jersey_number'],
                     'name': row['name_cn'] or row['name'],
+                    'name_en': row['name'],
                     'pick': global_pick_number(row['round_number'], row['pick_number']),
                     'top20': is_top20_pick(row['round_number'], row['pick_number']),
                 }

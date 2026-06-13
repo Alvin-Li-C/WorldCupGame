@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-06-13T15:53:38+08:00",
+  "generated_at": "2026-06-14T05:28:19+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-13",
+  "briefing_date": "2026-06-14",
   "yesterday": {
-    "date": "2026-06-12",
+    "date": "2026-06-13",
     "matches": [
       {
-        "fixture_id": 1,
-        "home_team": "墨西哥",
-        "away_team": "南非",
+        "fixture_id": 3,
+        "home_team": "加拿大",
+        "away_team": "波黑",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "azteca.jpg",
+        "stadium_photo": "bmo.jpg",
         "our_scorers": [],
         "unmatched_scorers": []
       },
       {
-        "fixture_id": 2,
-        "home_team": "韩国",
-        "away_team": "捷克",
+        "fixture_id": 4,
+        "home_team": "美国",
+        "away_team": "巴拉圭",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "akron.jpg",
+        "stadium_photo": "sofi.jpg",
         "our_scorers": [],
         "unmatched_scorers": []
       }
@@ -29,7 +29,7 @@
   },
   "today": {
     "date": "2026-06-14",
-    "is_next_matchday": true,
+    "is_next_matchday": false,
     "match_count": 4,
     "matches": [
       {
@@ -39,10 +39,80 @@
         "home_team": "卡塔尔",
         "away_team": "瑞士",
         "kickoff_beijing": "2026-06-14 03:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "NA",
         "away_owner": "老闫",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "卡塔尔",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "卡塔尔对瑞士世界杯首发预测、阵型与观赛指南",
+            "impact": "high",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Fri, 12 Jun 2026 21:43:27 +0000",
+            "url": "https://www.cbssports.com/soccer/news/qatar-switzerland-world-cup-2026-preview-predictions-watch/"
+          },
+          {
+            "rank": 2,
+            "team": "瑞士",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "瑞士对卡塔尔世界杯赔率分析与专家预测",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Sat, 13 Jun 2026 10:31:48 +0000",
+            "url": "https://www.cbssports.com/soccer/news/switzerland-qatar-odds-prediction-time-2026-world-cup-picks-best-bets/"
+          },
+          {
+            "rank": 3,
+            "team": "卡塔尔",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "周六世界杯串关推荐含瑞士对卡塔尔等场次",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Sat, 13 Jun 2026 10:00:50 +0000",
+            "url": "https://www.cbssports.com/soccer/news/2026-world-cup-parlay-best-bets-picks-for-switzerland-vs-qatar-brazil-vs-morocco-and-more-on-saturday/"
+          }
+        ],
+        "home_score": 1,
+        "away_score": 1,
+        "our_scorers": [
+          {
+            "player_id": 205,
+            "participant": "李总",
+            "player_name_cn": "布里尔·恩博洛",
+            "player_name_en": "Breel Embolo",
+            "jersey_number": 23,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          },
+          {
+            "player_id": 162,
+            "participant": "李总",
+            "player_name_cn": "布阿莱姆·胡希",
+            "player_name_en": "Boualem Khoukhi",
+            "jersey_number": 6,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          }
+        ],
+        "unmatched_scorers": [],
+        "played_date_beijing": "2026-06-14",
+        "source": "football-data"
       },
       {
         "fixture_id": 6,
@@ -54,7 +124,44 @@
         "status": "scheduled",
         "home_owner": "老闫",
         "away_owner": "老王",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "巴西",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "巴西vs摩洛哥前瞻：预测、预计首发与观赛指南",
+            "impact": "high",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Fri, 12 Jun 2026 19:16:02 +0000",
+            "url": "https://www.cbssports.com/soccer/news/brazil-morocco-world-cup-2026-preview-predictions-watch/"
+          },
+          {
+            "rank": 2,
+            "team": "巴西",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "巴西vs摩洛哥情报：球员数据与方案分布",
+            "impact": "medium",
+            "impact_score": 50,
+            "source": "懂球帝头条",
+            "published_at": "2030-06-12 18:56:19",
+            "url": "https://www.dongqiudi.com/article/5929474"
+          },
+          {
+            "rank": 3,
+            "team": "巴西",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯赛程：巴西周六迎来小组赛关键战",
+            "impact": "medium",
+            "impact_score": 80,
+            "source": "CBS Soccer",
+            "published_at": "Fri, 12 Jun 2026 15:45:38 +0000",
+            "url": "https://www.cbssports.com/soccer/news/world-cup-footy-fix-usmnt-and-canada-kick-off-on-friday-brazil-in-action-saturday-germany-sunday/"
+          }
+        ]
       },
       {
         "fixture_id": 7,
@@ -66,7 +173,44 @@
         "status": "scheduled",
         "home_owner": "NA",
         "away_owner": "耗子",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "海地",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "世界杯中场补水暂停将统一执行，或影响体能分配与比赛节奏",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "\n                        Thu, 11 Jun 2026 19:42:22 +0000\n                    ",
+            "url": "https://www.cbssports.com/soccer/news/fifa-world-cup-water-breaks-hydration-strategy/"
+          },
+          {
+            "rank": 2,
+            "team": "苏格兰",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "克洛普：世界杯补水暂停实为广告插播，球员比赛节奏或被打断",
+            "impact": "low",
+            "impact_score": 33,
+            "source": "懂球帝头条",
+            "published_at": "2026-06-13 19:48:29",
+            "url": "https://www.dongqiudi.com/article/5929616"
+          },
+          {
+            "rank": 3,
+            "team": "海地",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "2026世界杯完整赛程与开球时间公布",
+            "impact": "low",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "\n                        Sat, 13 Jun 2026 03:29:32 +0000\n                    ",
+            "url": "https://www.cbssports.com/soccer/news/world-cup-2026-schedule-times-dates/"
+          }
+        ]
       },
       {
         "fixture_id": 8,
@@ -78,7 +222,44 @@
         "status": "scheduled",
         "home_owner": "庆爷",
         "away_owner": "李总",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "澳大利亚",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "澳大利亚vs土耳其：专家盘口预测与最佳投注推荐",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Sat, 13 Jun 2026 11:02:25 +0000",
+            "url": "https://www.cbssports.com/soccer/news/australia-turkiye-odds-prediction-time-2026-world-cup-picks-best-bets/"
+          },
+          {
+            "rank": 2,
+            "team": "土耳其",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯D组巡礼：澳大利亚与土耳其实力特点与小组竞争",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Fri, 12 Jun 2026 16:01:56 +0000",
+            "url": "https://www.cbssports.com/soccer/news/usmnts-world-cup-opponents-what-to-know-about-paraguay-australia-and-turkiye/"
+          },
+          {
+            "rank": 3,
+            "team": "澳大利亚",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "世界杯完整赛程公布，含澳土之战开球时间",
+            "impact": "low",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Sat, 13 Jun 2026 03:29:32 +0000",
+            "url": "https://www.cbssports.com/soccer/news/world-cup-2026-schedule-times-dates/"
+          }
+        ]
       }
     ]
   }
