@@ -152,6 +152,10 @@
             background: rgba(255,255,255,0.06);
         }
         .player-name { font-weight: 600; }
+        .pick-no {
+            font-size: 0.72rem; font-weight: 600; color: var(--muted);
+            margin-left: 0.35rem;
+        }
         .star { color: var(--gold); margin-left: 0.15rem; }
         .pts-cell { font-weight: 800; color: var(--gold-light); font-size: 0.95rem; }
         .og-cell { color: #f87171; }
@@ -309,6 +313,11 @@ var PLAYERS = {{ standings.players | tojson }};
 var TOTALS = {{ standings.participants | tojson }};
 var currentFilter = 'all';
 
+function pickLabel(p) {
+    if (p.pick == null || p.pick === '') return '';
+    return '<span class="pick-no">#' + p.pick + '</span>';
+}
+
 function renderTotals() {
     var grid = document.getElementById('totalsGrid');
     if (!grid) return;
@@ -337,7 +346,7 @@ function renderTable() {
         return '<tr class="' + topClass + '">' +
             '<td class="num rank-cell">' + p.rank + '</td>' +
             '<td><span class="participant-badge" style="border-left:3px solid ' + color + '">' + p.participant + '</span></td>' +
-            '<td class="player-name">' + p.name + star + '</td>' +
+            '<td class="player-name">' + p.name + pickLabel(p) + star + '</td>' +
             '<td>' + p.team + '</td>' +
             '<td class="num">' + p.goals + '</td>' +
             '<td class="num og-cell">' + (p.own_goals || '—') + '</td>' +
