@@ -1,6 +1,7 @@
 {
-  "updated_at": "2026-06-12T20:22:03+08:00",
+  "updated_at": "2026-06-13T15:30:02+08:00",
   "dates": [
+    "2026-06-13",
     "2026-06-12"
   ],
   "reports": {
@@ -102,6 +103,119 @@
           ],
           "unmatched_scorers": [],
           "winner_team": "韩国"
+        }
+      ]
+    },
+    "2026-06-13": {
+      "date": "2026-06-13",
+      "match_count": 2,
+      "matches": [
+        {
+          "fixture_id": 3,
+          "home_team": "加拿大",
+          "away_team": "波黑",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "bmo.jpg",
+          "played_date_beijing": "2026-06-13",
+          "kickoff_beijing": "2026-06-13 03:00",
+          "our_scorers": [
+            {
+              "player_id": 129,
+              "participant": "耗子",
+              "player_name_cn": "凯尔·拉林",
+              "player_name_en": "Cyle Larin",
+              "jersey_number": 25,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 153,
+              "participant": "李总",
+              "player_name_cn": "约沃·卢基奇",
+              "player_name_en": "Jovo Lukic",
+              "jersey_number": 23,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": []
+        },
+        {
+          "fixture_id": 4,
+          "home_team": "美国",
+          "away_team": "巴拉圭",
+          "home_score": 4,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "sofi.jpg",
+          "played_date_beijing": "2026-06-13",
+          "kickoff_beijing": "2026-06-13 09:00",
+          "our_scorers": [
+            {
+              "player_id": 333,
+              "participant": "老闫",
+              "player_name_cn": "福拉林·巴洛贡",
+              "player_name_en": "Folarin Balogun",
+              "jersey_number": 21,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 376,
+              "participant": "庆爷",
+              "player_name_cn": "达米安·博瓦迪利亚",
+              "player_name_en": "Damian Bobadilla",
+              "jersey_number": 12,
+              "goals": 0,
+              "own_goals": 1,
+              "points": 2,
+              "goal_count": 0,
+              "display": "乌龙+2",
+              "top20": false
+            },
+            {
+              "player_id": 329,
+              "participant": "老王",
+              "player_name_cn": "乔·雷纳",
+              "player_name_en": "Gio Reyna",
+              "jersey_number": 17,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 381,
+              "participant": "庆爷",
+              "player_name_cn": "毛里西奥·马加良斯",
+              "player_name_en": "Mauricio Magalhaes",
+              "jersey_number": 17,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "美国"
         }
       ]
     }

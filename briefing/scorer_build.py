@@ -15,6 +15,11 @@ def build_match_scorers(api_match, home_cn, away_cn, team_map, selections, api_t
 
     for ev in events:
         sel, reason = match_scorer_to_selection(ev, selections)
+        if not sel and ev.get('type') == 'OWN':
+            opp_cn = away_cn if ev.get('team_cn') == home_cn else home_cn
+            if opp_cn and opp_cn != ev.get('team_cn'):
+                ev_opp = {**ev, 'team_cn': opp_cn}
+                sel, reason = match_scorer_to_selection(ev_opp, selections)
         g_delta, og_delta = event_points(ev)
         would_points = g_delta + og_delta * 2
 

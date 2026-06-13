@@ -1,38 +1,83 @@
 {
-  "generated_at": "2026-06-12T20:21:13+08:00",
+  "generated_at": "2026-06-13T14:51:23+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-12",
+  "briefing_date": "2026-06-13",
   "yesterday": {
-    "date": "2026-06-11",
-    "matches": []
-  },
-  "today": {
-    "date": "2026-06-13",
-    "is_next_matchday": true,
-    "match_count": 2,
+    "date": "2026-06-12",
     "matches": [
       {
-        "fixture_id": 3,
+        "fixture_id": 1,
+        "home_team": "墨西哥",
+        "away_team": "南非",
+        "home_score": null,
+        "away_score": null,
+        "stadium_photo": "azteca.jpg",
+        "our_scorers": [],
+        "unmatched_scorers": []
+      },
+      {
+        "fixture_id": 2,
+        "home_team": "韩国",
+        "away_team": "捷克",
+        "home_score": null,
+        "away_score": null,
+        "stadium_photo": "akron.jpg",
+        "our_scorers": [],
+        "unmatched_scorers": []
+      }
+    ]
+  },
+  "today": {
+    "date": "2026-06-14",
+    "is_next_matchday": true,
+    "match_count": 4,
+    "matches": [
+      {
+        "fixture_id": 5,
         "group": "B",
         "matchday": 1,
-        "home_team": "加拿大",
-        "away_team": "波黑",
-        "kickoff_beijing": "2026-06-13 03:00",
+        "home_team": "卡塔尔",
+        "away_team": "瑞士",
+        "kickoff_beijing": "2026-06-14 03:00",
         "status": "scheduled",
-        "home_owner": "耗子",
-        "away_owner": "庆爷",
+        "home_owner": "NA",
+        "away_owner": "老闫",
         "key_news": []
       },
       {
-        "fixture_id": 4,
-        "group": "D",
+        "fixture_id": 6,
+        "group": "C",
         "matchday": 1,
-        "home_team": "美国",
-        "away_team": "巴拉圭",
-        "kickoff_beijing": "2026-06-13 09:00",
+        "home_team": "巴西",
+        "away_team": "摩洛哥",
+        "kickoff_beijing": "2026-06-14 06:00",
         "status": "scheduled",
         "home_owner": "老闫",
-        "away_owner": "庆爷",
+        "away_owner": "老王",
+        "key_news": []
+      },
+      {
+        "fixture_id": 7,
+        "group": "C",
+        "matchday": 1,
+        "home_team": "海地",
+        "away_team": "苏格兰",
+        "kickoff_beijing": "2026-06-14 09:00",
+        "status": "scheduled",
+        "home_owner": "NA",
+        "away_owner": "耗子",
+        "key_news": []
+      },
+      {
+        "fixture_id": 8,
+        "group": "D",
+        "matchday": 1,
+        "home_team": "澳大利亚",
+        "away_team": "土耳其",
+        "kickoff_beijing": "2026-06-14 12:00",
+        "status": "scheduled",
+        "home_owner": "庆爷",
+        "away_owner": "李总",
         "key_news": []
       }
     ]

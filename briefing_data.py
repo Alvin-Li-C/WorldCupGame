@@ -3,7 +3,13 @@ import json
 import os
 import sqlite3
 
-from briefing.time_utils import fixture_beijing_date, today_bj_str, yesterday_bj_str
+from briefing.time_utils import (
+    fixture_beijing_date,
+    matchday_likely_complete,
+    now_bj,
+    today_bj_str,
+    yesterday_bj_str,
+)
 from game_logic import global_pick_number, is_top20_pick
 from models import DB_PATH, get_db
 
@@ -144,11 +150,14 @@ def all_fixtures_finished_on_date(fixtures, date_str, finished_fixture_ids):
     return expected.issubset(set(finished_fixture_ids or ()))
 
 
-def resolve_preview_date(fixtures, briefing_date, finished_fixture_ids=None):
+def resolve_preview_date(fixtures, briefing_date, finished_fixture_ids=None, now=None):
     """Return (preview_date, is_next_matchday) for 今日预告."""
     finished_fixture_ids = set(finished_fixture_ids or ())
+    now = now or now_bj()
     if fixtures_on_date(fixtures, briefing_date):
-        if not all_fixtures_finished_on_date(fixtures, briefing_date, finished_fixture_ids):
+        all_done = all_fixtures_finished_on_date(fixtures, briefing_date, finished_fixture_ids)
+        time_done = matchday_likely_complete(fixtures, briefing_date, now=now)
+        if not all_done and not time_done:
             return briefing_date, False
     for d in fixture_dates_sorted(fixtures):
         if d > briefing_date:
@@ -186,7 +195,7 @@ def enrich_today_preview(latest, reference_date=None):
         briefing_date,
         extra_matches=today_block.get('matches') or [],
     )
-    preview_date, is_next = resolve_preview_date(fixtures, briefing_date, finished_ids)
+    preview_date, is_next = resolve_preview_date(fixtures, briefing_date, finished_ids, now=now_bj())
     today = dict(latest.get('today') or {})
     owner_map = get_owner_map()
     overrides = load_json(os.path.join(BRIEFING_DIR, 'news_overrides.json'), {})

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T20:22:03+08:00",
+  "generated_at": "2026-06-13T15:30:02+08:00",
   "empty": false,
   "rules": {
     "group_win": 3,
@@ -77,32 +77,69 @@
       "rank": 2
     },
     {
-      "participant": "庆爷",
-      "points": 0,
-      "wins": 0,
-      "draws": 0,
-      "losses": 0,
-      "played": 0,
-      "group_pts": 0,
-      "bonus_pts": 0,
-      "knockout_pts": 0,
-      "teams": [],
-      "rank": 3
-    },
-    {
       "participant": "老闫",
-      "points": 0,
-      "wins": 0,
+      "points": 3,
+      "wins": 1,
       "draws": 0,
       "losses": 1,
-      "played": 1,
-      "group_pts": 0,
+      "played": 2,
+      "group_pts": 3,
       "bonus_pts": 0,
       "knockout_pts": 0,
       "teams": [
         {
+          "team": "美国",
+          "group": "D",
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "group_pts": 3,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 3
+        },
+        {
           "team": "南非",
           "group": "A",
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "group_pts": 0,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 0
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "participant": "庆爷",
+      "points": 1,
+      "wins": 0,
+      "draws": 1,
+      "losses": 1,
+      "played": 2,
+      "group_pts": 1,
+      "bonus_pts": 0,
+      "knockout_pts": 0,
+      "teams": [
+        {
+          "team": "波黑",
+          "group": "B",
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "group_pts": 1,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 1
+        },
+        {
+          "team": "巴拉圭",
+          "group": "D",
           "w": 0,
           "d": 0,
           "l": 1,
@@ -117,15 +154,28 @@
     },
     {
       "participant": "耗子",
-      "points": 0,
+      "points": 1,
       "wins": 0,
-      "draws": 0,
+      "draws": 1,
       "losses": 0,
-      "played": 0,
-      "group_pts": 0,
+      "played": 1,
+      "group_pts": 1,
       "bonus_pts": 0,
       "knockout_pts": 0,
-      "teams": [],
+      "teams": [
+        {
+          "team": "加拿大",
+          "group": "B",
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "group_pts": 1,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 1
+        }
+      ],
       "rank": 5
     }
   ]

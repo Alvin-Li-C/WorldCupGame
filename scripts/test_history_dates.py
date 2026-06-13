@@ -6,6 +6,9 @@ import unittest
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
+from datetime import datetime, timezone, timedelta
+
+from briefing.time_utils import BJ
 from briefing_data import (
     all_fixtures_finished_on_date,
     history_dates_payload,
@@ -54,7 +57,30 @@ class TestHistoryDates(unittest.TestCase):
             {'fixture_id': 2, 'kickoff_beijing': '2026-06-12 10:00'},
             {'fixture_id': 3, 'kickoff_beijing': '2026-06-13 03:00'},
         ]
-        preview, is_next = resolve_preview_date(fixtures, '2026-06-12', {1})
+        now = datetime(2026, 6, 12, 9, 30, tzinfo=BJ)
+        preview, is_next = resolve_preview_date(fixtures, '2026-06-12', {1}, now=now)
+        self.assertEqual(preview, '2026-06-12')
+        self.assertFalse(is_next)
+
+    def test_resolve_preview_date_rolls_after_last_kickoff_buffer(self):
+        fixtures = [
+            {'fixture_id': 1, 'kickoff_beijing': '2026-06-12 03:00'},
+            {'fixture_id': 2, 'kickoff_beijing': '2026-06-12 10:00'},
+            {'fixture_id': 3, 'kickoff_beijing': '2026-06-13 03:00'},
+        ]
+        # 12:46 BJ: last kickoff 10:00 + 2h45m elapsed -> roll even without history
+        now = datetime(2026, 6, 12, 12, 46, tzinfo=BJ)
+        preview, is_next = resolve_preview_date(fixtures, '2026-06-12', set(), now=now)
+        self.assertEqual(preview, '2026-06-13')
+        self.assertTrue(is_next)
+
+    def test_resolve_preview_date_keeps_during_live_match(self):
+        fixtures = [
+            {'fixture_id': 1, 'kickoff_beijing': '2026-06-12 03:00'},
+            {'fixture_id': 2, 'kickoff_beijing': '2026-06-12 10:00'},
+        ]
+        now = datetime(2026, 6, 12, 11, 0, tzinfo=BJ)
+        preview, is_next = resolve_preview_date(fixtures, '2026-06-12', set(), now=now)
         self.assertEqual(preview, '2026-06-12')
         self.assertFalse(is_next)
 

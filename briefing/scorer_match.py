@@ -178,6 +178,13 @@ def match_scorer_to_selection(event: dict, selections: list[dict]) -> tuple[dict
 
     parts = normalize_player_name(scorer_en).split()
     if len(parts) == 1 and len(pool) > 1:
+        first = parts[0]
+        by_first = [
+            s for s in pool
+            if normalize_player_name(s.get('name') or '').split()[0:1] == [first]
+        ]
+        if len(by_first) == 1:
+            return by_first[0], ''
         return None, 'ambiguous'
 
     return None, 'no_name_match'

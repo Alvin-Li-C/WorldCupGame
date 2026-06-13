@@ -354,6 +354,7 @@ document.querySelectorAll('#filterBar button').forEach(function(btn) {
     });
 });
 
+/* BEGIN repair-handler */
 document.querySelectorAll('.repair-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
         var row = btn.closest('tr');
@@ -380,6 +381,7 @@ document.querySelectorAll('.repair-btn').forEach(function(btn) {
           }).catch(function() { alert('请求失败'); btn.disabled = false; });
     });
 });
+/* END repair-handler */
 
 renderTotals();
 renderTable();
