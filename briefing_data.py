@@ -372,6 +372,16 @@ def _resolve_match_odds(fixture_id, inline_odds=None):
     return resolve_odds_for_fixture(fixture_id, inline_odds)
 
 
+def _find_history_match(fixture_id, history_index=None):
+    """Look up a fixture in any history report (finished match scores)."""
+    idx = history_index if history_index is not None else load_history_index()
+    for report in (idx.get('reports') or {}).values():
+        for m in report.get('matches') or []:
+            if m.get('fixture_id') == fixture_id:
+                return m
+    return None
+
+
 def _find_briefing_match(briefing, fixture_id):
     for block in ('today', 'yesterday'):
         if block not in briefing:
@@ -379,7 +389,7 @@ def _find_briefing_match(briefing, fixture_id):
         for m in briefing.get(block, {}).get('matches', []):
             if m.get('fixture_id') == fixture_id:
                 return m
-    return None
+    return _find_history_match(fixture_id)
 
 
 def get_match_detail(fixture_id):

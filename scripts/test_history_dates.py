@@ -13,11 +13,13 @@ from briefing_data import (
     all_report_finished_fixture_ids,
     all_fixtures_finished_on_date,
     enrich_today_preview,
+    get_match_detail,
     history_dates_payload,
     list_report_dates,
     match_has_results,
     report_has_results,
     resolve_preview_date,
+    _find_briefing_match,
 )
 
 
@@ -127,6 +129,25 @@ class TestHistoryDates(unittest.TestCase):
         preview, is_next = resolve_preview_date(fixtures, '2026-06-12', set(), now=now)
         self.assertEqual(preview, '2026-06-12')
         self.assertFalse(is_next)
+
+    def test_find_briefing_match_from_history_when_not_in_preview(self):
+        briefing = {
+            'today': {'date': '2026-06-15', 'matches': [
+                {'fixture_id': 9, 'home_score': None, 'away_score': None},
+            ]},
+        }
+        m = _find_briefing_match(briefing, 8)
+        if m is None:
+            self.skipTest('fixture 8 not in history_index.json')
+        self.assertEqual(m['home_score'], 2)
+        self.assertEqual(m['away_score'], 0)
+
+    def test_get_match_detail_shows_score_for_finished_fixture(self):
+        detail = get_match_detail(8)
+        if detail is None:
+            self.skipTest('fixture 8 not in fixtures_2026.json')
+        self.assertEqual(detail.get('status'), '已结束')
+        self.assertEqual(detail.get('score'), '2 — 0')
 
 
 if __name__ == '__main__':
