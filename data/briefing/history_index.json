@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T05:28:28+08:00",
+  "updated_at": "2026-06-14T14:20:06+08:00",
   "dates": [
     "2026-06-14",
     "2026-06-13",
@@ -222,7 +222,7 @@
     },
     "2026-06-14": {
       "date": "2026-06-14",
-      "match_count": 1,
+      "match_count": 4,
       "matches": [
         {
           "fixture_id": 5,
@@ -247,13 +247,83 @@
               "goal_count": 1,
               "display": "+1",
               "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 5,
+              "kickoff_beijing": "2026-06-14 03:00",
+              "home_team": "卡塔尔",
+              "away_team": "瑞士",
+              "scorer_en": "Miro Muheim",
+              "scorer_api_id": "243626",
+              "team_en": "Qatar",
+              "team_cn": "卡塔尔",
+              "type": "OWN",
+              "minute": 90,
+              "would_points": 2,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ]
+        },
+        {
+          "fixture_id": 6,
+          "home_team": "巴西",
+          "away_team": "摩洛哥",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "metlife.jpg",
+          "played_date_beijing": "2026-06-14",
+          "kickoff_beijing": "2026-06-14 06:00",
+          "our_scorers": [
+            {
+              "player_id": 279,
+              "participant": "李总",
+              "player_name_cn": "塞巴里",
+              "player_name_en": "Ismael Saibari",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
             },
             {
-              "player_id": 162,
+              "player_id": 225,
               "participant": "李总",
-              "player_name_cn": "布阿莱姆·胡希",
-              "player_name_en": "Boualem Khoukhi",
-              "jersey_number": 6,
+              "player_name_cn": "维尼修斯",
+              "player_name_en": "Vinicius Junior",
+              "jersey_number": 17,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": true
+            }
+          ],
+          "unmatched_scorers": []
+        },
+        {
+          "fixture_id": 7,
+          "home_team": "海地",
+          "away_team": "苏格兰",
+          "home_score": 0,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "gillette.jpg",
+          "played_date_beijing": "2026-06-14",
+          "kickoff_beijing": "2026-06-14 09:00",
+          "our_scorers": [
+            {
+              "player_id": 305,
+              "participant": "庆爷",
+              "player_name_cn": "约翰·麦金",
+              "player_name_en": "John McGinn",
+              "jersey_number": 19,
               "goals": 1,
               "own_goals": 0,
               "points": 1,
@@ -262,7 +332,49 @@
               "top20": false
             }
           ],
-          "unmatched_scorers": []
+          "unmatched_scorers": [],
+          "winner_team": "苏格兰"
+        },
+        {
+          "fixture_id": 8,
+          "home_team": "澳大利亚",
+          "away_team": "土耳其",
+          "home_score": 2,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "bcplace.jpg",
+          "played_date_beijing": "2026-06-14",
+          "kickoff_beijing": "2026-06-14 12:00",
+          "our_scorers": [
+            {
+              "player_id": 358,
+              "participant": "老王",
+              "player_name_cn": "伊兰昆达",
+              "player_name_en": "Irankunda",
+              "jersey_number": 20,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 355,
+              "participant": "庆爷",
+              "player_name_cn": "康纳·梅特卡夫",
+              "player_name_en": "Metcalfe",
+              "jersey_number": 17,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "澳大利亚"
         }
       ]
     }

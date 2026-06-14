@@ -173,6 +173,25 @@ class TestScorerMatch(unittest.TestCase):
         self.assertEqual(espn_lookup_name('Czechia', team_map), 'Czech Republic')
         self.assertTrue(teams_equivalent('South Korea', 'Korea Republic', team_map))
         self.assertTrue(teams_equivalent('Czechia', 'Czech Republic', team_map))
+        self.assertTrue(teams_equivalent('Turkey', 'Türkiye', team_map))
+
+    def test_australia_surname_only_db_names(self):
+        sels = [
+            {'player_id': 455, 'name': 'Irankunda', 'name_cn': '伊兰昆达',
+             'team_name': '澳大利亚', 'participant': 'P1', 'jersey_number': 20},
+            {'player_id': 452, 'name': 'Metcalfe', 'name_cn': '康纳·梅特卡夫',
+             'team_name': '澳大利亚', 'participant': 'P2', 'jersey_number': 17},
+        ]
+        for espn_name, pid in [
+            ('Nestory Irankunda', 455),
+            ('Connor Metcalfe', 452),
+        ]:
+            sel, reason = match_scorer_to_selection(
+                {'scorer_en': espn_name, 'team_cn': '澳大利亚', 'team_en': 'Australia', 'type': 'REGULAR'},
+                sels,
+            )
+            self.assertEqual(reason, '', msg=espn_name)
+            self.assertEqual(sel['player_id'], pid, msg=espn_name)
 
     def test_korea_czech_espn_fallback_events(self):
         from briefing.espn_goals import fetch_espn_scoring_events

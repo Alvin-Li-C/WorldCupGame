@@ -68,6 +68,7 @@ ESPN_TEAM_CN = {
     'Paraguay': '巴拉圭',
     'Australia': '澳大利亚',
     'Turkey': '土耳其',
+    'Türkiye': '土耳其',
     'Germany': '德国',
     'Curacao': '库拉索',
     'Ivory Coast': '科特迪瓦',

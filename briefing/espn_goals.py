@@ -50,6 +50,17 @@ def _ascii_fold(name: str) -> str:
     return unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode().lower().strip()
 
 
+# ESPN scoreboard names that differ from football-data (e.g. Türkiye vs Turkey).
+_TEAM_EQUIV_KEYS = {
+    'turkiye': 'turkey',
+}
+
+
+def _team_equiv_key(name: str | None) -> str:
+    key = _ascii_fold(name or '')
+    return _TEAM_EQUIV_KEYS.get(key, key)
+
+
 def _load_team_map() -> dict:
     try:
         with open(_TEAM_MAP_PATH, encoding='utf-8') as f:
@@ -94,6 +105,8 @@ def teams_equivalent(a: str | None, b: str | None, team_map: dict | None = None)
     if not a or not b:
         return False
     if _team_names_match(a, b):
+        return True
+    if _team_equiv_key(a) == _team_equiv_key(b):
         return True
     return espn_lookup_name(a, team_map) == espn_lookup_name(b, team_map)
 

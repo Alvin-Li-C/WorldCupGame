@@ -187,4 +187,14 @@ def match_scorer_to_selection(event: dict, selections: list[dict]) -> tuple[dict
             return by_first[0], ''
         return None, 'ambiguous'
 
+    # API full name vs draft surname-only (e.g. Connor Metcalfe -> Metcalfe).
+    if len(parts) >= 2:
+        last = parts[-1]
+        by_last = [
+            s for s in pool
+            if normalize_player_name(s.get('name') or '') == last
+        ]
+        if len(by_last) == 1:
+            return by_last[0], ''
+
     return None, 'no_name_match'
