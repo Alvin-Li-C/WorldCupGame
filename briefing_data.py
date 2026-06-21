@@ -372,6 +372,39 @@ def _resolve_match_odds(fixture_id, inline_odds=None):
     return resolve_odds_for_fixture(fixture_id, inline_odds)
 
 
+def _weather_context_for_fixture(fixture_id, fix, is_finished):
+    from briefing.weather_analysis import load_weather_goals_analysis
+    from briefing.weather_fetch import temp_band_label
+
+    detail = fix.get('weather_detail') or {}
+    if not detail or detail.get('error'):
+        return None
+    analysis = load_weather_goals_analysis()
+    band = detail.get('temp_band')
+    band_info = (analysis.get('by_temp_band') or {}).get(band) if band else None
+    rain_key = 'wet' if detail.get('is_rainy') else 'dry'
+    rain_info = (analysis.get('by_rain') or {}).get(rain_key)
+    lines = []
+    if analysis.get('sample_size') and analysis.get('overall_avg_goals') is not None:
+        lines.append(
+            f'已赛 {analysis["sample_size"]} 场样本：全场总进球均值 {analysis["overall_avg_goals"]} 球/场。'
+        )
+    if band_info and band_info.get('avg_goals') is not None:
+        lines.append(
+            f'与本场相近气温（{temp_band_label(band)}）的 {band_info["matches"]} 场，场均 {band_info["avg_goals"]} 球。'
+        )
+    if rain_info and rain_info.get('avg_goals') is not None and rain_info.get('matches'):
+        lines.append(
+            f'{"雨天/降水" if rain_key == "wet" else "非雨天"}历史 {rain_info["matches"]} 场，场均 {rain_info["avg_goals"]} 球。'
+        )
+    return {
+        'detail': detail,
+        'insights': analysis.get('insights') or [],
+        'lines': lines,
+        'is_finished': is_finished,
+    }
+
+
 def _find_history_match(fixture_id, history_index=None):
     """Look up a fixture in any history report (finished match scores)."""
     idx = history_index if history_index is not None else load_history_index()
@@ -437,6 +470,8 @@ def get_match_detail(fixture_id):
         'stadium_photo': photo,
         'weather': fix.get('weather', ''),
         'temp': fix.get('temp', ''),
+        'weather_detail': fix.get('weather_detail'),
+        'weather_context': _weather_context_for_fixture(fixture_id, fix, hs is not None and aw is not None),
         'kickoff': kick_time,
         'meta': meta,
         'kickoff_beijing': kickoff,

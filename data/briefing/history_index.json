@@ -1,6 +1,13 @@
 {
-  "updated_at": "2026-06-14T14:20:06+08:00",
+  "updated_at": "2026-06-21T10:03:59+08:00",
   "dates": [
+    "2026-06-21",
+    "2026-06-20",
+    "2026-06-19",
+    "2026-06-18",
+    "2026-06-17",
+    "2026-06-16",
+    "2026-06-15",
     "2026-06-14",
     "2026-06-13",
     "2026-06-12"
@@ -375,6 +382,1400 @@
           ],
           "unmatched_scorers": [],
           "winner_team": "澳大利亚"
+        }
+      ]
+    },
+    "2026-06-15": {
+      "date": "2026-06-15",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 9,
+          "home_team": "德国",
+          "away_team": "库拉索",
+          "home_score": 7,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "nrg.jpg",
+          "played_date_beijing": "2026-06-15",
+          "kickoff_beijing": "2026-06-15 01:00",
+          "our_scorers": [
+            {
+              "player_id": 488,
+              "participant": "老闫",
+              "player_name_cn": "凯·哈弗茨",
+              "player_name_en": "Kai Havertz",
+              "jersey_number": 20,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            },
+            {
+              "player_id": 476,
+              "participant": "耗子",
+              "player_name_cn": "尼科·施洛特贝克",
+              "player_name_en": "Nico Schlotterbeck",
+              "jersey_number": 8,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 492,
+              "participant": "李总",
+              "player_name_cn": "德尼兹·翁达夫",
+              "player_name_en": "Deniz Undav",
+              "jersey_number": 24,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 481,
+              "participant": "老闫",
+              "player_name_cn": "费利克斯·恩梅查",
+              "player_name_en": "Felix Nmecha",
+              "jersey_number": 13,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 490,
+              "participant": "老王",
+              "player_name_cn": "贾马尔·穆西亚拉",
+              "player_name_en": "Jamal Musiala",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 9,
+              "kickoff_beijing": "2026-06-15 01:00",
+              "home_team": "德国",
+              "away_team": "库拉索",
+              "scorer_en": "Livano Comenencia",
+              "scorer_api_id": "317285",
+              "team_en": "Curaçao",
+              "team_cn": "库拉索",
+              "type": "REGULAR",
+              "minute": 21,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            },
+            {
+              "fixture_id": 9,
+              "kickoff_beijing": "2026-06-15 01:00",
+              "home_team": "德国",
+              "away_team": "库拉索",
+              "scorer_en": "Nathaniel Brown",
+              "scorer_api_id": "120829",
+              "team_en": "Germany",
+              "team_cn": "德国",
+              "type": "REGULAR",
+              "minute": 68,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "德国"
+        },
+        {
+          "fixture_id": 10,
+          "home_team": "荷兰",
+          "away_team": "日本",
+          "home_score": 2,
+          "away_score": 2,
+          "source": "football-data",
+          "stadium_photo": "att.jpg",
+          "played_date_beijing": "2026-06-15",
+          "kickoff_beijing": "2026-06-15 04:00",
+          "our_scorers": [
+            {
+              "player_id": 569,
+              "participant": "老闫",
+              "player_name_cn": "中村敬斗",
+              "player_name_en": "Keito Nakamura",
+              "jersey_number": 23,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 546,
+              "participant": "庆爷",
+              "player_name_cn": "克里森西奥·萨默维尔",
+              "player_name_en": "Crysencio Summerville",
+              "jersey_number": 26,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 524,
+              "participant": "老闫",
+              "player_name_cn": "菲尔吉尔·范戴克",
+              "player_name_en": "Virgil van Dijk",
+              "jersey_number": 4,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 561,
+              "participant": "耗子",
+              "player_name_cn": "镰田大地",
+              "player_name_en": "Daichi Kamada",
+              "jersey_number": 15,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": []
+        },
+        {
+          "fixture_id": 11,
+          "home_team": "科特迪瓦",
+          "away_team": "厄瓜多尔",
+          "home_score": 1,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "lincoln.jpg",
+          "played_date_beijing": "2026-06-15",
+          "kickoff_beijing": "2026-06-15 07:00",
+          "our_scorers": [
+            {
+              "player_id": 514,
+              "participant": "庆爷",
+              "player_name_cn": "阿玛德·迪亚洛",
+              "player_name_en": "Amad Diallo",
+              "jersey_number": 20,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "科特迪瓦"
+        },
+        {
+          "fixture_id": 12,
+          "home_team": "瑞典",
+          "away_team": "突尼斯",
+          "home_score": 5,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "bbva.jpg",
+          "played_date_beijing": "2026-06-15",
+          "kickoff_beijing": "2026-06-15 10:00",
+          "our_scorers": [
+            {
+              "player_id": 587,
+              "participant": "老闫",
+              "player_name_cn": "亚辛·阿亚里",
+              "player_name_en": "Yasin Ayari",
+              "jersey_number": 15,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 596,
+              "participant": "耗子",
+              "player_name_cn": "亚历山大·伊萨克",
+              "player_name_en": "Alexander Isak",
+              "jersey_number": 24,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 595,
+              "participant": "老闫",
+              "player_name_cn": "维克托·约克雷斯",
+              "player_name_en": "Viktor Gyokeres",
+              "jersey_number": 23,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 591,
+              "participant": "老王",
+              "player_name_cn": "马蒂亚斯·斯万贝里",
+              "player_name_en": "Mattias Svanberg",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 12,
+              "kickoff_beijing": "2026-06-15 10:00",
+              "home_team": "瑞典",
+              "away_team": "突尼斯",
+              "scorer_en": "Omar Rekik",
+              "scorer_api_id": "303848",
+              "team_en": "Tunisia",
+              "team_cn": "突尼斯",
+              "type": "REGULAR",
+              "minute": 43,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "瑞典"
+        }
+      ]
+    },
+    "2026-06-16": {
+      "date": "2026-06-16",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 13,
+          "home_team": "西班牙",
+          "away_team": "佛得角",
+          "home_score": 0,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "mercedes_atlanta.jpg",
+          "played_date_beijing": "2026-06-16",
+          "kickoff_beijing": "2026-06-16 00:00",
+          "our_scorers": [],
+          "unmatched_scorers": []
+        },
+        {
+          "fixture_id": 14,
+          "home_team": "比利时",
+          "away_team": "埃及",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "lumen.jpg",
+          "played_date_beijing": "2026-06-16",
+          "kickoff_beijing": "2026-06-16 03:00",
+          "our_scorers": [
+            {
+              "player_id": 669,
+              "participant": "耗子",
+              "player_name_cn": "伊马姆·阿舒尔",
+              "player_name_en": "Emam Ashour",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 14,
+              "kickoff_beijing": "2026-06-16 03:00",
+              "home_team": "比利时",
+              "away_team": "埃及",
+              "scorer_en": "Mohamed Hany",
+              "scorer_api_id": "119993",
+              "team_en": "Belgium",
+              "team_cn": "比利时",
+              "type": "OWN",
+              "minute": 66,
+              "would_points": 2,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ]
+        },
+        {
+          "fixture_id": 15,
+          "home_team": "沙特",
+          "away_team": "乌拉圭",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "hardrock.jpg",
+          "played_date_beijing": "2026-06-16",
+          "kickoff_beijing": "2026-06-16 06:00",
+          "our_scorers": [
+            {
+              "player_id": 828,
+              "participant": "庆爷",
+              "player_name_cn": "马克西·阿劳霍",
+              "player_name_en": "Maxi Araujo",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 15,
+              "kickoff_beijing": "2026-06-16 06:00",
+              "home_team": "沙特",
+              "away_team": "乌拉圭",
+              "scorer_en": "Abdulelah Al-Amri",
+              "scorer_api_id": "256667",
+              "team_en": "Saudi Arabia",
+              "team_cn": "沙特",
+              "type": "REGULAR",
+              "minute": 41,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ]
+        },
+        {
+          "fixture_id": 16,
+          "home_team": "伊朗",
+          "away_team": "新西兰",
+          "home_score": 2,
+          "away_score": 2,
+          "source": "football-data",
+          "stadium_photo": "sofi.jpg",
+          "played_date_beijing": "2026-06-16",
+          "kickoff_beijing": "2026-06-16 09:00",
+          "our_scorers": [
+            {
+              "player_id": 722,
+              "participant": "庆爷",
+              "player_name_cn": "伊莱·贾斯特",
+              "player_name_en": "Eli Just",
+              "jersey_number": 20,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 694,
+              "participant": "耗子",
+              "player_name_cn": "穆罕默德·莫赫比",
+              "player_name_en": "Mohammad Mohebi",
+              "jersey_number": 18,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 16,
+              "kickoff_beijing": "2026-06-16 09:00",
+              "home_team": "伊朗",
+              "away_team": "新西兰",
+              "scorer_en": "Ramin Rezaeian",
+              "scorer_api_id": "218086",
+              "team_en": "Iran",
+              "team_cn": "伊朗",
+              "type": "REGULAR",
+              "minute": 32,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ]
+        }
+      ]
+    },
+    "2026-06-17": {
+      "date": "2026-06-17",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 17,
+          "home_team": "法国",
+          "away_team": "塞内加尔",
+          "home_score": 3,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "metlife.jpg",
+          "played_date_beijing": "2026-06-17",
+          "kickoff_beijing": "2026-06-17 03:00",
+          "our_scorers": [
+            {
+              "player_id": 856,
+              "participant": "耗子",
+              "player_name_cn": "姆巴佩",
+              "player_name_en": "Kylian Mbappe",
+              "jersey_number": 24,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            },
+            {
+              "player_id": 851,
+              "participant": "庆爷",
+              "player_name_cn": "巴尔科拉",
+              "player_name_en": "Bradley Barcola",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 909,
+              "participant": "李总",
+              "player_name_cn": "易卜拉欣·姆巴耶",
+              "player_name_en": "Ibrahim Mbaye",
+              "jersey_number": 25,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "法国"
+        },
+        {
+          "fixture_id": 18,
+          "home_team": "伊拉克",
+          "away_team": "挪威",
+          "home_score": 1,
+          "away_score": 4,
+          "source": "football-data",
+          "stadium_photo": "gillette.jpg",
+          "played_date_beijing": "2026-06-17",
+          "kickoff_beijing": "2026-06-17 06:00",
+          "our_scorers": [
+            {
+              "player_id": 933,
+              "participant": "老王",
+              "player_name_cn": "埃曼·侯赛因",
+              "player_name_en": "Aymen Hussein",
+              "jersey_number": 23,
+              "goals": 1,
+              "own_goals": 1,
+              "points": 3,
+              "goal_count": 1,
+              "display": "+1 乌龙+2",
+              "top20": false
+            },
+            {
+              "player_id": 878,
+              "participant": "老王",
+              "player_name_cn": "埃尔林·哈兰德",
+              "player_name_en": "Erling Haaland",
+              "jersey_number": 20,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 18,
+              "kickoff_beijing": "2026-06-17 06:00",
+              "home_team": "伊拉克",
+              "away_team": "挪威",
+              "scorer_en": "Leo Østigard",
+              "scorer_api_id": "281736",
+              "team_en": "Norway",
+              "team_cn": "挪威",
+              "type": "REGULAR",
+              "minute": 76,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "挪威"
+        },
+        {
+          "fixture_id": 19,
+          "home_team": "阿根廷",
+          "away_team": "阿尔及利亚",
+          "home_score": 3,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "arrowhead.jpg",
+          "played_date_beijing": "2026-06-17",
+          "kickoff_beijing": "2026-06-17 09:00",
+          "our_scorers": [
+            {
+              "player_id": 986,
+              "participant": "老闫",
+              "player_name_cn": "利昂内尔·梅西",
+              "player_name_en": "Lionel Messi",
+              "jersey_number": 24,
+              "goals": 3,
+              "own_goals": 0,
+              "points": 3,
+              "goal_count": 3,
+              "display": "+3",
+              "top20": true
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "阿根廷"
+        },
+        {
+          "fixture_id": 20,
+          "home_team": "奥地利",
+          "away_team": "约旦",
+          "home_score": 3,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "levis.jpg",
+          "played_date_beijing": "2026-06-17",
+          "kickoff_beijing": "2026-06-17 12:00",
+          "our_scorers": [
+            {
+              "player_id": 1006,
+              "participant": "庆爷",
+              "player_name_cn": "罗马诺·施密德",
+              "player_name_en": "Romano Schmid",
+              "jersey_number": 18,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1036,
+              "participant": "李总",
+              "player_name_cn": "阿里·奥尔万",
+              "player_name_en": "Ali Olwan",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1012,
+              "participant": "老闫",
+              "player_name_cn": "马尔科·阿瑙托维奇",
+              "player_name_en": "Marko Arnautovic",
+              "jersey_number": 24,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 20,
+              "kickoff_beijing": "2026-06-17 12:00",
+              "home_team": "奥地利",
+              "away_team": "约旦",
+              "scorer_en": "Yazan Al-Arab",
+              "scorer_api_id": "274269",
+              "team_en": "Austria",
+              "team_cn": "奥地利",
+              "type": "OWN",
+              "minute": 76,
+              "would_points": 2,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "奥地利"
+        }
+      ]
+    },
+    "2026-06-18": {
+      "date": "2026-06-18",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 21,
+          "home_team": "葡萄牙",
+          "away_team": "刚果（金）",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "nrg.jpg",
+          "played_date_beijing": "2026-06-18",
+          "kickoff_beijing": "2026-06-18 01:00",
+          "our_scorers": [
+            {
+              "player_id": 1092,
+              "participant": "耗子",
+              "player_name_cn": "约阿纳·维萨",
+              "player_name_en": "Yoane Wissa",
+              "jersey_number": 26,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1107,
+              "participant": "李总",
+              "player_name_cn": "若昂·内维斯",
+              "player_name_en": "Joao Neves",
+              "jersey_number": 16,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": []
+        },
+        {
+          "fixture_id": 22,
+          "home_team": "英格兰",
+          "away_team": "克罗地亚",
+          "home_score": 4,
+          "away_score": 2,
+          "source": "football-data",
+          "stadium_photo": "att.jpg",
+          "played_date_beijing": "2026-06-18",
+          "kickoff_beijing": "2026-06-18 04:00",
+          "our_scorers": [
+            {
+              "player_id": 1190,
+              "participant": "庆爷",
+              "player_name_cn": "哈里·凯恩",
+              "player_name_en": "Harry Kane",
+              "jersey_number": 20,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            },
+            {
+              "player_id": 1169,
+              "participant": "李总",
+              "player_name_cn": "佩塔尔·穆萨",
+              "player_name_en": "Petar Musa",
+              "jersey_number": 25,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1188,
+              "participant": "庆爷",
+              "player_name_cn": "裘德·贝林厄姆",
+              "player_name_en": "Jude Bellingham",
+              "jersey_number": 18,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1194,
+              "participant": "老闫",
+              "player_name_cn": "马库斯·拉什福德",
+              "player_name_en": "Marcus Rashford",
+              "jersey_number": 24,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 22,
+              "kickoff_beijing": "2026-06-18 04:00",
+              "home_team": "英格兰",
+              "away_team": "克罗地亚",
+              "scorer_en": "Martin Baturina",
+              "scorer_api_id": "311475",
+              "team_en": "Croatia",
+              "team_cn": "克罗地亚",
+              "type": "REGULAR",
+              "minute": 36,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "英格兰"
+        },
+        {
+          "fixture_id": 23,
+          "home_team": "加纳",
+          "away_team": "巴拿马",
+          "home_score": 1,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "bmo.jpg",
+          "played_date_beijing": "2026-06-18",
+          "kickoff_beijing": "2026-06-18 07:00",
+          "our_scorers": [],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 23,
+              "kickoff_beijing": "2026-06-18 07:00",
+              "home_team": "加纳",
+              "away_team": "巴拿马",
+              "scorer_en": "Caleb Yirenkyi",
+              "scorer_api_id": "387659",
+              "team_en": "Ghana",
+              "team_cn": "加纳",
+              "type": "REGULAR",
+              "minute": 90,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "加纳"
+        },
+        {
+          "fixture_id": 24,
+          "home_team": "乌兹别克斯坦",
+          "away_team": "哥伦比亚",
+          "home_score": 1,
+          "away_score": 3,
+          "source": "football-data",
+          "stadium_photo": "azteca.jpg",
+          "played_date_beijing": "2026-06-18",
+          "kickoff_beijing": "2026-06-18 10:00",
+          "our_scorers": [
+            {
+              "player_id": 1048,
+              "participant": "老闫",
+              "player_name_cn": "丹尼尔·穆尼奥斯",
+              "player_name_en": "Daniel Munoz",
+              "jersey_number": 8,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1063,
+              "participant": "庆爷",
+              "player_name_cn": "路易斯·迪亚斯",
+              "player_name_en": "Luis Diaz",
+              "jersey_number": 23,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": true
+            },
+            {
+              "player_id": 1138,
+              "participant": "耗子",
+              "player_name_cn": "阿博斯别克·法伊祖拉耶夫",
+              "player_name_en": "Abbosbek Fayzullaev",
+              "jersey_number": 20,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 24,
+              "kickoff_beijing": "2026-06-18 10:00",
+              "home_team": "乌兹别克斯坦",
+              "away_team": "哥伦比亚",
+              "scorer_en": "Jáminton Campaz",
+              "scorer_api_id": "255295",
+              "team_en": "Colombia",
+              "team_cn": "哥伦比亚",
+              "type": "REGULAR",
+              "minute": 90,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "哥伦比亚"
+        }
+      ]
+    },
+    "2026-06-19": {
+      "date": "2026-06-19",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 25,
+          "home_team": "捷克",
+          "away_team": "南非",
+          "home_score": 1,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "mercedes_atlanta.jpg",
+          "played_date_beijing": "2026-06-19",
+          "kickoff_beijing": "2026-06-19 00:00",
+          "our_scorers": [],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 25,
+              "kickoff_beijing": "2026-06-19 00:00",
+              "home_team": "捷克",
+              "away_team": "南非",
+              "scorer_en": "Michal Sadílek",
+              "scorer_api_id": "249525",
+              "team_en": "Czechia",
+              "team_cn": "捷克",
+              "type": "REGULAR",
+              "minute": 6,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            },
+            {
+              "fixture_id": 25,
+              "kickoff_beijing": "2026-06-19 00:00",
+              "home_team": "捷克",
+              "away_team": "南非",
+              "scorer_en": "Teboho Mokoena",
+              "scorer_api_id": "256691",
+              "team_en": "South Africa",
+              "team_cn": "南非",
+              "type": "PENALTY",
+              "minute": 83,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ]
+        },
+        {
+          "fixture_id": 26,
+          "home_team": "瑞士",
+          "away_team": "波黑",
+          "home_score": 4,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "sofi.jpg",
+          "played_date_beijing": "2026-06-19",
+          "kickoff_beijing": "2026-06-19 03:00",
+          "our_scorers": [
+            {
+              "player_id": 198,
+              "participant": "老闫",
+              "player_name_cn": "曼赞比",
+              "player_name_en": "Johan Manzambi",
+              "jersey_number": 16,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 202,
+              "participant": "老王",
+              "player_name_cn": "格拉尼特·扎卡",
+              "player_name_en": "Granit Xhaka",
+              "jersey_number": 20,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 201,
+              "participant": "耗子",
+              "player_name_cn": "鲁本·巴尔加斯",
+              "player_name_en": "Ruben Vargas",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 26,
+              "kickoff_beijing": "2026-06-19 03:00",
+              "home_team": "瑞士",
+              "away_team": "波黑",
+              "scorer_en": "Ermin Mahmic",
+              "scorer_api_id": "414676",
+              "team_en": "Bosnia-Herzegovina",
+              "team_cn": "波黑",
+              "type": "REGULAR",
+              "minute": 90,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "瑞士"
+        },
+        {
+          "fixture_id": 27,
+          "home_team": "加拿大",
+          "away_team": "卡塔尔",
+          "home_score": 6,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "bcplace.jpg",
+          "played_date_beijing": "2026-06-19",
+          "kickoff_beijing": "2026-06-19 06:00",
+          "our_scorers": [
+            {
+              "player_id": 127,
+              "participant": "老王",
+              "player_name_cn": "乔纳森·戴维",
+              "player_name_en": "Jonathan David",
+              "jersey_number": 23,
+              "goals": 3,
+              "own_goals": 0,
+              "points": 3,
+              "goal_count": 3,
+              "display": "+3",
+              "top20": false
+            },
+            {
+              "player_id": 168,
+              "participant": "耗子",
+              "player_name_cn": "穆罕默德·马奈",
+              "player_name_en": "Mohammed Al-Manai",
+              "jersey_number": 12,
+              "goals": 0,
+              "own_goals": 1,
+              "points": 2,
+              "goal_count": 0,
+              "display": "乌龙+2",
+              "top20": false
+            },
+            {
+              "player_id": 129,
+              "participant": "耗子",
+              "player_name_cn": "凯尔·拉林",
+              "player_name_en": "Cyle Larin",
+              "jersey_number": 25,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 27,
+              "kickoff_beijing": "2026-06-19 06:00",
+              "home_team": "加拿大",
+              "away_team": "卡塔尔",
+              "scorer_en": "Nathan Saliba",
+              "scorer_api_id": "311163",
+              "team_en": "Canada",
+              "team_cn": "加拿大",
+              "type": "REGULAR",
+              "minute": 64,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "加拿大"
+        },
+        {
+          "fixture_id": 28,
+          "home_team": "墨西哥",
+          "away_team": "韩国",
+          "home_score": 1,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "akron.jpg",
+          "played_date_beijing": "2026-06-19",
+          "kickoff_beijing": "2026-06-19 09:00",
+          "our_scorers": [],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 28,
+              "kickoff_beijing": "2026-06-19 09:00",
+              "home_team": "墨西哥",
+              "away_team": "韩国",
+              "scorer_en": "Luis Romo",
+              "scorer_api_id": "242614",
+              "team_en": "Mexico",
+              "team_cn": "墨西哥",
+              "type": "REGULAR",
+              "minute": 50,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "墨西哥"
+        }
+      ]
+    },
+    "2026-06-20": {
+      "date": "2026-06-20",
+      "match_count": 4,
+      "matches": [
+        {
+          "fixture_id": 29,
+          "home_team": "美国",
+          "away_team": "澳大利亚",
+          "home_score": 2,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "lumen.jpg",
+          "played_date_beijing": "2026-06-20",
+          "kickoff_beijing": "2026-06-20 03:00",
+          "our_scorers": [],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 29,
+              "kickoff_beijing": "2026-06-20 03:00",
+              "home_team": "美国",
+              "away_team": "澳大利亚",
+              "scorer_en": "Cameron Burgess",
+              "scorer_api_id": "207350",
+              "team_en": "United States",
+              "team_cn": "美国",
+              "type": "OWN",
+              "minute": 11,
+              "would_points": 2,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            },
+            {
+              "fixture_id": 29,
+              "kickoff_beijing": "2026-06-20 03:00",
+              "home_team": "美国",
+              "away_team": "澳大利亚",
+              "scorer_en": "Alex Freeman",
+              "scorer_api_id": "248276",
+              "team_en": "United States",
+              "team_cn": "美国",
+              "type": "REGULAR",
+              "minute": 43,
+              "would_points": 1,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "美国"
+        },
+        {
+          "fixture_id": 30,
+          "home_team": "苏格兰",
+          "away_team": "摩洛哥",
+          "home_score": 0,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "gillette.jpg",
+          "played_date_beijing": "2026-06-20",
+          "kickoff_beijing": "2026-06-20 06:00",
+          "our_scorers": [
+            {
+              "player_id": 279,
+              "participant": "李总",
+              "player_name_cn": "塞巴里",
+              "player_name_en": "Ismael Saibari",
+              "jersey_number": 19,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "摩洛哥"
+        },
+        {
+          "fixture_id": 31,
+          "home_team": "巴西",
+          "away_team": "海地",
+          "home_score": 3,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "lincoln.jpg",
+          "played_date_beijing": "2026-06-20",
+          "kickoff_beijing": "2026-06-20 08:30",
+          "our_scorers": [
+            {
+              "player_id": 227,
+              "participant": "老闫",
+              "player_name_cn": "马特乌斯·库尼亚",
+              "player_name_en": "Matheus Cunha",
+              "jersey_number": 19,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 225,
+              "participant": "李总",
+              "player_name_cn": "维尼修斯",
+              "player_name_en": "Vinicius Junior",
+              "jersey_number": 17,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": true
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "巴西"
+        },
+        {
+          "fixture_id": 32,
+          "home_team": "土耳其",
+          "away_team": "巴拉圭",
+          "home_score": 0,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "levis.jpg",
+          "played_date_beijing": "2026-06-20",
+          "kickoff_beijing": "2026-06-20 11:00",
+          "our_scorers": [
+            {
+              "player_id": 379,
+              "participant": "老王",
+              "player_name_cn": "马蒂亚斯·加拉尔萨",
+              "player_name_en": "Matias Galarza",
+              "jersey_number": 15,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "巴拉圭"
+        }
+      ]
+    },
+    "2026-06-21": {
+      "date": "2026-06-21",
+      "match_count": 3,
+      "matches": [
+        {
+          "fixture_id": 33,
+          "home_team": "荷兰",
+          "away_team": "瑞典",
+          "home_score": 5,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "nrg.jpg",
+          "played_date_beijing": "2026-06-21",
+          "kickoff_beijing": "2026-06-21 01:00",
+          "our_scorers": [
+            {
+              "player_id": 542,
+              "participant": "庆爷",
+              "player_name_cn": "布里安·布罗比",
+              "player_name_en": "Brian Brobbey",
+              "jersey_number": 22,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 540,
+              "participant": "李总",
+              "player_name_cn": "科迪·加克波",
+              "player_name_en": "Cody Gakpo",
+              "jersey_number": 20,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            },
+            {
+              "player_id": 546,
+              "participant": "庆爷",
+              "player_name_cn": "克里森西奥·萨默维尔",
+              "player_name_en": "Crysencio Summerville",
+              "jersey_number": 26,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 594,
+              "participant": "老王",
+              "player_name_cn": "安东尼·埃兰加",
+              "player_name_en": "Anthony Elanga",
+              "jersey_number": 22,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "荷兰"
+        },
+        {
+          "fixture_id": 34,
+          "home_team": "德国",
+          "away_team": "科特迪瓦",
+          "home_score": 2,
+          "away_score": 1,
+          "source": "football-data",
+          "stadium_photo": "bmo.jpg",
+          "played_date_beijing": "2026-06-21",
+          "kickoff_beijing": "2026-06-21 04:00",
+          "our_scorers": [
+            {
+              "player_id": 492,
+              "participant": "李总",
+              "player_name_cn": "德尼兹·翁达夫",
+              "player_name_en": "Deniz Undav",
+              "jersey_number": 24,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": false
+            },
+            {
+              "player_id": 509,
+              "participant": "老王",
+              "player_name_cn": "凯西",
+              "player_name_en": "Franck Kessie",
+              "jersey_number": 15,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [],
+          "winner_team": "德国"
+        },
+        {
+          "fixture_id": 35,
+          "home_team": "厄瓜多尔",
+          "away_team": "库拉索",
+          "home_score": 0,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "arrowhead.jpg",
+          "played_date_beijing": "2026-06-21",
+          "kickoff_beijing": "2026-06-21 08:00",
+          "our_scorers": [],
+          "unmatched_scorers": []
         }
       ]
     }

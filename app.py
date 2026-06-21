@@ -31,6 +31,7 @@ from briefing_data import (
     FIXTURES_PATH,
     SQUAD_META_PATH,
     TEAM_FORM_PATH,
+    BRIEFING_DIR,
 )
 from briefing.rebuild_scorers import rebuild_scorers_from_api
 from briefing.scorer_match import add_manual_rule
@@ -38,6 +39,7 @@ from briefing.shooter_standings import (
     STANDINGS_PATH as SHOOTER_STANDINGS_PATH,
     load_shooter_standings,
 )
+from briefing.participant_rank_chart import compute_daily_series
 from briefing.standings import STANDINGS_PATH, compute_team_standings, load_team_standings
 
 PARTICIPANT_COLORS = {
@@ -161,6 +163,7 @@ def standings_shooters_page():
         standings=load_shooter_standings(),
         colors=PARTICIPANT_COLORS,
         selections=get_selections_for_display(),
+        rank_chart=compute_daily_series(colors=PARTICIPANT_COLORS),
     )
 
 
@@ -173,21 +176,35 @@ def api_standings_shooters():
 def api_standings_shooters_repair():
     token = request.args.get('token') or request.headers.get('X-Import-Token', '')
     expected = os.environ.get('IMPORT_BRIEFING_TOKEN', '')
-    if not expected or token != expected:
+    if not expected:
+        return jsonify({'success': False, 'error': '服务器未配置 IMPORT_BRIEFING_TOKEN（PA Web 环境变量）'}), 503
+    if token != expected:
         return jsonify({'success': False, 'error': 'unauthorized'}), 403
     data = request.get_json(force=True, silent=True) or {}
     player_id = data.get('player_id')
     if not player_id:
         return jsonify({'success': False, 'error': 'player_id required'}), 400
+    api_scorer_id = data.get('api_scorer_id')
+    if api_scorer_id in (None, ''):
+        api_scorer_id = None
+    else:
+        api_scorer_id = int(api_scorer_id)
     add_manual_rule(
         player_id=int(player_id),
         api_scorer_en=data.get('api_scorer_en'),
         team_api=data.get('team_api'),
-        api_scorer_id=data.get('api_scorer_id'),
+        api_scorer_id=api_scorer_id,
         note=data.get('note', '后台修复'),
     )
     result = rebuild_scorers_from_api()
-    return jsonify({'success': True, 'standings': result.get('standings')})
+    standings = result.get('standings') or {}
+    if result.get('updated_matches', 0) == 0:
+        return jsonify({
+            'success': False,
+            'error': '规则已保存但赛果未刷新（检查 PA 上 FOOTBALL_DATA_TOKEN / football-data.txt）',
+            'standings': standings,
+        }), 502
+    return jsonify({'success': True, 'standings': standings})
 
 
 @app.route('/api/briefing')
@@ -251,6 +268,9 @@ def api_import_briefing():
         save_json(TEAM_FORM_PATH, data['team_form'])
     if 'fixtures_2026' in data:
         save_json(FIXTURES_PATH, data['fixtures_2026'])
+    weather_path = os.path.join(BRIEFING_DIR, 'weather_goals_analysis.json')
+    if 'weather_goals_analysis' in data:
+        save_json(weather_path, data['weather_goals_analysis'])
     return jsonify({'success': True})
 
 

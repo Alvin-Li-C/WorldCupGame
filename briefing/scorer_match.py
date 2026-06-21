@@ -135,7 +135,8 @@ def _apply_manual_map(event: dict, selections: list[dict]) -> dict | None:
 
     for rule in rules:
         rid = rule.get('api_scorer_id')
-        if rid is not None and scorer_id is not None and rid == scorer_id:
+        sid = scorer_id
+        if rid is not None and sid is not None and str(rid) == str(sid):
             return by_id.get(rule['player_id'])
         if rule.get('api_scorer_en') and rule.get('team_api'):
             if (

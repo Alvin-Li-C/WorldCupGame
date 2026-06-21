@@ -312,6 +312,20 @@ def build_briefing(mock=False, skip_news=False):
     print('build: loading config and fixtures...', flush=True)
     config = load_config()
     fixtures = load_fixtures()
+
+    if not mock:
+        try:
+            from scripts.enrich_fixture_weather import enrich_all_fixtures
+            from briefing.weather_analysis import save_weather_goals_analysis
+            print('build: enriching missing fixture weather (Open-Meteo)...', flush=True)
+            n = enrich_all_fixtures(force=False, pause=0.2)
+            if n:
+                print(f'build: weather updated for {n} fixture(s)', flush=True)
+            fixtures = load_fixtures()
+            save_weather_goals_analysis(fixtures=fixtures)
+        except Exception as e:
+            print(f'build: weather enrich skipped: {e}', flush=True)
+
     owner_map = get_owner_map()
     team_map = load_team_name_map(config)
     prior_latest = load_json(LATEST_PATH, {}) if skip_news else {}
@@ -427,6 +441,9 @@ def _briefing_upload_payload():
         'team_squad_meta': load_json(SQUAD_META_PATH, {}),
         'team_form': load_json(TEAM_FORM_PATH, {}),
         'fixtures_2026': load_json(FIXTURES_PATH, {}),
+        'weather_goals_analysis': load_json(
+            os.path.join(ROOT, 'data', 'briefing', 'weather_goals_analysis.json'), {},
+        ),
     }
     extras = []
     if payload['team_squad_meta']:

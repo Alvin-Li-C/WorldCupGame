@@ -697,6 +697,8 @@
         <div class="meta-line">
             <span class="meta-chip">☁ <strong id="weatherText">多云</strong></span>
             <span class="meta-chip">🌡 <strong id="tempText">24°C</strong></span>
+            <span class="meta-chip" id="humidityChip" style="display:none;">💧 <strong id="humidityText"></strong></span>
+            <span class="meta-chip" id="windChip" style="display:none;">🌬 <strong id="windText"></strong></span>
             <span class="meta-chip altitude" id="altitudeChip" style="display:none;">⛰ <strong id="altitudeText"></strong></span>
         </div>
         <div class="kickoff-time" id="kickoffText">03:00</div>
@@ -739,6 +741,7 @@
     </div>
 
     <div class="match-intel" id="matchIntel"></div>
+    <div class="match-intel" id="weatherIntel" style="display:none;"></div>
 </div>
 
 <nav class="nav">
@@ -904,6 +907,31 @@ function renderVenueAltitude(venue) {
     chip.style.display = '';
 }
 
+function renderWeatherIntel(ctx) {
+    var el = document.getElementById('weatherIntel');
+    if (!ctx || !ctx.detail) {
+        el.style.display = 'none';
+        return;
+    }
+    var d = ctx.detail;
+    var parts = ['<div class="intel-title">天气与进球参考</div><ul class="intel-list">'];
+    if (d.humidity_pct != null) {
+        parts.push('<li class="intel-item"><span class="intel-tag">开球时</span> 湿度 ' + d.humidity_pct + '%</li>');
+    }
+    if (d.precip_mm != null && d.precip_mm > 0) {
+        parts.push('<li class="intel-item"><span class="intel-tag">降水</span> ' + d.precip_mm + ' mm</li>');
+    }
+    (ctx.lines || []).forEach(function(line) {
+        parts.push('<li class="intel-item">' + line + '</li>');
+    });
+    (ctx.insights || []).slice(0, 2).forEach(function(line) {
+        parts.push('<li class="intel-item impact-medium">' + line + '</li>');
+    });
+    parts.push('</ul><p class="intel-empty" style="margin-top:0.5rem;font-size:0.75rem;">数据来源 Open-Meteo；样本较少，仅供观赛参考。</p>');
+    el.innerHTML = parts.join('');
+    el.style.display = '';
+}
+
 function renderIntel(news) {
     var el = document.getElementById('matchIntel');
     if (!news || !news.length) {
@@ -957,7 +985,9 @@ var MATCH = {
     awayOwner: {{ m.away_owner | tojson }},
     status: {{ m.status | tojson }},
     statusClass: {{ m.status_class | tojson }},
-    score: {{ m.score | tojson }}
+    score: {{ m.score | tojson }},
+    weather_detail: {{ m.weather_detail | tojson }},
+    weather_context: {{ m.weather_context | tojson }}
 };
 
 renderRoster('homeShooters', MOCK_HOME);
@@ -967,6 +997,7 @@ renderOdds(MATCH.homeName, MATCH.awayName, MATCH_ODDS);
 renderTeamBetting('homeBetting', MATCH_HOME_META, MATCH_HOME_FORM, MATCH_HOME_TRAVEL);
 renderTeamBetting('awayBetting', MATCH_AWAY_META, MATCH_AWAY_FORM, MATCH_AWAY_TRAVEL);
 renderIntel(MATCH_KEY_NEWS);
+renderWeatherIntel(MATCH.weather_context);
 
 var bgToggle = false;
 var currentStadiumKey = null;
@@ -995,6 +1026,21 @@ function initMatch() {
     document.getElementById('stadiumName').textContent = d.stadium;
     document.getElementById('weatherText').textContent = d.weather;
     document.getElementById('tempText').textContent = d.temp;
+    var wd = MATCH.weather_detail || {};
+    var humChip = document.getElementById('humidityChip');
+    if (wd.humidity_pct != null) {
+        document.getElementById('humidityText').textContent = wd.humidity_pct + '%';
+        humChip.style.display = '';
+    } else {
+        humChip.style.display = 'none';
+    }
+    var windChip = document.getElementById('windChip');
+    if (wd.wind_kmh != null) {
+        document.getElementById('windText').textContent = wd.wind_kmh + ' km/h';
+        windChip.style.display = '';
+    } else {
+        windChip.style.display = 'none';
+    }
     document.getElementById('kickoffText').textContent = d.kickoff;
     document.getElementById('metaText').textContent = d.meta;
 
