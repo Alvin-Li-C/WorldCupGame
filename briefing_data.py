@@ -373,8 +373,11 @@ def _resolve_match_odds(fixture_id, inline_odds=None):
 
 
 def _weather_context_for_fixture(fixture_id, fix, is_finished):
-    from briefing.weather_analysis import load_weather_goals_analysis
-    from briefing.weather_fetch import temp_band_label
+    try:
+        from briefing.weather_analysis import load_weather_goals_analysis
+        from briefing.weather_fetch import temp_band_label
+    except ModuleNotFoundError:
+        return None
 
     detail = fix.get('weather_detail') or {}
     if not detail or detail.get('error'):

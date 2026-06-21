@@ -1,0 +1,146 @@
+{
+  "azteca": {
+    "label": "Estadio Azteca · Mexico City",
+    "city": "Mexico City",
+    "country": "MX",
+    "altitude_m": 2240,
+    "timezone": "America/Mexico_City",
+    "lat": 19.303,
+    "lon": -99.150
+  },
+  "akron": {
+    "label": "Estadio Akron · Guadalajara",
+    "city": "Guadalajara",
+    "country": "MX",
+    "altitude_m": 1560,
+    "timezone": "America/Mexico_City",
+    "lat": 20.682,
+    "lon": -103.462
+  },
+  "bbva": {
+    "label": "Estadio BBVA · Monterrey",
+    "city": "Monterrey",
+    "country": "MX",
+    "altitude_m": 540,
+    "timezone": "America/Monterrey",
+    "lat": 25.720,
+    "lon": -100.246
+  },
+  "mercedes_atlanta": {
+    "label": "Mercedes-Benz Stadium · Atlanta",
+    "city": "Atlanta",
+    "country": "US",
+    "altitude_m": 320,
+    "timezone": "America/New_York",
+    "lat": 33.755,
+    "lon": -84.401
+  },
+  "gillette": {
+    "label": "Gillette Stadium · Foxborough",
+    "city": "Foxborough",
+    "country": "US",
+    "altitude_m": 50,
+    "timezone": "America/New_York",
+    "lat": 42.091,
+    "lon": -71.264
+  },
+  "metlife": {
+    "label": "MetLife Stadium · East Rutherford",
+    "city": "East Rutherford",
+    "country": "US",
+    "altitude_m": 3,
+    "timezone": "America/New_York",
+    "lat": 40.814,
+    "lon": -74.074
+  },
+  "lincoln": {
+    "label": "Lincoln Financial Field · Philadelphia",
+    "city": "Philadelphia",
+    "country": "US",
+    "altitude_m": 12,
+    "timezone": "America/New_York",
+    "lat": 39.901,
+    "lon": -75.168
+  },
+  "lumen": {
+    "label": "Lumen Field · Seattle",
+    "city": "Seattle",
+    "country": "US",
+    "altitude_m": 50,
+    "timezone": "America/Los_Angeles",
+    "lat": 47.595,
+    "lon": -122.332
+  },
+  "levis": {
+    "label": "Levi's Stadium · Santa Clara",
+    "city": "Santa Clara",
+    "country": "US",
+    "altitude_m": 7,
+    "timezone": "America/Los_Angeles",
+    "lat": 37.403,
+    "lon": -121.970
+  },
+  "sofi": {
+    "label": "SoFi Stadium · Los Angeles",
+    "city": "Los Angeles",
+    "country": "US",
+    "altitude_m": 35,
+    "timezone": "America/Los_Angeles",
+    "lat": 33.953,
+    "lon": -118.339
+  },
+  "bcplace": {
+    "label": "BC Place · Vancouver",
+    "city": "Vancouver",
+    "country": "CA",
+    "altitude_m": 4,
+    "timezone": "America/Vancouver",
+    "lat": 49.277,
+    "lon": -123.112
+  },
+  "bmo": {
+    "label": "BMO Field · Toronto",
+    "city": "Toronto",
+    "country": "CA",
+    "altitude_m": 90,
+    "timezone": "America/Toronto",
+    "lat": 43.633,
+    "lon": -79.419
+  },
+  "att": {
+    "label": "AT&T Stadium · Arlington",
+    "city": "Arlington",
+    "country": "US",
+    "altitude_m": 180,
+    "timezone": "America/Chicago",
+    "lat": 32.748,
+    "lon": -97.093
+  },
+  "nrg": {
+    "label": "NRG Stadium · Houston",
+    "city": "Houston",
+    "country": "US",
+    "altitude_m": 15,
+    "timezone": "America/Chicago",
+    "lat": 29.685,
+    "lon": -95.411
+  },
+  "hardrock": {
+    "label": "Hard Rock Stadium · Miami",
+    "city": "Miami",
+    "country": "US",
+    "altitude_m": 3,
+    "timezone": "America/New_York",
+    "lat": 25.958,
+    "lon": -80.239
+  },
+  "arrowhead": {
+    "label": "Arrowhead Stadium · Kansas City",
+    "city": "Kansas City",
+    "country": "US",
+    "altitude_m": 270,
+    "timezone": "America/Chicago",
+    "lat": 39.049,
+    "lon": -94.484
+  }
+}
