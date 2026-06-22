@@ -208,6 +208,39 @@ class TestScorerMatch(unittest.TestCase):
         teams = {e.get('team_cn') for e in events}
         self.assertIn('韩国', teams)
 
+    def test_penalty_missed_not_counted_as_goal(self):
+        from briefing.espn_goals import _goal_type, parse_espn_goal_events
+
+        missed = {
+            'type': {'type': 'penalty---missed'},
+            'text': 'Penalty missed. Lionel Messi (Argentina) left footed shot is close, but misses to the right.',
+            'clock': {'displayValue': "9'"},
+            'team': {'displayName': 'Argentina'},
+            'participants': [{'athlete': {'displayName': 'Lionel Messi', 'id': '45843'}}],
+            'id': '49582988',
+        }
+        self.assertIsNone(_goal_type(missed))
+
+        summary = {
+            'keyEvents': [
+                missed,
+                {'id': 'g1', 'type': {'type': 'goal'},
+                 'text': 'Goal! Argentina 1, Austria 0. Lionel Messi (Argentina) shot.',
+                 'clock': {'displayValue': "38'"}, 'team': {'displayName': 'Argentina'},
+                 'participants': [{'athlete': {'displayName': 'Lionel Messi'}}]},
+                {'id': 'g2', 'type': {'type': 'goal'},
+                 'text': 'Goal! Argentina 2, Austria 0. Lionel Messi (Argentina) shot.',
+                 'clock': {'displayValue': "90'+5'"}, 'team': {'displayName': 'Argentina'},
+                 'participants': [{'athlete': {'displayName': 'Lionel Messi'}}]},
+            ],
+        }
+        team_map = {'Argentina': '阿根廷', 'Austria': '奥地利'}
+        events = parse_espn_goal_events(
+            summary, team_map, lambda en, m: m.get(en), 'Argentina', 'Austria',
+        )
+        self.assertEqual(len(events), 2)
+        self.assertTrue(all(e['scorer_en'] == 'Lionel Messi' for e in events))
+
 
 if __name__ == '__main__':
     unittest.main()
