@@ -222,7 +222,7 @@ def enrich_today_preview(latest, reference_date=None):
         m = dict(skeleton)
         if existing:
             keep = (
-                'key_news', 'status', 'odds',
+                'key_news', 'status', 'odds', 'starter_picks',
                 'home_score', 'away_score', 'our_scorers', 'unmatched_scorers',
                 'winner_team', 'played_date_beijing', 'source', 'stage',
             )
