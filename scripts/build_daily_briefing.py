@@ -451,6 +451,14 @@ def build_briefing(mock=False, skip_news=False):
         except Exception as e:
             print(f'build: lineup fetch skipped: {e}', flush=True)
 
+        try:
+            from briefing.lineup_fetch import enrich_history_starter_picks
+            n = enrich_history_starter_picks(fixtures)
+            if n:
+                print(f'build: starter_picks embedded in {n} history match(es)', flush=True)
+        except Exception as e:
+            print(f'build: starter_picks enrich skipped: {e}', flush=True)
+
     return briefing
 
 

@@ -145,7 +145,7 @@
   "45": {
     "fixture_id": 45,
     "available": false,
-    "updated_at": "2026-06-23 20:38:56"
+    "updated_at": "2026-06-23 21:00:11"
   },
   "2": {
     "fixture_id": 2,
@@ -6299,16 +6299,16 @@
   "46": {
     "fixture_id": 46,
     "available": false,
-    "updated_at": "2026-06-23 20:32:11"
+    "updated_at": "2026-06-23 21:00:14"
   },
   "47": {
     "fixture_id": 47,
     "available": false,
-    "updated_at": "2026-06-23 20:32:13"
+    "updated_at": "2026-06-23 21:00:16"
   },
   "48": {
     "fixture_id": 48,
     "available": false,
-    "updated_at": "2026-06-23 20:32:16"
+    "updated_at": "2026-06-23 21:00:19"
   }
 }

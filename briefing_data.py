@@ -20,6 +20,7 @@ HISTORY_PATH = os.path.join(BRIEFING_DIR, 'history_index.json')
 FIXTURES_PATH = os.path.join(ROOT, 'data', 'fixtures_2026.json')
 SQUAD_META_PATH = os.path.join(ROOT, 'data', 'team_squad_meta.json')
 TEAM_FORM_PATH = os.path.join(BRIEFING_DIR, 'team_form.json')
+MATCH_LINEUPS_PATH = os.path.join(BRIEFING_DIR, 'match_lineups.json')
 
 CATEGORY_LABELS = {
     'tactics': '战术',
@@ -428,6 +429,23 @@ def _find_briefing_match(briefing, fixture_id):
     return _find_history_match(fixture_id)
 
 
+def _apply_starter_picks(roster: dict, picks) -> dict:
+    if not picks:
+        return roster
+    pick_set = {int(p) for p in picks}
+    out = {}
+    for person, raw in roster.items():
+        if not raw:
+            out[person] = raw
+            continue
+        players = raw if isinstance(raw, list) else [raw]
+        out[person] = [
+            {**p, 'starter': p.get('pick') in pick_set}
+            for p in players
+        ]
+    return out
+
+
 def get_match_detail(fixture_id):
     fixtures = {f['fixture_id']: f for f in load_fixtures()}
     fix = fixtures.get(fixture_id)
@@ -502,16 +520,22 @@ def get_match_detail(fixture_id):
         'home_roster': get_roster_for_team(fix['home_team']),
         'away_roster': get_roster_for_team(fix['away_team']),
     }
-    try:
-        from briefing.lineup_fetch import annotate_match_rosters
-        home_ro, away_ro, lineup_ok = annotate_match_rosters(
-            fix, detail['home_roster'], detail['away_roster'],
-        )
-        detail['home_roster'] = home_ro
-        detail['away_roster'] = away_ro
-        detail['lineup_available'] = lineup_ok
-    except Exception:
-        detail['lineup_available'] = False
+    starter_picks = (match_info or {}).get('starter_picks')
+    if starter_picks:
+        detail['home_roster'] = _apply_starter_picks(detail['home_roster'], starter_picks)
+        detail['away_roster'] = _apply_starter_picks(detail['away_roster'], starter_picks)
+        detail['lineup_available'] = True
+    else:
+        try:
+            from briefing.lineup_fetch import annotate_match_rosters
+            home_ro, away_ro, lineup_ok = annotate_match_rosters(
+                fix, detail['home_roster'], detail['away_roster'],
+            )
+            detail['home_roster'] = home_ro
+            detail['away_roster'] = away_ro
+            detail['lineup_available'] = lineup_ok
+        except Exception:
+            detail['lineup_available'] = False
     return detail
 
 

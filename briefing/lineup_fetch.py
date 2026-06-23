@@ -221,3 +221,50 @@ def annotate_match_rosters(fix: dict, home_roster: dict, away_roster: dict) -> t
     home = annotate_roster_starters(home_roster, lineup.get('home') or [])
     away = annotate_roster_starters(away_roster, lineup.get('away') or [])
     return home, away, True
+
+
+def starter_picks_for_fixture(fix: dict) -> list[int]:
+    """Draft pick numbers (# on match page) for players in the starting XI."""
+    home_roster = None
+    away_roster = None
+    try:
+        from briefing_data import get_roster_for_team
+        home_roster = get_roster_for_team(fix['home_team'])
+        away_roster = get_roster_for_team(fix['away_team'])
+    except Exception:
+        return []
+    home, away, ok = annotate_match_rosters(fix, home_roster, away_roster)
+    if not ok:
+        return []
+    picks = []
+    for roster in (home, away):
+        for players in roster.values():
+            if not players:
+                continue
+            for p in players:
+                if p.get('starter') and p.get('pick') is not None:
+                    picks.append(int(p['pick']))
+    return picks
+
+
+def enrich_history_starter_picks(fixtures: list[dict]) -> int:
+    """Attach starter_picks to finished matches in history_index (for PA upload)."""
+    from briefing_data import HISTORY_PATH, load_history_index, match_has_results, save_json
+
+    idx = load_history_index()
+    by_id = {f['fixture_id']: f for f in fixtures}
+    updated = 0
+    for report in (idx.get('reports') or {}).values():
+        for m in report.get('matches') or []:
+            if not match_has_results(m):
+                continue
+            fix = by_id.get(m.get('fixture_id'))
+            if not fix:
+                continue
+            picks = starter_picks_for_fixture(fix)
+            if picks:
+                m['starter_picks'] = picks
+                updated += 1
+    if updated:
+        save_json(HISTORY_PATH, idx)
+    return updated
