@@ -1,11 +1,11 @@
 {
-  "sample_size": 41,
-  "overall_avg_goals": 3,
+  "sample_size": 44,
+  "overall_avg_goals": 3.05,
   "by_temp_band": {
     "mild": {
       "label": "温和 (15–25°C)",
-      "matches": 19,
-      "avg_goals": 3.05,
+      "matches": 21,
+      "avg_goals": 3.14,
       "sample": [
         "墨西哥 2球 (22.6°C 毛毛雨)",
         "韩国 3球 (21.0°C 大部晴朗)",
@@ -14,8 +14,8 @@
     },
     "warm": {
       "label": "偏热 (25–30°C)",
-      "matches": 15,
-      "avg_goals": 2.6,
+      "matches": 16,
+      "avg_goals": 2.62,
       "sample": [
         "加拿大 2球 (26.3°C 大部晴朗)",
         "卡塔尔 2球 (26.1°C 晴)",
@@ -36,8 +36,8 @@
   "by_rain": {
     "dry": {
       "label": "非雨天",
-      "matches": 33,
-      "avg_goals": 2.67
+      "matches": 36,
+      "avg_goals": 2.75
     },
     "wet": {
       "label": "雨天/降水",
@@ -47,14 +47,14 @@
   },
   "by_condition": [
     {
+      "condition": "晴",
+      "matches": 14,
+      "avg_goals": 2.86
+    },
+    {
       "condition": "多云",
       "matches": 13,
       "avg_goals": 2.77
-    },
-    {
-      "condition": "晴",
-      "matches": 11,
-      "avg_goals": 2.64
     },
     {
       "condition": "大部晴朗",
@@ -1025,11 +1025,80 @@
       "temp_band": "hot",
       "is_rainy": false,
       "condition_cn": "大部晴朗"
+    },
+    {
+      "fixture_id": 42,
+      "home_team": "法国",
+      "away_team": "伊拉克",
+      "total_goals": 3,
+      "played_date_beijing": "2026-06-23",
+      "weather_detail": {
+        "temp_c": 26.2,
+        "humidity_pct": 27,
+        "weather_code": 0,
+        "precip_mm": 0.0,
+        "wind_kmh": 19.5,
+        "observed_at": "2026-06-22T21:00",
+        "source": "open-meteo-forecast",
+        "is_rainy": false,
+        "temp_band": "warm",
+        "condition_cn": "晴"
+      },
+      "temp_c": 26.2,
+      "temp_band": "warm",
+      "is_rainy": false,
+      "condition_cn": "晴"
+    },
+    {
+      "fixture_id": 43,
+      "home_team": "挪威",
+      "away_team": "塞内加尔",
+      "total_goals": 5,
+      "played_date_beijing": "2026-06-23",
+      "weather_detail": {
+        "temp_c": 23.3,
+        "humidity_pct": 37,
+        "weather_code": 0,
+        "precip_mm": 0.0,
+        "wind_kmh": 18.3,
+        "observed_at": "2026-06-23T00:00",
+        "source": "open-meteo-forecast",
+        "is_rainy": false,
+        "temp_band": "mild",
+        "condition_cn": "晴"
+      },
+      "temp_c": 23.3,
+      "temp_band": "mild",
+      "is_rainy": false,
+      "condition_cn": "晴"
+    },
+    {
+      "fixture_id": 44,
+      "home_team": "约旦",
+      "away_team": "阿尔及利亚",
+      "total_goals": 3,
+      "played_date_beijing": "2026-06-23",
+      "weather_detail": {
+        "temp_c": 22.1,
+        "humidity_pct": 47,
+        "weather_code": 0,
+        "precip_mm": 0.0,
+        "wind_kmh": 14.8,
+        "observed_at": "2026-06-23T03:00",
+        "source": "open-meteo-forecast",
+        "is_rainy": false,
+        "temp_band": "mild",
+        "condition_cn": "晴"
+      },
+      "temp_c": 22.1,
+      "temp_band": "mild",
+      "is_rainy": false,
+      "condition_cn": "晴"
     }
   ],
   "insights": [
-    "已赛 41 场样本，全场总进球均值 3 球/场。",
-    "气温段中 炎热 (>30°C) 场均 3.71 球最高，偏热 (25–30°C) 场均 2.6 球最低（样本偏少，仅供参考）。",
-    "雨天/降水 8 场场均 4.38 球，非雨天 33 场场均 2.67 球。"
+    "已赛 44 场样本，全场总进球均值 3.05 球/场。",
+    "气温段中 炎热 (>30°C) 场均 3.71 球最高，偏热 (25–30°C) 场均 2.62 球最低（样本偏少，仅供参考）。",
+    "雨天/降水 8 场场均 4.38 球，非雨天 36 场场均 2.75 球。"
   ]
 }

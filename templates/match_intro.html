@@ -582,6 +582,19 @@
             color: var(--muted);
             margin-left: 0.25rem;
         }
+        .starter-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-left: 0.35rem;
+            padding: 0 0.2rem;
+            border: 1px solid rgba(201, 162, 39, 0.45);
+            border-radius: 3px;
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+        .side-panel.home .starter-badge { margin-left: 0; margin-right: 0.35rem; }
         .player.empty {
             font-size: 0.85rem;
             color: rgba(255,255,255,0.15);
@@ -768,10 +781,11 @@ function renderRoster(containerId, data) {
             playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
                 var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
                 var pick = (p.pick != null && p.pick !== '') ? '<span class="pick-no">#' + p.pick + '</span>' : '';
+                var starter = p.starter ? '<span class="starter-badge" title="首发">首</span>' : '';
                 var en = (p.name_en && p.name_en !== p.name)
                     ? '<span class="name-en">' + p.name_en + '</span>' : '';
                 return '<div class="player-inner"><span class="pname">' +
-                    '<span class="name-cn">' + p.name + pick + star + '</span>' + en +
+                    '<span class="name-cn">' + p.name + pick + star + starter + '</span>' + en +
                     '</span></div>';
             }).join('') + '</div>';
         }

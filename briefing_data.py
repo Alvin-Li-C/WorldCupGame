@@ -466,7 +466,7 @@ def get_match_detail(fixture_id):
         score = None
         status_class = ''
 
-    return {
+    detail = {
         'fixture_id': fixture_id,
         'stadium': fix.get('stadium'),
         'stadium_key': stadium_key,
@@ -502,6 +502,17 @@ def get_match_detail(fixture_id):
         'home_roster': get_roster_for_team(fix['home_team']),
         'away_roster': get_roster_for_team(fix['away_team']),
     }
+    try:
+        from briefing.lineup_fetch import annotate_match_rosters
+        home_ro, away_ro, lineup_ok = annotate_match_rosters(
+            fix, detail['home_roster'], detail['away_roster'],
+        )
+        detail['home_roster'] = home_ro
+        detail['away_roster'] = away_ro
+        detail['lineup_available'] = lineup_ok
+    except Exception:
+        detail['lineup_available'] = False
+    return detail
 
 
 def history_dates_payload():

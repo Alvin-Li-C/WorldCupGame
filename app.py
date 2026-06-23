@@ -271,6 +271,8 @@ def api_import_briefing():
     weather_path = os.path.join(BRIEFING_DIR, 'weather_goals_analysis.json')
     if 'weather_goals_analysis' in data:
         save_json(weather_path, data['weather_goals_analysis'])
+    if 'match_lineups' in data:
+        save_json(os.path.join(BRIEFING_DIR, 'match_lineups.json'), data['match_lineups'])
     return jsonify({'success': True})
 
 

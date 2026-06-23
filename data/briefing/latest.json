@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T19:34:42+08:00",
+  "generated_at": "2026-06-23T20:38:23+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-23",
   "yesterday": {
@@ -62,7 +62,44 @@
         "status": "scheduled",
         "home_owner": "老闫",
         "away_owner": "李总",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "葡萄牙",
+            "category": "discord",
+            "category_label": "不和",
+            "headline": "C罗持续占据首发引发争议，其上场是否拖累葡萄牙整体战力",
+            "impact": "high",
+            "impact_score": 70,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 01:02:48 +0000",
+            "url": "https://www.cbssports.com/soccer/news/cristiano-ronaldo-portugal-world-cup-bench-starter/"
+          },
+          {
+            "rank": 2,
+            "team": "葡萄牙",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "世界杯第十三比赛日：葡萄牙亟需拿下首场胜利",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2028-06-22 18:00:00",
+            "url": "https://www.dongqiudi.com/article/5957299"
+          },
+          {
+            "rank": 3,
+            "team": "葡萄牙",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "首战失利后葡萄牙全队求胜欲达顶点，情绪或在下一场集中爆发",
+            "impact": "medium",
+            "impact_score": 50,
+            "source": "懂球帝头条",
+            "published_at": "2027-06-23 19:00:59",
+            "url": "https://www.dongqiudi.com/article/5960338"
+          }
+        ]
       },
       {
         "fixture_id": 46,
@@ -74,7 +111,44 @@
         "status": "scheduled",
         "home_owner": "李总",
         "away_owner": "李总",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "英格兰",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "第十三比赛日前瞻：英格兰盼锁定小组头名",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2028-06-22 18:00:00",
+            "url": "https://www.dongqiudi.com/article/5957299"
+          },
+          {
+            "rank": 2,
+            "team": "英格兰",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "专家21连胜走势下英格兰vs加纳胜负预测",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 11:00:07 +0000",
+            "url": "https://www.cbssports.com/soccer/news/england-ghana-odds-prediction-time-2026-world-cup-picks-best-bets/"
+          },
+          {
+            "rank": 3,
+            "team": "英格兰",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "世界杯串关推荐：含英格兰对加纳等场次精选",
+            "impact": "low",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 11:00:47 +0000",
+            "url": "https://www.cbssports.com/soccer/news/2026-world-cup-parlay-best-bets-top-picks-for-matches-on-tuesday-include-england-ghana-portugal-croatia/"
+          }
+        ]
       },
       {
         "fixture_id": 47,
@@ -86,7 +160,44 @@
         "status": "scheduled",
         "home_owner": "NA",
         "away_owner": "耗子",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "巴拿马",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "专家前瞻：巴拿马 vs 克罗地亚盘口与赛果预测",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "\n                        Tue, 23 Jun 2026 11:23:06 +0000\n                    ",
+            "url": "https://www.cbssports.com/soccer/news/croatia-panama-odds-prediction-time-2026-world-cup-picks-best-bets/"
+          },
+          {
+            "rank": 2,
+            "team": "克罗地亚",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "周二世界杯串关推荐：含克罗地亚场次",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "\n                        Tue, 23 Jun 2026 11:00:47 +0000\n                    ",
+            "url": "https://www.cbssports.com/soccer/news/2026-world-cup-parlay-best-bets-top-picks-for-matches-on-tuesday-include-england-ghana-portugal-croatia/"
+          },
+          {
+            "rank": 3,
+            "team": "克罗地亚",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "周二世界杯任意时间进球者投注推荐",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "\n                        Tue, 23 Jun 2026 12:00:47 +0000\n                    ",
+            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-cristiano-ronaldo-luis-suarez-among-tuesdays-best-bets/"
+          }
+        ]
       },
       {
         "fixture_id": 48,
@@ -98,7 +209,44 @@
         "status": "scheduled",
         "home_owner": "庆爷",
         "away_owner": "耗子",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "哥伦比亚",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "专家解析哥伦比亚vs刚果（金）：世界杯小组赛投注与战术走向",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 11:46:01 +0000",
+            "url": "https://www.cbssports.com/soccer/news/colombia-dr-congo-odds-prediction-time-2026-world-cup-picks-best-bets/"
+          },
+          {
+            "rank": 2,
+            "team": "哥伦比亚",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "苏亚雷斯入选周二世界杯任意时间进球热门投注选项",
+            "impact": "medium",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 12:00:47 +0000",
+            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-cristiano-ronaldo-luis-suarez-among-tuesdays-best-bets/"
+          },
+          {
+            "rank": 3,
+            "team": "哥伦比亚",
+            "category": "other",
+            "category_label": "其他",
+            "headline": "2026世界杯完整赔率发布：含哥伦比亚小组赛出线形势",
+            "impact": "low",
+            "impact_score": 33,
+            "source": "CBS Soccer",
+            "published_at": "Tue, 23 Jun 2026 10:51:14 +0000",
+            "url": "https://www.cbssports.com/betting/news/world-cup-odds/"
+          }
+        ]
       }
     ]
   }

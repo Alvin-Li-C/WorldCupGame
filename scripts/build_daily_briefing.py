@@ -425,6 +425,32 @@ def build_briefing(mock=False, skip_news=False):
     save_json(archive, briefing)
     save_team_standings()
     save_shooter_standings()
+
+    if not mock:
+        try:
+            from briefing.lineup_fetch import fixtures_for_lineup_backfill, refresh_match_lineups
+            from briefing_data import fixtures_on_date
+
+            preview_date = (briefing.get('today') or {}).get('date') or briefing_date
+            lineup_targets = {
+                f['fixture_id']: f
+                for f in fixtures_on_date(fixtures, preview_date)
+                + fixtures_on_date(fixtures, yesterday_date)
+                + fixtures_for_lineup_backfill(fixtures)
+            }
+            if lineup_targets:
+                stats = refresh_match_lineups(list(lineup_targets.values()))
+                print(
+                    'build: lineups — '
+                    f"checked {stats['checked']}, "
+                    f"new {stats['updated']}, "
+                    f"available {stats['available']}, "
+                    f"pending {stats['pending']}",
+                    flush=True,
+                )
+        except Exception as e:
+            print(f'build: lineup fetch skipped: {e}', flush=True)
+
     return briefing
 
 
@@ -444,6 +470,9 @@ def _briefing_upload_payload():
         'weather_goals_analysis': load_json(
             os.path.join(ROOT, 'data', 'briefing', 'weather_goals_analysis.json'), {},
         ),
+        'match_lineups': load_json(
+            os.path.join(ROOT, 'data', 'briefing', 'match_lineups.json'), {},
+        ),
     }
     extras = []
     if payload['team_squad_meta']:
@@ -453,6 +482,10 @@ def _briefing_upload_payload():
     fx = payload['fixtures_2026'].get('fixtures') if isinstance(payload['fixtures_2026'], dict) else None
     if fx:
         extras.append(f"fixtures={len(fx)}")
+    lineups = payload.get('match_lineups') or {}
+    lineup_ok = sum(1 for v in lineups.values() if isinstance(v, dict) and v.get('available'))
+    if lineup_ok:
+        extras.append(f"lineups={lineup_ok}")
     if extras:
         print('upload extras: ' + ', '.join(extras), flush=True)
     return payload
