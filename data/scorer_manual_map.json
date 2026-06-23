@@ -1,3 +1,43 @@
 {
-  "rules": []
+  "rules": [
+    {
+      "player_id": 722,
+      "note": "CLI repair",
+      "created_at": "2026-06-16T18:47:57",
+      "api_scorer_id": 266555,
+      "api_scorer_en": "Elijah Just",
+      "team_api": "New Zealand"
+    },
+    {
+      "player_id": 694,
+      "note": "CLI repair",
+      "created_at": "2026-06-16T18:49:59",
+      "api_scorer_en": "Mohammad Mohebbi",
+      "team_api": "Iran"
+    },
+    {
+      "player_id": 168,
+      "note": "Qatar OG vs Canada API team tag",
+      "created_at": "2026-06-19T08:19:47",
+      "api_scorer_id": 309315,
+      "api_scorer_en": "Mohamed Manai",
+      "team_api": "Canada"
+    },
+    {
+      "player_id": 670,
+      "note": "CLI repair",
+      "created_at": "2026-06-22T18:59:24",
+      "api_scorer_id": 378495,
+      "api_scorer_en": "Mostafa Zico",
+      "team_api": "Egypt"
+    },
+    {
+      "player_id": 671,
+      "note": "CLI repair",
+      "created_at": "2026-06-22T19:02:09",
+      "api_scorer_id": 157825,
+      "api_scorer_en": "Trézéguet",
+      "team_api": "Egypt"
+    }
+  ]
 }

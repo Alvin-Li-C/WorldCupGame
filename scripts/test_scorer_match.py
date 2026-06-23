@@ -241,6 +241,36 @@ class TestScorerMatch(unittest.TestCase):
         self.assertEqual(len(events), 2)
         self.assertTrue(all(e['scorer_en'] == 'Lionel Messi' for e in events))
 
+    def test_penalty_scored_counted_as_goal(self):
+        from briefing.espn_goals import _goal_type, parse_espn_goal_events
+
+        scored = {
+            'type': {'type': 'penalty---scored'},
+            'text': 'Goal! Germany 3, Curaçao 1. Kai Havertz (Germany) converts the penalty',
+            'clock': {'displayValue': "45'+5'"},
+            'team': {'displayName': 'Germany'},
+            'participants': [{'athlete': {'displayName': 'Kai Havertz', 'id': '231182'}}],
+            'id': 'pen1',
+        }
+        self.assertEqual(_goal_type(scored), 'PENALTY')
+
+        summary = {
+            'keyEvents': [
+                scored,
+                {'id': 'g2', 'type': {'type': 'goal'},
+                 'text': 'Goal! Germany 7, Curaçao 1. Kai Havertz (Germany) shot.',
+                 'clock': {'displayValue': "88'"}, 'team': {'displayName': 'Germany'},
+                 'participants': [{'athlete': {'displayName': 'Kai Havertz'}}]},
+            ],
+        }
+        team_map = {'Germany': '德国', 'Curaçao': '库拉索'}
+        events = parse_espn_goal_events(
+            summary, team_map, lambda en, m: m.get(en), 'Germany', 'Curaçao',
+        )
+        self.assertEqual(len(events), 2)
+        types = {e['type'] for e in events}
+        self.assertEqual(types, {'PENALTY', 'REGULAR'})
+
 
 if __name__ == '__main__':
     unittest.main()

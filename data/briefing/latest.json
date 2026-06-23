@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T07:42:09+08:00",
+  "generated_at": "2026-06-23T19:34:42+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-23",
   "yesterday": {
@@ -48,190 +48,57 @@
     ]
   },
   "today": {
-    "date": "2026-06-23",
-    "is_next_matchday": false,
+    "date": "2026-06-24",
+    "is_next_matchday": true,
     "match_count": 4,
     "matches": [
       {
-        "fixture_id": 41,
-        "group": "J",
+        "fixture_id": 45,
+        "group": "K",
         "matchday": 2,
-        "home_team": "阿根廷",
-        "away_team": "奥地利",
-        "kickoff_beijing": "2026-06-23 01:00",
-        "status": "finished",
-        "home_owner": "耗子",
+        "home_team": "葡萄牙",
+        "away_team": "乌兹别克斯坦",
+        "kickoff_beijing": "2026-06-24 01:00",
+        "status": "scheduled",
+        "home_owner": "老闫",
         "away_owner": "李总",
-        "key_news": [
-          {
-            "rank": 1,
-            "team": "阿根廷",
-            "category": "lineup",
-            "category_label": "阵容",
-            "headline": "阿根廷vs奥地利赛前预览：预计首发、阵型与专家预测",
-            "impact": "high",
-            "impact_score": 70,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 14:00:50 +0000",
-            "url": "https://www.cbssports.com/soccer/news/argentina-vs-austria-world-cup-2026-preview-predictions-watch/"
-          },
-          {
-            "rank": 2,
-            "team": "阿根廷",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "梅西世界杯进球数追平/打破克洛泽纪录，对阵奥地利成关键一战",
-            "impact": "high",
-            "impact_score": 65,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 19:12:14 +0000",
-            "url": "https://www.cbssports.com/soccer/news/lionel-messi-breaks-all-time-mens-world-cup-goal-scoring-record-for-argentina-vs-austria/"
-          },
-          {
-            "rank": 3,
-            "team": "阿根廷",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "阿根廷vs奥地利赔率与专家推荐：梅西进球道具成焦点",
-            "impact": "medium",
-            "impact_score": 65,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 15:31:34 +0000",
-            "url": "https://www.cbssports.com/soccer/news/argentina-austria-odds-prediction-line-start-time-2026-world-cup-picks-lionel-messi-props/"
-          }
-        ],
-        "home_score": 2,
-        "away_score": 0,
-        "our_scorers": [
-          {
-            "player_id": 986,
-            "participant": "老闫",
-            "player_name_cn": "利昂内尔·梅西",
-            "player_name_en": "Lionel Messi",
-            "jersey_number": 24,
-            "goals": 2,
-            "own_goals": 0,
-            "points": 2,
-            "goal_count": 2,
-            "display": "+2",
-            "top20": true
-          }
-        ],
-        "unmatched_scorers": [],
-        "played_date_beijing": "2026-06-23",
-        "source": "football-data",
-        "winner_team": "阿根廷"
+        "key_news": []
       },
       {
-        "fixture_id": 42,
-        "group": "I",
+        "fixture_id": 46,
+        "group": "L",
         "matchday": 2,
-        "home_team": "法国",
-        "away_team": "伊拉克",
-        "kickoff_beijing": "2026-06-23 05:00",
+        "home_team": "英格兰",
+        "away_team": "加纳",
+        "kickoff_beijing": "2026-06-24 04:00",
         "status": "scheduled",
-        "home_owner": "老王",
-        "away_owner": "NA",
-        "key_news": [
-          {
-            "rank": 1,
-            "team": "法国",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "姆巴佩入选周一世界杯随时进球热门选项",
-            "impact": "medium",
-            "impact_score": 33,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 20:01:22 +0000",
-            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-best-bets-mbappe-haaland-among-best-bets-for-monday/"
-          },
-          {
-            "rank": 2,
-            "team": "法国",
-            "category": "other",
-            "category_label": "其他",
-            "headline": "专家法伊之战荐彩：法国大热伊拉克难爆冷",
-            "impact": "medium",
-            "impact_score": 65,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 19:00:44 +0000",
-            "url": "https://www.cbssports.com/soccer/news/france-iraq-odds-prediction-line-time-2026-world-cup-picks-best-bets/"
-          }
-        ]
+        "home_owner": "李总",
+        "away_owner": "李总",
+        "key_news": []
       },
       {
-        "fixture_id": 43,
-        "group": "I",
+        "fixture_id": 47,
+        "group": "L",
         "matchday": 2,
-        "home_team": "挪威",
-        "away_team": "塞内加尔",
-        "kickoff_beijing": "2026-06-23 08:00",
-        "status": "scheduled",
-        "home_owner": "耗子",
-        "away_owner": "庆爷",
-        "key_news": [
-          {
-            "rank": 1,
-            "team": "挪威",
-            "category": "lineup",
-            "category_label": "阵容",
-            "headline": "挪威vs塞内加尔：哈兰德、马内先发，厄德高、雅克松出战",
-            "impact": "high",
-            "impact_score": 50,
-            "source": "懂球帝头条",
-            "published_at": "2026-06-23 06:35:02",
-            "url": "https://www.dongqiudi.com/article/5957969"
-          },
-          {
-            "rank": 2,
-            "team": "挪威",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "Norway vs. Senegal odds, picks, prediction, betting preview, start time for 2026 World Cup match on Monday",
-            "impact": "high",
-            "impact_score": 70,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 12:52:14 +0000",
-            "url": "https://www.cbssports.com/soccer/news/norway-vs-senegal-odds-picks-prediction-betting-preview-start-time-for-2026-world-cup-match-on-monday/"
-          },
-          {
-            "rank": 3,
-            "team": "挪威",
-            "category": "form",
-            "category_label": "状态",
-            "headline": "数据信心不足，挪威能否击败非洲冠军塞内加尔？",
-            "impact": "medium",
-            "impact_score": 50,
-            "source": "懂球帝头条",
-            "published_at": "2026-06-23 01:01:18",
-            "url": "https://www.dongqiudi.com/article/5958393"
-          }
-        ]
-      },
-      {
-        "fixture_id": 44,
-        "group": "J",
-        "matchday": 2,
-        "home_team": "约旦",
-        "away_team": "阿尔及利亚",
-        "kickoff_beijing": "2026-06-23 11:00",
+        "home_team": "巴拿马",
+        "away_team": "克罗地亚",
+        "kickoff_beijing": "2026-06-24 07:00",
         "status": "scheduled",
         "home_owner": "NA",
-        "away_owner": "李总",
-        "key_news": [
-          {
-            "rank": 1,
-            "team": "约旦",
-            "category": "lineup",
-            "category_label": "阵容",
-            "headline": "约旦vs阿尔及利亚J组生死战：预计首发、赔率与出线形势",
-            "impact": "high",
-            "impact_score": 70,
-            "source": "CBS Soccer",
-            "published_at": "Mon, 22 Jun 2026 13:18:05 +0000",
-            "url": "https://www.cbssports.com/soccer/news/jordan-vs-algeria-world-cup-2026-preview-predictions-watch/"
-          }
-        ]
+        "away_owner": "耗子",
+        "key_news": []
+      },
+      {
+        "fixture_id": 48,
+        "group": "K",
+        "matchday": 2,
+        "home_team": "哥伦比亚",
+        "away_team": "刚果（金）",
+        "kickoff_beijing": "2026-06-24 10:00",
+        "status": "scheduled",
+        "home_owner": "庆爷",
+        "away_owner": "耗子",
+        "key_news": []
       }
     ]
   }

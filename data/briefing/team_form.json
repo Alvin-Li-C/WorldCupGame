@@ -1,58 +1,30 @@
 {
-  "波黑": {
-    "last5": "DL",
-    "goals_for": 2,
-    "goals_against": 5,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "阿根廷": {
-    "last5": "WW",
-    "goals_for": 5,
-    "goals_against": 0,
-    "updated_at": "2026-06-23",
-    "source": "football-data-wc"
-  },
-  "摩洛哥": {
-    "last5": "DW",
-    "goals_for": 2,
-    "goals_against": 1,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "澳大利亚": {
+  "瑞典": {
     "last5": "WL",
+    "goals_for": 6,
+    "goals_against": 6,
+    "updated_at": "2026-06-21",
+    "source": "football-data-wc"
+  },
+  "克罗地亚": {
+    "last5": "L",
     "goals_for": 2,
-    "goals_against": 2,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "法国": {
-    "last5": "W",
-    "goals_for": 3,
-    "goals_against": 1,
-    "updated_at": "2026-06-17",
-    "source": "football-data-wc"
-  },
-  "巴西": {
-    "last5": "DW",
-    "goals_for": 4,
-    "goals_against": 1,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "英格兰": {
-    "last5": "W",
-    "goals_for": 4,
-    "goals_against": 2,
+    "goals_against": 4,
     "updated_at": "2026-06-18",
     "source": "football-data-wc"
   },
-  "塞内加尔": {
-    "last5": "L",
-    "goals_for": 1,
+  "荷兰": {
+    "last5": "DW",
+    "goals_for": 7,
     "goals_against": 3,
-    "updated_at": "2026-06-17",
+    "updated_at": "2026-06-21",
+    "source": "football-data-wc"
+  },
+  "挪威": {
+    "last5": "WW",
+    "goals_for": 7,
+    "goals_against": 3,
+    "updated_at": "2026-06-23",
     "source": "football-data-wc"
   },
   "突尼斯": {
@@ -62,52 +34,31 @@
     "updated_at": "2026-06-21",
     "source": "football-data-wc"
   },
-  "库拉索": {
-    "last5": "LD",
-    "goals_for": 1,
-    "goals_against": 7,
-    "updated_at": "2026-06-21",
-    "source": "football-data-wc"
-  },
-  "捷克": {
-    "last5": "LD",
-    "goals_for": 2,
-    "goals_against": 3,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "韩国": {
-    "last5": "WL",
-    "goals_for": 2,
-    "goals_against": 2,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "墨西哥": {
+  "美国": {
     "last5": "WW",
-    "goals_for": 3,
-    "goals_against": 0,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "刚果（金）": {
-    "last5": "D",
-    "goals_for": 1,
+    "goals_for": 6,
     "goals_against": 1,
-    "updated_at": "2026-06-18",
-    "source": "football-data-wc"
-  },
-  "瑞士": {
-    "last5": "DW",
-    "goals_for": 5,
-    "goals_against": 2,
-    "updated_at": "2026-06-19",
+    "updated_at": "2026-06-20",
     "source": "football-data-wc"
   },
   "土耳其": {
     "last5": "LL",
     "goals_for": 0,
     "goals_against": 3,
+    "updated_at": "2026-06-20",
+    "source": "football-data-wc"
+  },
+  "比利时": {
+    "last5": "DD",
+    "goals_for": 1,
+    "goals_against": 1,
+    "updated_at": "2026-06-22",
+    "source": "football-data-wc"
+  },
+  "澳大利亚": {
+    "last5": "WL",
+    "goals_for": 2,
+    "goals_against": 2,
     "updated_at": "2026-06-20",
     "source": "football-data-wc"
   },
@@ -118,6 +69,27 @@
     "updated_at": "2026-06-22",
     "source": "football-data-wc"
   },
+  "库拉索": {
+    "last5": "LD",
+    "goals_for": 1,
+    "goals_against": 7,
+    "updated_at": "2026-06-21",
+    "source": "football-data-wc"
+  },
+  "奥地利": {
+    "last5": "WL",
+    "goals_for": 3,
+    "goals_against": 3,
+    "updated_at": "2026-06-23",
+    "source": "football-data-wc"
+  },
+  "哥伦比亚": {
+    "last5": "W",
+    "goals_for": 3,
+    "goals_against": 1,
+    "updated_at": "2026-06-18",
+    "source": "football-data-wc"
+  },
   "新西兰": {
     "last5": "DL",
     "goals_for": 3,
@@ -125,11 +97,46 @@
     "updated_at": "2026-06-22",
     "source": "football-data-wc"
   },
-  "挪威": {
-    "last5": "W",
-    "goals_for": 4,
+  "阿根廷": {
+    "last5": "WW",
+    "goals_for": 5,
+    "goals_against": 0,
+    "updated_at": "2026-06-23",
+    "source": "football-data-wc"
+  },
+  "巴拿马": {
+    "last5": "L",
+    "goals_for": 0,
     "goals_against": 1,
-    "updated_at": "2026-06-17",
+    "updated_at": "2026-06-18",
+    "source": "football-data-wc"
+  },
+  "韩国": {
+    "last5": "WL",
+    "goals_for": 2,
+    "goals_against": 2,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
+  "刚果（金）": {
+    "last5": "D",
+    "goals_for": 1,
+    "goals_against": 1,
+    "updated_at": "2026-06-18",
+    "source": "football-data-wc"
+  },
+  "巴拉圭": {
+    "last5": "LW",
+    "goals_for": 2,
+    "goals_against": 4,
+    "updated_at": "2026-06-20",
+    "source": "football-data-wc"
+  },
+  "约旦": {
+    "last5": "LL",
+    "goals_for": 2,
+    "goals_against": 5,
+    "updated_at": "2026-06-23",
     "source": "football-data-wc"
   },
   "科特迪瓦": {
@@ -139,10 +146,66 @@
     "updated_at": "2026-06-21",
     "source": "football-data-wc"
   },
+  "卡塔尔": {
+    "last5": "DL",
+    "goals_for": 1,
+    "goals_against": 7,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
+  "瑞士": {
+    "last5": "DW",
+    "goals_for": 5,
+    "goals_against": 2,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
   "伊朗": {
     "last5": "DD",
     "goals_for": 2,
     "goals_against": 2,
+    "updated_at": "2026-06-22",
+    "source": "football-data-wc"
+  },
+  "乌兹别克斯坦": {
+    "last5": "L",
+    "goals_for": 1,
+    "goals_against": 3,
+    "updated_at": "2026-06-18",
+    "source": "football-data-wc"
+  },
+  "波黑": {
+    "last5": "DL",
+    "goals_for": 2,
+    "goals_against": 5,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
+  "海地": {
+    "last5": "LL",
+    "goals_for": 0,
+    "goals_against": 4,
+    "updated_at": "2026-06-20",
+    "source": "football-data-wc"
+  },
+  "加纳": {
+    "last5": "W",
+    "goals_for": 1,
+    "goals_against": 0,
+    "updated_at": "2026-06-18",
+    "source": "football-data-wc"
+  },
+  "南非": {
+    "last5": "LD",
+    "goals_for": 1,
+    "goals_against": 3,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
+  "乌拉圭": {
+    "last5": "DD",
+    "goals_for": 3,
+    "goals_against": 3,
     "updated_at": "2026-06-22",
     "source": "football-data-wc"
   },
@@ -153,60 +216,11 @@
     "updated_at": "2026-06-20",
     "source": "football-data-wc"
   },
-  "海地": {
-    "last5": "LL",
-    "goals_for": 0,
-    "goals_against": 4,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "瑞典": {
-    "last5": "WL",
-    "goals_for": 6,
-    "goals_against": 6,
-    "updated_at": "2026-06-21",
-    "source": "football-data-wc"
-  },
-  "巴拉圭": {
-    "last5": "LW",
-    "goals_for": 2,
-    "goals_against": 4,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "美国": {
-    "last5": "WW",
-    "goals_for": 6,
-    "goals_against": 1,
-    "updated_at": "2026-06-20",
-    "source": "football-data-wc"
-  },
-  "巴拿马": {
-    "last5": "L",
-    "goals_for": 0,
-    "goals_against": 1,
-    "updated_at": "2026-06-18",
-    "source": "football-data-wc"
-  },
   "埃及": {
     "last5": "DW",
     "goals_for": 4,
     "goals_against": 2,
     "updated_at": "2026-06-22",
-    "source": "football-data-wc"
-  },
-  "奥地利": {
-    "last5": "WL",
-    "goals_for": 3,
-    "goals_against": 3,
-    "updated_at": "2026-06-23",
-    "source": "football-data-wc"
-  },
-  "克罗地亚": {
-    "last5": "L",
-    "goals_for": 2,
-    "goals_against": 4,
-    "updated_at": "2026-06-18",
     "source": "football-data-wc"
   },
   "西班牙": {
@@ -216,6 +230,20 @@
     "updated_at": "2026-06-22",
     "source": "football-data-wc"
   },
+  "加拿大": {
+    "last5": "DW",
+    "goals_for": 7,
+    "goals_against": 1,
+    "updated_at": "2026-06-19",
+    "source": "football-data-wc"
+  },
+  "日本": {
+    "last5": "DW",
+    "goals_for": 6,
+    "goals_against": 2,
+    "updated_at": "2026-06-21",
+    "source": "football-data-wc"
+  },
   "佛得角": {
     "last5": "DD",
     "goals_for": 2,
@@ -223,39 +251,39 @@
     "updated_at": "2026-06-22",
     "source": "football-data-wc"
   },
-  "荷兰": {
-    "last5": "DW",
-    "goals_for": 7,
-    "goals_against": 3,
-    "updated_at": "2026-06-21",
-    "source": "football-data-wc"
-  },
   "阿尔及利亚": {
-    "last5": "L",
-    "goals_for": 0,
-    "goals_against": 3,
-    "updated_at": "2026-06-17",
+    "last5": "LW",
+    "goals_for": 2,
+    "goals_against": 4,
+    "updated_at": "2026-06-23",
     "source": "football-data-wc"
   },
-  "加纳": {
-    "last5": "W",
-    "goals_for": 1,
-    "goals_against": 0,
-    "updated_at": "2026-06-18",
-    "source": "football-data-wc"
-  },
-  "比利时": {
-    "last5": "DD",
-    "goals_for": 1,
+  "法国": {
+    "last5": "WW",
+    "goals_for": 6,
     "goals_against": 1,
-    "updated_at": "2026-06-22",
+    "updated_at": "2026-06-23",
+    "source": "football-data-wc"
+  },
+  "巴西": {
+    "last5": "DW",
+    "goals_for": 4,
+    "goals_against": 1,
+    "updated_at": "2026-06-20",
+    "source": "football-data-wc"
+  },
+  "塞内加尔": {
+    "last5": "LL",
+    "goals_for": 3,
+    "goals_against": 6,
+    "updated_at": "2026-06-23",
     "source": "football-data-wc"
   },
   "伊拉克": {
-    "last5": "L",
+    "last5": "LL",
     "goals_for": 1,
-    "goals_against": 4,
-    "updated_at": "2026-06-17",
+    "goals_against": 7,
+    "updated_at": "2026-06-23",
     "source": "football-data-wc",
     "wcq": {
       "matches": 19,
@@ -269,13 +297,6 @@
       "source": "seed"
     }
   },
-  "德国": {
-    "last5": "WW",
-    "goals_for": 9,
-    "goals_against": 2,
-    "updated_at": "2026-06-21",
-    "source": "football-data-wc"
-  },
   "葡萄牙": {
     "last5": "D",
     "goals_for": 1,
@@ -283,31 +304,17 @@
     "updated_at": "2026-06-18",
     "source": "football-data-wc"
   },
-  "约旦": {
-    "last5": "L",
-    "goals_for": 1,
-    "goals_against": 3,
-    "updated_at": "2026-06-17",
+  "德国": {
+    "last5": "WW",
+    "goals_for": 9,
+    "goals_against": 2,
+    "updated_at": "2026-06-21",
     "source": "football-data-wc"
   },
-  "南非": {
-    "last5": "LD",
-    "goals_for": 1,
-    "goals_against": 3,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "加拿大": {
-    "last5": "DW",
-    "goals_for": 7,
-    "goals_against": 1,
-    "updated_at": "2026-06-19",
-    "source": "football-data-wc"
-  },
-  "卡塔尔": {
-    "last5": "DL",
-    "goals_for": 1,
-    "goals_against": 7,
+  "墨西哥": {
+    "last5": "WW",
+    "goals_for": 3,
+    "goals_against": 0,
     "updated_at": "2026-06-19",
     "source": "football-data-wc"
   },
@@ -318,32 +325,25 @@
     "updated_at": "2026-06-21",
     "source": "football-data-wc"
   },
-  "乌兹别克斯坦": {
-    "last5": "L",
-    "goals_for": 1,
-    "goals_against": 3,
-    "updated_at": "2026-06-18",
-    "source": "football-data-wc"
-  },
-  "哥伦比亚": {
+  "英格兰": {
     "last5": "W",
-    "goals_for": 3,
-    "goals_against": 1,
+    "goals_for": 4,
+    "goals_against": 2,
     "updated_at": "2026-06-18",
     "source": "football-data-wc"
   },
-  "日本": {
+  "摩洛哥": {
     "last5": "DW",
-    "goals_for": 6,
-    "goals_against": 2,
-    "updated_at": "2026-06-21",
+    "goals_for": 2,
+    "goals_against": 1,
+    "updated_at": "2026-06-20",
     "source": "football-data-wc"
   },
-  "乌拉圭": {
-    "last5": "DD",
-    "goals_for": 3,
+  "捷克": {
+    "last5": "LD",
+    "goals_for": 2,
     "goals_against": 3,
-    "updated_at": "2026-06-22",
+    "updated_at": "2026-06-19",
     "source": "football-data-wc"
   }
 }

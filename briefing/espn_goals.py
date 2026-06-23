@@ -209,11 +209,13 @@ def _goal_type(play: dict) -> str | None:
     ptype = ((play.get('type') or {}).get('type') or '').lower()
     if ptype == 'own-goal' or 'own-goal' in ptype:
         return 'OWN'
-    # ESPN uses penalty---missed / penalty-saved; do not treat as goals.
-    if 'missed' in ptype or 'saved' in ptype:
+    # ESPN: penalty---scored (made) vs penalty---missed / penalty-saved.
+    if 'penalty' in ptype:
+        if 'missed' in ptype or 'saved' in ptype:
+            return None
+        if ptype == 'penalty-goal' or 'scored' in ptype:
+            return 'PENALTY'
         return None
-    if ptype == 'penalty-goal':
-        return 'PENALTY'
     if ptype == 'goal' or ptype.startswith('goal'):
         return 'REGULAR'
     return None
