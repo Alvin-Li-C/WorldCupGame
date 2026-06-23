@@ -1,55 +1,119 @@
 {
-  "generated_at": "2026-06-23T21:05:03+08:00",
+  "generated_at": "2026-06-24T07:06:25+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-23",
+  "briefing_date": "2026-06-24",
   "yesterday": {
-    "date": "2026-06-22",
+    "date": "2026-06-23",
     "matches": [
       {
-        "fixture_id": 37,
-        "home_team": "西班牙",
-        "away_team": "沙特",
+        "fixture_id": 41,
+        "home_team": "阿根廷",
+        "away_team": "奥地利",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "mercedes_atlanta.jpg",
+        "stadium_photo": "att.jpg",
         "our_scorers": [],
-        "unmatched_scorers": []
+        "unmatched_scorers": [],
+        "starter_picks": [
+          600,
+          9,
+          79,
+          133,
+          4,
+          247,
+          524,
+          66,
+          286,
+          295,
+          330,
+          331,
+          371,
+          132,
+          279,
+          68,
+          123,
+          597
+        ]
       },
       {
-        "fixture_id": 38,
-        "home_team": "比利时",
-        "away_team": "伊朗",
+        "fixture_id": 42,
+        "home_team": "法国",
+        "away_team": "伊拉克",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "sofi.jpg",
+        "stadium_photo": "lincoln.jpg",
         "our_scorers": [],
-        "unmatched_scorers": []
+        "unmatched_scorers": [],
+        "starter_picks": [
+          1,
+          231,
+          139,
+          182,
+          299,
+          313,
+          17,
+          237,
+          6,
+          545
+        ]
       },
       {
-        "fixture_id": 39,
-        "home_team": "乌拉圭",
-        "away_team": "佛得角",
+        "fixture_id": 43,
+        "home_team": "挪威",
+        "away_team": "塞内加尔",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "hardrock.jpg",
+        "stadium_photo": "metlife.jpg",
         "our_scorers": [],
-        "unmatched_scorers": []
+        "unmatched_scorers": [],
+        "starter_picks": [
+          113,
+          187,
+          5,
+          315,
+          316,
+          506,
+          515,
+          41,
+          530,
+          392,
+          87,
+          324,
+          86,
+          525,
+          526,
+          535,
+          536
+        ]
       },
       {
-        "fixture_id": 40,
-        "home_team": "新西兰",
-        "away_team": "埃及",
+        "fixture_id": 44,
+        "home_team": "约旦",
+        "away_team": "阿尔及利亚",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "bcplace.jpg",
+        "stadium_photo": "levis.jpg",
         "our_scorers": [],
-        "unmatched_scorers": []
+        "unmatched_scorers": [],
+        "starter_picks": [
+          590,
+          403,
+          593,
+          585,
+          211,
+          447,
+          145,
+          555,
+          556,
+          565,
+          566
+        ]
       }
     ]
   },
   "today": {
     "date": "2026-06-24",
-    "is_next_matchday": true,
+    "is_next_matchday": false,
     "match_count": 4,
     "matches": [
       {
@@ -59,7 +123,7 @@
         "home_team": "葡萄牙",
         "away_team": "乌兹别克斯坦",
         "kickoff_beijing": "2026-06-24 01:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "老闫",
         "away_owner": "李总",
         "key_news": [
@@ -99,6 +163,85 @@
             "published_at": "2027-06-23 19:00:59",
             "url": "https://www.dongqiudi.com/article/5960338"
           }
+        ],
+        "home_score": 5,
+        "away_score": 0,
+        "our_scorers": [
+          {
+            "player_id": 1118,
+            "participant": "耗子",
+            "player_name_cn": "C罗",
+            "player_name_en": "Cristiano Ronaldo",
+            "jersey_number": 27,
+            "goals": 2,
+            "own_goals": 0,
+            "points": 2,
+            "goal_count": 2,
+            "display": "+2",
+            "top20": true
+          },
+          {
+            "player_id": 1115,
+            "participant": "耗子",
+            "player_name_cn": "莱奥",
+            "player_name_en": "Rafael Leao",
+            "jersey_number": 24,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          },
+          {
+            "player_id": 1100,
+            "participant": "老王",
+            "player_name_cn": "门德斯",
+            "player_name_en": "Nuno Mendes",
+            "jersey_number": 9,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          }
+        ],
+        "unmatched_scorers": [
+          {
+            "fixture_id": 45,
+            "kickoff_beijing": "2026-06-24 01:00",
+            "home_team": "葡萄牙",
+            "away_team": "乌兹别克斯坦",
+            "scorer_en": "Abduvohid Nematov",
+            "scorer_api_id": "308612",
+            "team_en": "Portugal",
+            "team_cn": "葡萄牙",
+            "type": "OWN",
+            "minute": 60,
+            "would_points": 2,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          }
+        ],
+        "played_date_beijing": "2026-06-24",
+        "source": "football-data",
+        "winner_team": "葡萄牙",
+        "starter_picks": [
+          10,
+          60,
+          110,
+          350,
+          282,
+          143,
+          208,
+          154,
+          15,
+          116,
+          570,
+          571,
+          413,
+          175
         ]
       },
       {
@@ -108,7 +251,7 @@
         "home_team": "英格兰",
         "away_team": "加纳",
         "kickoff_beijing": "2026-06-24 04:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "李总",
         "away_owner": "李总",
         "key_news": [
@@ -148,6 +291,28 @@
             "published_at": "Tue, 23 Jun 2026 11:00:47 +0000",
             "url": "https://www.cbssports.com/soccer/news/2026-world-cup-parlay-best-bets-top-picks-for-matches-on-tuesday-include-england-ghana-portugal-croatia/"
           }
+        ],
+        "home_score": 0,
+        "away_score": 0,
+        "our_scorers": [],
+        "unmatched_scorers": [],
+        "played_date_beijing": "2026-06-24",
+        "source": "football-data",
+        "starter_picks": [
+          141,
+          240,
+          241,
+          2,
+          29,
+          59,
+          38,
+          93,
+          174,
+          80,
+          561,
+          213,
+          97,
+          445
         ]
       },
       {
@@ -197,6 +362,17 @@
             "published_at": "\n                        Tue, 23 Jun 2026 12:00:47 +0000\n                    ",
             "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-cristiano-ronaldo-luis-suarez-among-tuesdays-best-bets/"
           }
+        ],
+        "starter_picks": [
+          490,
+          577,
+          71,
+          100,
+          179,
+          262,
+          363,
+          276,
+          595
         ]
       },
       {

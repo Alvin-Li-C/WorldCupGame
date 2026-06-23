@@ -268,3 +268,26 @@ def enrich_history_starter_picks(fixtures: list[dict]) -> int:
     if updated:
         save_json(HISTORY_PATH, idx)
     return updated
+
+
+def enrich_latest_starter_picks(fixtures: list[dict]) -> int:
+    """Attach starter_picks to today/yesterday preview matches in latest.json."""
+    from briefing_data import LATEST_PATH, load_json, save_json
+
+    latest = load_json(LATEST_PATH, {})
+    if not latest:
+        return 0
+    by_id = {f['fixture_id']: f for f in fixtures}
+    updated = 0
+    for block in ('today', 'yesterday'):
+        for m in (latest.get(block) or {}).get('matches') or []:
+            fix = by_id.get(m.get('fixture_id'))
+            if not fix:
+                continue
+            picks = starter_picks_for_fixture(fix)
+            if picks:
+                m['starter_picks'] = picks
+                updated += 1
+    if updated:
+        save_json(LATEST_PATH, latest)
+    return updated

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T21:05:34+08:00",
+  "generated_at": "2026-06-24T07:07:06+08:00",
   "empty": false,
   "rules": {
     "group_win": 3,
@@ -123,123 +123,13 @@
       "rank": 1
     },
     {
-      "participant": "李总",
-      "points": 24,
-      "wins": 8,
-      "draws": 0,
-      "losses": 5,
-      "played": 13,
-      "group_pts": 24,
-      "bonus_pts": 0,
-      "knockout_pts": 0,
-      "teams": [
-        {
-          "team": "墨西哥",
-          "group": "A",
-          "w": 2,
-          "d": 0,
-          "l": 0,
-          "group_pts": 6,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 6
-        },
-        {
-          "team": "德国",
-          "group": "E",
-          "w": 2,
-          "d": 0,
-          "l": 0,
-          "group_pts": 6,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 6
-        },
-        {
-          "team": "加纳",
-          "group": "L",
-          "w": 1,
-          "d": 0,
-          "l": 0,
-          "group_pts": 3,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 3
-        },
-        {
-          "team": "奥地利",
-          "group": "J",
-          "w": 1,
-          "d": 0,
-          "l": 1,
-          "group_pts": 3,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 3
-        },
-        {
-          "team": "英格兰",
-          "group": "L",
-          "w": 1,
-          "d": 0,
-          "l": 0,
-          "group_pts": 3,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 3
-        },
-        {
-          "team": "阿尔及利亚",
-          "group": "J",
-          "w": 1,
-          "d": 0,
-          "l": 1,
-          "group_pts": 3,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 3
-        },
-        {
-          "team": "乌兹别克斯坦",
-          "group": "K",
-          "w": 0,
-          "d": 0,
-          "l": 1,
-          "group_pts": 0,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 0
-        },
-        {
-          "team": "土耳其",
-          "group": "D",
-          "w": 0,
-          "d": 0,
-          "l": 2,
-          "group_pts": 0,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 0
-        }
-      ],
-      "rank": 2
-    },
-    {
       "participant": "老闫",
-      "points": 24,
-      "wins": 6,
+      "points": 27,
+      "wins": 7,
       "draws": 6,
       "losses": 3,
-      "played": 15,
-      "group_pts": 24,
+      "played": 16,
+      "group_pts": 27,
       "bonus_pts": 0,
       "knockout_pts": 0,
       "teams": [
@@ -292,6 +182,18 @@
           "total_pts": 4
         },
         {
+          "team": "葡萄牙",
+          "group": "K",
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "group_pts": 4,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 4
+        },
+        {
           "team": "科特迪瓦",
           "group": "E",
           "w": 1,
@@ -326,18 +228,116 @@
           "bonus_reason": "",
           "knockout_pts": 0,
           "total_pts": 1
-        },
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "participant": "李总",
+      "points": 26,
+      "wins": 8,
+      "draws": 2,
+      "losses": 6,
+      "played": 16,
+      "group_pts": 26,
+      "bonus_pts": 0,
+      "knockout_pts": 0,
+      "teams": [
         {
-          "team": "葡萄牙",
-          "group": "K",
-          "w": 0,
-          "d": 1,
+          "team": "墨西哥",
+          "group": "A",
+          "w": 2,
+          "d": 0,
           "l": 0,
-          "group_pts": 1,
+          "group_pts": 6,
           "bonus_pts": 0,
           "bonus_reason": "",
           "knockout_pts": 0,
-          "total_pts": 1
+          "total_pts": 6
+        },
+        {
+          "team": "德国",
+          "group": "E",
+          "w": 2,
+          "d": 0,
+          "l": 0,
+          "group_pts": 6,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 6
+        },
+        {
+          "team": "加纳",
+          "group": "L",
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "group_pts": 4,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 4
+        },
+        {
+          "team": "英格兰",
+          "group": "L",
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "group_pts": 4,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 4
+        },
+        {
+          "team": "奥地利",
+          "group": "J",
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "group_pts": 3,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 3
+        },
+        {
+          "team": "阿尔及利亚",
+          "group": "J",
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "group_pts": 3,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 3
+        },
+        {
+          "team": "乌兹别克斯坦",
+          "group": "K",
+          "w": 0,
+          "d": 0,
+          "l": 2,
+          "group_pts": 0,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 0
+        },
+        {
+          "team": "土耳其",
+          "group": "D",
+          "w": 0,
+          "d": 0,
+          "l": 2,
+          "group_pts": 0,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 0
         }
       ],
       "rank": 3

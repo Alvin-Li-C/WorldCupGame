@@ -1,6 +1,7 @@
 {
-  "updated_at": "2026-06-23T21:05:34+08:00",
+  "updated_at": "2026-06-24T07:07:06+08:00",
   "dates": [
+    "2026-06-24",
     "2026-06-23",
     "2026-06-22",
     "2026-06-21",
@@ -2873,6 +2874,127 @@
             556,
             565,
             566
+          ]
+        }
+      ]
+    },
+    "2026-06-24": {
+      "date": "2026-06-24",
+      "match_count": 2,
+      "matches": [
+        {
+          "fixture_id": 45,
+          "home_team": "葡萄牙",
+          "away_team": "乌兹别克斯坦",
+          "home_score": 5,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "nrg.jpg",
+          "played_date_beijing": "2026-06-24",
+          "kickoff_beijing": "2026-06-24 01:00",
+          "our_scorers": [
+            {
+              "player_id": 1118,
+              "participant": "耗子",
+              "player_name_cn": "C罗",
+              "player_name_en": "Cristiano Ronaldo",
+              "jersey_number": 27,
+              "goals": 2,
+              "own_goals": 0,
+              "points": 2,
+              "goal_count": 2,
+              "display": "+2",
+              "top20": true
+            },
+            {
+              "player_id": 1115,
+              "participant": "耗子",
+              "player_name_cn": "莱奥",
+              "player_name_en": "Rafael Leao",
+              "jersey_number": 24,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            },
+            {
+              "player_id": 1100,
+              "participant": "老王",
+              "player_name_cn": "门德斯",
+              "player_name_en": "Nuno Mendes",
+              "jersey_number": 9,
+              "goals": 1,
+              "own_goals": 0,
+              "points": 1,
+              "goal_count": 1,
+              "display": "+1",
+              "top20": false
+            }
+          ],
+          "unmatched_scorers": [
+            {
+              "fixture_id": 45,
+              "kickoff_beijing": "2026-06-24 01:00",
+              "home_team": "葡萄牙",
+              "away_team": "乌兹别克斯坦",
+              "scorer_en": "Abduvohid Nematov",
+              "scorer_api_id": "308612",
+              "team_en": "Portugal",
+              "team_cn": "葡萄牙",
+              "type": "OWN",
+              "minute": 60,
+              "would_points": 2,
+              "reason": "no_name_match",
+              "reason_label": "英文名未匹配"
+            }
+          ],
+          "winner_team": "葡萄牙",
+          "starter_picks": [
+            10,
+            60,
+            110,
+            350,
+            282,
+            143,
+            208,
+            154,
+            15,
+            116,
+            570,
+            571,
+            413,
+            175
+          ]
+        },
+        {
+          "fixture_id": 46,
+          "home_team": "英格兰",
+          "away_team": "加纳",
+          "home_score": 0,
+          "away_score": 0,
+          "source": "football-data",
+          "stadium_photo": "gillette.jpg",
+          "played_date_beijing": "2026-06-24",
+          "kickoff_beijing": "2026-06-24 04:00",
+          "our_scorers": [],
+          "unmatched_scorers": [],
+          "starter_picks": [
+            141,
+            240,
+            241,
+            2,
+            29,
+            59,
+            38,
+            93,
+            174,
+            80,
+            561,
+            213,
+            97,
+            445
           ]
         }
       ]
