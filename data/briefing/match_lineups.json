@@ -6718,11 +6718,179 @@
     ],
     "espn_event_id": "760460",
     "source": "espn",
-    "updated_at": "2026-06-24 07:07:22"
+    "updated_at": "2026-06-24 08:50:43"
   },
   "48": {
     "fixture_id": 48,
+    "available": true,
+    "home": [
+      {
+        "display": "Camilo Vargas",
+        "full": "Camilo Vargas",
+        "short": "C. Vargas",
+        "jersey": "12"
+      },
+      {
+        "display": "Jhon Lucumí",
+        "full": "Jhon Lucumí",
+        "short": "J. Lucumí",
+        "jersey": "3"
+      },
+      {
+        "display": "Davinson Sánchez",
+        "full": "Davinson Sánchez",
+        "short": "D. Sánchez",
+        "jersey": "23"
+      },
+      {
+        "display": "Johan Mojica",
+        "full": "Johan Mojica",
+        "short": "J. Mojica",
+        "jersey": "17"
+      },
+      {
+        "display": "Daniel Muñoz",
+        "full": "Daniel Muñoz",
+        "short": "D. Muñoz",
+        "jersey": "2"
+      },
+      {
+        "display": "Jefferson Lerma",
+        "full": "Jefferson Lerma",
+        "short": "J. Lerma",
+        "jersey": "16"
+      },
+      {
+        "display": "Jhon Arias",
+        "full": "Jhon Arias",
+        "short": "J. Arias",
+        "jersey": "11"
+      },
+      {
+        "display": "Gustavo Puerta",
+        "full": "Gustavo Puerta",
+        "short": "G. Puerta",
+        "jersey": "14"
+      },
+      {
+        "display": "Luis Suárez",
+        "full": "Luis Suárez",
+        "short": "L. Suárez",
+        "jersey": "25"
+      },
+      {
+        "display": "Luis Díaz",
+        "full": "Luis Díaz",
+        "short": "L. Díaz",
+        "jersey": "7"
+      },
+      {
+        "display": "James Rodríguez",
+        "full": "James Rodríguez",
+        "short": "J. Rodríguez",
+        "jersey": "10"
+      }
+    ],
+    "away": [
+      {
+        "display": "Lionel Mpasi",
+        "full": "Lionel Mpasi",
+        "short": "L. Mpasi",
+        "jersey": "1"
+      },
+      {
+        "display": "Axel Tuanzebe",
+        "full": "Axel Tuanzebe",
+        "short": "A. Tuanzebe",
+        "jersey": "4"
+      },
+      {
+        "display": "Steve Kapuadi",
+        "full": "Steve Kapuadi",
+        "short": "S. Kapuadi",
+        "jersey": "3"
+      },
+      {
+        "display": "Chancel Mbemba",
+        "full": "Chancel Mbemba",
+        "short": "C. Mbemba",
+        "jersey": "22"
+      },
+      {
+        "display": "Arthur Masuaku",
+        "full": "Arthur Masuaku",
+        "short": "A. Masuaku",
+        "jersey": "26"
+      },
+      {
+        "display": "Aaron Wan-Bissaka",
+        "full": "Aaron Wan-Bissaka",
+        "short": "A. Wan-Bissaka",
+        "jersey": "2"
+      },
+      {
+        "display": "Samuel Moutoussamy",
+        "full": "Samuel Moutoussamy",
+        "short": "S. Moutoussamy",
+        "jersey": "8"
+      },
+      {
+        "display": "Edo Kayembe",
+        "full": "Edo Kayembe",
+        "short": "E. Kayembe",
+        "jersey": "25"
+      },
+      {
+        "display": "Ngal'ayel Mukau",
+        "full": "Ngal'ayel Mukau",
+        "short": "N. Mukau",
+        "jersey": "6"
+      },
+      {
+        "display": "Yoane Wissa",
+        "full": "Yoane Wissa",
+        "short": "Y. Wissa",
+        "jersey": "20"
+      },
+      {
+        "display": "Cédric Bakambu",
+        "full": "Cédric Bakambu",
+        "short": "C. Bakambu",
+        "jersey": "17"
+      }
+    ],
+    "espn_event_id": "760459",
+    "source": "espn",
+    "updated_at": "2026-06-24 13:42:16"
+  },
+  "49": {
+    "fixture_id": 49,
     "available": false,
-    "updated_at": "2026-06-24 07:07:28"
+    "updated_at": "2026-06-24 20:47:33"
+  },
+  "50": {
+    "fixture_id": 50,
+    "available": false,
+    "updated_at": "2026-06-24 20:47:35"
+  },
+  "51": {
+    "fixture_id": 51,
+    "available": false,
+    "updated_at": "2026-06-24 20:47:37"
+  },
+  "52": {
+    "fixture_id": 52,
+    "available": false,
+    "updated_at": "2026-06-24 20:47:38"
+  },
+  "53": {
+    "fixture_id": 53,
+    "available": false,
+    "updated_at": "2026-06-24 20:47:41"
+  },
+  "54": {
+    "fixture_id": 54,
+    "available": false,
+    "updated_at": "2026-06-24 20:47:44"
   }
 }

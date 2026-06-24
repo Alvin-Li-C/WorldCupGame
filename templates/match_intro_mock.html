@@ -868,7 +868,17 @@ function renderRoster(containerId, data) {
             var multi = list.length > 1 ? ' multi' : '';
             playerHtml = '<div class="player' + multi + '">' + list.map(function(p) {
                 var star = p.top20 ? '<span class="pick-star" title="前20顺位选中">★</span>' : '';
-                return '<div class="player-inner"><span class="pname">' + p.name + star + '</span></div>';
+                var jerseyVal = (p.jersey != null && p.jersey !== '') ? p.jersey : p.num;
+                var jersey = (jerseyVal != null && jerseyVal !== '')
+                    ? '<span class="jersey-no" title="球衣号码">#' + jerseyVal + '</span>' : '';
+                var pick = (p.pick != null && p.pick !== '')
+                    ? '<span class="pick-no" title="选秀顺位">#' + p.pick + '</span>' : '';
+                var starter = p.starter ? '<span class="starter-badge" title="首发">首</span>' : '';
+                var en = (p.name_en && p.name_en !== p.name)
+                    ? '<span class="name-en">' + p.name_en + '</span>' : '';
+                return '<div class="player-inner"><span class="pname">' +
+                    '<span class="name-cn">' + jersey + '<span class="player-label">' + p.name + pick + star + starter + '</span></span>' + en +
+                    '</span></div>';
             }).join('') + '</div>';
         }
         return '<div class="roster-row' + (list.length ? ' filled' : '') + '">' +

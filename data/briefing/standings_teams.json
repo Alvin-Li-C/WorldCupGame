@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T07:07:06+08:00",
+  "generated_at": "2026-06-24T20:47:31+08:00",
   "empty": false,
   "rules": {
     "group_win": 3,
@@ -344,12 +344,12 @@
     },
     {
       "participant": "耗子",
-      "points": 22,
-      "wins": 6,
+      "points": 25,
+      "wins": 7,
       "draws": 4,
-      "losses": 4,
-      "played": 14,
-      "group_pts": 22,
+      "losses": 5,
+      "played": 16,
+      "group_pts": 25,
       "bonus_pts": 0,
       "knockout_pts": 0,
       "teams": [
@@ -390,6 +390,18 @@
           "total_pts": 4
         },
         {
+          "team": "克罗地亚",
+          "group": "L",
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "group_pts": 3,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 3
+        },
+        {
           "team": "苏格兰",
           "group": "C",
           "w": 1,
@@ -418,24 +430,12 @@
           "group": "K",
           "w": 0,
           "d": 1,
-          "l": 0,
+          "l": 1,
           "group_pts": 1,
           "bonus_pts": 0,
           "bonus_reason": "",
           "knockout_pts": 0,
           "total_pts": 1
-        },
-        {
-          "team": "克罗地亚",
-          "group": "L",
-          "w": 0,
-          "d": 0,
-          "l": 1,
-          "group_pts": 0,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 0
         },
         {
           "team": "突尼斯",
@@ -454,15 +454,27 @@
     },
     {
       "participant": "庆爷",
-      "points": 17,
-      "wins": 4,
+      "points": 20,
+      "wins": 5,
       "draws": 5,
       "losses": 6,
-      "played": 15,
-      "group_pts": 17,
+      "played": 16,
+      "group_pts": 20,
       "bonus_pts": 0,
       "knockout_pts": 0,
       "teams": [
+        {
+          "team": "哥伦比亚",
+          "group": "K",
+          "w": 2,
+          "d": 0,
+          "l": 0,
+          "group_pts": 6,
+          "bonus_pts": 0,
+          "bonus_reason": "",
+          "knockout_pts": 0,
+          "total_pts": 6
+        },
         {
           "team": "西班牙",
           "group": "H",
@@ -474,18 +486,6 @@
           "bonus_reason": "",
           "knockout_pts": 0,
           "total_pts": 4
-        },
-        {
-          "team": "哥伦比亚",
-          "group": "K",
-          "w": 1,
-          "d": 0,
-          "l": 0,
-          "group_pts": 3,
-          "bonus_pts": 0,
-          "bonus_reason": "",
-          "knockout_pts": 0,
-          "total_pts": 3
         },
         {
           "team": "巴拉圭",

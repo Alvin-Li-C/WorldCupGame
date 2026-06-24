@@ -354,6 +354,7 @@ def get_roster_for_team(team_name):
         if rows:
             roster[p['name']] = [
                 {
+                    'jersey': row['jersey_number'],
                     'num': row['jersey_number'],
                     'name': row['name_cn'] or row['name'],
                     'name_en': row['name'],
