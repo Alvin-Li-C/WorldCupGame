@@ -113,16 +113,25 @@ def _group_complete(group_fixtures, results_by_id):
     return all(f['fixture_id'] in results_by_id for f in group_fixtures)
 
 
+def _all_groups_complete(fixtures, results_by_id):
+    groups = {f['group'] for f in fixtures if f.get('stage') == 'group' and f.get('group')}
+    return bool(groups) and all(
+        _group_complete(_group_fixtures(fixtures, g), results_by_id)
+        for g in groups
+    )
+
+
 def _apply_group_match(team_stats, owner_map, home, away, hs, aw):
+    """Update group standings for every team (ranking); owner only set when drafted."""
     for team, scored, conceded, outcome in (
         (home, hs, aw, 'w' if hs > aw else 'd' if hs == aw else 'l'),
         (away, aw, hs, 'w' if aw > hs else 'd' if hs == aw else 'l'),
     ):
-        owner = _owned(owner_map, team)
-        if not owner:
-            continue
         st = team_stats[team]
-        st.owner = owner
+        st.team = team
+        owner = _owned(owner_map, team)
+        if owner:
+            st.owner = owner
         st.played += 1
         st.gf += scored
         st.ga += conceded
@@ -176,12 +185,13 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
         hs, aw = m['home_score'], m['away_score']
         group = fix.get('group')
         for t in (home, away):
-            if t in team_stats:
-                team_stats[t].group = group
+            team_stats[t].team = t
+            team_stats[t].group = group
         _apply_group_match(team_stats, owner_map, home, away, hs, aw)
 
     groups = sorted({f['group'] for f in fixtures if f.get('stage') == 'group' and f.get('group')})
     third_place_candidates: list[TeamStanding] = []
+    all_groups_done = _all_groups_complete(fixtures, results_by_id)
 
     for group in groups:
         g_fix = _group_fixtures(fixtures, group)
@@ -191,10 +201,10 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
             {f['home_team'] for f in g_fix} | {f['away_team'] for f in g_fix},
         )
         ranked = sorted(
-            (team_stats[t] for t in group_teams if t in team_stats),
+            (team_stats[t] for t in group_teams),
             key=_rank_key,
         )
-        if len(ranked) < 4:
+        if len(ranked) < len(group_teams):
             continue
         for place, st in enumerate(ranked[:2], start=1):
             if st.owner:
@@ -204,16 +214,17 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
         third.group = group
         third_place_candidates.append(third)
 
-    advancing_thirds = set()
-    if third_place_candidates:
-        ordered_thirds = sorted(third_place_candidates, key=_rank_key)
-        for st in ordered_thirds[:BEST_THIRD_PLACES]:
-            advancing_thirds.add(st.team)
+    if all_groups_done:
+        advancing_thirds = set()
+        if third_place_candidates:
+            ordered_thirds = sorted(third_place_candidates, key=_rank_key)
+            for st in ordered_thirds[:BEST_THIRD_PLACES]:
+                advancing_thirds.add(st.team)
 
-    for st in third_place_candidates:
-        if st.team in advancing_thirds and st.owner:
-            st.bonus_pts += GROUP_BONUS_ADVANCE
-            st.bonus_reason = '小组第3出线'
+        for st in third_place_candidates:
+            if st.team in advancing_thirds and st.owner:
+                st.bonus_pts += GROUP_BONUS_ADVANCE
+                st.bonus_reason = '小组第3出线'
 
     for fid, m in results_by_id.items():
         fix = fix_idx.get(fid)

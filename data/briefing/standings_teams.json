@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T05:59:51+08:00",
+  "generated_at": "2026-06-25T06:23:40+08:00",
   "empty": false,
   "rules": {
     "group_win": 3,
@@ -14,13 +14,13 @@
   "participants": [
     {
       "participant": "老闫",
-      "points": 30,
+      "points": 31,
       "wins": 8,
       "draws": 6,
       "losses": 3,
       "played": 17,
       "group_pts": 30,
-      "bonus_pts": 0,
+      "bonus_pts": 1,
       "knockout_pts": 0,
       "teams": [
         {
@@ -30,10 +30,10 @@
           "d": 1,
           "l": 0,
           "group_pts": 7,
-          "bonus_pts": 0,
-          "bonus_reason": "",
+          "bonus_pts": 1,
+          "bonus_reason": "小组第1出线",
           "knockout_pts": 0,
-          "total_pts": 7
+          "total_pts": 8
         },
         {
           "team": "美国",
@@ -344,13 +344,13 @@
     },
     {
       "participant": "耗子",
-      "points": 25,
+      "points": 26,
       "wins": 7,
       "draws": 4,
       "losses": 6,
       "played": 17,
       "group_pts": 25,
-      "bonus_pts": 0,
+      "bonus_pts": 1,
       "knockout_pts": 0,
       "teams": [
         {
@@ -384,10 +384,10 @@
           "d": 1,
           "l": 1,
           "group_pts": 4,
-          "bonus_pts": 0,
-          "bonus_reason": "",
+          "bonus_pts": 1,
+          "bonus_reason": "小组第2出线",
           "knockout_pts": 0,
-          "total_pts": 4
+          "total_pts": 5
         },
         {
           "team": "克罗地亚",
