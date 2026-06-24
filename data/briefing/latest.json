@@ -1,119 +1,115 @@
 {
-  "generated_at": "2026-06-24T20:30:12+08:00",
+  "generated_at": "2026-06-25T05:59:28+08:00",
   "timezone": "Asia/Shanghai",
-  "briefing_date": "2026-06-24",
+  "briefing_date": "2026-06-25",
   "yesterday": {
-    "date": "2026-06-23",
+    "date": "2026-06-24",
     "matches": [
       {
-        "fixture_id": 41,
-        "home_team": "阿根廷",
-        "away_team": "奥地利",
+        "fixture_id": 45,
+        "home_team": "葡萄牙",
+        "away_team": "乌兹别克斯坦",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "att.jpg",
+        "stadium_photo": "nrg.jpg",
         "our_scorers": [],
         "unmatched_scorers": [],
         "starter_picks": [
-          600,
-          9,
-          79,
-          133,
-          4,
-          247,
-          524,
-          66,
-          286,
-          295,
-          330,
-          331,
-          371,
-          132,
-          279,
-          68,
-          123,
-          597
+          10,
+          60,
+          110,
+          350,
+          282,
+          143,
+          208,
+          154,
+          15,
+          116,
+          570,
+          571,
+          413,
+          175
         ]
       },
       {
-        "fixture_id": 42,
-        "home_team": "法国",
-        "away_team": "伊拉克",
+        "fixture_id": 46,
+        "home_team": "英格兰",
+        "away_team": "加纳",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "lincoln.jpg",
+        "stadium_photo": "gillette.jpg",
         "our_scorers": [],
         "unmatched_scorers": [],
         "starter_picks": [
-          1,
-          231,
-          139,
-          182,
-          299,
-          313,
-          17,
-          237,
-          6,
-          545
+          141,
+          240,
+          241,
+          2,
+          29,
+          59,
+          38,
+          93,
+          174,
+          80,
+          561,
+          213,
+          97,
+          445
         ]
       },
       {
-        "fixture_id": 43,
-        "home_team": "挪威",
-        "away_team": "塞内加尔",
+        "fixture_id": 47,
+        "home_team": "巴拿马",
+        "away_team": "克罗地亚",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "metlife.jpg",
+        "stadium_photo": "bmo.jpg",
         "our_scorers": [],
         "unmatched_scorers": [],
         "starter_picks": [
-          113,
-          187,
-          5,
-          315,
-          316,
-          506,
-          515,
-          41,
-          530,
-          392,
-          87,
-          324,
-          86,
-          525,
-          526,
-          535,
-          536
+          490,
+          577,
+          71,
+          100,
+          179,
+          262,
+          363,
+          276,
+          595
         ]
       },
       {
-        "fixture_id": 44,
-        "home_team": "约旦",
-        "away_team": "阿尔及利亚",
+        "fixture_id": 48,
+        "home_team": "哥伦比亚",
+        "away_team": "刚果（金）",
         "home_score": null,
         "away_score": null,
-        "stadium_photo": "levis.jpg",
+        "stadium_photo": "akron.jpg",
         "our_scorers": [],
         "unmatched_scorers": [],
         "starter_picks": [
-          590,
-          403,
-          593,
-          585,
-          211,
-          447,
-          145,
-          555,
-          556,
-          565,
-          566
+          40,
+          540,
+          19,
+          269,
+          468,
+          493,
+          107,
+          497,
+          586,
+          210,
+          440,
+          441,
+          559,
+          569,
+          117
         ]
       }
     ]
   },
   "today": {
     "date": "2026-06-25",
-    "is_next_matchday": true,
+    "is_next_matchday": false,
     "match_count": 6,
     "matches": [
       {
@@ -123,7 +119,7 @@
         "home_team": "瑞士",
         "away_team": "加拿大",
         "kickoff_beijing": "2026-06-25 03:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "老闫",
         "away_owner": "耗子",
         "key_news": [
@@ -163,6 +159,70 @@
             "published_at": "\n                        Wed, 24 Jun 2026 10:21:32 +0000\n                    ",
             "url": "https://www.cbssports.com/betting/news/world-cup-odds/"
           }
+        ],
+        "home_score": 2,
+        "away_score": 1,
+        "our_scorers": [
+          {
+            "player_id": 128,
+            "participant": "李总",
+            "player_name_cn": "普罗米斯·戴维",
+            "player_name_en": "Promise David",
+            "jersey_number": 10,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          },
+          {
+            "player_id": 198,
+            "participant": "老闫",
+            "player_name_cn": "曼赞比",
+            "player_name_en": "Johan Manzambi",
+            "jersey_number": 9,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          },
+          {
+            "player_id": 201,
+            "participant": "耗子",
+            "player_name_cn": "鲁本·巴尔加斯",
+            "player_name_en": "Ruben Vargas",
+            "jersey_number": 17,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          }
+        ],
+        "unmatched_scorers": [],
+        "played_date_beijing": "2026-06-25",
+        "source": "football-data",
+        "winner_team": "瑞士",
+        "starter_picks": [
+          200,
+          560,
+          28,
+          164,
+          297,
+          464,
+          85,
+          376,
+          120,
+          352,
+          529,
+          539,
+          194,
+          587,
+          36
         ]
       },
       {
@@ -172,7 +232,7 @@
         "home_team": "波黑",
         "away_team": "卡塔尔",
         "kickoff_beijing": "2026-06-25 03:00",
-        "status": "scheduled",
+        "status": "finished",
         "home_owner": "庆爷",
         "away_owner": "NA",
         "key_news": [
@@ -188,6 +248,82 @@
             "published_at": "Wed, 24 Jun 2026 11:31:49 +0000",
             "url": "https://www.cbssports.com/soccer/news/qatar-vs-bosnia-herzegovina-odds-prediction-tome-2026-world-cup-picks-best-bets/"
           }
+        ],
+        "home_score": 3,
+        "away_score": 1,
+        "our_scorers": [
+          {
+            "player_id": 150,
+            "participant": "老闫",
+            "player_name_cn": "克里姆·阿拉伊贝戈维奇",
+            "player_name_en": "Kerim Alajbegovic",
+            "jersey_number": 19,
+            "goals": 1,
+            "own_goals": 0,
+            "points": 1,
+            "goal_count": 1,
+            "display": "+1",
+            "top20": false
+          }
+        ],
+        "unmatched_scorers": [
+          {
+            "fixture_id": 50,
+            "kickoff_beijing": "2026-06-25 03:00",
+            "home_team": "波黑",
+            "away_team": "卡塔尔",
+            "scorer_en": "Mahmoud Abunada",
+            "scorer_api_id": "310372",
+            "team_en": "Bosnia-Herzegovina",
+            "team_cn": "波黑",
+            "type": "OWN",
+            "minute": 34,
+            "would_points": 2,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          },
+          {
+            "fixture_id": 50,
+            "kickoff_beijing": "2026-06-25 03:00",
+            "home_team": "波黑",
+            "away_team": "卡塔尔",
+            "scorer_en": "Hassan Al-Haydos",
+            "scorer_api_id": "236586",
+            "team_en": "Qatar",
+            "team_cn": "卡塔尔",
+            "type": "REGULAR",
+            "minute": 42,
+            "would_points": 1,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          },
+          {
+            "fixture_id": 50,
+            "kickoff_beijing": "2026-06-25 03:00",
+            "home_team": "波黑",
+            "away_team": "卡塔尔",
+            "scorer_en": "Ermin Mahmic",
+            "scorer_api_id": "414676",
+            "team_en": "Bosnia-Herzegovina",
+            "team_cn": "波黑",
+            "type": "REGULAR",
+            "minute": 80,
+            "would_points": 1,
+            "reason": "no_name_match",
+            "reason_label": "英文名未匹配"
+          }
+        ],
+        "played_date_beijing": "2026-06-25",
+        "source": "football-data",
+        "winner_team": "波黑",
+        "starter_picks": [
+          271,
+          442,
+          148,
+          204,
+          46,
+          578,
+          176
         ]
       },
       {
@@ -213,6 +349,17 @@
             "published_at": "\n                        Wed, 24 Jun 2026 12:13:16 +0000\n                    ",
             "url": "https://www.cbssports.com/soccer/news/morocco-haiti-odds-prediction-time-2026-world-cup-picks-best-bets/"
           }
+        ],
+        "starter_picks": [
+          502,
+          168,
+          54,
+          504,
+          65,
+          235,
+          385,
+          290,
+          291
         ]
       },
       {
@@ -250,6 +397,23 @@
             "published_at": "Wed, 24 Jun 2026 12:27:33 +0000",
             "url": "https://www.cbssports.com/soccer/news/world-cup-brazil-scotland-canada-mexico-knockout-phase-scenarios/"
           }
+        ],
+        "starter_picks": [
+          430,
+          431,
+          162,
+          189,
+          489,
+          114,
+          544,
+          181,
+          201,
+          169,
+          8,
+          27,
+          224,
+          357,
+          106
         ]
       },
       {

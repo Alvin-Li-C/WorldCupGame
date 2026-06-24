@@ -51,11 +51,11 @@ def _seed():
 
 def _dqd_helpers():
     from briefing.dqd_person_resolve import (
-        _players_match,
         extract_team_members,
+        match_jersey_member,
     )
     from briefing.scorer_match import normalize_player_name
-    return _players_match, extract_team_members, normalize_player_name
+    return match_jersey_member, extract_team_members, normalize_player_name
 
 
 def _player_key(team_cn: str, name_en: str) -> tuple[str, str]:
@@ -101,7 +101,7 @@ def collect_lineup_jerseys() -> dict[tuple[str, str], int]:
 
 def build_update_map() -> tuple[dict[tuple[str, str], int], list[str]]:
     """返回 {(team_cn, name_norm): new_jersey} 与日志。"""
-    _players_match, extract_team_members, normalize_player_name = _dqd_helpers()
+    match_jersey_member, extract_team_members, normalize_player_name = _dqd_helpers()
     PLAYERS_DATA, TEAMS = _seed()
     national = _load_json(NATIONAL_IDS_PATH, {}) or {}
     by_cn = national.get('by_cn') or national
@@ -119,6 +119,7 @@ def build_update_map() -> tuple[dict[tuple[str, str], int], list[str]]:
                     payload = json.load(f)
                 members = extract_team_members(payload)
 
+        used_members: set[str] = set()
         for name_en, name_cn, old_jersey, _pos in PLAYERS_DATA.get(team_cn, []):
             player = {
                 'name_en': name_en,
@@ -128,22 +129,36 @@ def build_update_map() -> tuple[dict[tuple[str, str], int], list[str]]:
             }
             new_jersey = None
 
-            for member in members:
-                if _players_match(player, member) and member.get('jersey'):
-                    try:
-                        new_jersey = int(str(member['jersey']).strip())
-                    except ValueError:
-                        pass
-                    break
+            candidates = [
+                m for m in members
+                if m.get('person_id') not in used_members
+                and match_jersey_member(player, m)
+                and m.get('jersey')
+            ]
+            if len(candidates) == 1:
+                pick = candidates[0]
+            elif len(candidates) > 1:
+                jersey = str(old_jersey)
+                by_jersey = [m for m in candidates if str(m.get('jersey') or '') == jersey]
+                pick = by_jersey[0] if len(by_jersey) == 1 else candidates[0]
+                logs.append(f'[WARN] {team_cn} / {name_en}: {len(candidates)} EN matches, picked {pick.get("name_en")}')
+            else:
+                pick = None
+
+            if pick:
+                used_members.add(str(pick['person_id']))
+                try:
+                    new_jersey = int(str(pick['jersey']).strip())
+                except ValueError:
+                    pass
 
             if new_jersey is None:
+                player_norm = normalize_player_name(name_en)
                 for (t_cn, name_norm), num in lineups.items():
-                    if t_cn != team_cn:
+                    if t_cn != team_cn or name_norm != player_norm:
                         continue
-                    m = {'name_en': name_norm, 'name_cn': '', 'name_norm': name_norm}
-                    if _players_match(player, m):
-                        new_jersey = num
-                        break
+                    new_jersey = num
+                    break
 
             if new_jersey is None:
                 logs.append(f'[MISS] {team_cn} / {name_en}')
