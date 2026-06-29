@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T19:30:16+08:00",
+  "generated_at": "2026-06-29T20:00:02+08:00",
   "timezone": "Asia/Shanghai",
   "briefing_date": "2026-06-29",
   "yesterday": {
@@ -83,7 +83,44 @@
         "status": "scheduled",
         "home_owner": "老闫",
         "away_owner": "老王",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "巴西",
+            "category": "lineup",
+            "category_label": "阵容",
+            "headline": "懂球帝前瞻：巴西或延续4-3-3，拉菲尼亚伤缺；日本队长与久保建英出战存疑",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2026-06-29 18:00:00",
+            "url": "https://www.dongqiudi.com/article/5978742"
+          },
+          {
+            "rank": 2,
+            "team": "巴西",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "维尼修斯小组赛连场破门共入四球，内马尔已复出强化巴西进攻",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Sun, 28 Jun 2026 20:42:54 +0000",
+            "url": "https://www.cbssports.com/soccer/news/brazil-japan-odds-prediction-time-2026-world-cup-round-32-picks/"
+          },
+          {
+            "rank": 3,
+            "team": "巴西",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "维尼修斯三场四球13次射门，对阵日本被列周一最佳进球选项",
+            "impact": "medium",
+            "impact_score": 65,
+            "source": "CBS Soccer",
+            "published_at": "Mon, 29 Jun 2026 11:00:46 +0000",
+            "url": "https://www.cbssports.com/soccer/news/free-2026-world-cup-anytime-goalscorer-picks-odds-brazils-vinicius-among-best-bets-for-mondays-games/"
+          }
+        ]
       },
       {
         "fixture_id": 75,
@@ -96,7 +133,20 @@
         "status": "scheduled",
         "home_owner": "李总",
         "away_owner": "庆爷",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 3,
+            "team": "德国",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "德国小组赛进攻火力全开，专家质疑能否零封巴拉圭稳操胜券",
+            "impact": "medium",
+            "impact_score": 50,
+            "source": "懂球帝头条",
+            "published_at": "2027-06-29 02:59:28",
+            "url": "https://www.dongqiudi.com/article/5977251"
+          }
+        ]
       },
       {
         "fixture_id": 76,
@@ -109,7 +159,32 @@
         "status": "scheduled",
         "home_owner": "老王",
         "away_owner": "老王",
-        "key_news": []
+        "key_news": [
+          {
+            "rank": 1,
+            "team": "摩洛哥",
+            "category": "tactics",
+            "category_label": "战术",
+            "headline": "摩洛哥中低位紧凑防反，压缩荷兰中路并交球给迪亚斯发动反击",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2030-06-28 18:00:00",
+            "url": "https://www.dongqiudi.com/article/5978742"
+          },
+          {
+            "rank": 2,
+            "team": "荷兰",
+            "category": "form",
+            "category_label": "状态",
+            "headline": "加克波与布罗比小组赛联手贡献5球，荷兰进攻双核状态正佳",
+            "impact": "high",
+            "impact_score": 65,
+            "source": "懂球帝头条",
+            "published_at": "2030-06-28 18:00:00",
+            "url": "https://www.dongqiudi.com/article/5978742"
+          }
+        ]
       }
     ]
   }

@@ -4109,33 +4109,22 @@
       "played_date": "2026-06-29",
       "utc_date": "2026-06-28T19:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "局部多云",
       "temp": "20°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 1900km",
-        "distance_km": 1900,
-        "q1_km": 700,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": 4,
-        "cumulative_km": 7200
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 5300
       },
       "away_travel": {
-        "label": "远征 6700km · 往返大本营",
-        "distance_km": 6700,
-        "q1_km": 3400,
-        "q2_km": 3300,
-        "base_label": "多伦多大本营",
-        "rest_days": 4,
-        "timezone_delta_h": 1,
-        "cumulative_km": 16900
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 10200
       },
       "weather_detail": {
         "temp_c": 19.6,
@@ -4166,34 +4155,22 @@
       "played_date": "2026-06-30",
       "utc_date": "2026-06-29T17:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "大部晴朗",
       "temp": "20°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2100,
-        "q1_km": 0,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 8900
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 6800
       },
       "away_travel": {
-        "label": "远征 6500km · 往返大本营",
-        "distance_km": 6500,
-        "q1_km": 2700,
-        "q2_km": 3800,
-        "base_label": "西雅图大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -1,
-        "cumulative_km": 20800
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 14300
       },
       "weather_detail": {
         "temp_c": 19.6,
@@ -4224,34 +4201,22 @@
       "played_date": "2026-06-30",
       "utc_date": "2026-06-29T20:30:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "雷暴",
       "temp": "19°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 3300km",
-        "distance_km": 3300,
-        "q1_km": 100,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -2,
-        "cumulative_km": 8800
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 5500
       },
       "away_travel": {
-        "label": "远征 6200km · 往返大本营",
-        "distance_km": 6200,
-        "q1_km": 4100,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 4,
-        "timezone_delta_h": 1,
-        "cumulative_km": 26100
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 19900
       },
       "weather_detail": {
         "temp_c": 18.8,
@@ -4282,34 +4247,22 @@
       "played_date": "2026-06-30",
       "utc_date": "2026-06-30T01:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "大毛毛雨",
       "temp": "16°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 4900km · 往返大本营",
-        "distance_km": 4900,
-        "q1_km": 1700,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -1,
-        "cumulative_km": 15200
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 10300
       },
       "away_travel": {
-        "label": "远征 5200km · 往返大本营",
-        "distance_km": 5200,
-        "q1_km": 1500,
-        "q2_km": 3700,
-        "base_label": "波士顿大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 7300
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 2100
       },
       "weather_detail": {
         "temp_c": 16.1,
@@ -4340,34 +4293,22 @@
       "played_date": "2026-07-01",
       "utc_date": "2026-06-30T17:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "局部多云",
       "temp": "20°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 3300km",
-        "distance_km": 3300,
-        "q1_km": 1100,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9000
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 5700
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 3700,
-        "q1_km": 0,
-        "q2_km": 3700,
-        "base_label": "波士顿大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -2,
-        "cumulative_km": 4300
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 600
       },
       "weather_detail": {
         "temp_c": 19.6,
@@ -4398,34 +4339,22 @@
       "played_date": "2026-07-01",
       "utc_date": "2026-06-30T21:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "多云",
       "temp": "21°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 3700,
-        "q1_km": 0,
-        "q2_km": 3700,
-        "base_label": "波士顿大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -2,
-        "cumulative_km": 5100
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 1400
       },
       "away_travel": {
-        "label": "远征 5300km · 往返大本营",
-        "distance_km": 5300,
-        "q1_km": 2100,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -1,
-        "cumulative_km": 17400
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 12100
       },
       "weather_detail": {
         "temp_c": 21.0,
@@ -4456,33 +4385,22 @@
       "played_date": "2026-07-01",
       "utc_date": "2026-07-01T01:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "大毛毛雨",
       "temp": "16°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 0,
-        "q1_km": 0,
-        "q2_km": 0,
-        "base_label": "墨西哥城大本营",
-        "rest_days": 6,
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
         "cumulative_km": 1000
       },
       "away_travel": {
-        "label": "远征 3500km",
-        "distance_km": 3500,
-        "q1_km": 2300,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 12200
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 8700
       },
       "weather_detail": {
         "temp_c": 16.2,
@@ -4513,34 +4431,22 @@
       "played_date": "2026-07-02",
       "utc_date": "2026-07-01T16:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "多云",
       "temp": "17°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 4000km",
-        "distance_km": 4000,
-        "q1_km": 300,
-        "q2_km": 3700,
-        "base_label": "波士顿大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9300
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 5300
       },
       "away_travel": {
-        "label": "赛会首战",
-        "distance_km": 2200,
-        "q1_km": 0,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 4,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9200
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 7000
       },
       "weather_detail": {
         "temp_c": 17.2,
@@ -4571,34 +4477,22 @@
       "played_date": "2026-07-02",
       "utc_date": "2026-07-01T20:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "小毛毛雨",
       "temp": "22°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 7100km · 往返大本营",
-        "distance_km": 7100,
-        "q1_km": 3900,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 5,
-        "timezone_delta_h": 1,
-        "cumulative_km": 26400
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 19300
       },
       "away_travel": {
-        "label": "远征 3400km",
-        "distance_km": 3400,
-        "q1_km": 1200,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9400
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 6000
       },
       "weather_detail": {
         "temp_c": 22.2,
@@ -4629,34 +4523,22 @@
       "played_date": "2026-07-02",
       "utc_date": "2026-07-02T00:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "雷暴",
       "temp": "17°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2500,
-        "q1_km": 0,
-        "q2_km": 2500,
-        "base_label": "洛杉矶大本营",
-        "rest_days": 6,
-        "timezone_delta_h": 1,
-        "cumulative_km": 5500
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 3000
       },
       "away_travel": {
-        "label": "远征 7000km · 往返大本营",
-        "distance_km": 7000,
-        "q1_km": 3800,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 7,
-        "timezone_delta_h": 1,
-        "cumulative_km": 19600
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 12600
       },
       "weather_detail": {
         "temp_c": 17.3,
@@ -4687,33 +4569,22 @@
       "played_date": "2026-07-03",
       "utc_date": "2026-07-02T19:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "毛毛雨",
       "temp": "20°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 4600km · 往返大本营",
-        "distance_km": 4600,
-        "q1_km": 2400,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 6,
-        "cumulative_km": 7000
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 2400
       },
       "away_travel": {
-        "label": "远征 4900km · 往返大本营",
-        "distance_km": 4900,
-        "q1_km": 1700,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -1,
-        "cumulative_km": 18800
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 13900
       },
       "weather_detail": {
         "temp_c": 20.3,
@@ -4744,34 +4615,22 @@
       "played_date": "2026-07-03",
       "utc_date": "2026-07-02T23:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "雷暴伴小冰雹",
       "temp": "17°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2100,
-        "q1_km": 0,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 8500
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 6400
       },
       "away_travel": {
-        "label": "远征 3600km · 往返大本营",
-        "distance_km": 3600,
-        "q1_km": 2100,
-        "q2_km": 1500,
-        "base_label": "达拉斯大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9500
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 5900
       },
       "weather_detail": {
         "temp_c": 16.7,
@@ -4802,34 +4661,22 @@
       "played_date": "2026-07-03",
       "utc_date": "2026-07-03T03:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "大毛毛雨",
       "temp": "15°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 7100km · 往返大本营",
-        "distance_km": 7100,
-        "q1_km": 3900,
-        "q2_km": 3200,
-        "base_label": "费城大本营",
-        "rest_days": 8,
-        "timezone_delta_h": 1,
-        "cumulative_km": 26800
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 19700
       },
       "away_travel": {
-        "label": "远征 2200km",
-        "distance_km": 2200,
-        "q1_km": 1000,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": 5,
-        "timezone_delta_h": -1,
-        "cumulative_km": 10400
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 8200
       },
       "weather_detail": {
         "temp_c": 15.1,
@@ -4860,34 +4707,22 @@
       "played_date": "2026-07-04",
       "utc_date": "2026-07-03T18:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "局部多云",
       "temp": "20°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 3000km",
-        "distance_km": 3000,
-        "q1_km": 500,
-        "q2_km": 2500,
-        "base_label": "洛杉矶大本营",
-        "rest_days": 8,
-        "timezone_delta_h": 1,
-        "cumulative_km": 9900
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 6900
       },
       "away_travel": {
-        "label": "远征 4200km",
-        "distance_km": 4200,
-        "q1_km": 3000,
-        "q2_km": 1200,
-        "base_label": "休斯顿大本营",
-        "rest_days": 7,
-        "timezone_delta_h": 1,
-        "cumulative_km": 19600
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 15400
       },
       "weather_detail": {
         "temp_c": 19.8,
@@ -4918,34 +4753,22 @@
       "played_date": "2026-07-04",
       "utc_date": "2026-07-03T22:00:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "小毛毛雨",
       "temp": "21°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "远征 3900km · 往返大本营",
-        "distance_km": 3900,
-        "q1_km": 1800,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 6,
-        "timezone_delta_h": -1,
-        "cumulative_km": 13300
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 9400
       },
       "away_travel": {
-        "label": "远征 3700km · 往返大本营",
-        "distance_km": 3700,
-        "q1_km": 1600,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 7,
-        "timezone_delta_h": -1,
-        "cumulative_km": 7300
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 3600
       },
       "weather_detail": {
         "temp_c": 20.8,
@@ -4976,34 +4799,22 @@
       "played_date": "2026-07-04",
       "utc_date": "2026-07-04T01:30:00Z",
       "stadium": "TBD",
-      "stadium_photo": "azteca.jpg",
       "weather": "小毛毛雨",
       "temp": "19°C",
-      "venue_context": {
-        "stadium_key": "azteca",
-        "altitude_m": 2240,
-        "altitude_tier": "extreme",
-        "altitude_label": "高原球场"
-      },
+      "venue_context": {},
       "home_travel": {
-        "label": "赛会首战",
-        "distance_km": 2100,
-        "q1_km": 0,
-        "q2_km": 2100,
-        "base_label": "迈阿密大本营",
-        "rest_days": 6,
-        "timezone_delta_h": -2,
-        "cumulative_km": 11100
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 9000
       },
       "away_travel": {
-        "label": "远征 3300km",
-        "distance_km": 3300,
-        "q1_km": 1100,
-        "q2_km": 2200,
-        "base_label": "亚特兰大大本营",
-        "rest_days": 6,
-        "timezone_delta_h": -2,
-        "cumulative_km": 9800
+        "label": "球场待补",
+        "distance_km": null,
+        "q1_km": null,
+        "q2_km": null,
+        "cumulative_km": 6500
       },
       "weather_detail": {
         "temp_c": 19.4,
@@ -5019,5 +4830,5 @@
       }
     }
   ],
-  "weather_enriched_at": "2026-06-29T19:30:16+08:00"
+  "weather_enriched_at": "2026-06-29T20:00:02+08:00"
 }

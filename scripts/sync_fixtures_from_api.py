@@ -64,11 +64,14 @@ def team_cn(en_name, team_map):
     return team_map.get(en_name)
 
 
-def stadium_for_group(group):
+def stadium_fallback(group, stage=None):
+    """Default stadium when API omits venue. Knockout must not guess azteca (wrong altitude)."""
+    if stage and stage != 'group':
+        return 'TBD', None
     if group and group in STADIUM_BY_GROUP:
         stadium, photo = STADIUM_BY_GROUP[group]
         return stadium, photo
-    return 'TBD', 'azteca.jpg'
+    return 'TBD', None
 
 
 def api_match_to_fixture(api_match, fixture_id, team_map):
@@ -90,7 +93,7 @@ def api_match_to_fixture(api_match, fixture_id, team_map):
         stadium = resolve_stadium_label(venue.get('name'), venue.get('city'))
         stadium_photo = resolve_stadium_photo(venue.get('name'))
     else:
-        stadium, stadium_photo = stadium_for_group(group)
+        stadium, stadium_photo = stadium_fallback(group, stage)
 
     row = {
         'fixture_id': fixture_id,
@@ -108,10 +111,11 @@ def api_match_to_fixture(api_match, fixture_id, team_map):
         'played_date': played,
         'utc_date': utc,
         'stadium': stadium,
-        'stadium_photo': stadium_photo,
         'weather': '—',
         'temp': '—',
     }
+    if stadium_photo:
+        row['stadium_photo'] = stadium_photo
     assignments = load_assignments()
     row = apply_stadium_to_fixture(row, assignments)
     return row, None

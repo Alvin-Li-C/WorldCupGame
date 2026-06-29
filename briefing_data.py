@@ -519,7 +519,12 @@ def get_match_detail(fixture_id):
 
     home_owner = owner_display(fix['home_team'], owner_map)
     away_owner = owner_display(fix['away_team'], owner_map)
-    photo = fix.get('stadium_photo', 'azteca.jpg')
+    photo = fix.get('stadium_photo')
+    if not photo:
+        if fix.get('stadium') == 'TBD' or (fix.get('stage') and fix.get('stage') != 'group'):
+            photo = 'metlife.jpg'
+        else:
+            photo = 'azteca.jpg'
     stadium_key = photo.replace('.jpg', '').replace('.jpeg', '')
     kickoff = fix.get('kickoff_beijing', '')
     kick_time = kickoff.split(' ')[-1] if kickoff else ''
