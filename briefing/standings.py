@@ -145,6 +145,26 @@ def _apply_knockout_bonus(team_stats, owner_map, stage, winner):
         st.knockout_pts += FINAL_WIN
 
 
+def _apply_knockout_match_record(team_stats, owner_map, home, away, hs, aw, winner):
+    """Count knockout W/L and played; does not add group-stage points."""
+    for team, scored, conceded, outcome in (
+        (home, hs, aw, 'w' if winner == home else 'l'),
+        (away, aw, hs, 'w' if winner == away else 'l'),
+    ):
+        st = team_stats[team]
+        st.team = team
+        owner = _owned(owner_map, team)
+        if owner:
+            st.owner = owner
+        st.played += 1
+        st.gf += scored
+        st.ga += conceded
+        if outcome == 'w':
+            st.w += 1
+        else:
+            st.l += 1
+
+
 def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=None):
     owner_map = owner_map or get_owner_map()
     fixtures = fixtures if fixtures is not None else load_fixtures()
@@ -214,9 +234,7 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
 
     for fid, m in results_by_id.items():
         fix = fix_idx.get(fid)
-        if not fix:
-            continue
-        stage = fix.get('stage')
+        stage = (fix or {}).get('stage') or m.get('stage')
         if stage == 'group' or not stage:
             continue
         winner = resolve_winner_from_report(
@@ -224,8 +242,12 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
         )
         if not winner:
             continue
-        if fix.get('group'):
-            team_stats[winner].group = fix.get('group')
+        group = (fix or {}).get('group')
+        if group:
+            team_stats[winner].group = group
+        _apply_knockout_match_record(
+            team_stats, owner_map, m['home_team'], m['away_team'], m['home_score'], m['away_score'], winner,
+        )
         _apply_knockout_bonus(team_stats, owner_map, stage, winner)
 
     participants_out = []
@@ -281,6 +303,7 @@ def compute_team_standings(history=None, latest=None, fixtures=None, owner_map=N
             'third_place_note': '三四名决赛胜者（季军）+1；败者（第四名）+0',
             'final_win': FINAL_WIN,
             'knockout_note': '淘汰赛只看晋级结果；加时或点球大战不影响加分，晋级方按场次规则得分',
+            'record_note': '胜/平/负/场次含小组赛与淘汰赛',
         },
         'participants': participants_out,
     }

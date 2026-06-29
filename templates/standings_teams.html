@@ -156,6 +156,7 @@
         <span>小组赛：<strong>胜 +3</strong> · <strong>平 +1</strong> · 负 +0</span>
         <span>小组出线：<strong>第1/2名各 +1</strong>（该组打完即发）· <strong>第3名 +1</strong>（12组全部结束后，最佳8个第三）</span>
         <span>淘汰赛：<strong>晋级 +3</strong>（含加时/点球，只看晋级方）· <strong>季军 +1</strong>（第四名不加分）· <strong>冠军 +4</strong></span>
+        <span>胜/平/负/场次含小组赛与淘汰赛</span>
     </div>
 
     {% if standings.empty %}
@@ -174,7 +175,7 @@
                         <span class="participant-dot" style="background:{{ colors.get(row.participant, '#888') }}"></span>
                         {{ row.participant }}
                     </div>
-                    <div class="record">{{ row.wins }}胜 {{ row.draws }}平 {{ row.losses }}负 · {{ row.played }}场</div>
+                    <div class="record">{{ row.wins }}胜 {{ row.draws }}平 {{ row.losses }}负 · {{ row.played }}场{% if row.knockout_pts %} · 淘汰 +{{ row.knockout_pts }}{% endif %}</div>
                 </div>
                 <div class="pts-col">
                     <div class="pts-value">{{ row.points }}</div>
