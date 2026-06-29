@@ -20,6 +20,7 @@ from briefing_data import (
     load_history_index,
     beijing_date_label,
     kickoff_beijing_label,
+    stage_label_cn,
     get_report_for_date,
     history_dates_payload,
     get_match_detail,
@@ -62,6 +63,11 @@ def _filter_beijing_date(iso_date):
 @app.template_filter('kickoff_beijing')
 def _filter_kickoff_beijing(kickoff):
     return kickoff_beijing_label(kickoff)
+
+
+@app.template_filter('stage_cn')
+def _filter_stage_cn(stage):
+    return stage_label_cn(stage)
 
 
 def get_teams_with_players():

@@ -22,6 +22,31 @@ SQUAD_META_PATH = os.path.join(ROOT, 'data', 'team_squad_meta.json')
 TEAM_FORM_PATH = os.path.join(BRIEFING_DIR, 'team_form.json')
 MATCH_LINEUPS_PATH = os.path.join(BRIEFING_DIR, 'match_lineups.json')
 
+STAGE_LABELS_CN = {
+    'last_32': '32强',
+    'round_16': '16强',
+    'quarter': '1/4决赛',
+    'semi': '半决赛',
+    'third_place': '三四名决赛',
+    'final': '决赛',
+}
+
+
+def stage_label_cn(stage):
+    if not stage or stage == 'group':
+        return ''
+    return STAGE_LABELS_CN.get(stage, stage)
+
+
+def fixture_meta_label(fix, kick_date):
+    stage = fix.get('stage')
+    if stage and stage != 'group':
+        return f'{stage_label_cn(stage)} · 北京时间 {beijing_date_label(kick_date)}'
+    group = fix.get('group') or ''
+    matchday = fix.get('matchday') or ''
+    return f'Group {group} · Matchday {matchday} · 北京时间 {beijing_date_label(kick_date)}'
+
+
 CATEGORY_LABELS = {
     'tactics': '战术',
     'discord': '不和',
@@ -56,6 +81,33 @@ def load_history_index():
 
 def match_has_results(match):
     return match.get('home_score') is not None and match.get('away_score') is not None
+
+
+def iter_finished_matches(history=None, latest=None):
+    """Yield deduped finished matches from history, latest.yesterday, and latest.today."""
+    history = history if history is not None else load_history_index()
+    latest = latest if latest is not None else load_briefing()
+    seen = set()
+    for report in (history.get('reports') or {}).values():
+        for m in report.get('matches') or []:
+            fid = m.get('fixture_id')
+            if fid in seen or not match_has_results(m):
+                continue
+            seen.add(fid)
+            yield m
+    for block_key in ('yesterday', 'today'):
+        if not latest:
+            continue
+        for m in (latest.get(block_key) or {}).get('matches') or []:
+            fid = m.get('fixture_id')
+            if fid in seen or not match_has_results(m):
+                continue
+            seen.add(fid)
+            yield m
+
+
+def collect_finished_match_map(history=None, latest=None):
+    return {m['fixture_id']: m for m in iter_finished_matches(history, latest) if m.get('fixture_id') is not None}
 
 
 def report_has_results(report):
@@ -181,6 +233,7 @@ def build_preview_match_skeleton(fixture, owner_map):
     return {
         'fixture_id': fixture['fixture_id'],
         'group': fixture.get('group'),
+        'stage': fixture.get('stage'),
         'matchday': fixture.get('matchday'),
         'home_team': fixture['home_team'],
         'away_team': fixture['away_team'],
@@ -471,7 +524,7 @@ def get_match_detail(fixture_id):
     kickoff = fix.get('kickoff_beijing', '')
     kick_time = kickoff.split(' ')[-1] if kickoff else ''
     kick_date = kickoff.split(' ')[0] if kickoff else ''
-    meta = f"Group {fix.get('group', '')} · Matchday {fix.get('matchday', '')} · 北京时间 {kick_date}"
+    meta = fixture_meta_label(fix, kick_date)
 
     hs = match_info.get('home_score') if match_info else None
     aw = match_info.get('away_score') if match_info else None

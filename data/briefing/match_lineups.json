@@ -7437,12 +7437,3020 @@
   },
   "53": {
     "fixture_id": 53,
-    "available": false,
-    "updated_at": "2026-06-25 05:57:44"
+    "available": true,
+    "home": [
+      {
+        "display": "Matej Kovár",
+        "full": "Matej Kovár",
+        "short": "M. Kovár",
+        "jersey": "1"
+      },
+      {
+        "display": "Robin Hranác",
+        "full": "Robin Hranác",
+        "short": "R. Hranác",
+        "jersey": "4"
+      },
+      {
+        "display": "Ladislav Krejcí",
+        "full": "Ladislav Krejcí",
+        "short": "L. Krejcí",
+        "jersey": "7"
+      },
+      {
+        "display": "Tomás Holes",
+        "full": "Tomás Holes",
+        "short": "T. Holes",
+        "jersey": "3"
+      },
+      {
+        "display": "Michal Sadílek",
+        "full": "Michal Sadílek",
+        "short": "M. Sadílek",
+        "jersey": "18"
+      },
+      {
+        "display": "Lukás Cerv",
+        "full": "Lukás Cerv",
+        "short": "L. Cerv",
+        "jersey": "12"
+      },
+      {
+        "display": "David Doudera",
+        "full": "David Doudera",
+        "short": "D. Doudera",
+        "jersey": "21"
+      },
+      {
+        "display": "Vladimír Coufal",
+        "full": "Vladimír Coufal",
+        "short": "V. Coufal",
+        "jersey": "5"
+      },
+      {
+        "display": "Adam Hlozek",
+        "full": "Adam Hlozek",
+        "short": "A. Hlozek",
+        "jersey": "9"
+      },
+      {
+        "display": "Denis Visinský",
+        "full": "Denis Visinský",
+        "short": "D. Visinský",
+        "jersey": "26"
+      },
+      {
+        "display": "Pavel Sulc",
+        "full": "Pavel Sulc",
+        "short": "P. Sulc",
+        "jersey": "15"
+      }
+    ],
+    "away": [
+      {
+        "display": "Raúl Rangel",
+        "full": "Raúl Rangel",
+        "short": "R. Rangel",
+        "jersey": "1"
+      },
+      {
+        "display": "Israel Reyes",
+        "full": "Israel Reyes",
+        "short": "I. Reyes",
+        "jersey": "15"
+      },
+      {
+        "display": "César Montes",
+        "full": "César Montes",
+        "short": "C. Montes",
+        "jersey": "3"
+      },
+      {
+        "display": "Mateo Chávez",
+        "full": "Mateo Chávez",
+        "short": "M. Chávez",
+        "jersey": "20"
+      },
+      {
+        "display": "Jorge Sánchez",
+        "full": "Jorge Sánchez",
+        "short": "J. Sánchez",
+        "jersey": "2"
+      },
+      {
+        "display": "Edson Álvarez",
+        "full": "Edson Álvarez",
+        "short": "E. Álvarez",
+        "jersey": "4"
+      },
+      {
+        "display": "Luis Romo",
+        "full": "Luis Romo",
+        "short": "L. Romo",
+        "jersey": "7"
+      },
+      {
+        "display": "Gilberto Mora",
+        "full": "Gilberto Mora",
+        "short": "G. Mora",
+        "jersey": "19"
+      },
+      {
+        "display": "Guillermo Martínez",
+        "full": "Guillermo Martínez",
+        "short": "G. Martínez",
+        "jersey": "22"
+      },
+      {
+        "display": "Julián Quiñones",
+        "full": "Julián Quiñones",
+        "short": "J. Quiñones",
+        "jersey": "16"
+      },
+      {
+        "display": "Roberto Alvarado",
+        "full": "Roberto Alvarado",
+        "short": "R. Alvarado",
+        "jersey": "25"
+      }
+    ],
+    "espn_event_id": "760467",
+    "source": "espn",
+    "updated_at": "2026-06-25 10:51:24"
   },
   "54": {
     "fixture_id": 54,
+    "available": true,
+    "home": [
+      {
+        "display": "Ronwen Williams",
+        "full": "Ronwen Williams",
+        "short": "R. Williams",
+        "jersey": "1"
+      },
+      {
+        "display": "Mbekezeli Mbokazi",
+        "full": "Mbekezeli Mbokazi",
+        "short": "M. Mbokazi",
+        "jersey": "14"
+      },
+      {
+        "display": "Ime Okon",
+        "full": "Ime Okon",
+        "short": "I. Okon",
+        "jersey": "21"
+      },
+      {
+        "display": "Aubrey Modiba",
+        "full": "Aubrey Modiba",
+        "short": "A. Modiba",
+        "jersey": "6"
+      },
+      {
+        "display": "Khuliso Mudau",
+        "full": "Khuliso Mudau",
+        "short": "K. Mudau",
+        "jersey": "20"
+      },
+      {
+        "display": "Relebohile Mofokeng",
+        "full": "Relebohile Mofokeng",
+        "short": "R. Mofokeng",
+        "jersey": "10"
+      },
+      {
+        "display": "Sphephelo Sithole",
+        "full": "Sphephelo Sithole",
+        "short": "S. Sithole",
+        "jersey": "13"
+      },
+      {
+        "display": "Thalente Mbatha",
+        "full": "Thalente Mbatha",
+        "short": "T. Mbatha",
+        "jersey": "5"
+      },
+      {
+        "display": "Evidence Makgopa",
+        "full": "Evidence Makgopa",
+        "short": "E. Makgopa",
+        "jersey": "17"
+      },
+      {
+        "display": "Oswin Appollis",
+        "full": "Oswin Appollis",
+        "short": "O. Appollis",
+        "jersey": "7"
+      },
+      {
+        "display": "Thapelo Maseko",
+        "full": "Thapelo Maseko",
+        "short": "T. Maseko",
+        "jersey": "12"
+      }
+    ],
+    "away": [
+      {
+        "display": "Kim Seung-Gyu",
+        "full": "Kim Seung-Gyu",
+        "short": "K. Seung-Gyu",
+        "jersey": "1"
+      },
+      {
+        "display": "Kim Min-Jae",
+        "full": "Kim Min-Jae",
+        "short": "K. Min-Jae",
+        "jersey": "4"
+      },
+      {
+        "display": "Lee Gi-Hyuk",
+        "full": "Lee Gi-Hyuk",
+        "short": "L. Gi-Hyuk",
+        "jersey": "3"
+      },
+      {
+        "display": "Lee Han-Beom",
+        "full": "Lee Han-Beom",
+        "short": "L. Han-Beom",
+        "jersey": "2"
+      },
+      {
+        "display": "Hwang In-Beom",
+        "full": "Hwang In-Beom",
+        "short": "H. In-Beom",
+        "jersey": "6"
+      },
+      {
+        "display": "Paik Seung-Ho",
+        "full": "Paik Seung-Ho",
+        "short": "P. Seung-Ho",
+        "jersey": "8"
+      },
+      {
+        "display": "Lee Tae-Seok",
+        "full": "Lee Tae-Seok",
+        "short": "L. Tae-Seok",
+        "jersey": "13"
+      },
+      {
+        "display": "Seol Young-Woo",
+        "full": "Seol Young-Woo",
+        "short": "S. Young-Woo",
+        "jersey": "22"
+      },
+      {
+        "display": "Oh Hyeon-Gyu",
+        "full": "Oh Hyeon-Gyu",
+        "short": "O. Hyeon-Gyu",
+        "jersey": "18"
+      },
+      {
+        "display": "Hwang Hee-Chan",
+        "full": "Hwang Hee-Chan",
+        "short": "H. Hee-Chan",
+        "jersey": "11"
+      },
+      {
+        "display": "Lee Kang-In",
+        "full": "Lee Kang-In",
+        "short": "L. Kang-In",
+        "jersey": "19"
+      }
+    ],
+    "espn_event_id": "760466",
+    "source": "espn",
+    "updated_at": "2026-06-25 10:51:25"
+  },
+  "55": {
+    "fixture_id": 55,
+    "available": true,
+    "home": [
+      {
+        "display": "Hernán Galíndez",
+        "full": "Hernán Galíndez",
+        "short": "H. Galíndez",
+        "jersey": "1"
+      },
+      {
+        "display": "Willian Pacho",
+        "full": "Willian Pacho",
+        "short": "W. Pacho",
+        "jersey": "6"
+      },
+      {
+        "display": "Joel Ordóñez",
+        "full": "Joel Ordóñez",
+        "short": "J. Ordóñez",
+        "jersey": "4"
+      },
+      {
+        "display": "Piero Hincapié",
+        "full": "Piero Hincapié",
+        "short": "P. Hincapié",
+        "jersey": "3"
+      },
+      {
+        "display": "Alan Franco",
+        "full": "Alan Franco",
+        "short": "A. Franco",
+        "jersey": "21"
+      },
+      {
+        "display": "Pedro Vite",
+        "full": "Pedro Vite",
+        "short": "P. Vite",
+        "jersey": "15"
+      },
+      {
+        "display": "Moisés Caicedo",
+        "full": "Moisés Caicedo",
+        "short": "M. Caicedo",
+        "jersey": "23"
+      },
+      {
+        "display": "Nilson Angulo",
+        "full": "Nilson Angulo",
+        "short": "N. Angulo",
+        "jersey": "20"
+      },
+      {
+        "display": "John Yeboah",
+        "full": "John Yeboah",
+        "short": "J. Yeboah",
+        "jersey": "9"
+      },
+      {
+        "display": "Enner Valencia",
+        "full": "Enner Valencia",
+        "short": "E. Valencia",
+        "jersey": "13"
+      },
+      {
+        "display": "Gonzalo Plata",
+        "full": "Gonzalo Plata",
+        "short": "G. Plata",
+        "jersey": "19"
+      }
+    ],
+    "away": [
+      {
+        "display": "Manuel Neuer",
+        "full": "Manuel Neuer",
+        "short": "M. Neuer",
+        "jersey": "1"
+      },
+      {
+        "display": "Jonathan Tah",
+        "full": "Jonathan Tah",
+        "short": "J. Tah",
+        "jersey": "4"
+      },
+      {
+        "display": "Antonio Rüdiger",
+        "full": "Antonio Rüdiger",
+        "short": "A. Rüdiger",
+        "jersey": "2"
+      },
+      {
+        "display": "Joshua Kimmich",
+        "full": "Joshua Kimmich",
+        "short": "J. Kimmich",
+        "jersey": "6"
+      },
+      {
+        "display": "Aleksandar Pavlovic",
+        "full": "Aleksandar Pavlovic",
+        "short": "A. Pavlovic",
+        "jersey": "5"
+      },
+      {
+        "display": "Felix Nmecha",
+        "full": "Felix Nmecha",
+        "short": "F. Nmecha",
+        "jersey": "23"
+      },
+      {
+        "display": "David Raum",
+        "full": "David Raum",
+        "short": "D. Raum",
+        "jersey": "22"
+      },
+      {
+        "display": "Leroy Sané",
+        "full": "Leroy Sané",
+        "short": "L. Sané",
+        "jersey": "19"
+      },
+      {
+        "display": "Kai Havertz",
+        "full": "Kai Havertz",
+        "short": "K. Havertz",
+        "jersey": "7"
+      },
+      {
+        "display": "Florian Wirtz",
+        "full": "Florian Wirtz",
+        "short": "F. Wirtz",
+        "jersey": "17"
+      },
+      {
+        "display": "Jamal Musiala",
+        "full": "Jamal Musiala",
+        "short": "J. Musiala",
+        "jersey": "10"
+      }
+    ],
+    "espn_event_id": "760468",
+    "source": "espn",
+    "updated_at": "2026-06-26 06:59:20"
+  },
+  "56": {
+    "fixture_id": 56,
+    "available": true,
+    "home": [
+      {
+        "display": "Eloy Room",
+        "full": "Eloy Room",
+        "short": "E. Room",
+        "jersey": "1"
+      },
+      {
+        "display": "Armando Obispo",
+        "full": "Armando Obispo",
+        "short": "A. Obispo",
+        "jersey": "18"
+      },
+      {
+        "display": "Deveron Fonville",
+        "full": "Deveron Fonville",
+        "short": "D. Fonville",
+        "jersey": "24"
+      },
+      {
+        "display": "Juriën Gaari",
+        "full": "Juriën Gaari",
+        "short": "J. Gaari",
+        "jersey": "3"
+      },
+      {
+        "display": "Sherel Floranus",
+        "full": "Sherel Floranus",
+        "short": "S. Floranus",
+        "jersey": "5"
+      },
+      {
+        "display": "Joshua Brenet",
+        "full": "Joshua Brenet",
+        "short": "J. Brenet",
+        "jersey": "20"
+      },
+      {
+        "display": "Leandro Bacuna",
+        "full": "Leandro Bacuna",
+        "short": "L. Bacuna",
+        "jersey": "10"
+      },
+      {
+        "display": "Livano Comenencia",
+        "full": "Livano Comenencia",
+        "short": "L. Comenencia",
+        "jersey": "8"
+      },
+      {
+        "display": "Juninho Bacuna",
+        "full": "Juninho Bacuna",
+        "short": "J. Bacuna",
+        "jersey": "7"
+      },
+      {
+        "display": "Tahith Chong",
+        "full": "Tahith Chong",
+        "short": "T. Chong",
+        "jersey": "21"
+      },
+      {
+        "display": "Jürgen Locadia",
+        "full": "Jürgen Locadia",
+        "short": "J. Locadia",
+        "jersey": "9"
+      }
+    ],
+    "away": [
+      {
+        "display": "Yahia Fofana",
+        "full": "Yahia Fofana",
+        "short": "Y. Fofana",
+        "jersey": "1"
+      },
+      {
+        "display": "Ousmane Diomande",
+        "full": "Ousmane Diomande",
+        "short": "O. Diomande",
+        "jersey": "2"
+      },
+      {
+        "display": "Odilon Kossounou",
+        "full": "Odilon Kossounou",
+        "short": "O. Kossounou",
+        "jersey": "7"
+      },
+      {
+        "display": "Christopher Operi",
+        "full": "Christopher Operi",
+        "short": "C. Operi",
+        "jersey": "13"
+      },
+      {
+        "display": "Guela Doué",
+        "full": "Guela Doué",
+        "short": "G. Doué",
+        "jersey": "17"
+      },
+      {
+        "display": "Nicolas Pépé",
+        "full": "Nicolas Pépé",
+        "short": "N. Pépé",
+        "jersey": "19"
+      },
+      {
+        "display": "Franck Kessié",
+        "full": "Franck Kessié",
+        "short": "F. Kessié",
+        "jersey": "8"
+      },
+      {
+        "display": "Ibrahim Sangaré",
+        "full": "Ibrahim Sangaré",
+        "short": "I. Sangaré",
+        "jersey": "18"
+      },
+      {
+        "display": "Ange-Yoan Bonny",
+        "full": "Ange-Yoan Bonny",
+        "short": "A. Bonny",
+        "jersey": "9"
+      },
+      {
+        "display": "Yan Diomande",
+        "full": "Yan Diomande",
+        "short": "Y. Diomande",
+        "jersey": "11"
+      },
+      {
+        "display": "Amad Diallo",
+        "full": "Amad Diallo",
+        "short": "A. Diallo",
+        "jersey": "15"
+      }
+    ],
+    "espn_event_id": "760473",
+    "source": "espn",
+    "updated_at": "2026-06-26 06:59:26"
+  },
+  "57": {
+    "fixture_id": 57,
+    "available": true,
+    "home": [
+      {
+        "display": "Aymen Dahmen",
+        "full": "Aymen Dahmen",
+        "short": "A. Dahmen",
+        "jersey": "16"
+      },
+      {
+        "display": "Montassar Talbi",
+        "full": "Montassar Talbi",
+        "short": "M. Talbi",
+        "jersey": "3"
+      },
+      {
+        "display": "Rani Khedira",
+        "full": "Rani Khedira",
+        "short": "R. Khedira",
+        "jersey": "13"
+      },
+      {
+        "display": "Ali Abdi",
+        "full": "Ali Abdi",
+        "short": "A. Abdi",
+        "jersey": "2"
+      },
+      {
+        "display": "Mohamed Amine Ben Hamida",
+        "full": "Mohamed Amine Ben Hamida",
+        "short": "M. Ben Hamida",
+        "jersey": "21"
+      },
+      {
+        "display": "Yan Valery",
+        "full": "Yan Valery",
+        "short": "Y. Valery",
+        "jersey": "20"
+      },
+      {
+        "display": "Ellyes Skhiri",
+        "full": "Ellyes Skhiri",
+        "short": "E. Skhiri",
+        "jersey": "17"
+      },
+      {
+        "display": "Ismaël Gharbi",
+        "full": "Ismaël Gharbi",
+        "short": "I. Gharbi",
+        "jersey": "11"
+      },
+      {
+        "display": "Anis Slimane",
+        "full": "Anis Slimane",
+        "short": "A. Slimane",
+        "jersey": "25"
+      },
+      {
+        "display": "Hazem Mastouri",
+        "full": "Hazem Mastouri",
+        "short": "H. Mastouri",
+        "jersey": "9"
+      },
+      {
+        "display": "Hannibal Mejbri",
+        "full": "Hannibal Mejbri",
+        "short": "H. Mejbri",
+        "jersey": "10"
+      }
+    ],
+    "away": [
+      {
+        "display": "Bart Verbruggen",
+        "full": "Bart Verbruggen",
+        "short": "B. Verbruggen",
+        "jersey": "1"
+      },
+      {
+        "display": "Virgil van Dijk",
+        "full": "Virgil van Dijk",
+        "short": "V. van Dijk",
+        "jersey": "4"
+      },
+      {
+        "display": "Jan Paul van Hecke",
+        "full": "Jan Paul van Hecke",
+        "short": "J. van Hecke",
+        "jersey": "6"
+      },
+      {
+        "display": "Nathan Aké",
+        "full": "Nathan Aké",
+        "short": "N. Aké",
+        "jersey": "5"
+      },
+      {
+        "display": "Denzel Dumfries",
+        "full": "Denzel Dumfries",
+        "short": "D. Dumfries",
+        "jersey": "22"
+      },
+      {
+        "display": "Frenkie de Jong",
+        "full": "Frenkie de Jong",
+        "short": "F. de Jong",
+        "jersey": "21"
+      },
+      {
+        "display": "Tijjani Reijnders",
+        "full": "Tijjani Reijnders",
+        "short": "T. Reijnders",
+        "jersey": "14"
+      },
+      {
+        "display": "Ryan Gravenberch",
+        "full": "Ryan Gravenberch",
+        "short": "R. Gravenberch",
+        "jersey": "8"
+      },
+      {
+        "display": "Brian Brobbey",
+        "full": "Brian Brobbey",
+        "short": "B. Brobbey",
+        "jersey": "19"
+      },
+      {
+        "display": "Cody Gakpo",
+        "full": "Cody Gakpo",
+        "short": "C. Gakpo",
+        "jersey": "11"
+      },
+      {
+        "display": "Donyell Malen",
+        "full": "Donyell Malen",
+        "short": "D. Malen",
+        "jersey": "18"
+      }
+    ],
+    "espn_event_id": "760472",
+    "source": "espn",
+    "updated_at": "2026-06-26 06:59:31"
+  },
+  "58": {
+    "fixture_id": 58,
+    "available": true,
+    "home": [
+      {
+        "display": "Zion Suzuki",
+        "full": "Zion Suzuki",
+        "short": "Z. Suzuki",
+        "jersey": "1"
+      },
+      {
+        "display": "Kou Itakura",
+        "full": "Kou Itakura",
+        "short": "K. Itakura",
+        "jersey": "4"
+      },
+      {
+        "display": "Ayumu Seko",
+        "full": "Ayumu Seko",
+        "short": "A. Seko",
+        "jersey": "20"
+      },
+      {
+        "display": "Hiroki Ito",
+        "full": "Hiroki Ito",
+        "short": "H. Ito",
+        "jersey": "21"
+      },
+      {
+        "display": "Ao Tanaka",
+        "full": "Ao Tanaka",
+        "short": "A. Tanaka",
+        "jersey": "7"
+      },
+      {
+        "display": "Yukinari Sugawara",
+        "full": "Yukinari Sugawara",
+        "short": "Y. Sugawara",
+        "jersey": "2"
+      },
+      {
+        "display": "Keito Nakamura",
+        "full": "Keito Nakamura",
+        "short": "K. Nakamura",
+        "jersey": "13"
+      },
+      {
+        "display": "Daichi Kamada",
+        "full": "Daichi Kamada",
+        "short": "D. Kamada",
+        "jersey": "15"
+      },
+      {
+        "display": "Ritsu Doan",
+        "full": "Ritsu Doan",
+        "short": "R. Doan",
+        "jersey": "10"
+      },
+      {
+        "display": "Daizen Maeda",
+        "full": "Daizen Maeda",
+        "short": "D. Maeda",
+        "jersey": "11"
+      },
+      {
+        "display": "Ayase Ueda",
+        "full": "Ayase Ueda",
+        "short": "A. Ueda",
+        "jersey": "18"
+      }
+    ],
+    "away": [
+      {
+        "display": "Jacob Widell Zetterström",
+        "full": "Jacob Widell Zetterström",
+        "short": "J. Widell Zetterström",
+        "jersey": "1"
+      },
+      {
+        "display": "Victor Lindelöf",
+        "full": "Victor Lindelöf",
+        "short": "V. Lindelöf",
+        "jersey": "3"
+      },
+      {
+        "display": "Gustaf Lagerbielke",
+        "full": "Gustaf Lagerbielke",
+        "short": "G. Lagerbielke",
+        "jersey": "2"
+      },
+      {
+        "display": "Isak Hien",
+        "full": "Isak Hien",
+        "short": "I. Hien",
+        "jersey": "4"
+      },
+      {
+        "display": "Alexander Bernhardsson",
+        "full": "Alexander Bernhardsson",
+        "short": "A. Bernhardsson",
+        "jersey": "21"
+      },
+      {
+        "display": "Elliot Stroud",
+        "full": "Elliot Stroud",
+        "short": "E. Stroud",
+        "jersey": "24"
+      },
+      {
+        "display": "Anthony Elanga",
+        "full": "Anthony Elanga",
+        "short": "A. Elanga",
+        "jersey": "11"
+      },
+      {
+        "display": "Gabriel Gudmundsson",
+        "full": "Gabriel Gudmundsson",
+        "short": "G. Gudmundsson",
+        "jersey": "5"
+      },
+      {
+        "display": "Yasin Ayari",
+        "full": "Yasin Ayari",
+        "short": "Y. Ayari",
+        "jersey": "18"
+      },
+      {
+        "display": "Alexander Isak",
+        "full": "Alexander Isak",
+        "short": "A. Isak",
+        "jersey": "9"
+      },
+      {
+        "display": "Viktor Gyökeres",
+        "full": "Viktor Gyökeres",
+        "short": "V. Gyökeres",
+        "jersey": "17"
+      }
+    ],
+    "espn_event_id": "760471",
+    "source": "espn",
+    "updated_at": "2026-06-26 06:59:35"
+  },
+  "59": {
+    "fixture_id": 59,
+    "available": true,
+    "home": [
+      {
+        "display": "Ugurcan Çakir",
+        "full": "Ugurcan Çakir",
+        "short": "U. Çakir",
+        "jersey": "23"
+      },
+      {
+        "display": "Ozan Kabak",
+        "full": "Ozan Kabak",
+        "short": "O. Kabak",
+        "jersey": "15"
+      },
+      {
+        "display": "Abdülkerim Bardakçi",
+        "full": "Abdülkerim Bardakçi",
+        "short": "A. Bardakçi",
+        "jersey": "14"
+      },
+      {
+        "display": "Zeki Çelik",
+        "full": "Zeki Çelik",
+        "short": "Z. Çelik",
+        "jersey": "2"
+      },
+      {
+        "display": "Orkun Kökçü",
+        "full": "Orkun Kökçü",
+        "short": "O. Kökçü",
+        "jersey": "6"
+      },
+      {
+        "display": "Salih Özcan",
+        "full": "Salih Özcan",
+        "short": "S. Özcan",
+        "jersey": "5"
+      },
+      {
+        "display": "Eren Elmali",
+        "full": "Eren Elmali",
+        "short": "E. Elmali",
+        "jersey": "13"
+      },
+      {
+        "display": "Oguz Aydin",
+        "full": "Oguz Aydin",
+        "short": "O. Aydin",
+        "jersey": "24"
+      },
+      {
+        "display": "Baris Alper Yilmaz",
+        "full": "Baris Alper Yilmaz",
+        "short": "B. Yilmaz",
+        "jersey": "21"
+      },
+      {
+        "display": "Kenan Yildiz",
+        "full": "Kenan Yildiz",
+        "short": "K. Yildiz",
+        "jersey": "11"
+      },
+      {
+        "display": "Arda Güler",
+        "full": "Arda Güler",
+        "short": "A. Güler",
+        "jersey": "8"
+      }
+    ],
+    "away": [
+      {
+        "display": "Matt Turner",
+        "full": "Matt Turner",
+        "short": "M. Turner",
+        "jersey": "1"
+      },
+      {
+        "display": "Mark McKenzie",
+        "full": "Mark McKenzie",
+        "short": "M. McKenzie",
+        "jersey": "22"
+      },
+      {
+        "display": "Miles Robinson",
+        "full": "Miles Robinson",
+        "short": "M. Robinson",
+        "jersey": "12"
+      },
+      {
+        "display": "Auston Trusty",
+        "full": "Auston Trusty",
+        "short": "A. Trusty",
+        "jersey": "6"
+      },
+      {
+        "display": "Joe Scally",
+        "full": "Joe Scally",
+        "short": "J. Scally",
+        "jersey": "23"
+      },
+      {
+        "display": "Sebastian Berhalter",
+        "full": "Sebastian Berhalter",
+        "short": "S. Berhalter",
+        "jersey": "14"
+      },
+      {
+        "display": "Giovanni Reyna",
+        "full": "Giovanni Reyna",
+        "short": "G. Reyna",
+        "jersey": "7"
+      },
+      {
+        "display": "Weston McKennie",
+        "full": "Weston McKennie",
+        "short": "W. McKennie",
+        "jersey": "8"
+      },
+      {
+        "display": "Ricardo Pepi",
+        "full": "Ricardo Pepi",
+        "short": "R. Pepi",
+        "jersey": "9"
+      },
+      {
+        "display": "Timothy Weah",
+        "full": "Timothy Weah",
+        "short": "T. Weah",
+        "jersey": "21"
+      },
+      {
+        "display": "Brenden Aaronson",
+        "full": "Brenden Aaronson",
+        "short": "B. Aaronson",
+        "jersey": "11"
+      }
+    ],
+    "espn_event_id": "760470",
+    "source": "espn",
+    "updated_at": "2026-06-26 11:56:07"
+  },
+  "60": {
+    "fixture_id": 60,
+    "available": true,
+    "home": [
+      {
+        "display": "Orlando Gil",
+        "full": "Orlando Gil",
+        "short": "O. Gil",
+        "jersey": "12"
+      },
+      {
+        "display": "Gustavo Gómez",
+        "full": "Gustavo Gómez",
+        "short": "G. Gómez",
+        "jersey": "15"
+      },
+      {
+        "display": "Omar Alderete",
+        "full": "Omar Alderete",
+        "short": "O. Alderete",
+        "jersey": "3"
+      },
+      {
+        "display": "Gustavo Velázquez",
+        "full": "Gustavo Velázquez",
+        "short": "G. Velázquez",
+        "jersey": "2"
+      },
+      {
+        "display": "Alexandro Maidana",
+        "full": "Alexandro Maidana",
+        "short": "A. Maidana",
+        "jersey": "26"
+      },
+      {
+        "display": "Juan Jose Cáceres",
+        "full": "Juan Jose Cáceres",
+        "short": "J. Cáceres",
+        "jersey": "4"
+      },
+      {
+        "display": "Andrés Cubas",
+        "full": "Andrés Cubas",
+        "short": "A. Cubas",
+        "jersey": "14"
+      },
+      {
+        "display": "Matías Galarza",
+        "full": "Matías Galarza",
+        "short": "M. Galarza",
+        "jersey": "23"
+      },
+      {
+        "display": "Diego Gómez",
+        "full": "Diego Gómez",
+        "short": "D. Gómez",
+        "jersey": "8"
+      },
+      {
+        "display": "Julio Enciso",
+        "full": "Julio Enciso",
+        "short": "J. Enciso",
+        "jersey": "19"
+      },
+      {
+        "display": "Gabriel Ávalos",
+        "full": "Gabriel Ávalos",
+        "short": "G. Ávalos",
+        "jersey": "21"
+      }
+    ],
+    "away": [
+      {
+        "display": "Patrick Beach",
+        "full": "Patrick Beach",
+        "short": "P. Beach",
+        "jersey": "18"
+      },
+      {
+        "display": "Harry Souttar",
+        "full": "Harry Souttar",
+        "short": "H. Souttar",
+        "jersey": "19"
+      },
+      {
+        "display": "Lucas Herrington",
+        "full": "Lucas Herrington",
+        "short": "L. Herrington",
+        "jersey": "25"
+      },
+      {
+        "display": "Alessandro Circati",
+        "full": "Alessandro Circati",
+        "short": "A. Circati",
+        "jersey": "3"
+      },
+      {
+        "display": "Jackson Irvine",
+        "full": "Jackson Irvine",
+        "short": "J. Irvine",
+        "jersey": "22"
+      },
+      {
+        "display": "Aiden O'Neill",
+        "full": "Aiden O'Neill",
+        "short": "A. O'Neill",
+        "jersey": "13"
+      },
+      {
+        "display": "Aziz Behich",
+        "full": "Aziz Behich",
+        "short": "A. Behich",
+        "jersey": "16"
+      },
+      {
+        "display": "Jordan Bos",
+        "full": "Jordan Bos",
+        "short": "J. Bos",
+        "jersey": "5"
+      },
+      {
+        "display": "Nestory Irankunda",
+        "full": "Nestory Irankunda",
+        "short": "N. Irankunda",
+        "jersey": "17"
+      },
+      {
+        "display": "Connor Metcalfe",
+        "full": "Connor Metcalfe",
+        "short": "C. Metcalfe",
+        "jersey": "8"
+      },
+      {
+        "display": "Cristian Volpato",
+        "full": "Cristian Volpato",
+        "short": "C. Volpato",
+        "jersey": "20"
+      }
+    ],
+    "espn_event_id": "760469",
+    "source": "espn",
+    "updated_at": "2026-06-26 11:56:09"
+  },
+  "61": {
+    "fixture_id": 61,
+    "available": true,
+    "home": [
+      {
+        "display": "Egil Selvik",
+        "full": "Egil Selvik",
+        "short": "E. Selvik",
+        "jersey": "13"
+      },
+      {
+        "display": "Leo Østigard",
+        "full": "Leo Østigard",
+        "short": "L. Østigard",
+        "jersey": "4"
+      },
+      {
+        "display": "Henrik Falchener",
+        "full": "Henrik Falchener",
+        "short": "H. Falchener",
+        "jersey": "25"
+      },
+      {
+        "display": "Fredrik André Bjørkan",
+        "full": "Fredrik André Bjørkan",
+        "short": "F. Bjørkan",
+        "jersey": "15"
+      },
+      {
+        "display": "Fredrik Aursnes",
+        "full": "Fredrik Aursnes",
+        "short": "F. Aursnes",
+        "jersey": "14"
+      },
+      {
+        "display": "Patrick Berg",
+        "full": "Patrick Berg",
+        "short": "P. Berg",
+        "jersey": "6"
+      },
+      {
+        "display": "Thelo Aasgaard",
+        "full": "Thelo Aasgaard",
+        "short": "T. Aasgaard",
+        "jersey": "19"
+      },
+      {
+        "display": "Kristian Thorstvedt",
+        "full": "Kristian Thorstvedt",
+        "short": "K. Thorstvedt",
+        "jersey": "18"
+      },
+      {
+        "display": "Jørgen Strand Larsen",
+        "full": "Jørgen Strand Larsen",
+        "short": "J. Larsen",
+        "jersey": "11"
+      },
+      {
+        "display": "Andreas Schjelderup",
+        "full": "Andreas Schjelderup",
+        "short": "A. Schjelderup",
+        "jersey": "21"
+      },
+      {
+        "display": "Oscar Bobb",
+        "full": "Oscar Bobb",
+        "short": "O. Bobb",
+        "jersey": "22"
+      }
+    ],
+    "away": [
+      {
+        "display": "Mike Maignan",
+        "full": "Mike Maignan",
+        "short": "M. Maignan",
+        "jersey": "16"
+      },
+      {
+        "display": "Maxence Lacroix",
+        "full": "Maxence Lacroix",
+        "short": "M. Lacroix",
+        "jersey": "26"
+      },
+      {
+        "display": "Dayot Upamecano",
+        "full": "Dayot Upamecano",
+        "short": "D. Upamecano",
+        "jersey": "4"
+      },
+      {
+        "display": "Theo Hernández",
+        "full": "Theo Hernández",
+        "short": "T. Hernández",
+        "jersey": "19"
+      },
+      {
+        "display": "Jules Koundé",
+        "full": "Jules Koundé",
+        "short": "J. Koundé",
+        "jersey": "5"
+      },
+      {
+        "display": "Michael Olise",
+        "full": "Michael Olise",
+        "short": "M. Olise",
+        "jersey": "11"
+      },
+      {
+        "display": "Manu Koné",
+        "full": "Manu Koné",
+        "short": "M. Koné",
+        "jersey": "6"
+      },
+      {
+        "display": "Aurélien Tchouaméni",
+        "full": "Aurélien Tchouaméni",
+        "short": "A. Tchouaméni",
+        "jersey": "8"
+      },
+      {
+        "display": "Kylian Mbappé",
+        "full": "Kylian Mbappé",
+        "short": "K. Mbappé",
+        "jersey": "10"
+      },
+      {
+        "display": "Désiré Doué",
+        "full": "Désiré Doué",
+        "short": "D. Doué",
+        "jersey": "20"
+      },
+      {
+        "display": "Ousmane Dembélé",
+        "full": "Ousmane Dembélé",
+        "short": "O. Dembélé",
+        "jersey": "7"
+      }
+    ],
+    "espn_event_id": "760475",
+    "source": "espn",
+    "updated_at": "2026-06-27 07:20:47"
+  },
+  "62": {
+    "fixture_id": 62,
+    "available": true,
+    "home": [
+      {
+        "display": "Mory Diaw",
+        "full": "Mory Diaw",
+        "short": "M. Diaw",
+        "jersey": "23"
+      },
+      {
+        "display": "Moussa Niakhaté",
+        "full": "Moussa Niakhaté",
+        "short": "M. Niakhaté",
+        "jersey": "19"
+      },
+      {
+        "display": "Abdoulaye Seck",
+        "full": "Abdoulaye Seck",
+        "short": "A. Seck",
+        "jersey": "4"
+      },
+      {
+        "display": "Ismail Jakobs",
+        "full": "Ismail Jakobs",
+        "short": "I. Jakobs",
+        "jersey": "14"
+      },
+      {
+        "display": "Krépin Diatta",
+        "full": "Krépin Diatta",
+        "short": "K. Diatta",
+        "jersey": "15"
+      },
+      {
+        "display": "Idrissa Gueye",
+        "full": "Idrissa Gueye",
+        "short": "I. Gueye",
+        "jersey": "5"
+      },
+      {
+        "display": "Lamine Camara",
+        "full": "Lamine Camara",
+        "short": "L. Camara",
+        "jersey": "8"
+      },
+      {
+        "display": "Habib Diarra",
+        "full": "Habib Diarra",
+        "short": "H. Diarra",
+        "jersey": "21"
+      },
+      {
+        "display": "Ismaïla Sarr",
+        "full": "Ismaïla Sarr",
+        "short": "I. Sarr",
+        "jersey": "18"
+      },
+      {
+        "display": "Sadio Mané",
+        "full": "Sadio Mané",
+        "short": "S. Mané",
+        "jersey": "10"
+      },
+      {
+        "display": "Ibrahim Mbaye",
+        "full": "Ibrahim Mbaye",
+        "short": "I. Mbaye",
+        "jersey": "20"
+      }
+    ],
+    "away": [
+      {
+        "display": "Ahmed Basil",
+        "full": "Ahmed Basil",
+        "short": "A. Basil",
+        "jersey": "22"
+      },
+      {
+        "display": "Akam Hashim",
+        "full": "Akam Hashim",
+        "short": "A. Hashim",
+        "jersey": "5"
+      },
+      {
+        "display": "Rebin Sulaka",
+        "full": "Rebin Sulaka",
+        "short": "R. Sulaka",
+        "jersey": "2"
+      },
+      {
+        "display": "Merchas Doski",
+        "full": "Merchas Doski",
+        "short": "M. Doski",
+        "jersey": "23"
+      },
+      {
+        "display": "Frans Putros",
+        "full": "Frans Putros",
+        "short": "F. Putros",
+        "jersey": "26"
+      },
+      {
+        "display": "Ali Jasim",
+        "full": "Ali Jasim",
+        "short": "A. Jasim",
+        "jersey": "17"
+      },
+      {
+        "display": "Amir Al-Ammari",
+        "full": "Amir Al-Ammari",
+        "short": "A. Al-Ammari",
+        "jersey": "16"
+      },
+      {
+        "display": "Zidane Iqbal",
+        "full": "Zidane Iqbal",
+        "short": "Z. Iqbal",
+        "jersey": "14"
+      },
+      {
+        "display": "Ali Al-Hamadi",
+        "full": "Ali Al-Hamadi",
+        "short": "A. Al-Hamadi",
+        "jersey": "9"
+      },
+      {
+        "display": "Ibrahim Bayesh",
+        "full": "Ibrahim Bayesh",
+        "short": "I. Bayesh",
+        "jersey": "8"
+      },
+      {
+        "display": "Ahmed Qasim",
+        "full": "Ahmed Qasim",
+        "short": "A. Qasim",
+        "jersey": "11"
+      }
+    ],
+    "espn_event_id": "760474",
+    "source": "espn",
+    "updated_at": "2026-06-27 07:20:48"
+  },
+  "63": {
+    "fixture_id": 63,
+    "available": true,
+    "home": [
+      {
+        "display": "Fernando Muslera",
+        "full": "Fernando Muslera",
+        "short": "F. Muslera",
+        "jersey": "23"
+      },
+      {
+        "display": "Sebastián Cáceres",
+        "full": "Sebastián Cáceres",
+        "short": "S. Cáceres",
+        "jersey": "3"
+      },
+      {
+        "display": "Juan Manuel Sanabria",
+        "full": "Juan Manuel Sanabria",
+        "short": "J. Sanabria",
+        "jersey": "25"
+      },
+      {
+        "display": "Mathías Olivera",
+        "full": "Mathías Olivera",
+        "short": "M. Olivera",
+        "jersey": "16"
+      },
+      {
+        "display": "Guillermo Varela",
+        "full": "Guillermo Varela",
+        "short": "G. Varela",
+        "jersey": "13"
+      },
+      {
+        "display": "Maxi Araújo",
+        "full": "Maxi Araújo",
+        "short": "M. Araújo",
+        "jersey": "20"
+      },
+      {
+        "display": "Rodrigo Bentancur",
+        "full": "Rodrigo Bentancur",
+        "short": "R. Bentancur",
+        "jersey": "6"
+      },
+      {
+        "display": "Federico Valverde",
+        "full": "Federico Valverde",
+        "short": "F. Valverde",
+        "jersey": "8"
+      },
+      {
+        "display": "Agustín Canobbio",
+        "full": "Agustín Canobbio",
+        "short": "A. Canobbio",
+        "jersey": "14"
+      },
+      {
+        "display": "Manuel Ugarte",
+        "full": "Manuel Ugarte",
+        "short": "M. Ugarte",
+        "jersey": "5"
+      },
+      {
+        "display": "Darwin Núñez",
+        "full": "Darwin Núñez",
+        "short": "D. Núñez",
+        "jersey": "9"
+      }
+    ],
+    "away": [
+      {
+        "display": "Unai Simón",
+        "full": "Unai Simón",
+        "short": "U. Simón",
+        "jersey": "23"
+      },
+      {
+        "display": "Aymeric Laporte",
+        "full": "Aymeric Laporte",
+        "short": "A. Laporte",
+        "jersey": "14"
+      },
+      {
+        "display": "Pau Cubarsí",
+        "full": "Pau Cubarsí",
+        "short": "P. Cubarsí",
+        "jersey": "22"
+      },
+      {
+        "display": "Marc Cucurella",
+        "full": "Marc Cucurella",
+        "short": "M. Cucurella",
+        "jersey": "24"
+      },
+      {
+        "display": "Marcos Llorente",
+        "full": "Marcos Llorente",
+        "short": "M. Llorente",
+        "jersey": "5"
+      },
+      {
+        "display": "Pedri ",
+        "full": "Pedri ",
+        "short": "Pedri ",
+        "jersey": "20"
+      },
+      {
+        "display": "Rodri",
+        "full": "Rodri",
+        "short": "Rodri",
+        "jersey": "16"
+      },
+      {
+        "display": "Mikel Merino",
+        "full": "Mikel Merino",
+        "short": "M. Merino",
+        "jersey": "6"
+      },
+      {
+        "display": "Álex Baena",
+        "full": "Álex Baena",
+        "short": "Á. Baena",
+        "jersey": "15"
+      },
+      {
+        "display": "Lamine Yamal",
+        "full": "Lamine Yamal",
+        "short": "L. Yamal",
+        "jersey": "19"
+      },
+      {
+        "display": "Mikel Oyarzabal",
+        "full": "Mikel Oyarzabal",
+        "short": "M. Oyarzabal",
+        "jersey": "21"
+      }
+    ],
+    "espn_event_id": "760479",
+    "source": "espn",
+    "updated_at": "2026-06-27 07:20:50"
+  },
+  "64": {
+    "fixture_id": 64,
+    "available": true,
+    "home": [
+      {
+        "display": "Vozinha",
+        "full": "Vozinha",
+        "short": "Vozinha",
+        "jersey": "1"
+      },
+      {
+        "display": "Diney Borges",
+        "full": "Diney Borges",
+        "short": "D. Borges",
+        "jersey": "3"
+      },
+      {
+        "display": "Wagner Pina",
+        "full": "Wagner Pina",
+        "short": "W. Pina",
+        "jersey": "24"
+      },
+      {
+        "display": "Pico Lopes",
+        "full": "Pico Lopes",
+        "short": "P. Lopes",
+        "jersey": "4"
+      },
+      {
+        "display": "João Paulo",
+        "full": "João Paulo",
+        "short": "J. Paulo",
+        "jersey": "8"
+      },
+      {
+        "display": "Deroy Duarte",
+        "full": "Deroy Duarte",
+        "short": "D. Duarte",
+        "jersey": "14"
+      },
+      {
+        "display": "Jamiro Monteiro",
+        "full": "Jamiro Monteiro",
+        "short": "J. Monteiro",
+        "jersey": "10"
+      },
+      {
+        "display": "Ryan Mendes",
+        "full": "Ryan Mendes",
+        "short": "R. Mendes",
+        "jersey": "20"
+      },
+      {
+        "display": "Kevin Pina",
+        "full": "Kevin Pina",
+        "short": "K. Pina",
+        "jersey": "6"
+      },
+      {
+        "display": "Willy Semedo",
+        "full": "Willy Semedo",
+        "short": "W. Semedo",
+        "jersey": "17"
+      },
+      {
+        "display": "Dailon Livramento",
+        "full": "Dailon Livramento",
+        "short": "D. Livramento",
+        "jersey": "19"
+      }
+    ],
+    "away": [
+      {
+        "display": "Mohammed Al-Owais",
+        "full": "Mohammed Al-Owais",
+        "short": "M. Al-Owais",
+        "jersey": "21"
+      },
+      {
+        "display": "Nawaf Boushal",
+        "full": "Nawaf Boushal",
+        "short": "N. Boushal",
+        "jersey": "13"
+      },
+      {
+        "display": "Hassan Al-Tambakti",
+        "full": "Hassan Al-Tambakti",
+        "short": "H. Al-Tambakti",
+        "jersey": "5"
+      },
+      {
+        "display": "Abdulelah Al-Amri",
+        "full": "Abdulelah Al-Amri",
+        "short": "A. Al-Amri",
+        "jersey": "4"
+      },
+      {
+        "display": "Saud Abdulhamid",
+        "full": "Saud Abdulhamid",
+        "short": "S. Abdulhamid",
+        "jersey": "12"
+      },
+      {
+        "display": "Nasser Al-Dawsari",
+        "full": "Nasser Al-Dawsari",
+        "short": "N. Al-Dawsari",
+        "jersey": "6"
+      },
+      {
+        "display": "Sultan Mandash",
+        "full": "Sultan Mandash",
+        "short": "S. Mandash",
+        "jersey": "20"
+      },
+      {
+        "display": "Salem Al-Dawsari",
+        "full": "Salem Al-Dawsari",
+        "short": "S. Al-Dawsari",
+        "jersey": "10"
+      },
+      {
+        "display": "Abdullah Al-Khaibari",
+        "full": "Abdullah Al-Khaibari",
+        "short": "A. Al-Khaibari",
+        "jersey": "15"
+      },
+      {
+        "display": "Mohamed Kanno",
+        "full": "Mohamed Kanno",
+        "short": "M. Kanno",
+        "jersey": "23"
+      },
+      {
+        "display": "Feras Al-Brikan",
+        "full": "Feras Al-Brikan",
+        "short": "F. Al-Brikan",
+        "jersey": "9"
+      }
+    ],
+    "espn_event_id": "760478",
+    "source": "espn",
+    "updated_at": "2026-06-27 07:20:51"
+  },
+  "65": {
+    "fixture_id": 65,
+    "available": true,
+    "home": [
+      {
+        "display": "Max Crocombe",
+        "full": "Max Crocombe",
+        "short": "M. Crocombe",
+        "jersey": "1"
+      },
+      {
+        "display": "Tyler Bindon",
+        "full": "Tyler Bindon",
+        "short": "T. Bindon",
+        "jersey": "4"
+      },
+      {
+        "display": "Finn Surman",
+        "full": "Finn Surman",
+        "short": "F. Surman",
+        "jersey": "16"
+      },
+      {
+        "display": "Liberato Cacace",
+        "full": "Liberato Cacace",
+        "short": "L. Cacace",
+        "jersey": "13"
+      },
+      {
+        "display": "Tim Payne",
+        "full": "Tim Payne",
+        "short": "T. Payne",
+        "jersey": "2"
+      },
+      {
+        "display": "Ryan Thomas",
+        "full": "Ryan Thomas",
+        "short": "R. Thomas",
+        "jersey": "23"
+      },
+      {
+        "display": "Marko Stamenic",
+        "full": "Marko Stamenic",
+        "short": "M. Stamenic",
+        "jersey": "8"
+      },
+      {
+        "display": "Joe Bell",
+        "full": "Joe Bell",
+        "short": "J. Bell",
+        "jersey": "6"
+      },
+      {
+        "display": "Chris Wood",
+        "full": "Chris Wood",
+        "short": "C. Wood",
+        "jersey": "9"
+      },
+      {
+        "display": "Elijah Just",
+        "full": "Elijah Just",
+        "short": "E. Just",
+        "jersey": "11"
+      },
+      {
+        "display": "Sarpreet Singh",
+        "full": "Sarpreet Singh",
+        "short": "S. Singh",
+        "jersey": "10"
+      }
+    ],
+    "away": [
+      {
+        "display": "Thibaut Courtois",
+        "full": "Thibaut Courtois",
+        "short": "T. Courtois",
+        "jersey": "1"
+      },
+      {
+        "display": "Arthur Theate",
+        "full": "Arthur Theate",
+        "short": "A. Theate",
+        "jersey": "3"
+      },
+      {
+        "display": "Brandon Mechele",
+        "full": "Brandon Mechele",
+        "short": "B. Mechele",
+        "jersey": "4"
+      },
+      {
+        "display": "Maxim De Cuyper",
+        "full": "Maxim De Cuyper",
+        "short": "M. De Cuyper",
+        "jersey": "5"
+      },
+      {
+        "display": "Timothy Castagne",
+        "full": "Timothy Castagne",
+        "short": "T. Castagne",
+        "jersey": "21"
+      },
+      {
+        "display": "Kevin De Bruyne",
+        "full": "Kevin De Bruyne",
+        "short": "K. De Bruyne",
+        "jersey": "7"
+      },
+      {
+        "display": "Hans Vanaken",
+        "full": "Hans Vanaken",
+        "short": "H. Vanaken",
+        "jersey": "20"
+      },
+      {
+        "display": "Youri Tielemans",
+        "full": "Youri Tielemans",
+        "short": "Y. Tielemans",
+        "jersey": "8"
+      },
+      {
+        "display": "Charles De Ketelaere",
+        "full": "Charles De Ketelaere",
+        "short": "C. De Ketelaere",
+        "jersey": "17"
+      },
+      {
+        "display": "Leandro Trossard",
+        "full": "Leandro Trossard",
+        "short": "L. Trossard",
+        "jersey": "10"
+      },
+      {
+        "display": "Jérémy Doku",
+        "full": "Jérémy Doku",
+        "short": "J. Doku",
+        "jersey": "11"
+      }
+    ],
+    "espn_event_id": "760477",
+    "source": "espn",
+    "updated_at": "2026-06-27 15:34:54"
+  },
+  "66": {
+    "fixture_id": 66,
+    "available": true,
+    "home": [
+      {
+        "display": "Mostafa Shoubir",
+        "full": "Mostafa Shoubir",
+        "short": "M. Shoubir",
+        "jersey": "23"
+      },
+      {
+        "display": "Mohamed Abdelmoneim",
+        "full": "Mohamed Abdelmoneim",
+        "short": "M. Abdelmoneim",
+        "jersey": "6"
+      },
+      {
+        "display": "Ramy Rabia",
+        "full": "Ramy Rabia",
+        "short": "R. Rabia",
+        "jersey": "5"
+      },
+      {
+        "display": "Ahmed Fatouh",
+        "full": "Ahmed Fatouh",
+        "short": "A. Fatouh",
+        "jersey": "13"
+      },
+      {
+        "display": "Mohamed Hany",
+        "full": "Mohamed Hany",
+        "short": "M. Hany",
+        "jersey": "3"
+      },
+      {
+        "display": "Mohamed Salah",
+        "full": "Mohamed Salah",
+        "short": "M. Salah",
+        "jersey": "10"
+      },
+      {
+        "display": "Mahmoud Saber",
+        "full": "Mahmoud Saber",
+        "short": "M. Saber",
+        "jersey": "21"
+      },
+      {
+        "display": "Mohanad Lashin",
+        "full": "Mohanad Lashin",
+        "short": "M. Lashin",
+        "jersey": "17"
+      },
+      {
+        "display": "Mostafa Zico",
+        "full": "Mostafa Zico",
+        "short": "M. Zico",
+        "jersey": "11"
+      },
+      {
+        "display": "Trézéguet",
+        "full": "Trézéguet null",
+        "short": "Trézéguet",
+        "jersey": "7"
+      },
+      {
+        "display": "Emam Ashour",
+        "full": "Emam Ashour",
+        "short": "E. Ashour",
+        "jersey": "8"
+      }
+    ],
+    "away": [
+      {
+        "display": "Alireza Beiranvand",
+        "full": "Alireza Beiranvand",
+        "short": "A. Beiranvand",
+        "jersey": "1"
+      },
+      {
+        "display": "Shoja Khalilzadeh",
+        "full": "Shoja Khalilzadeh",
+        "short": "S. Khalilzadeh",
+        "jersey": "4"
+      },
+      {
+        "display": "Ali Nemati",
+        "full": "Ali Nemati",
+        "short": "A. Nemati",
+        "jersey": "19"
+      },
+      {
+        "display": "Hossein Kanani",
+        "full": "Hossein Kanani",
+        "short": "H. Kanani",
+        "jersey": "13"
+      },
+      {
+        "display": "Milad Mohammadi",
+        "full": "Milad Mohammadi",
+        "short": "M. Mohammadi",
+        "jersey": "5"
+      },
+      {
+        "display": "Ramin Rezaeian",
+        "full": "Ramin Rezaeian",
+        "short": "R. Rezaeian",
+        "jersey": "23"
+      },
+      {
+        "display": "Saeid Ezatolahi",
+        "full": "Saeid Ezatolahi",
+        "short": "S. Ezatolahi",
+        "jersey": "6"
+      },
+      {
+        "display": "Mohammad Ghorbani",
+        "full": "Mohammad Ghorbani",
+        "short": "M. Ghorbani",
+        "jersey": "21"
+      },
+      {
+        "display": "Mohammad Mohebbi",
+        "full": "Mohammad Mohebbi",
+        "short": "M. Mohebbi",
+        "jersey": "8"
+      },
+      {
+        "display": "Saman Ghoddos",
+        "full": "Saman Ghoddos",
+        "short": "S. Ghoddos",
+        "jersey": "14"
+      },
+      {
+        "display": "Mehdi Taremi",
+        "full": "Mehdi Taremi",
+        "short": "M. Taremi",
+        "jersey": "9"
+      }
+    ],
+    "espn_event_id": "760476",
+    "source": "espn",
+    "updated_at": "2026-06-27 15:34:57"
+  },
+  "67": {
+    "fixture_id": 67,
+    "available": true,
+    "home": [
+      {
+        "display": "Orlando Mosquera",
+        "full": "Orlando Mosquera",
+        "short": "O. Mosquera",
+        "jersey": "22"
+      },
+      {
+        "display": "José Córdoba",
+        "full": "José Córdoba",
+        "short": "J. Córdoba",
+        "jersey": "3"
+      },
+      {
+        "display": "Andrés Andrade",
+        "full": "Andrés Andrade",
+        "short": "A. Andrade",
+        "jersey": "16"
+      },
+      {
+        "display": "Fidel Escobar",
+        "full": "Fidel Escobar",
+        "short": "F. Escobar",
+        "jersey": "4"
+      },
+      {
+        "display": "Jorge Gutiérrez",
+        "full": "Jorge Gutiérrez",
+        "short": "J. Gutiérrez",
+        "jersey": "26"
+      },
+      {
+        "display": "Amir Murillo",
+        "full": "Amir Murillo",
+        "short": "A. Murillo",
+        "jersey": "23"
+      },
+      {
+        "display": "Édgar Yoel Bárcenas",
+        "full": "Édgar Yoel Bárcenas",
+        "short": "É. Bárcenas",
+        "jersey": "11"
+      },
+      {
+        "display": "Carlos Harvey",
+        "full": "Carlos Harvey",
+        "short": "C. Harvey",
+        "jersey": "14"
+      },
+      {
+        "display": "José Luis Rodríguez",
+        "full": "José Luis Rodríguez",
+        "short": "J. Rodríguez",
+        "jersey": "7"
+      },
+      {
+        "display": "Cristian Martínez",
+        "full": "Cristian Martínez",
+        "short": "C. Martínez",
+        "jersey": "6"
+      },
+      {
+        "display": "Tomás Rodríguez",
+        "full": "Tomás Rodríguez",
+        "short": "T. Rodríguez",
+        "jersey": "9"
+      }
+    ],
+    "away": [
+      {
+        "display": "Jordan Pickford",
+        "full": "Jordan Pickford",
+        "short": "J. Pickford",
+        "jersey": "1"
+      },
+      {
+        "display": "Marc Guéhi",
+        "full": "Marc Guéhi",
+        "short": "M. Guéhi",
+        "jersey": "6"
+      },
+      {
+        "display": "Ezri Konsa",
+        "full": "Ezri Konsa",
+        "short": "E. Konsa",
+        "jersey": "2"
+      },
+      {
+        "display": "Elliot Anderson",
+        "full": "Elliot Anderson",
+        "short": "E. Anderson",
+        "jersey": "8"
+      },
+      {
+        "display": "Nico O'Reilly",
+        "full": "Nico O'Reilly",
+        "short": "N. O'Reilly",
+        "jersey": "3"
+      },
+      {
+        "display": "Jarell Quansah",
+        "full": "Jarell Quansah",
+        "short": "J. Quansah",
+        "jersey": "26"
+      },
+      {
+        "display": "Jude Bellingham",
+        "full": "Jude Bellingham",
+        "short": "J. Bellingham",
+        "jersey": "10"
+      },
+      {
+        "display": "Morgan Rogers",
+        "full": "Morgan Rogers",
+        "short": "M. Rogers",
+        "jersey": "17"
+      },
+      {
+        "display": "Marcus Rashford",
+        "full": "Marcus Rashford",
+        "short": "M. Rashford",
+        "jersey": "11"
+      },
+      {
+        "display": "Bukayo Saka",
+        "full": "Bukayo Saka",
+        "short": "B. Saka",
+        "jersey": "7"
+      },
+      {
+        "display": "Harry Kane",
+        "full": "Harry Kane",
+        "short": "H. Kane",
+        "jersey": "9"
+      }
+    ],
+    "espn_event_id": "760485",
+    "source": "espn",
+    "updated_at": "2026-06-28 07:09:36"
+  },
+  "68": {
+    "fixture_id": 68,
+    "available": true,
+    "home": [
+      {
+        "display": "Dominik Livakovic",
+        "full": "Dominik Livakovic",
+        "short": "D. Livakovic",
+        "jersey": "1"
+      },
+      {
+        "display": "Marin Pongracic",
+        "full": "Marin Pongracic",
+        "short": "M. Pongracic",
+        "jersey": "3"
+      },
+      {
+        "display": "Josip Sutalo",
+        "full": "Josip Sutalo",
+        "short": "J. Sutalo",
+        "jersey": "6"
+      },
+      {
+        "display": "Ivan Perisic",
+        "full": "Ivan Perisic",
+        "short": "I. Perisic",
+        "jersey": "14"
+      },
+      {
+        "display": "Josip Stanisic",
+        "full": "Josip Stanisic",
+        "short": "J. Stanisic",
+        "jersey": "2"
+      },
+      {
+        "display": "Petar Sucic",
+        "full": "Petar Sucic",
+        "short": "P. Sucic",
+        "jersey": "17"
+      },
+      {
+        "display": "Mateo Kovacic",
+        "full": "Mateo Kovacic",
+        "short": "M. Kovacic",
+        "jersey": "8"
+      },
+      {
+        "display": "Luka Modric",
+        "full": "Luka Modric",
+        "short": "L. Modric",
+        "jersey": "10"
+      },
+      {
+        "display": "Ante Budimir",
+        "full": "Ante Budimir",
+        "short": "A. Budimir",
+        "jersey": "11"
+      },
+      {
+        "display": "Martin Baturina",
+        "full": "Martin Baturina",
+        "short": "M. Baturina",
+        "jersey": "16"
+      },
+      {
+        "display": "Nikola Vlasic",
+        "full": "Nikola Vlasic",
+        "short": "N. Vlasic",
+        "jersey": "13"
+      }
+    ],
+    "away": [
+      {
+        "display": "Benjamin Asare",
+        "full": "Benjamin Asare",
+        "short": "B. Asare",
+        "jersey": "16"
+      },
+      {
+        "display": "Derrick Luckassen",
+        "full": "Derrick Luckassen",
+        "short": "D. Luckassen",
+        "jersey": "23"
+      },
+      {
+        "display": "Jonas Adjetey",
+        "full": "Jonas Adjetey",
+        "short": "J. Adjetey",
+        "jersey": "4"
+      },
+      {
+        "display": "Thomas Partey",
+        "full": "Thomas Partey",
+        "short": "T. Partey",
+        "jersey": "5"
+      },
+      {
+        "display": "Gideon Mensah",
+        "full": "Gideon Mensah",
+        "short": "G. Mensah",
+        "jersey": "14"
+      },
+      {
+        "display": "Marvin Senaya",
+        "full": "Marvin Senaya",
+        "short": "M. Senaya",
+        "jersey": "26"
+      },
+      {
+        "display": "Kwasi Sibo",
+        "full": "Kwasi Sibo",
+        "short": "K. Sibo",
+        "jersey": "8"
+      },
+      {
+        "display": "Elisha Owusu",
+        "full": "Elisha Owusu",
+        "short": "E. Owusu",
+        "jersey": "15"
+      },
+      {
+        "display": "Kamaldeen Sulemana",
+        "full": "Kamaldeen Sulemana",
+        "short": "K. Sulemana",
+        "jersey": "22"
+      },
+      {
+        "display": "Antoine Semenyo",
+        "full": "Antoine Semenyo",
+        "short": "A. Semenyo",
+        "jersey": "11"
+      },
+      {
+        "display": "Jordan Ayew",
+        "full": "Jordan Ayew",
+        "short": "J. Ayew",
+        "jersey": "9"
+      }
+    ],
+    "espn_event_id": "760480",
+    "source": "espn",
+    "updated_at": "2026-06-28 07:09:37"
+  },
+  "69": {
+    "fixture_id": 69,
+    "available": true,
+    "home": [
+      {
+        "display": "Camilo Vargas",
+        "full": "Camilo Vargas",
+        "short": "C. Vargas",
+        "jersey": "12"
+      },
+      {
+        "display": "Santiago Arias",
+        "full": "Santiago Arias",
+        "short": "S. Arias",
+        "jersey": "4"
+      },
+      {
+        "display": "Deiver Machado",
+        "full": "Deiver Machado",
+        "short": "D. Machado",
+        "jersey": "22"
+      },
+      {
+        "display": "Davinson Sánchez",
+        "full": "Davinson Sánchez",
+        "short": "D. Sánchez",
+        "jersey": "23"
+      },
+      {
+        "display": "Jhon Lucumí",
+        "full": "Jhon Lucumí",
+        "short": "J. Lucumí",
+        "jersey": "3"
+      },
+      {
+        "display": "Gustavo Puerta",
+        "full": "Gustavo Puerta",
+        "short": "G. Puerta",
+        "jersey": "14"
+      },
+      {
+        "display": "Jhon Arias",
+        "full": "Jhon Arias",
+        "short": "J. Arias",
+        "jersey": "11"
+      },
+      {
+        "display": "Jefferson Lerma",
+        "full": "Jefferson Lerma",
+        "short": "J. Lerma",
+        "jersey": "16"
+      },
+      {
+        "display": "Luis Díaz",
+        "full": "Luis Díaz",
+        "short": "L. Díaz",
+        "jersey": "7"
+      },
+      {
+        "display": "James Rodríguez",
+        "full": "James Rodríguez",
+        "short": "J. Rodríguez",
+        "jersey": "10"
+      },
+      {
+        "display": "Jhon Córdoba",
+        "full": "Jhon Córdoba",
+        "short": "J. Córdoba",
+        "jersey": "9"
+      }
+    ],
+    "away": [
+      {
+        "display": "Diogo Costa",
+        "full": "Diogo Costa",
+        "short": "D. Costa",
+        "jersey": "1"
+      },
+      {
+        "display": "Nuno Mendes",
+        "full": "Nuno Mendes",
+        "short": "N. Mendes",
+        "jersey": "25"
+      },
+      {
+        "display": "Rúben Dias",
+        "full": "Rúben Dias",
+        "short": "R. Dias",
+        "jersey": "3"
+      },
+      {
+        "display": "Renato Veiga",
+        "full": "Renato Veiga",
+        "short": "R. Veiga",
+        "jersey": "13"
+      },
+      {
+        "display": "João Cancelo",
+        "full": "João Cancelo",
+        "short": "J. Cancelo",
+        "jersey": "20"
+      },
+      {
+        "display": "Vitinha ",
+        "full": "Vitinha ",
+        "short": "Vitinha ",
+        "jersey": "23"
+      },
+      {
+        "display": "Rúben Neves",
+        "full": "Rúben Neves",
+        "short": "R. Neves",
+        "jersey": "21"
+      },
+      {
+        "display": "Pedro Neto",
+        "full": "Pedro Neto",
+        "short": "P. Neto",
+        "jersey": "18"
+      },
+      {
+        "display": "Bruno Fernandes",
+        "full": "Bruno Fernandes",
+        "short": "B. Fernandes",
+        "jersey": "8"
+      },
+      {
+        "display": "João Félix",
+        "full": "João Félix",
+        "short": "J. Félix",
+        "jersey": "11"
+      },
+      {
+        "display": "Cristiano Ronaldo",
+        "full": "Cristiano Ronaldo",
+        "short": "C. Ronaldo",
+        "jersey": "7"
+      }
+    ],
+    "espn_event_id": "760481",
+    "source": "espn",
+    "updated_at": "2026-06-28 07:09:38"
+  },
+  "70": {
+    "fixture_id": 70,
+    "available": true,
+    "home": [
+      {
+        "display": "Lionel Mpasi",
+        "full": "Lionel Mpasi",
+        "short": "L. Mpasi",
+        "jersey": "1"
+      },
+      {
+        "display": "Chancel Mbemba",
+        "full": "Chancel Mbemba",
+        "short": "C. Mbemba",
+        "jersey": "22"
+      },
+      {
+        "display": "Arthur Masuaku",
+        "full": "Arthur Masuaku",
+        "short": "A. Masuaku",
+        "jersey": "26"
+      },
+      {
+        "display": "Aaron Wan-Bissaka",
+        "full": "Aaron Wan-Bissaka",
+        "short": "A. Wan-Bissaka",
+        "jersey": "2"
+      },
+      {
+        "display": "Axel Tuanzebe",
+        "full": "Axel Tuanzebe",
+        "short": "A. Tuanzebe",
+        "jersey": "4"
+      },
+      {
+        "display": "Noah Sadiki",
+        "full": "Noah Sadiki",
+        "short": "N. Sadiki",
+        "jersey": "14"
+      },
+      {
+        "display": "Brian Cipenga",
+        "full": "Brian Cipenga",
+        "short": "B. Cipenga",
+        "jersey": "9"
+      },
+      {
+        "display": "Nathanaël Mbuku",
+        "full": "Nathanaël Mbuku",
+        "short": "N. Mbuku",
+        "jersey": "7"
+      },
+      {
+        "display": "Samuel Moutoussamy",
+        "full": "Samuel Moutoussamy",
+        "short": "S. Moutoussamy",
+        "jersey": "8"
+      },
+      {
+        "display": "Cédric Bakambu",
+        "full": "Cédric Bakambu",
+        "short": "C. Bakambu",
+        "jersey": "17"
+      },
+      {
+        "display": "Yoane Wissa",
+        "full": "Yoane Wissa",
+        "short": "Y. Wissa",
+        "jersey": "20"
+      }
+    ],
+    "away": [
+      {
+        "display": "Abduvohid Nematov",
+        "full": "Abduvohid Nematov",
+        "short": "A. Nematov",
+        "jersey": "12"
+      },
+      {
+        "display": "Abdukodir Khusanov",
+        "full": "Abdukodir Khusanov",
+        "short": "A. Khusanov",
+        "jersey": "2"
+      },
+      {
+        "display": "Jakhongir Urozov",
+        "full": "Jakhongir Urozov",
+        "short": "J. Urozov",
+        "jersey": "26"
+      },
+      {
+        "display": "Rustam Ashurmatov",
+        "full": "Rustam Ashurmatov",
+        "short": "R. Ashurmatov",
+        "jersey": "5"
+      },
+      {
+        "display": "Otabek Shukurov",
+        "full": "Otabek Shukurov",
+        "short": "O. Shukurov",
+        "jersey": "7"
+      },
+      {
+        "display": "Khojiakbar Alijonov",
+        "full": "Khojiakbar Alijonov",
+        "short": "K. Alijonov",
+        "jersey": "3"
+      },
+      {
+        "display": "Sherzod Nasrullaev",
+        "full": "Sherzod Nasrullaev",
+        "short": "S. Nasrullaev",
+        "jersey": "13"
+      },
+      {
+        "display": "Dostonbek Khamdamov",
+        "full": "Dostonbek Khamdamov",
+        "short": "D. Khamdamov",
+        "jersey": "17"
+      },
+      {
+        "display": "Abbosbek Fayzullaev",
+        "full": "Abbosbek Fayzullaev",
+        "short": "A. Fayzullaev",
+        "jersey": "22"
+      },
+      {
+        "display": "Akmal Mozgovoy",
+        "full": "Akmal Mozgovoy",
+        "short": "A. Mozgovoy",
+        "jersey": "6"
+      },
+      {
+        "display": "Eldor Shomurodov",
+        "full": "Eldor Shomurodov",
+        "short": "E. Shomurodov",
+        "jersey": "14"
+      }
+    ],
+    "espn_event_id": "760482",
+    "source": "espn",
+    "updated_at": "2026-06-28 07:09:39"
+  },
+  "71": {
+    "fixture_id": 71,
+    "available": true,
+    "home": [
+      {
+        "display": "Yazeed Abulaila",
+        "full": "Yazeed Abulaila",
+        "short": "Y. Abulaila",
+        "jersey": "1"
+      },
+      {
+        "display": "Yazan Al-Arab",
+        "full": "Yazan Al-Arab",
+        "short": "Y. Al-Arab",
+        "jersey": "5"
+      },
+      {
+        "display": "Husam Abu Dahab",
+        "full": "Husam Abu Dahab",
+        "short": "H. Abu Dahab",
+        "jersey": "4"
+      },
+      {
+        "display": "Abdallah Nasib",
+        "full": "Abdallah Nasib",
+        "short": "A. Nasib",
+        "jersey": "3"
+      },
+      {
+        "display": "Noor Al-Rawabdeh",
+        "full": "Noor Al-Rawabdeh",
+        "short": "N. Al-Rawabdeh",
+        "jersey": "8"
+      },
+      {
+        "display": "Nizar Al-Rashdan",
+        "full": "Nizar Al-Rashdan",
+        "short": "N. Al-Rashdan",
+        "jersey": "21"
+      },
+      {
+        "display": "Mohannad Abu Taha",
+        "full": "Mohannad Abu Taha",
+        "short": "M. Abu Taha",
+        "jersey": "20"
+      },
+      {
+        "display": "Ehsan Haddad",
+        "full": "Ehsan Haddad",
+        "short": "E. Haddad",
+        "jersey": "23"
+      },
+      {
+        "display": "Odeh Fakhoury",
+        "full": "Odeh Fakhoury",
+        "short": "O. Fakhoury",
+        "jersey": "11"
+      },
+      {
+        "display": "Ali Olwan",
+        "full": "Ali Olwan",
+        "short": "A. Olwan",
+        "jersey": "9"
+      },
+      {
+        "display": "Ali Azaizeh",
+        "full": "Ali Azaizeh",
+        "short": "A. Azaizeh",
+        "jersey": "24"
+      }
+    ],
+    "away": [
+      {
+        "display": "Emiliano Martínez",
+        "full": "Emiliano Martínez",
+        "short": "E. Martínez",
+        "jersey": "23"
+      },
+      {
+        "display": "Marcos Senesi",
+        "full": "Marcos Senesi",
+        "short": "M. Senesi",
+        "jersey": "2"
+      },
+      {
+        "display": "Nicolás Otamendi",
+        "full": "Nicolás Otamendi",
+        "short": "N. Otamendi",
+        "jersey": "19"
+      },
+      {
+        "display": "Nicolás Tagliafico",
+        "full": "Nicolás Tagliafico",
+        "short": "N. Tagliafico",
+        "jersey": "3"
+      },
+      {
+        "display": "Exequiel Palacios",
+        "full": "Exequiel Palacios",
+        "short": "E. Palacios",
+        "jersey": "14"
+      },
+      {
+        "display": "Leandro Paredes",
+        "full": "Leandro Paredes",
+        "short": "L. Paredes",
+        "jersey": "5"
+      },
+      {
+        "display": "Nico Paz",
+        "full": "Nico Paz",
+        "short": "N. Paz",
+        "jersey": "18"
+      },
+      {
+        "display": "Giovani Lo Celso",
+        "full": "Giovani Lo Celso",
+        "short": "G. Lo Celso",
+        "jersey": "11"
+      },
+      {
+        "display": "Giuliano Simeone",
+        "full": "Giuliano Simeone",
+        "short": "G. Simeone",
+        "jersey": "17"
+      },
+      {
+        "display": "Julián Álvarez",
+        "full": "Julián Álvarez",
+        "short": "J. Álvarez",
+        "jersey": "9"
+      },
+      {
+        "display": "Lautaro Martínez",
+        "full": "Lautaro Martínez",
+        "short": "L. Martínez",
+        "jersey": "22"
+      }
+    ],
+    "espn_event_id": "760483",
+    "source": "espn",
+    "updated_at": "2026-06-28 10:24:07"
+  },
+  "72": {
+    "fixture_id": 72,
+    "available": true,
+    "home": [
+      {
+        "display": "Oussama Benbot",
+        "full": "Oussama Benbot",
+        "short": "O. Benbot",
+        "jersey": "16"
+      },
+      {
+        "display": "Ramy Bensebaini",
+        "full": "Ramy Bensebaini",
+        "short": "R. Bensebaini",
+        "jersey": "21"
+      },
+      {
+        "display": "Aïssa Mandi",
+        "full": "Aïssa Mandi",
+        "short": "A. Mandi",
+        "jersey": "2"
+      },
+      {
+        "display": "Jaouen Hadjam",
+        "full": "Jaouen Hadjam",
+        "short": "J. Hadjam",
+        "jersey": "13"
+      },
+      {
+        "display": "Rafik Belghali",
+        "full": "Rafik Belghali",
+        "short": "R. Belghali",
+        "jersey": "17"
+      },
+      {
+        "display": "Ibrahim Maza",
+        "full": "Ibrahim Maza",
+        "short": "I. Maza",
+        "jersey": "22"
+      },
+      {
+        "display": "Nabil Bentaleb",
+        "full": "Nabil Bentaleb",
+        "short": "N. Bentaleb",
+        "jersey": "19"
+      },
+      {
+        "display": "Farès Chaïbi",
+        "full": "Farès Chaïbi",
+        "short": "F. Chaïbi",
+        "jersey": "10"
+      },
+      {
+        "display": "Amine Gouiri",
+        "full": "Amine Gouiri",
+        "short": "A. Gouiri",
+        "jersey": "9"
+      },
+      {
+        "display": "Houssem Aouar",
+        "full": "Houssem Aouar",
+        "short": "H. Aouar",
+        "jersey": "8"
+      },
+      {
+        "display": "Riyad Mahrez",
+        "full": "Riyad Mahrez",
+        "short": "R. Mahrez",
+        "jersey": "7"
+      }
+    ],
+    "away": [
+      {
+        "display": "Alexander Schlager",
+        "full": "Alexander Schlager",
+        "short": "A. Schlager",
+        "jersey": "1"
+      },
+      {
+        "display": "David Alaba",
+        "full": "David Alaba",
+        "short": "D. Alaba",
+        "jersey": "8"
+      },
+      {
+        "display": "Philipp Lienhart",
+        "full": "Philipp Lienhart",
+        "short": "P. Lienhart",
+        "jersey": "15"
+      },
+      {
+        "display": "Phillipp Mwene",
+        "full": "Phillipp Mwene",
+        "short": "P. Mwene",
+        "jersey": "16"
+      },
+      {
+        "display": "Stefan Posch",
+        "full": "Stefan Posch",
+        "short": "S. Posch",
+        "jersey": "5"
+      },
+      {
+        "display": "Romano Schmid",
+        "full": "Romano Schmid",
+        "short": "R. Schmid",
+        "jersey": "18"
+      },
+      {
+        "display": "Xaver Schlager",
+        "full": "Xaver Schlager",
+        "short": "X. Schlager",
+        "jersey": "4"
+      },
+      {
+        "display": "Nicolas Seiwald",
+        "full": "Nicolas Seiwald",
+        "short": "N. Seiwald",
+        "jersey": "6"
+      },
+      {
+        "display": "Marko Arnautovic",
+        "full": "Marko Arnautovic",
+        "short": "M. Arnautovic",
+        "jersey": "7"
+      },
+      {
+        "display": "Marcel Sabitzer",
+        "full": "Marcel Sabitzer",
+        "short": "M. Sabitzer",
+        "jersey": "9"
+      },
+      {
+        "display": "Konrad Laimer",
+        "full": "Konrad Laimer",
+        "short": "K. Laimer",
+        "jersey": "20"
+      }
+    ],
+    "espn_event_id": "760484",
+    "source": "espn",
+    "updated_at": "2026-06-28 10:24:14"
+  },
+  "73": {
+    "fixture_id": 73,
+    "available": true,
+    "home": [
+      {
+        "display": "Ronwen Williams",
+        "full": "Ronwen Williams",
+        "short": "R. Williams",
+        "jersey": "1"
+      },
+      {
+        "display": "Mbekezeli Mbokazi",
+        "full": "Mbekezeli Mbokazi",
+        "short": "M. Mbokazi",
+        "jersey": "14"
+      },
+      {
+        "display": "Ime Okon",
+        "full": "Ime Okon",
+        "short": "I. Okon",
+        "jersey": "21"
+      },
+      {
+        "display": "Aubrey Modiba",
+        "full": "Aubrey Modiba",
+        "short": "A. Modiba",
+        "jersey": "6"
+      },
+      {
+        "display": "Khuliso Mudau",
+        "full": "Khuliso Mudau",
+        "short": "K. Mudau",
+        "jersey": "20"
+      },
+      {
+        "display": "Relebohile Mofokeng",
+        "full": "Relebohile Mofokeng",
+        "short": "R. Mofokeng",
+        "jersey": "10"
+      },
+      {
+        "display": "Sphephelo Sithole",
+        "full": "Sphephelo Sithole",
+        "short": "S. Sithole",
+        "jersey": "13"
+      },
+      {
+        "display": "Teboho Mokoena",
+        "full": "Teboho Mokoena",
+        "short": "T. Mokoena",
+        "jersey": "4"
+      },
+      {
+        "display": "Evidence Makgopa",
+        "full": "Evidence Makgopa",
+        "short": "E. Makgopa",
+        "jersey": "17"
+      },
+      {
+        "display": "Oswin Appollis",
+        "full": "Oswin Appollis",
+        "short": "O. Appollis",
+        "jersey": "7"
+      },
+      {
+        "display": "Thapelo Maseko",
+        "full": "Thapelo Maseko",
+        "short": "T. Maseko",
+        "jersey": "12"
+      }
+    ],
+    "away": [
+      {
+        "display": "Maxime Crépeau",
+        "full": "Maxime Crépeau",
+        "short": "M. Crépeau",
+        "jersey": "16"
+      },
+      {
+        "display": "Derek Cornelius",
+        "full": "Derek Cornelius",
+        "short": "D. Cornelius",
+        "jersey": "13"
+      },
+      {
+        "display": "Moïse Bombito",
+        "full": "Moïse Bombito",
+        "short": "M. Bombito",
+        "jersey": "15"
+      },
+      {
+        "display": "Richie Laryea",
+        "full": "Richie Laryea",
+        "short": "R. Laryea",
+        "jersey": "22"
+      },
+      {
+        "display": "Alistair Johnston",
+        "full": "Alistair Johnston",
+        "short": "A. Johnston",
+        "jersey": "2"
+      },
+      {
+        "display": "Stephen Eustáquio",
+        "full": "Stephen Eustáquio",
+        "short": "S. Eustáquio",
+        "jersey": "7"
+      },
+      {
+        "display": "Nathan Saliba",
+        "full": "Nathan Saliba",
+        "short": "N. Saliba",
+        "jersey": "25"
+      },
+      {
+        "display": "Liam Millar",
+        "full": "Liam Millar",
+        "short": "L. Millar",
+        "jersey": "11"
+      },
+      {
+        "display": "Tajon Buchanan",
+        "full": "Tajon Buchanan",
+        "short": "T. Buchanan",
+        "jersey": "17"
+      },
+      {
+        "display": "Tani Oluwaseyi",
+        "full": "Tani Oluwaseyi",
+        "short": "T. Oluwaseyi",
+        "jersey": "12"
+      },
+      {
+        "display": "Jonathan David",
+        "full": "Jonathan David",
+        "short": "J. David",
+        "jersey": "10"
+      }
+    ],
+    "espn_event_id": "760486",
+    "source": "espn",
+    "updated_at": "2026-06-29 07:31:20"
+  },
+  "74": {
+    "fixture_id": 74,
     "available": false,
-    "updated_at": "2026-06-25 05:57:46"
+    "updated_at": "2026-06-29 11:07:16"
+  },
+  "75": {
+    "fixture_id": 75,
+    "available": false,
+    "updated_at": "2026-06-29 11:07:18"
+  },
+  "76": {
+    "fixture_id": 76,
+    "available": false,
+    "updated_at": "2026-06-29 11:07:20"
   }
 }

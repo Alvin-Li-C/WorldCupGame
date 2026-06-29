@@ -9,6 +9,7 @@ from datetime import datetime, timezone, timedelta
 from briefing.match_score import resolve_winner_from_report
 from briefing_data import (
     BRIEFING_DIR,
+    collect_finished_match_map,
     get_owner_map,
     load_briefing,
     load_fixtures,
@@ -26,7 +27,7 @@ KNOCKOUT_WIN = 3
 THIRD_PLACE_WIN = 1  # 三四名决赛胜者（季军）；败者（第四名）不加分
 FINAL_WIN = 4
 
-KNOCKOUT_ADVANCE_STAGES = frozenset({'round_16', 'quarter', 'semi'})
+KNOCKOUT_ADVANCE_STAGES = frozenset({'last_32', 'round_16', 'quarter', 'semi'})
 BEST_THIRD_PLACES = 8
 
 
@@ -68,23 +69,8 @@ def _participant_names(owner_map):
 
 
 def collect_finished_matches(history=None, latest=None):
-    """Deduplicate finished matches from history_index and latest.yesterday."""
-    history = history if history is not None else load_history_index()
-    latest = latest if latest is not None else load_briefing()
-    by_id = {}
-    for report in (history.get('reports') or {}).values():
-        for m in report.get('matches') or []:
-            fid = m.get('fixture_id')
-            hs, aw = m.get('home_score'), m.get('away_score')
-            if fid is not None and hs is not None and aw is not None:
-                by_id[fid] = m
-    if latest:
-        for m in (latest.get('yesterday') or {}).get('matches') or []:
-            fid = m.get('fixture_id')
-            hs, aw = m.get('home_score'), m.get('away_score')
-            if fid is not None and hs is not None and aw is not None:
-                by_id[fid] = m
-    return by_id
+    """Deduplicate finished matches from history and latest briefing blocks."""
+    return collect_finished_match_map(history, latest)
 
 
 def _fixture_index(fixtures):

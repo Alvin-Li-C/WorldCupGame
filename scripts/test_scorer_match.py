@@ -175,6 +175,19 @@ class TestScorerMatch(unittest.TestCase):
         self.assertTrue(teams_equivalent('Czechia', 'Czech Republic', team_map))
         self.assertTrue(teams_equivalent('Turkey', 'Türkiye', team_map))
 
+    def test_jordan_tamari_api_spelling(self):
+        sels = [
+            {'player_id': 1034, 'name': 'Musa Al-Taamari', 'name_cn': '塔马里',
+             'team_name': '约旦', 'participant': '老王', 'jersey_number': 10},
+        ]
+        sel, reason = match_scorer_to_selection(
+            {'scorer_en': 'Mousa Al-Tamari', 'team_cn': '约旦', 'team_en': 'Jordan',
+             'type': 'REGULAR', 'scorer_api_id': '257489'},
+            sels,
+        )
+        self.assertEqual(reason, '')
+        self.assertEqual(sel['player_id'], 1034)
+
     def test_australia_surname_only_db_names(self):
         sels = [
             {'player_id': 455, 'name': 'Irankunda', 'name_cn': '伊兰昆达',

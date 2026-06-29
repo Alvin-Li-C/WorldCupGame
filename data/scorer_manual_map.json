@@ -38,6 +38,14 @@
       "api_scorer_id": 157825,
       "api_scorer_en": "Trézéguet",
       "team_api": "Egypt"
+    },
+    {
+      "player_id": 1034,
+      "note": "Jordan vs Argentina API spelling",
+      "created_at": "2026-06-28T20:42:21",
+      "api_scorer_id": 257489,
+      "api_scorer_en": "Mousa Al-Tamari",
+      "team_api": "Jordan"
     }
   ]
 }

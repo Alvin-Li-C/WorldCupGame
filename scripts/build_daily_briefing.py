@@ -124,6 +124,7 @@ def build_today_matches(fixtures, date_str, owner_map, config, selections, skip_
         matches.append({
             'fixture_id': f['fixture_id'],
             'group': f.get('group'),
+            'stage': f.get('stage'),
             'matchday': f.get('matchday'),
             'home_team': home,
             'away_team': away,
@@ -153,8 +154,15 @@ def upsert_history_reports(finished_rows):
         d = row.get('played_date_beijing') or (row.get('kickoff_beijing') or '').split(' ', 1)[0]
         if not d:
             continue
-        by_date.setdefault(d, []).append(row)
-    for d, matches in by_date.items():
+        by_date.setdefault(d, {})[row['fixture_id']] = row
+    for d, incoming in by_date.items():
+        existing = {
+            m['fixture_id']: m
+            for m in (idx['reports'].get(d) or {}).get('matches') or []
+            if m.get('fixture_id') is not None
+        }
+        existing.update(incoming)
+        matches = sorted(existing.values(), key=lambda m: m.get('kickoff_beijing', ''))
         idx['reports'][d] = {
             'date': d,
             'match_count': len(matches),

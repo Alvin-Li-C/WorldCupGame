@@ -7,6 +7,7 @@ from datetime import datetime, timezone, timedelta
 from briefing_data import (
     BRIEFING_DIR,
     get_selections_for_display,
+    iter_finished_matches,
     load_briefing,
     load_history_index,
     load_json,
@@ -33,24 +34,7 @@ def _participant_names():
 
 
 def _iter_history_matches(history=None, latest=None):
-    history = history if history is not None else load_history_index()
-    latest = latest if latest is not None else load_briefing()
-    seen = set()
-    for report in (history.get('reports') or {}).values():
-        for m in report.get('matches') or []:
-            fid = m.get('fixture_id')
-            if fid in seen:
-                continue
-            if m.get('home_score') is None:
-                continue
-            seen.add(fid)
-            yield m
-    for m in (latest.get('yesterday') or {}).get('matches') or [] if latest else []:
-        fid = m.get('fixture_id')
-        if fid in seen or m.get('home_score') is None:
-            continue
-        seen.add(fid)
-        yield m
+    yield from iter_finished_matches(history, latest)
 
 
 def _legacy_resolve_player_id(row, selections):

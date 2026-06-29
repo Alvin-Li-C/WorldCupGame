@@ -23,6 +23,7 @@ CONFIG_PATH = os.path.join(ROOT, 'data', 'scraper_config.json')
 
 STAGE_LABEL = {
     'GROUP_STAGE': 'group',
+    'LAST_32': 'last_32',
     'LAST_16': 'round_16',
     'QUARTER_FINALS': 'quarter',
     'SEMI_FINALS': 'semi',

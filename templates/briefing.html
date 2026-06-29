@@ -275,7 +275,8 @@
                 <div class="scoreline" style="font-size: 1rem;">{{ match.home_team }} vs {{ match.away_team }}</div>
                 <div class="today-meta">
                     <span>{{ match.kickoff_beijing | kickoff_beijing }} 北京时间</span>
-                    {% if match.group %}<span>{{ match.group }}组</span>{% endif %}
+                    {% if match.stage and match.stage != 'group' %}<span>{{ match.stage | stage_cn }}</span>
+                    {% elif match.group %}<span>{{ match.group }}组</span>{% endif %}
                     <span>归属：{{ match.home_owner }} vs {{ match.away_owner }}</span>
                 </div>
             </div>
@@ -305,7 +306,7 @@
     <div class="standings-links">
         <a class="standings-card" href="/standings/teams">
             <h3>球队实时得分榜</h3>
-            <p>5 人归属球队累计积分 · 胜 3 / 平 1 / 负 0</p>
+            <p>5 人归属球队累计积分 · 小组赛 胜3/平1 · 淘汰赛晋级 +3</p>
             <div class="arrow">查看排名 →</div>
         </a>
         <a class="standings-card" href="/standings/shooters">

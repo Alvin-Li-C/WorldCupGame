@@ -13,20 +13,7 @@
         "away_score": null,
         "stadium_photo": "metlife.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          574,
-          577,
-          141,
-          240,
-          241,
-          2,
-          29,
-          72,
-          34,
-          424,
-          16
-        ]
+        "unmatched_scorers": []
       },
       {
         "fixture_id": 68,
@@ -36,20 +23,7 @@
         "away_score": null,
         "stadium_photo": "lincoln.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          71,
-          100,
-          262,
-          78,
-          304,
-          404,
-          595,
-          80,
-          561,
-          97,
-          445
-        ]
+        "unmatched_scorers": []
       },
       {
         "fixture_id": 69,
@@ -59,26 +33,7 @@
         "away_score": null,
         "stadium_photo": "hardrock.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          540,
-          19,
-          269,
-          153,
-          468,
-          493,
-          107,
-          10,
-          60,
-          110,
-          350,
-          282,
-          208,
-          154,
-          227,
-          15,
-          116
-        ]
+        "unmatched_scorers": []
       },
       {
         "fixture_id": 70,
@@ -88,19 +43,7 @@
         "away_score": null,
         "stadium_photo": "mercedes_atlanta.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          210,
-          440,
-          441,
-          559,
-          562,
-          117,
-          570,
-          571,
-          413,
-          175
-        ]
+        "unmatched_scorers": []
       },
       {
         "fixture_id": 71,
@@ -110,21 +53,7 @@
         "away_score": null,
         "stadium_photo": "att.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          590,
-          403,
-          593,
-          11,
-          340,
-          341,
-          600,
-          9,
-          292,
-          418,
-          144,
-          414
-        ]
+        "unmatched_scorers": []
       },
       {
         "fixture_id": 72,
@@ -134,23 +63,7 @@
         "away_score": null,
         "stadium_photo": "arrowhead.jpg",
         "our_scorers": [],
-        "unmatched_scorers": [],
-        "starter_picks": [
-          211,
-          298,
-          447,
-          145,
-          555,
-          565,
-          575,
-          330,
-          371,
-          132,
-          279,
-          68,
-          77,
-          597
-        ]
+        "unmatched_scorers": []
       }
     ]
   },
